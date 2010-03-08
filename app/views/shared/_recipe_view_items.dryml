@@ -1,0 +1,148 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<if test="&recipe_view_items.mash_steps.count > 0" >
+  <div class="block">
+    <h2>Mash schedule</h2>
+    <table class="item-list">
+      <tr>
+        <th><b>Name</b></th>
+        <th><b>Type</b></th>
+        <th><b>Temperature [<%= temp_units %>]</b></th>
+        <th><b>Time [Minutes]</b></th>
+      </tr>
+      <repeat with="&recipe_mashprofile_list(recipe_view_items)">
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><view:name/></td>
+        <td><view:steptype/></td>
+        <td><%= temperature_displays( this.temperature ) %></td>
+        <td><view:time/></td>
+        </tr>
+      </repeat>
+    </table>
+
+  </div>
+</if>
+
+
+<!-- Ingredients -->
+<!-- Fermentables -->
+<div class="block">
+  <h2>Fermentables</h2>
+  <table id="fermentables_list" class="item-list">
+    <tr>
+      
+      <th><b>Type</b></th>
+      <th><b>Gravity [<%= gravity_units %>]</b></th>
+      <th><b>Gravity(%)</b></th>
+      <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+      <th><b>Weight(%)</b></th>
+    </tr>
+    <repeat with="&recipe_fermentable_list(recipe_view_items)" >
+      <tr class="<%= cycle('odd','even') -%>">
+        
+        <td ><%=  fermentable_type( this ) %></td>
+        <td><%= gravity_values(this.points) %></td>
+        <td><%= percentage(this.percentage_points*100) %></td>
+        <td><%= ferm_weight_values(this.weight)%> </td>
+        <td><%= percentage(this.percentage_weight * 100) %></td>
+      </tr>
+    </repeat>
+  </table>
+</div>
+<!-- Hops -->
+<div class="block">
+  <h2>Hops</h2>
+  <table id="hops_list" class="item-list">
+    <tr>
+      <th><b>Type</b></th>
+      <th><b>AA(%)</b></th>
+      <th><b>IBU</b></th>
+      <th><b>IBU(%)</b></th>
+      <th><b>Weight [<%= hop_weight_units %>]</b></th>
+      <th><b>Time(minutes)</b></th>
+    </tr>
+
+    <repeat with="&recipe_hops_list(recipe_view_items)" >
+      <tr class="<%= cycle('odd','even') -%>">
+        <td ><%= hop_type( this ) %></td>
+        <td><%= percentage(this.aa) %></td>
+        <td><%= decimal(this.ibu_l) %></td>
+        <td><%= percentage(this.percentage_ibu*100)%> </td>
+        <td><%= hop_weight_values(this.weight) %></td>
+        <td><%= hop_minutes_format( this ) %></td>
+      </tr>
+    </repeat>
+  </table>
+</div>
+<!-- Yeast -->
+<div class="block">
+  <h2>Yeast</h2>
+  <table id="yeast_list" class="item-list">
+    <tr>
+      <th><b>Type</b></th>
+      <th><b>Flocculation</b></th>
+      <th><b>Attenuation</b></th>
+      <th><b>Min Temp[<%= temp_units %>]</b></th>
+      <th><b>Max Temp[<%= temp_units %>]</b></th>
+      <th><b>Alcohol Tollerance</b></th>
+    </tr>
+
+    <repeat with="&recipe_yeast_list(recipe_view_items)" >
+      <tr class="<%= cycle('odd','even') -%>">
+        <td ><%= yeast_type( this ) %></td>
+        <td><view:yeast_type.flocculation/></td>
+      <td><%= percentage(this.yeast_type.attenuation) %></td>
+      <td><%= temp_values( this.yeast_type.min_temp ) %></td>
+      <td><%= temp_values( this.yeast_type.max_temp ) %></td>
+      <td><view:yeast_type.alcohol_tollerance/></td>
+      </tr>
+    </repeat>
+  </table>
+</div>
+
+<if test="&recipe_view_items.misc_ingredients.count > 0" >
+  <div class="block" >
+    <h2>Miscellaneous</h2>
+    <table class="item-list">
+      <tr>
+        <th><b>Name</b></th>
+        <th><b>Type</b></th>
+        <th><b>Use</b></th>
+        <th><b>Amount</b></th>
+        <th><b>Description</b></th>
+        <th><b>Time [Minutes]</b></th>
+      </tr>
+      <repeat with="&recipe_misc_list(recipe_view_items)">
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><view:name/></td>
+        <td><view:misc_type/></td>
+        <td><view:misc_use/></td>
+        <td><if test="&this.is_solid"><%= hop_weight_values(this.amount) %></if><else><%= volume_values(this.amount) %></else>
+        &nbsp;[<if test="&this.is_solid"><%= hop_weight_units%></if><else><%= volume_units%></else>]</td>
+        <td><view:use_for/></td>
+        <td><view:time/></td>
+        </tr>
+      </repeat>
+    </table>
+
+  </div>
+</if>
+
+

@@ -1,0 +1,124 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<div id="actuals_div">
+  <div class="block">
+    <h2>Values:</h2>
+
+    <table class="list">
+      <tr>
+        <th>Volume to fermenter[<%= volume_units %>]:</th>
+        <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)">
+        <%= ajax_ferment_volume_editor(@brew_entry) %>
+      </if>
+      <else>
+        <%= number_with_precision(@brew_entry.volume_to_ferementer,2) %>
+      </else>
+      </td>
+      <th>Alcohol by volume:</th><td class="big"><%=number_with_precision(@brew_entry.actual_abv,2) %>%</td>
+      <th>Apparent Attenuation:</th><td class="big"><%= percentage(@brew_entry.actual_attenuation*100) %></td>
+      </tr>
+
+      <tr><td><br/></td></tr>
+      <tr>
+        <th>Original Gravity[<%= gravity_units %>]:</th>
+        <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)">
+        <%= ajax_log_og_editor(@brew_entry) %>
+      </if><else>
+        <%= gravity_values( @brew_entry.og ) %>
+      </else>
+      </td>
+      <th>Final Gravity[<%= gravity_units %>]:</th>
+      <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)">
+        <%= ajax_log_fg_editor(@brew_entry) %>
+      </if><else>
+        <%= gravity_values( @brew_entry.fg ) %>
+      </else>
+      </td>
+
+      <th>Colour [SRM(EBC)]:</th>
+      <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)">
+        <%= ajax_log_colour_editor(@brew_entry) %>
+      </if>
+      <else>
+        <if test="&@brew_entry.actual_colour">(<%= number_with_precision( @brew_entry.actual_colour, 2 ) %>)</if>
+      </else>
+      <if test="&@brew_entry.actual_colour">(<%= number_with_precision( @brew_entry.actual_colour*1.97, 2 ) %>)</if></td>
+      </tr>
+      <tr><td><br/></td></tr>
+      <tr>
+        <th>BU/GU ratio:</th><td class="big"><%=number_with_precision(@brew_entry.actual_bugu_ratio,2) %></td>
+        <th>Balance:</th><td class="big"><%=number_with_precision(@brew_entry.actual_balance,2) %></td>
+
+      </tr>
+
+    </table>
+  </div>
+</div>
+<br/>
+<div id="expected_recipe_div" class="block">
+  <h2>Recipe Values:</h2>
+  <table class="list">
+    <tr><th>Expected Mash Efficiency:</th><td class="big"><%= percentage(@brew_entry.therecipe.efficency) %></td>
+      <th>Expected Bitterness[IBU]:</th><td class="big"><%= number_with_precision(@brew_entry.therecipe.ibu,2) %></td></tr>
+    <tr><th>Actual Mash Efficiency:</th><td class="big"><%= percentage(@brew_entry.brewhouse_efficency * 100) || "n/a" %></td></tr>
+  </table>
+</div>
+
+
+<br/>
+
+<span id="expected_span" onclick="Element.show('expected_div');Element.hide('expected_span');">
+  <p class="toggle"><span class="button toggle">Expected Values >></span></p>
+</span>
+
+<div id="expected_div" style="display:none;">
+  <span onclick="Element.hide('expected_div');Element.show('expected_span');">
+    <p class="toggle"><span class="button">Hide Expected Values ^</span></p>
+  </span>
+  <div class="block">
+    <h2>Expected Values:</h2>
+
+    <table class="list">
+      <tr>
+        <th> </th><td> </td>
+        <th>Alcohol by volume:</th>
+        <td class="big"><%=number_with_precision(@brew_entry.therecipe.abv,2) %>%</td>
+      </tr>
+      <tr><td><br/></td></tr>
+      <tr>
+        <th>Original Gravity[<%= gravity_unit %>]:</th><td class="big"><%=gravity_value(@brew_entry.therecipe.og) %></td>
+        <th>Final Gravity[<%= gravity_unit %>]:</th><td class="big"><%=gravity_value(@brew_entry.therecipe.fg) %></td>
+        <th>Colour [SRM]:</th><td class="big"><%= number_with_precision( @brew_entry.therecipe.srm, 2 ) %>
+        </td>
+      </tr>
+      <tr><td><br/></td></tr>
+      <tr>
+        <th>BU/GU ratio:</th><td class="big"><%=number_with_precision(@brew_entry.therecipe.bugu,2) %></td>
+        <th>Balance:</th><td class="big"><%=number_with_precision(@brew_entry.therecipe.balance,2) %></td>
+        <th>Apparent Attenuation:</th>
+        <td class="big"><%= percentage(@brew_entry.therecipe.attenuation*100) %></td>
+      </tr>
+    </table>
+  </div>
+</div>
