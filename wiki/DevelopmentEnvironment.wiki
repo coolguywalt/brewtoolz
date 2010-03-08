@@ -1,7 +1,6 @@
-#summary One-sentence summary of this page.
+This page will soon be populated with instructions on setting up a development environment for brewtoolz web application. 
 
 = Instructions on configuring a development environment =
 
 
 = Prerequisites =
-
