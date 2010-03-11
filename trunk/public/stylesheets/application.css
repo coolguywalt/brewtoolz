@@ -246,3 +246,11 @@ body {
 .recipe_selected {
     color:teal;
 }
+
+.floatright {
+   float:right;
+}
+
+.floatleft {
+   float:left;
+}
