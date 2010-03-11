@@ -1,0 +1,88 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+Style: <%= if( recipe_view_detailed_text.style ) then recipe_view_detailed_text.style.name_with_designator end %><br/><br/>
+Description:<br/>
+<pre><%= simple_format(recipe_view_detailed_text.description) %></pre>
+<br/>
+
+<p>-------------------------------------------------------------------------</p>
+Target Volume [<%= volume_units %>]:&nbsp;&nbsp;<%= volume_values(recipe_view_detailed_text.volume) %><br/>
+Alcohol By Volume:&nbsp;&nbsp;<%= number_with_precision(recipe_view_detailed_text.abv, 2) %>%<br/>
+<br/>
+Estimated Original Gravity[<%= gravity_units %>]:&nbsp;&nbsp;<%= gravity_values( recipe_view_detailed_text.og ) %><br/>
+Estimated Final Gravity[<%= gravity_units %>]:&nbsp;&nbsp;<%= gravity_values( recipe_view_detailed_text.fg ) %><br/>
+Estimated Attenuation:<%= percentage(recipe_view_detailed_text.attenuation*100) %><br/>
+Estimated Mash Efficiency:<%= percentage(recipe_view_detailed_text.efficency)  %><br/>
+<br/>
+Bitterness [IBU]:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.ibu, 2 ) %><br/>
+Colour [SRM(EBC)]:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.srm, 2 ) %> (<%= number_with_precision( recipe_view_detailed_text.ebc, 2 ) %>)<br/>
+Balance:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.balance, 3 ) %><br/>
+BU:GU ratio:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.bugu, 3 ) %><br/>
+<br/>
+<p>-------------------------------------------------------------------------</p>
+<if test="&recipe_view_detailed_text.mash_steps.count > 0" >
+  Mash schedule:<br/>
+  Name - Type - Temperature - Time[Minutes]<br/>
+  <repeat with="&recipe_mashprofile_list(recipe_view_detailed_text)">
+    <view:name/> - <view:steptype/> - <%= temperature_displays( this.temperature ) %><%= temp_units %> - <view:time/><br/>
+  </repeat>
+  <br/>
+</if>
+
+
+<!-- Ingredients -->
+<!-- Fermentables -->
+<p>-------------------------------------------------------------------------</p>
+ Fermentables:<br/>
+ Type - Weight[<%= ferm_weight_units %>] - Gravity[<%= gravity_units %>] - Weight(%)<br/>
+    <repeat with="&recipe_fermentable_list(recipe_view_detailed_text)" >
+        <%=  fermentable_type( this ) %> - <%= ferm_weight_values(this.weight)%><%= ferm_weight_units %> - <%= gravity_values(this.points) %> - <%= percentage(this.percentage_weight * 100) %><br/>
+    </repeat>
+ <br/>
+ <!-- Hops -->
+<p>-------------------------------------------------------------------------</p>
+Hops:<br/>
+Type - Time[minutes] - Weight[<%= hop_weight_units %>] - AA(%) - IBU  <br/>
+
+    <repeat with="&recipe_hops_list(recipe_view_detailed_text)" >
+<%= hop_type( this ) %> - @<%= hop_minutes_format( this ) %> - <%= hop_weight_values(this.weight) %><%= hop_weight_units %> - <%= percentage(this.aa) %> - <%= decimal(this.ibu_l) %><br/>
+    </repeat>
+<br/>
+<!-- Yeast -->
+
+<p>-------------------------------------------------------------------------</p>
+Yeast:
+Type - Attenuation% - Min Temp[<%= temp_units %>] - Max Temp[<%= temp_units %>]<br/>
+    <repeat with="&recipe_yeast_list(recipe_view_detailed_text)" >
+<%= yeast_type( this ) %> - <%= percentage(this.yeast_type.attenuation) %> - <%= temp_values( this.yeast_type.min_temp ) %><%= temp_units %> - <%= temp_values( this.yeast_type.max_temp ) %><%= temp_units %><br/>
+    </repeat>
+<br/>
+
+<if test="&recipe_view_detailed_text.misc_ingredients.count > 0" >
+<p>-------------------------------------------------------------------------</p>
+Miscellaneous:<br/>
+Name - Type - Use - Amount - Time[Minutes]<br/>
+      <repeat with="&recipe_misc_list(recipe_view_detailed_text)">
+<view:name/> - <view:misc_type/> - <view:misc_use/> - <if test="&this.is_solid"><%= hop_weight_values(this.amount) %></if><else><%= volume_values(this.amount) %></else>
+        &nbsp;[<if test="&this.is_solid"><%= hop_weight_units%></if><else><%= volume_units%></else>] - <view:time/><br/>
+      </repeat>
+</if>
+
+
