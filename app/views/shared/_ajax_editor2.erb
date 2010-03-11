@@ -23,7 +23,8 @@
 %>
 
 <span id="<%=id_prefix%>_show" onclick="Element.show('<%=id_prefix%>_edit');Element.hide('<%=id_prefix%>_show');">
-	<span class="input-hl" id="<%=id_prefix%>_s"><%= value_display_str %></span>
+  <span class="input-hl" id="<%=id_prefix%>_s"><%= value_display_str %></span>
+  <a onlcick="Element.show('<%=id_prefix%>_edit');Element.hide('<%=id_prefix%>_show');" class="small-button button">+</a>
 </span>
 
 <span id="<%=id_prefix%>_edit" style="display:none;" >
