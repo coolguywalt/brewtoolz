@@ -27,6 +27,7 @@
     <% if alt_value %>
         (<%= alt_value %>)
     <% end %>
+        <a onlcick="Element.show('<%=id_prefix%>_edit');Element.hide('<%=id_prefix%>_show');" class="small-button button">+</a>
  </span>
             
  <span id="<%=id_prefix%>_edit" style="display:none;" >

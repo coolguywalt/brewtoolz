@@ -64,6 +64,11 @@
     <div class="block">
 
       <if test="&@brew_entry.updatable_by?(current_user)">
+
+        <div class="floatright">
+          <a href="javascript:void(0);" onlcick="Element.show('comment_edit');Element.hide('comment_show');" class="small-button button">+</a>
+        </div>
+
         <h2 onclick="Element.show('comment_edit');Element.hide('comment_show');" class="input-hl">Comments:</h2>
 
         <div id="comment_show">
