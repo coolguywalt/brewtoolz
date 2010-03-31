@@ -45,7 +45,7 @@ module AppSecurity
        
       al.ipaddress = request.remote_ip
 
-      al.params = request.params unless request.url.include?("login") || request.url.include?("password")
+      al.params = request.params unless (request.url.include?("login") || request.url.include?("signup"))
 
       al.save
     end
