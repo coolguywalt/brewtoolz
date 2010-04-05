@@ -1,0 +1,150 @@
+--- 
+brew_entry_5: 
+  actual_fg: "14"
+  updated_at: 2008-06-07 23:36:10
+  actual_og: "75"
+  bottled_kegged: "2008-05-15"
+  brew_date: "2008-05-09"
+  recipe_id: 15
+  id: 5
+  pitching_temp: "22"
+  volume_to_ferementer: "24"
+  user_id: 2
+  comment: |-
+    Brew for the AHB case swap.
+    Was a lot paler than expected, but managed to get target OG and roughly the target volume.
+    Dropped temp from 22 down to 18 after the first 8 hours.
+  created_at: 2008-05-15 21:26:00
+brew_entry_35: 
+  updated_at: 2008-08-09 21:26:36
+  actual_og: "3"
+  bottled_kegged: "2008-07-08"
+  brew_date: "2008-07-06"
+  recipe_id: 33
+  id: 35
+  volume_to_ferementer: "10"
+  user_id: 2
+  comment: aa
+  created_at: 2008-08-09 21:23:57
+brew_entry_6: 
+  updated_at: 2008-05-15 21:38:28
+  actual_og: "135.827"
+  brew_date: "2008-05-15"
+  recipe_id: 8
+  id: 6
+  user_id: 2
+  created_at: 2008-05-15 21:38:28
+brew_entry_36: 
+  actual_fg: "12"
+  updated_at: 2008-08-24 22:51:42
+  actual_og: "46"
+  bottled_kegged: "2008-08-10"
+  brew_date: "2010-08-10"
+  recipe_id: 43
+  id: 36
+  pitching_temp: "23"
+  volume_to_ferementer: "21"
+  user_id: 2
+  comment: good it worked
+  created_at: 2008-08-10 14:39:36
+brew_entry_37: 
+  updated_at: 2008-08-22 09:20:17
+  actual_og: "85.5887"
+  brew_date: "2008-08-22"
+  recipe_id: 2
+  id: 37
+  user_id: 3
+  created_at: 2008-08-22 09:20:17
+brew_entry_38: 
+  updated_at: 2008-08-25 20:36:57
+  actual_og: "70.0562"
+  brew_date: "2008-08-25"
+  recipe_id: 15
+  id: 38
+  volume_to_ferementer: "24.5"
+  user_id: 2
+  created_at: 2008-08-25 20:36:57
+brew_entry_29: 
+  actual_fg: "30"
+  updated_at: 2008-05-27 22:03:21
+  actual_og: "96"
+  bottled_kegged: "2008-05-15"
+  brew_date: "2008-04-18"
+  recipe_id: 11
+  id: 29
+  pitching_temp: "16"
+  volume_to_ferementer: "19"
+  user_id: 2
+  comment: Yay
+  created_at: 2008-05-15 21:47:40
+brew_entry_30: 
+  updated_at: 2008-05-26 22:29:35
+  actual_og: "0"
+  bottled_kegged: "2008-05-26"
+  brew_date: "2008-05-26"
+  recipe_id: 20
+  id: 30
+  volume_to_ferementer: "345"
+  user_id: 2
+  comment: I didn't really brew it
+  created_at: 2008-05-26 22:29:20
+brew_entry_1: 
+  updated_at: 2008-07-18 14:54:23
+  actual_og: "45.4871"
+  bottled_kegged: "2008-07-18"
+  brew_date: "2008-07-18"
+  recipe_id: 1
+  id: 1
+  pitching_temp: "12"
+  volume_to_ferementer: "21"
+  user_id: 1
+  comment: asdsf
+  created_at: 2008-07-18 14:54:09
+brew_entry_31: 
+  actual_fg: "23"
+  updated_at: 2008-08-22 09:18:03
+  actual_og: "135.827"
+  bottled_kegged: "2008-06-06"
+  brew_date: "2008-06-06"
+  recipe_id: 8
+  id: 31
+  pitching_temp: "23"
+  volume_to_ferementer: "23"
+  user_id: 2
+  comment: |
+    yay
+
+  created_at: 2008-06-06 21:29:58
+brew_entry_32: 
+  actual_fg: "12"
+  updated_at: 2008-07-16 00:17:43
+  actual_og: "51.7861"
+  bottled_kegged: "2008-06-06"
+  brew_date: "2008-06-06"
+  recipe_id: 1
+  id: 32
+  volume_to_ferementer: "21"
+  user_id: 2
+  comment: Do I have to???
+  created_at: 2008-06-06 22:01:42
+brew_entry_33: 
+  updated_at: 2008-06-06 23:47:50
+  actual_og: "46.2329"
+  brew_date: "2008-06-06"
+  recipe_id: 10
+  id: 33
+  volume_to_ferementer: "23"
+  user_id: 2
+  created_at: 2008-06-06 23:47:50
+brew_entry_4: 
+  updated_at: 2008-05-15 21:24:52
+  actual_og: "32.3675"
+  bottled_kegged: "2008-05-15"
+  brew_date: "2008-05-15"
+  recipe_id: 9
+  id: 4
+  pitching_temp: "18"
+  volume_to_ferementer: "23"
+  user_id: 2
+  comment: ""
+  created_at: 2008-05-15 21:24:08
