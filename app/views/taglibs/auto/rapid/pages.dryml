@@ -1631,7 +1631,7 @@
             <a:brew_entry param="parent-link">&laquo; <name/></a:brew_entry>
             <h2 param="heading"><name/></h2>
 
-            <record-flags fields="hop_cubed" param/>
+            <record-flags fields="hop_cubed, locked" param/>
 
             <a:user param="creator-link"/>
 
