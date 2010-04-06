@@ -1,0 +1,372 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<print-page>
+  <title:>
+    <%= "Brewtoolz - Print Brewday: #{@brew_entry.therecipe.name} - #{@brew_entry.brew_date.to_s(:long)}" %>
+  </title:>
+  <content-body:>
+    <h1>Brewday: <%=  "#{@brew_entry.brew_date.to_s(:long)} - #{@brew_entry.therecipe.name}" %></h1>
+
+    <div class="block" >
+      <h3>Summary</h3>
+      <table class="list">
+        <tr>
+          <th>Volume to fermenter[<%= volume_units %>]:</th>
+          <td class="big"><%= number_with_precision(@brew_entry.volume_to_ferementer,2) %></td>
+          <th>Original Gravity[<%= gravity_units %>]:</th><td class="big"><%= gravity_values( @brew_entry.og ) %></td>
+
+        </tr>
+        <tr>
+          <th>Mash Efficiency [%]:</th> <td class="big"><%= percentage(@brew_entry.therecipe.efficency) %></td>
+          <th>Bitterness[IBU]:</th><td class="big"><%= number_with_precision(@brew_entry.therecipe.ibu,2) %></td>
+        </tr>
+        <tr>
+          <th>Colour [SRM(EBC)]:</th><td class="big"><%= number_with_precision( @brew_entry.therecipe.srm, 2 ) %>(<%= number_with_precision( @brew_entry.therecipe.srm*1.97, 2 ) %>)</td>
+        </tr>
+      </table>
+    </div>
+    <br/>
+
+    <div class="block">
+      <h3>Mash</h3>
+      <table class="list">
+        <tr>
+          <th>Mash water volume [<%= volume_units %>]:</th><td class="big"><%= volume_values( @brew_entry.mash_water) %></td>
+          <th>Mash tun volume required[<%= volume_units %>]:</th><td class="big"><%= volume_values( @brew_entry.mash_tun_volume ) %></td>
+
+        </tr>
+        <tr>
+          <th>Total Mash Grain Weight [<%= ferm_weight_units %>]:</th><td class="big"><%= ferm_weight_values(@brew_entry.mash_grain_weight)%></td>
+
+        </tr>
+      </table>
+
+      <h3>Grains:</h3>
+
+      <table id="fermentables_list" class="item-list">
+        <tr>
+          <th><b>Type</b></th>
+          <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+          <th><b>Actual Weight</b></th>
+        </tr>
+        <repeat with="&recipe_fermentable_mash_list(@brew_entry.therecipe)" >
+          <tr class="<%= cycle('odd','even') -%>">
+            <td ><%=  fermentable_type( this ) %></td>
+            <td><%= ferm_weight_values(this.weight)%> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          </tr>
+        </repeat>
+        <tr class="<%= cycle('odd','even') -%>">
+          <td>&nbsp</td><td>&nbsp</td><td>&nbsp</td>
+        </tr>
+        <tr class="<%= cycle('odd','even') -%>">
+          <td>&nbsp</td><td>&nbsp</td><td>&nbsp</td>
+        </tr>
+
+      </table>
+
+
+      <h3>Mash Schedule:</h3>
+      <table class="item-list">
+        <tr>
+          <th>Name</th>
+          <th>Method</th>
+          <th>Step temp<br/>[<%= temp_units() %>]</th>
+          <th>Step time<br/>[minutes]</th>
+          <th>Addition amount<br/>[<%= volume_units() %>]</th>
+          <th>Addition temp<br/>[<%= temp_units() %>]</th>
+          <th>Liquor/grist ratio<br/>[<%= liquor_to_grist_units() %>]</th>
+        </tr>
+
+
+        <repeat with="&@brew_entry.mash_schedule()">
+          <tr class="<%= cycle('odd','even') -%>">
+            <td><view:name/></td>
+          <td><%= this.steptype.capitalize %></td>
+          <td><%= temp_values(this.temperature) %></td>
+          <td><view:time/></td>
+          <td>
+            <%= volume_values(this.addition_amount) %>
+<%# mash_step_addition_txt( this ) %>
+          </td>
+          <td><%= temp_values(this.addition_temp) %></td>
+          <td><%= liquor_to_grist_values(this.liquor_to_grist) %></td>
+          </tr>
+        </repeat>
+      </table>
+      <br/>
+      <table>
+        <tr>
+          <th>Mash gravity @ 100% conversion [<%= gravity_units %>]:</th><td><%=  gravity_values(@brew_entry.mash_gravity) %></td>
+        </tr>
+      </table>
+
+      <br/>
+
+      <h4>Test ph</h4>
+      Observed ph:<br/>
+      pH adjustments:<br/><br/><br/>
+
+
+    </div>
+
+    <div class="block">
+      <h2>Sparge</h2>
+      <table class="list">
+        <tr>
+          <th>Minimum required efficiency:</th><td class="big"><%= number_with_precision(@brew_entry.therecipe.efficency,2)%> %</td>
+          <th>Max expected efficiency</th><td class="big"><%= number_with_precision(@brew_entry.preboilefficiency * 100,2) %> %</td>
+        </tr>
+      </table>
+
+      <br/>
+
+
+      <table  class="item-list" >
+        <tr><th>Sparge No</th><th><b> Water addition [l]</b></th><th><b>Expected recovered volume [l]</b></th><th><b>Required gravity</b></th><th><b>Max expected gravity</b></th></tr>
+        <tr class="<%= cycle('odd','even') -%>">
+          <td>1</td>
+          <td><%= number_with_precision(@brew_entry.sparge1_water_addition,2) %></td>
+          <td><%= number_with_precision(@brew_entry.sparge1_volume,2) %></td>
+          <td><%= number_with_precision(@brew_entry.sparge1_required_gravity,2) %></td>
+          <td><%= number_with_precision(@brew_entry.sparge1_gravity,2) %></td>
+        </tr>
+        <tr class="<%= cycle('odd','even') -%>">
+          <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        </tr>
+        <if test="&@brew_entry.the_no_batches > 1">
+          <tr class="<%= cycle('odd','even') -%>">
+
+            <td>2</td>
+            <td><%= number_with_precision(@brew_entry.sparge2_water_addition,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge2_volume,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge2_required_gravity,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge2_gravity,2) %></td>
+          </tr>
+          <tr class="<%= cycle('odd','even') -%>">
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+        </if>
+        <if test="&@brew_entry.the_no_batches > 2">
+          <tr class="<%= cycle('odd','even') -%>">
+
+            <td>3</td>
+            <td><%= number_with_precision(@brew_entry.sparge3_water_addition,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge3_volume,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge3_required_gravity,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge3_gravity,2) %></td>
+          </tr>
+          <tr class="<%= cycle('odd','even') -%>">
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+        </if>
+        <if test="&@brew_entry.the_no_batches > 3">
+          <tr class="<%= cycle('odd','even') -%>">
+
+            <td>3</td>
+            <td><%= number_with_precision(@brew_entry.sparge4_water_addition,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge4_volume,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge4_required_gravity,2) %></td>
+            <td><%= number_with_precision(@brew_entry.sparge4_gravity,2) %></td>
+          </tr>
+          <tr class="<%= cycle('odd','even') -%>">
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+        </if>
+        <tr>
+          <td><b>Combined</b></td>
+          <td><b><%= number_with_precision(@brew_entry.total_spargewater,2)%></b></td>
+          <td><b><%= number_with_precision(@brew_entry.preboilvolume,2) %></b></td>
+          <td><b><%= number_with_precision(@brew_entry.preboilrequiredgravity,2) %></b></td>
+          <td><b><%= number_with_precision(@brew_entry.preboilgravity,2) %></b></td>
+        </tr>
+        <tr >
+          <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        </tr>
+      </table>
+      <br/>
+
+
+      <h3>Assumed constants:</h3>
+      <table  class="list">
+        <tr>
+          <th>Absorbtion [l/kg]:</th><td class="big">1.3</td>
+          <th>Grain displacement [l/kg]:</th><td class="big">0.67</td>
+        </tr>
+      </table>
+
+      <br/>
+      <h2>Preboil Values:</h2>
+      <table class="list">
+
+        <tr>
+          <th>Preboil wort volume [<%= volume_units %>]:</th><td class="big"><%= volume_values( @brew_entry.preboilvolume ) %></td>
+          <th>@ mash out temp.</th><td class="big"><%= volume_values( adjust_for_temp(@brew_entry.preboilvolume,75) ) %></td>
+        </tr>
+        <tr>
+          <th>Preboil gravity [<%= gravity_units %>]:</th><td class="big"><%= gravity_values( @brew_entry.preboilrequiredgravity ) %></td>
+
+        </tr>
+      </table>
+      <br/>
+
+    </div>
+
+
+    <p style="page-break-before: always" />
+    <div class="block" >
+      <h2>Boil</h2>
+
+
+      <h3>Hops:</h3>
+
+      <table id="hops_list" class="item-list">
+        <tr>
+          <th><b>Type</b></th>
+          <th><b>AA(%)</b></th>
+          <th><b>IBU</b></th>
+          <th><b>Weight [<%= hop_weight_units %>]</b></th>
+          <th><b>Actual Weight</b></th>
+          <th><b>Time(minutes)</b></th>
+        </tr>
+
+        <repeat with="&recipe_hops_list( @brew_entry.therecipe)" >
+          <tr class="<%= cycle('odd','even') -%>">
+            <td ><%= hop_type( this ) %></td>
+            <td><%= percentage(this.aa) %></td>
+            <td><%= decimal(this.ibu_l) %></td>
+            <td><%= hop_weight_values(this.weight) %></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td><%= hop_minutes_format( this ) %></td>
+          </tr>
+        </repeat>
+      </table>
+      <br/>
+
+      <% nonmashlist = recipe_fermentable_nonmash_list(@brew_entry.therecipe) %>
+      <if test="&nonmashlist.size > 0">
+        <h3>Other fermentables:</h3>
+        <table id="other_fermentables_list" class="item-list">
+          <tr>
+            <th><b>Type</b></th>
+            <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+            <th><b>Actual Weight</b></th>
+          </tr>
+          <repeat with="&nonmashlist" >
+            <tr class="<%= cycle('odd','even') -%>">
+              <td ><%=  fermentable_type( this ) %></td>
+              <td><%= ferm_weight_values(this.weight)%> </td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+          </repeat>
+        </table>
+      </if>
+      <br/>
+
+      <if test="&@brew_entry.therecipe.misc_ingredients.count > 0" >
+        <h2>Miscellaneous</h2>
+        <table class="item-list">
+          <tr>
+            <th><b>Name</b></th>
+            <th><b>Type</b></th>
+            <th><b>Use</b></th>
+            <th><b>Amount</b></th>
+            <th><b>Actual</b></th>
+            <th><b>Time [Minutes]</b></th>
+          </tr>
+          <repeat with="&recipe_misc_list( @brew_entry.therecipe)">
+            <tr class="<%= cycle('odd','even') -%>">
+              <td><view:name/></td>
+            <td><view:misc_type/></td>
+            <td><view:misc_use/></td>
+            <td><if test="&this.is_solid"><%= hop_weight_values(this.amount) %></if><else><%= volume_values(this.amount) %></else>
+            &nbsp;[<if test="&this.is_solid"><%= hop_weight_units%></if><else><%= volume_units%></else>]</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td><view:time/></td>
+            </tr>
+          </repeat>
+        </table>
+        <br/>
+      </if>
+
+      <h3>Postboil Values:</h3>
+      <table class="list">
+        <tr><th>Evaporation [<%= volume_units %>]:</th><td class="big"><%= volume_values( @brew_entry.evapouration_loss) %></td></tr>
+        <tr>
+          <th>Postboil wort volume [<%= volume_units %>]:</th><td class="big"><%= volume_values(@brew_entry.volume_to_fermenter_and_system_loses) %></td><th>@ boiling temp.</th><td class="big"><%= volume_values( adjust_for_temp(@brew_entry.volume_to_fermenter_and_system_loses,100) ) %></td>
+        </tr>
+        <tr>
+          <th>Postboil target gravity [<%= gravity_units %>]:</th><td class="big"><%= gravity_values( @brew_entry.therecipe.og ) %></td><th>mash items only</th><td class="big"><%= gravity_values( @brew_entry.therecipe.total_mash_points ) %></td>
+        </tr>
+        <tr>
+          <th>Boiler loses [<%= volume_units %>]:</th><td class="big"><%= volume_values(@brew_entry.boiler_loses) %></td>
+        </tr>
+
+
+      </table>
+    </div>
+    <br/>
+    <div class="block">
+      <h2>Yeast Pitching</h2>
+      <table id="yeast_list" class="item-list">
+        <tr>
+          <th><b>Type</b></th>
+          <th><b>Min Temp[<%= temp_units %>]</b></th>
+          <th><b>Max Temp[<%= temp_units %>]</b></th>
+        </tr>
+
+        <repeat with="&recipe_yeast_list(@brew_entry.therecipe)" >
+          <tr class="<%= cycle('odd','even') -%>">
+            <td ><%= yeast_type( this ) %></td>
+            <td><%= temp_values( this.yeast_type.min_temp ) %></td>
+            <td><%= temp_values( this.yeast_type.max_temp ) %></td>
+          </tr>
+        </repeat>
+      </table>
+      <br/>
+      <table class="list">
+        <tr><td><b>Estimated required yeast cells (billion):</b></td>
+          <td class ="big"><%= number_with_precision(this.yeast_pitching_rate/1e9, 2) %></td></tr>
+      </table>
+
+      <br/>
+      <table class="list">
+        <tr><td><b>Dried yeast (gm):</b></td>
+          <td class="big"><%= number_with_precision(dried_yeast_grams(@brew_entry.yeast_pitching_rate),2) %></td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td><b>No of liquid yeast(Wyeast/Whitelabs) packs:</b></td>
+          <td class="big"><%= number_with_precision(no_yeast_packets(@brew_entry.yeast_pitching_rate),2) %></td><td>(Assumes 94% viability)</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td><b>Approximate amount of solid slurry (ml):</b></td>
+          <td></td><td></td></tr>
+
+        <tr><td class="right">One hour settling</td>
+          <td class="big"><%= number_with_precision(yeast_slurry_onehour(@brew_entry.yeast_pitching_rate),2) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
+        <tr><td class="right">One day settling</td>
+          <td class="big"><%= number_with_precision(yeast_slurry_oneday(@brew_entry.yeast_pitching_rate),2) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
+        <tr><td class="right">Longer than 1 week settling</td>
+          <td class="big"><%= number_with_precision(yeast_slurry_final(@brew_entry.yeast_pitching_rate,0.8),2) %></td><td>(Assumes 25% trub and 80% viability)</td></tr>
+      </table>
+
+    </div>
+
+    <h3 align="center"><b>www.brewtoolz.com</b> - Brewtoolz - Brewing tool calculator</h3>
+  </content-body:>
+</print-page>

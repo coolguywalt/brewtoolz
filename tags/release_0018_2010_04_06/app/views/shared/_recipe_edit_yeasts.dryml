@@ -1,0 +1,75 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<br/>
+<div class="navigation-div">
+	<recipeedit-nav current="yeast"/><br/>
+</div>
+
+
+<div id="yeast_items" class="item-list-unlimited">
+<!-- %= render :partial => 'yeast_items' % -->
+<table id="yeasts_list" class="item-list">
+  <tr>
+    <th><b>Type</b></th>
+    <th><b>Flocculation</b></th>
+    <th><b>Attenuation</b></th>
+    <th><b>Min Temp[<%= temp_units %>]</b></th>
+    <th><b>Max Temp[<%= temp_units %>]</b></th>
+    <th><b>Alcohol Tolerance</b></th>
+    <th><b> </b></th>
+  </tr>
+
+  <!-- %= render :partial => 'yeast', :collection => recipe_yeast_list(@recipe) % -->
+  <tbody class="scroll-list">
+    <repeat with="&recipe_yeast_list(recipe_edit_yeasts)">
+      <tr class="<%= cycle('odd','even') -%>">
+        <td><%= this.yeast_type.name %></td>
+        <td><%= this.yeast_type.flocculation %></td>
+        <td><%= this.yeast_type.attenuation %></td>
+        <td><%= temp_values( this.yeast_type.min_temp ) %></td>
+        <td><%= temp_values( this.yeast_type.max_temp ) %></td>
+        <td><%= this.yeast_type.alcohol_tollerance %></td>
+        <td><%= del_yeast_link(this) %></td>
+      </tr>
+    </repeat>
+  </tbody>
+</table>
+
+</div>
+
+<!-- Yeast selection list. -->
+<h3><b>Select yeast:</b></h3>
+<div class="item-list" >
+  <table id="yeast_list" class="item-list" >
+    <th>Type</th><th> </th>
+    <tbody class="scroll-list">
+      <repeat with="&YeastType.find(:all, :order => 'name')" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><view:name/></td>
+          <td><%= link_to_remote "Add",
+          :loading => "Hobo.showSpinner('Adding yeast');",
+          :complete => "Hobo.hideSpinner();",
+              :url => { :controller => "recipes", :action => "add_yeast", :id => recipe_edit_yeasts.id, :yeast_type_id => this.id},
+              :html => { :class => 'button small-button', :id => "yeast_#{this.id}" }  %></td>
+        </tr>
+      </repeat>
+    </tbody>
+  </table>
+</div>
