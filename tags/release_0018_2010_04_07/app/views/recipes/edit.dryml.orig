@@ -1,0 +1,43 @@
+<edit-page>
+  <content-body:>
+    <form>
+    <label>Style:</label>
+        <% link_id = "#{this_field_dom_id}_editor" %>  
+  	<span id="#{link_id}" part="rapid-belongs-to-edit">
+    	<% link_id = "#{this_field_dom_id}_editor"
+       		f = ajax_updater(object_url(this),
+          		"Change #{this_field.to_s.titleize}", [link_id],
+                        :method => "put",
+                        	:params => { this.class.name.underscore => {
+                            	'style_id'=> Hobo.raw_js('this.value')
+                          } })
+    	%>
+    	<%= collection_select(:recipe, :style_id, Style.find(:all), :id, :name_with_designator, {:prompt => true}, {:onchange => "#{f}"}) %>
+  	</span><br/>
+    <label>Name:</label><input:name class="wide"/><br/>
+    <label>Description:</label><br/><input:description class="shallow wide" /><br/>
+
+    <div id="fermentables_list" >
+    <h2>Fermentables</h2>
+    <table>
+      <th>Name </th><th>Gravity Contr </th><th>Weight (gms)</th><th>% Gravity Contr </th><th>% Weight </th>	
+        <repeat with = "&this.fermentables"> 
+	  <tr>
+		<td><view:fermentable_type.name/></td><td><view:points/></td><td><view:weight/></td>
+		<td>
+			<%=   link_to_remote "Edit", :update => "edit_fermentable",
+                              :url => { :action => "edit_fermentable", :id => this.id }%>
+		</td>
+	  </tr>
+       </repeat>
+    </table>
+    </div>	
+    <br/>	
+    <submit label="Submit"/>
+    </form>
+   
+   <div id="edit_fermentable" >
+   </div>
+
+  </content-body:>
+</edit-page>

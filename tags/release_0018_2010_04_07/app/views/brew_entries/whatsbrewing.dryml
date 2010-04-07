@@ -1,0 +1,70 @@
+<index-page>
+
+	<title:>Whats Brewing : Brewtoolz</title:>
+	<count: replace/>
+
+	<heading:>Whats Brewing</heading:>
+
+	<aside-left:>
+			<% form_remote_tag(
+				 :before    =>"Hobo.showSpinner('Updating list ...')" ,
+				  :complete  =>"Hobo.hideSpinner()" ,
+				  :url       => {:action=>'whatsbrewing'},
+				 :id => :whatsbrewing_form) do %>
+				<b>Filter:</b><br/>
+				<%= text_field_tag 'brewlog_filter', @search, :size => 12 %> <%= submit_tag "Search" %>
+		<br/>
+
+				<b>Sort Order:</b><br/>
+
+				<%=  radio_button_tag 'sort_order', 'Name', false, :id => 'order_name_id' %>
+				<label for="order_name_id">Name</label>
+
+				<%=  radio_button_tag 'sort_order', 'Date' , true, :id => 'order_date_id'%>
+				<label for="order_date_id">Date</label>
+
+				<%=  radio_button_tag 'sort_order', 'Rating', false, :id => 'order_rating_id' %>
+				<label for="order_rating_id">Rating</label>
+
+
+		<br/>
+
+
+		<% end  %>
+		
+	</aside-left:>
+
+
+	<!-- collection: with="&primary_recipes()" options=":renderer => 'RemoteLinkRenderer'" / -->
+	<content-body: >
+		<% reset_whatsbrewing_filters %>
+
+
+		<div id="brewlog_collecion_div">
+			<%= render :partial => 'shared/brewlog_collection', :object => whatsbrewing_brewlog_list() %>
+		</div>
+
+	</content-body:>
+
+
+</index-page>
+
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+

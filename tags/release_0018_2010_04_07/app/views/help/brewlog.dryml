@@ -1,0 +1,74 @@
+<page title="Brewlog Help">
+
+  <body: class="front-page"/>
+  	<aside-left:>
+          <a href="/help">Overview</a><br/>
+          <ul>
+             <li><a href="/help/recipe">Recipe</a></li>
+             <li><a href="/help/brewery">Brewery<br/></a></li>
+             <li><a href="/help/brewlog">Brewlog<br/></a></li>
+          </ul>
+	</aside-left:>
+  <content:>
+
+    <h1>Brew log</h1>
+    <br/>
+    The brewlog lies at the heart of the Brewtoolz tracking system, and is designed to prepare you for the brewing day process, as well as a place to record what actually happened, and the outcome.<br/>
+    <br/>
+    When you press the Brew button, a new brewlog is created for the recipe.&nbsp; The brewlog also contains a complete copy of the original recipe.&nbsp; This done to make sure the brewlog is not changed if the original recipe is changed, and to allow you to record any modifications that happen on the brewday (yes there is always something).<br/>
+    <br/>
+
+    <div style="display: block; text-align: left;"><img src="/images/help_brewlog.png" border="0" usemap="#brewlog_help_map"/>
+      <map name="brewlog_help_map">
+        <area shape="rect" coords="96,23,290,137" alt="Recipe" href="/help/recipe"/>
+        <area shape="rect" coords="652,63,863,168" alt="Brewery" href="/help/brewery"/>
+
+      </map>
+    </div>
+
+    When the brewlog is created it picks up the default brewery along with all the setting recorded in the default brewery.&nbsp; If there are no breweries defined, then Brewtoolz default settings will be applied.<br/>
+    <br/>
+    Once the settings are defined, you will notice the brewlog recipe probably has larger quantities of ingredients for the same volume as defined in the recipe calculator.&nbsp; This is because the brewday recipe is taking into account all of the boil and mash tun loses.&nbsp; The volume that is entered in the brewlog page, is the volume expected to be transfered into the fermenter, after taking into account all the loses.<br/>
+    <br/>
+    Note that the volume of the original recipe will be replaced by the breweries default volume.&nbsp; This can be changed back to what ever is required, but will also take into account the loses represented by the brewery.<br/>
+    <br/>
+    If you are not doing an all grain brewing process, then you can ignore the efficiency setting, and set all boiler and mash tun lose to zero.<br/>
+    <br/>
+    The brewlog also contains convenient calculators for the mashing steps, the sparge water for batch sparging, and a yeast pitching calculator. <br/>
+    <br/>
+    The brewday printout provides a convenient running list of activities, with plenty of space to record values observed on the day.<br/>
+    <br/>
+    <br/>
+    Once fermentation is under way, the Observation entry are a great way to keep track of what is going on, and the fermentation progress.&nbsp; It even has a built in calculator to convert Refractometer readings taken during fermentation to approximated SG values.<br/>
+    <br/>
+    Fermentation progress will be presented as a graph overtime as well.<br/>
+    <br/>
+    <br/>
+    The last entry type in the brewlogs is the tasting.&nbsp; These can also be ranked (out of 50 ) so that you can keep track over time of what was working and what was not.<br/>
+    <br/>
+
+
+  </content:>
+
+
+</page>
+
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
