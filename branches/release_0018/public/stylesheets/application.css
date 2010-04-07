@@ -34,6 +34,14 @@ div h1.app-name {
     font-size:43pt;
 }
 
+
+.textdisplay {
+
+}
+
+.content-body {
+    margin: 0px 5px 15px;
+}
 .banner-image {
     position: relative;
 
@@ -215,8 +223,8 @@ body {
 .page-header .navigation.main-nav a:hover {background-color: #606060;}
 
 .navigation-div {
-     background: url(../images/foot_back.png) repeat-x scroll 0 0;
-     padding:0px 15px 7px;
+    background: url(../images/foot_back.png) repeat-x scroll 0 0;
+    padding:0px 15px 7px;
 }
 .navigation a {
     background-color: #322626;
@@ -258,11 +266,11 @@ body {
 }
 
 .floatright {
-   float:right;
+    float:right;
 }
 
 .floatleft {
-   float:left;
+    float:left;
 }
 
 .aside {
