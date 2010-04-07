@@ -23,7 +23,7 @@
 </div>
 
 
-<div class="item-list" id="misc_items">
+<div class="item-list-unlimited" id="misc_items">
   <table id="misc_list" class="item-list">
     <thead>
       <tr><th>

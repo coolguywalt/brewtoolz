@@ -572,4 +572,10 @@ class Recipe < ActiveRecord::Base
 
     
   end
+
+  def name
+    name = read_attribute( :name )
+    
+    return name.empty? ? "<no name>" : name
+  end
 end
