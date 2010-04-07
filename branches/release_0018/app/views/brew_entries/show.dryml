@@ -71,8 +71,8 @@
 
         <h2 onclick="Element.show('comment_edit');Element.hide('comment_show');" class="input-hl">Comments:</h2>
 
-        <div id="comment_show">
-          <pre><%= h(@brew_entry.comment) %></pre>
+        <div id="comment_show" class="textdisplay">
+          <%= simple_format(h(@brew_entry.comment)) %>
         </div>
 
         <div id="comment_edit" style="display:none;" >
@@ -90,7 +90,7 @@
       </if>
       <else>
         <h2>Comments:</h2>
-        <pre><%= h(@brew_entry.comment) %></pre>
+        <div class="textdisplay"><%= simple_format(h(@brew_entry.comment)) %></div>
       </else>
 
     </div>

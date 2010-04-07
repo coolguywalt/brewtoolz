@@ -28,7 +28,7 @@
   </else>
   <!-- note <pre> tag wordbreak does not work for ie side tables -->
   <td><%= brew_entry_summary(log_entry) %></td>
-  <td><%= h(log_entry.comment) %></td>
+  <td><div class="textdisplay"><%= simple_format(h(log_entry.comment)) %></div></td>
   <if test="&this.user == current_user">
      <td><%= del_brewlogitem_link(log_entry) %></td>
   </if>
