@@ -1,3 +1,9 @@
+<index-page>
+
+	<count: replace/>
+
+</index-page>
+
 <!--
     This file is part of Brewtools.
 
@@ -17,8 +23,3 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 
-<index-page>
-
-	<count: replace/>
-
-</index-page>
