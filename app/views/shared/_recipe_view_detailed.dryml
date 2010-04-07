@@ -23,7 +23,7 @@
 </div>
 <br/>
 <div class="block">    <b>Description:</b><br/>
-  <pre class="big"><%= simple_format(recipe_view_detailed.description) %></pre>
+  <%= simple_format(recipe_view_detailed.description) %>
 </div>
 <br/>
 

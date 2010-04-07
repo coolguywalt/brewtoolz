@@ -22,6 +22,9 @@
     <%= "Brewtoolz - Print Recipe: #{@recipe.name}" %>
   </title:>
   <content-body:>
+   <!--[if IE]>
+      </div>
+   <![endif]-->
     <div class="plain" >
       <h1>Recipe: <%= @recipe.name %></h1>
 
@@ -29,6 +32,9 @@
 
       <p align="center"><b>www.brewtoolz.com</b> - Brewtoolz - Brewing tool calculator</p>
     </div>
+   <!--[if IE]>
+      </div>
+   <![endif]-->
   </content-body:>
 
 </print-page-text>

@@ -32,7 +32,7 @@
       <a action="edit" if="&can_edit?" class="button">Edit</a>
 
       <if test="&can_clone?">        <%= link_to("Clone", { :action => "clone", :id => @recipe.id },
-        :class => 'button') %> </if>
+          :class => 'button') %> </if>
       <if test="&logged_in?"><%= link_to("Brew", { :action => "brew", :id => @recipe.id }, :class => 'button') %></if>
 
       <%= link_to("Print", { :action => "print", :id => @recipe.id },
@@ -44,7 +44,9 @@
   </content-header:>
 
   <content-body:>
-
+    <!--[if IE]>
+	<div class="ie">
+    <![endif]-->
     <!-- Details -->
     <%= render :partial => 'shared/recipe_view_detailed', :object => @recipe %>
 
@@ -79,6 +81,9 @@
         </table>
       </div>
     </if>
+    <!--[if IE]>
+      </div>
+   <![endif]-->
   </content-body:>
   <aside:></aside:>
 </show-page>
