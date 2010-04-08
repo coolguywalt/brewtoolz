@@ -38,7 +38,10 @@
 
 <div id="dil_required_div">
   <div class="block">
-    <form  action="/tools/dilution_required_update" update="refract_reading">
+
+    <% form_remote_tag( :loading => "Hobo.showSpinner('Processing');",
+      :complete => "Hobo.hideSpinner();",
+      :url => "/tools/dilution_required_update"  ) do |f|%>
       <table>
         <tr><td><label>Wort gravity [<%= gravity_unit(current_user) %>]: </label></td><td><input type="text" name="wort_sg" size="4" /></td></tr>
         <tr><td><label>Wort volume [<%= volume_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="wort_volume" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -47,9 +50,9 @@
         <tr><td>&nbsp;</td></tr>
         <tr><td><label>Dilution liquid gravity [<%= gravity_unit(current_user) %>] (leave blank for water): </label></td><td><input type="text" name="dil_sg" size="4" /></td></tr>
         <tr><td><label>Target gravity [<%= gravity_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="req_gravity" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td><submit value="Ok" class="button small-button"/></td></tr>
+          <td><%=  submit_tag "Ok", :class => "button small-button"%></td></tr>
       </table>
-    </form>
+    <%  end %>
   </div>
 
   <div class="block">
@@ -62,10 +65,13 @@
     </table>
     <br/><p>Negative results indicate amount required to evapourate off to acheive desired gravity.</p>
   </div>
-  </div>
+</div>
 <div id="dil_calc_div"  style="display:none;">
   <div class="block">
-    <form  action="/tools/dilution_update" update="refract_reading">
+    <% form_remote_tag( :loading => "Hobo.showSpinner('Processing');",
+      :complete => "Hobo.hideSpinner();",
+      :url => "/tools/dilution_update"  ) do |f|%>
+
       <table>
         <tr><td><label>Wort gravity [<%= gravity_unit(current_user) %>]: </label></td><td><input type="text" name="wort_sg" size="4" /></td></tr>
         <tr><td><label>Wort volume [<%= volume_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="wort_volume" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -74,9 +80,9 @@
         <tr><td>&nbsp;</td></tr>
         <tr><td><label>Dilution liquid gravity [<%= gravity_unit(current_user) %>] (blank for water): </label></td><td><input type="text" name="dil_sg" size="4" /></td></tr>
         <tr><td><label>Amount of additional liquid [<%= volume_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="dil_volume" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td><submit value="Ok" class="button small-button"/></td></tr>
+          <td><%= submit_tag "Ok", :class => "button small-button" %></td></tr>
       </table>
-    </form>
+    <% end %>
   </div>
   <div class="block">
     <h2>Results:</h2>
