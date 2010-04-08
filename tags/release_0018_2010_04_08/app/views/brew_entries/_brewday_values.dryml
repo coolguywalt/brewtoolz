@@ -1,0 +1,98 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<div id="recipe_values_div">
+  <div class="block">
+    <h2>Recipe Values:</h2>
+
+    <table class="list">
+      <tr>
+        <th>Volume to fermenter[<%= volume_units %>]:</th>
+        <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_ferment_volume_editor(@brew_entry) %></if>
+      <else><%= number_with_precision(@brew_entry.volume_to_ferementer,2) %></else>
+      </td>
+      <th>Original Gravity[<%= gravity_units %>]:</th><td class="big"><%= gravity_values( @brew_entry.og ) %></td>
+      <th>Colour [SRM(EBC)]:</th><td class="big"><%= number_with_precision( @brew_entry.therecipe.srm, 2 ) %>(<%= number_with_precision( @brew_entry.therecipe.srm*1.97, 2 ) %>)</td>
+      </tr>
+      <tr>
+        <th>Mash Efficiency [%]:</th>
+        <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_mash_efficency_editor(@brew_entry)%></if>
+      <else><%= percentage(@brew_entry.therecipe.efficency) %></else>
+      </td>
+      <th>Bitterness[IBU]:</th><td class="big"><%= number_with_precision(@brew_entry.therecipe.ibu,2) %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<br/>
+
+<div id="preboil_div" class="block">
+  <h2>Preboil Values:</h2>
+  <table class="list">
+    <tr>
+      <th>Mash water volume [<%= volume_units %>]:</th><td class="big"><%= volume_values( this.mash_water) %></td>
+      <th>Mash tun volume [<%= volume_units %>]:</th><td class="big"><%= volume_values( this.mash_tun_volume ) %></td>
+      <th>Mash tun loses [<%= volume_units %>]:</th><td class="big">
+    <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_mash_lose_editor(@brew_entry)%></if>
+    <else><%= volume_values( this.mash_dead_space ) %></else></td>
+    </tr>
+    <tr>
+      <th>Preboil wort volume [<%= volume_units %>]:</th><td class="big"><%= volume_values( this.preboilvolume ) %></td>
+      <th>@ mash out temp.</th><td class="big"><%= volume_values( adjust_for_temp(this.preboilvolume,75) ) %></td>
+      <th>Preboil gravity [<%= gravity_units %>]:</th><td class="big"><%= gravity_values( this.preboilrequiredgravity ) %></td>
+
+    </tr>
+  </table>
+
+
+</div>
+
+<br/>
+
+<div id="postboil_div" class="block">
+  <h2>Postboil Values:</h2>
+
+  <table class="list">
+    <tr>
+      <th>Evapouration [<%= volume_units %>]:</th><td class="big"><%= volume_values( this.evapouration_loss) %></td>
+      <th>Evapouration Rate [<%= volume_units %>/hr]:</th><td class="big">
+    <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_evapouration_rate_editor(@brew_entry)%></if>
+    <else><%= volume_values( this.evaporation_rate) %></else></td>
+    <th>Boil time [Minutes]:</th><td class="big">
+    <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_boil_time_editor(@brew_entry)%></if>
+    <else><%= number_with_precision(this.boil_time,2) %></else>
+    </td>
+    </tr>
+    <tr>
+      <th>Postboil wort volume [<%= volume_units %>]:</th><td class="big"><%= volume_values(this.volume_to_fermenter_and_system_loses) %></td>
+      <th>@ boiling temp.</th><td class="big"><%= volume_values( adjust_for_temp(this.volume_to_fermenter_and_system_loses,100) ) %></td>
+      <th>Boiler lose [<%= volume_units %>]:</th>
+      <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_boiler_lose_editor(@brew_entry)%></if>
+      <else><%= volume_values( this.boiler_loses) %></else>
+      </td>
+    </tr>
+    <tr>
+      <th>Postboil target gravity [<%= gravity_units %>]:</th><td class="big"><%= gravity_values( this.therecipe.og ) %></td><th>mash items only</th><td class="big"><%= gravity_values( this.therecipe.total_mash_points ) %></td>
+    </tr>
+  </table>
+
+</div>

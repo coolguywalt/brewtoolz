@@ -1,0 +1,73 @@
+<edit-page>
+
+  <content-body:>
+    <!--[if IE]>
+		   <div class="ie">
+		<![endif]-->
+
+ 
+      <div id="misc_recipe_div">
+        <div id="recipe_misc_show" onclick="Element.show('recipe_misc_edit');Element.hide('recipe_misc_show');" >
+          <div class="floatright">
+            <a href="javascript:void(0);" onlcick="Element.show('recipe_misc_edit');Element.hide('misc_recipe_show');false;" class="small-button button">+</a>
+          </div>
+          <div id="recipe_misc_div" ><%= render :partial => 'recipe_misc' %></div>
+
+        </div>
+
+        <div id="recipe_misc_edit" style="display:none;" >
+          <% remote_form_for( @recipe,
+            :update => 'recipe_misc_show',
+            :loading => "Hobo.showSpinner('Update Recipe Details');",
+            :complete => "Hobo.hideSpinner();",
+            :success => "Element.hide('recipe_misc_edit');Element.show('recipe_misc_show');") do |f| %>
+            <b><label>Name:</label></b><%= f.text_field :name, :class =>"wide" %><br/>
+            <b><label>Style:</label></b>
+            <%= collection_select(:recipe, :style_id, Style.find(:all), :id, :name_with_designator, {:prompt => true} ) %>
+            <br/>
+            <p><b>Description:</b></p>
+            <%= f.text_area :description, :class => "recipe-description-edit" %><br/>
+            <input  class="button" type="submit" value="Update"/>&nbsp&nbsp<button class="button" onclick="Element.show('recipe_misc_show');Element.hide('recipe_misc_edit');return false">Cancel</button>
+          <% end %>
+
+        </div>
+      </div>
+
+    <br/>
+
+    <div id="details_div">
+      <%= render :partial => 'details' %>
+    </div>
+
+    <%= render :partial => 'shared/recipe_edit', :object => @recipe %>
+    <br/><a to="&@recipe" class="button">Done</a>
+
+
+    <!--[if IE]>
+		   </div>
+		 <![endif]-->
+
+  </content-body:>
+
+</edit-page>
+
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+

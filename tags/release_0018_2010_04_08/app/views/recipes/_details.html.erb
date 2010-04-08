@@ -1,0 +1,58 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<div class="block">
+  <table class="item-list">
+    <tr>
+      <td><b>Target Volume [<%= volume_units %>]:</b><%= ajax_volume_editor %></td>
+      <td><b>Estimated Mash Efficiency:</b><%= ajax_eff_editor(@recipe) %>%</td>
+    </tr>
+    <tr>
+      <td><b>Original Gravity [<%= gravity_units %>]:</b> <%= ajax_og_editor %></td>
+      <td><b>Final Gravity [<%= gravity_units %>]:</b> <%= gravity_values( @recipe.fg ) %></td>
+    </tr>
+  </table>
+</div>
+
+<br/>
+
+
+<div class="block">
+  <table class="item-list">
+    <tr>
+      <td><b>Alcohol By Volume:</b><span id="abv"><%= @recipe.abv %></span>%</td>
+      <td><b>Estimated Attenuation:</b> <span id="atten"><%= percentage(@recipe.attenuation*100) %></span></td>
+    <tr/>
+    <tr>
+      <td><b>Bitterness [IBU]:</b> <%= number_with_precision( @recipe.ibu, 2 ) %></td>
+      <td><b>Color [SRM(EBC)]:</b> <span id="colour"><%= number_with_precision( @recipe.srm, 2 ) %> (<%= number_with_precision( @recipe.ebc, 2 ) %>)</span></td>
+    <tr/>
+  </table>
+  <table class="item-list">
+    <tr>
+      <td><b>BU:GU ratio:</b> <span id="bugu"><%= number_with_precision( @recipe.bugu, 3 ) %></span></td>
+      <td><b>Real Terminal Extract :</b> <span id="rte"><%= number_with_precision( @recipe.rte, 2 ) %></span></td>
+      <td><b>Balance:</b> <span id="bal"><%= number_with_precision( @recipe.balance, 3 ) %></span></td>
+    </tr>
+  </table>
+</div>
+
+
+
+
