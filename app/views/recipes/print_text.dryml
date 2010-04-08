@@ -1,3 +1,25 @@
+<print-page-text>
+  <title:>
+    <%= "Brewtoolz - Print Recipe: #{@recipe.name}" %>
+  </title:>
+  <content-body:>
+   <!--[if IE]>
+      </div>
+   <![endif]-->
+    <div class="plain" >
+      <h1>Recipe: <%= @recipe.name %></h1>
+
+      <%= render :partial => 'shared/recipe_view_detailed_text', :object => @recipe %>
+
+      <p align="center"><b>www.brewtoolz.com</b> - Brewtoolz - Brewing tool calculator</p>
+    </div>
+   <!--[if IE]>
+      </div>
+   <![endif]-->
+  </content-body:>
+
+</print-page-text>
+
 <!--
     This file is part of Brewtools.
 
@@ -17,18 +39,3 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 
-<print-page-text>
-  <title:>
-    <%= "Brewtoolz - Print Recipe: #{@recipe.name}" %>
-  </title:>
-  <content-body:>
-    <div class="plain" >
-      <h1>Recipe: <%= @recipe.name %></h1>
-
-      <%= render :partial => 'shared/recipe_view_detailed_text', :object => @recipe %>
-
-      <p align="center"><b>www.brewtoolz.com</b> - Brewtoolz - Brewing tool calculator</p>
-    </div>
-  </content-body:>
-
-</print-page-text>

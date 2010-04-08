@@ -40,7 +40,7 @@
 			<recipeedit-nav current="hops"/><br/>
 		</div>
 
-		<div id="hops_items_div" class="item-list">
+		<div id="hops_items_div" class="item-list-unlimited">
 			<%= render :partial => 'shared/recipe_edit_hops', :object => recipe_edit %>
 		</div>
 		<br/>

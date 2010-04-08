@@ -23,7 +23,7 @@ class UserMailer < ActionMailer::Base
     @subject    = "#{app_name} -- forgotten password"
     @body       = { :user => user, :key => key, :host => host, :app_name => app_name }
     @recipients = user.email_address
-    @from       = "no-reply@brewtoolz.com"
+    @from       = "no-reply@@brewtoolz.com"
     @sent_on    = Time.now
     @headers    = {}
   end

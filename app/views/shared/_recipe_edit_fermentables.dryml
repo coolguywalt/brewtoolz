@@ -17,7 +17,7 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 
-<div class="item-list" id="fermentable_items"> 
+<div class="item-list-unlimited" id="fermentable_items">
   <table id="fermentables_list" class="item-list">
     <thead>
     <th><b>Locked</b></th>

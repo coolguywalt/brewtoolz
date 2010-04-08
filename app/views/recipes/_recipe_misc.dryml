@@ -24,6 +24,6 @@
     <%= if( @recipe.style ) then @recipe.style.name_with_designator end %>
 </span><br/>
 <span class="input-hl">
-    <pre><%= simple_format(h(@recipe.description)) %></pre>
+    <%= simple_format(h(@recipe.description)) %>
 </span>
 </div>
