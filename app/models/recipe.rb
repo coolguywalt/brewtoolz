@@ -575,7 +575,9 @@ class Recipe < ActiveRecord::Base
 
   def name
     name = read_attribute( :name )
-    
+
+    return "" unless name  #Need to cater for the recipe creation scenario where the name is null.
+ 
     return name.empty? ? "<no name>" : name
   end
 end
