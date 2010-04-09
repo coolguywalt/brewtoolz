@@ -257,12 +257,18 @@ class Hop < ActiveRecord::Base
 	end
 
   #Factor up or down hop amounts/ibu_l
-  def adjust( factor )
+  def adjust( factor, old_og, new_og )
 
     if dry_hopped?
       new_dry_hop_amount_l = dry_hop_amount_l * factor
       write_attribute(:dry_hop_amount_l, new_dry_hop_amount_l )
     else
+      # Also need to accound for previous weight factor.
+      if( old_og != new_og )
+        old_utilisation = utilisation( old_og,  adjusted_mins, recipe.hop_utilisation_method )
+        new_utilisation = utilisation( new_og,  adjusted_mins, recipe.hop_utilisation_method )
+        factor = factor * new_utilisation / old_utilisation
+      end
       new_ibu_l = ibu_l * factor
       write_attribute(:ibu_l, new_ibu_l)
     end

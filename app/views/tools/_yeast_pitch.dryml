@@ -20,14 +20,17 @@
 <h2>Yeast Pitching Tool</h2>
 
 <div class="block">
-   <form  action="/tools/yeast_pitch" update="yeast_pitch_result_div">
+
+  <% form_remote_tag( :loading => "Hobo.showSpinner('Processing');",
+    :complete => "Hobo.hideSpinner();",
+    :url => "/tools/yeast_pitch"  ) do |f|%>
     <table>
       <tr><td><label>OG [<%= gravity_unit(current_user) %>]: </label></td><td><input type="text" name="OG" size="4" /></td></tr>
       <tr><td><label>Volume [<%= volume_unit(current_user) %>]: </label></td><td><input type="text" name="volume" size="4" /></td></tr>
       <tr><td><label>Ferment type:</label></td><td><select-menu name="ferment_type" options="&%w{ Ale Lager Hybrid }"/></td></tr>
-      <tr><td><submit value="Ok" class="button small-button"/></td></tr>
+      <tr><td><%=  submit_tag "Ok", :class => "button small-button" %></td></tr>
     </table>
-  </form>
+  <% end  %>
 </div>
 
 <br/>
@@ -38,17 +41,17 @@
 <br/>
 
 <div class="block" >
-	<p>	Note yeast viability reduces greatly over time as demonstrated in the table below.</p>
-	<br/>
-	<table class="item-list">
-		<tr class="odd"><th>Age</th><th>Viability</th><th>Age</th><th>Viability</th></tr>
-		<tr class="even"><td><b>1 week </b></td><td>80%</td><td><b>2 weeks</b></td><td>70%</td></tr>
-		<tr class="odd"><td><b>3 weeks</b></td><td>60%</td><td><b>4 weeks</b></td><td>50%</td></tr>
-		<tr class="even"><td><b>5 weeks</b></td><td>40%</td><td><b>6 weeks</b></td><td>25%</td></tr>
-		<tr class="odd"><td><b>7 weeks</b></td><td>15%</td><td><b>8 weeks or older</b></td><td>less than 10%</td></tr>
-	</table>
-	<br/>
-	<p>
+  <p>	Note yeast viability reduces greatly over time as demonstrated in the table below.</p>
+  <br/>
+  <table class="item-list">
+    <tr class="odd"><th>Age</th><th>Viability</th><th>Age</th><th>Viability</th></tr>
+    <tr class="even"><td><b>1 week </b></td><td>80%</td><td><b>2 weeks</b></td><td>70%</td></tr>
+    <tr class="odd"><td><b>3 weeks</b></td><td>60%</td><td><b>4 weeks</b></td><td>50%</td></tr>
+    <tr class="even"><td><b>5 weeks</b></td><td>40%</td><td><b>6 weeks</b></td><td>25%</td></tr>
+    <tr class="odd"><td><b>7 weeks</b></td><td>15%</td><td><b>8 weeks or older</b></td><td>less than 10%</td></tr>
+  </table>
+  <br/>
+  <p>
 		Viability degradation varies between different yeast strains. You should consider doing a yeast starter for any yeast older than 2 weeks to ensure
 		yeast viability prior to pitching.</p>
 </div>

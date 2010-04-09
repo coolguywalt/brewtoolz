@@ -36,6 +36,19 @@ module BrewEntriesHelper
     #			url_for(  :controller => "brew_entries", :action => "update", :id => entry.id, :render => "update_all_brewday" ), "Update Volume" )
     #
     ajax_edit_field2( entry, "volume_to_ferementer",
+			{ :action => :update, :controller => :brew_entries, :id => entry.id, :render => "update_values_div" },
+			BrewingUnits::values_array_for_display( current_user.units.volume, entry.volume_to_ferementer, 2 ),
+      "Update Volume" )
+
+	end
+
+    def ajax_brewday_ferment_volume_editor( entry )
+    #		ajax_edit_field( "volume",
+    #			BrewingUnits::values_array_for_display( current_user.units.volume, entry.volume_to_ferementer, 2 ),
+    #			"volume_to_ferementer",
+    #			url_for(  :controller => "brew_entries", :action => "update", :id => entry.id, :render => "update_all_brewday" ), "Update Volume" )
+    #
+    ajax_edit_field2( entry, "volume_to_ferementer",
 			{ :action => :update, :controller => :brew_entries, :id => entry.id, :render => "update_all_brewday" },
 			BrewingUnits::values_array_for_display( current_user.units.volume, entry.volume_to_ferementer, 2 ),
       "Update Volume" )

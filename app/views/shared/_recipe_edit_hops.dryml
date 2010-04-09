@@ -59,7 +59,7 @@
 <tbody class="scroll-list">
 <repeat  with="&recipe_hops_list(recipe_edit_hops)">
   <tr class="<%= cycle('odd','even') -%>">
-    <td><%=  ajax_lock_edit(this, "lock_weight", "hops", "update", "none" )%></td>
+    <td><%=  ajax_lock_edit(this, "lock_weight", "hops", "update", "none", this.recipe.locked  )%></td>
     <td><%= hop_type(this) %></td>
     <td><%= ajax_aa_editor(this) %></td>
     <td><%= ajax_ibu_editor(this) %></td>

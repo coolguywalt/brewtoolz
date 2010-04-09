@@ -18,29 +18,39 @@
 -->
 
 <%= render :partial => 'shared/recipe_errors' %>
+
+<div class="block">
+  <table>
+    <tr>
+      <td><%=ajax_lock_edit(recipe_edit, "locked", "recipes", "update", "details_and_fermentables", false, true )%></td>
+      <td><b>Lock all recipe weights</b></td>
+    </tr>
+  </table>
+</div>
+
 <br/>
 <div id="menu">
-	<br/>
-	<div id="fermentables_div" >
-		<div class="navigation-div">
-			<recipeedit-nav current="fermentables"/><br/>
-		</div>
-		<div id="fermentables_items_div">
-			<%= render :partial => 'shared/recipe_edit_fermentables', :object => recipe_edit %>
-		</div>
-		<div id="fermentables_list_div">
-			<%= render :partial => 'shared/recipe_edit_fermentables_list', :object => recipe_edit %>
-		</div>
-	</div>
+  <br/>
+  <div id="fermentables_div" >
+    <div class="navigation-div">
+      <recipeedit-nav current="fermentables"/><br/>
+    </div>
+    <div id="fermentables_items_div">
+      <%= render :partial => 'shared/recipe_edit_fermentables', :object => recipe_edit %>
+    </div>
+    <div id="fermentables_list_div">
+      <%= render :partial => 'shared/recipe_edit_fermentables_list', :object => recipe_edit %>
+    </div>
+  </div>
 
 
-	<div id="hops_div" class="hidden">
-		<br/>
-		<div class="navigation-div">
-			<recipeedit-nav current="hops"/><br/>
-		</div>
+  <div id="hops_div" class="hidden">
+    <br/>
+    <div class="navigation-div">
+      <recipeedit-nav current="hops"/><br/>
+    </div>
 
-		<div id="hops_items_div" class="item-list">
+		<div id="hops_items_div" class="item-list-unlimited">
 			<%= render :partial => 'shared/recipe_edit_hops', :object => recipe_edit %>
 		</div>
 		<br/>
@@ -48,17 +58,17 @@
 			<%= render :partial => 'shared/recipe_edit_hops_list', :object => recipe_edit %>
 		</div>
 
-	</div>
+  </div>
 
-	<div id="yeast_div" class="hidden">
-		<%= render :partial => 'shared/recipe_edit_yeasts', :object => recipe_edit %>
-	</div>
+  <div id="yeast_div" class="hidden">
+    <%= render :partial => 'shared/recipe_edit_yeasts', :object => recipe_edit %>
+  </div>
 
-	<div id="misc_div" class="hidden">
-		<%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
-	</div>
+  <div id="misc_div" class="hidden">
+    <%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
+  </div>
 
-	<div id="mashprofile_div" class="hidden">
-		<%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
-	</div>
+  <div id="mashprofile_div" class="hidden">
+    <%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
+  </div>
 </div>

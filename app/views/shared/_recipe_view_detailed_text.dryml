@@ -19,7 +19,7 @@
 
 Style: <%= if( recipe_view_detailed_text.style ) then recipe_view_detailed_text.style.name_with_designator end %><br/><br/>
 Description:<br/>
-<pre><%= simple_format(recipe_view_detailed_text.description) %></pre>
+<p><%= simple_format(h(recipe_view_detailed_text.description)) %></p>
 <br/>
 
 <p>-------------------------------------------------------------------------</p>

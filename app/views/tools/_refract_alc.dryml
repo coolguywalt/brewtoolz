@@ -26,14 +26,17 @@
 </div>
 <br/>
 <div class="block">
-  <form  action="/tools/refractometer_correction" update="refract_reading">
+
+  <% form_remote_tag( :loading => "Hobo.showSpinner('Processing');",
+		      :complete => "Hobo.hideSpinner();",
+		      :url => "/tools/refractometer_correction"  ) do |f|%>
     <table>
 
       <tr><td><label>OG [<%= gravity_unit(current_user) %>]: </label></td><td><input type="text" name="OG" size="4" /></td></tr>
       <tr><td><label>Refractomter reading [Plato/Brix]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="refract_reading" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td><submit value="Ok" class="button small-button"/></td></tr>
+        <td><%=  submit_tag  "Ok", :class => "button small-button" %></td></tr>
     </table>
-  </form>
+  <% end %>
 </div>
 <br/>
 
@@ -42,7 +45,7 @@
   <table>
     <tr><td><label class="right">Corrected reading [<%= gravity_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
       <td><span ><b><label id="refract_value_sg" class="big"/></b></span></td></tr>
-    <tr><td><label class="right">Corrected reading [Plato/brix]:</label></td>
+    <tr><td><label class="right">Corrected reading [Plato/brix]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
       <td><span ><b><label id="refract_value_p" class="big"/></b></span></td></tr>
   </table>
 </div>

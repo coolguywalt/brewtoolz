@@ -23,7 +23,7 @@
 </div>
 
 
-<div class="item-list" id="mashprofile_items">
+<div class="item-list-unlimited" id="mashprofile_items">
 	<table id="mashprofile_list" class="item-list">
 		<thead>
 			<tr><th>
