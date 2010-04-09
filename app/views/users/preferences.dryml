@@ -1,25 +1,43 @@
 <page>
-	<title:>Preferences : Brewtoolz</title:>
-	<content:>
-		<header>
-			<h1>Preferences</h1>
-		</header>
+  <title:>Preferences : Brewtoolz</title:>
+  <content:>
+    <header>
+      <h1>Preferences</h1>
+    </header>
 
 
-		<section>
-			<%
-			@User = current_user
-			if !@User.ingredient_unit_preference then
-				@User.ingredient_unit_preference = IngredientUnitPreference.create
-				@User.save
-			end
-		%>
+    <section>
+      <%
+      @User = current_user
+      if !@User.ingredient_unit_preference then
+        @User.ingredient_unit_preference = IngredientUnitPreference.create
+        @User.save
+      end
+    %>
 
-			<%= render :partial => 'ingredient_unit_preferences/preferences', :object => current_user.ingredient_unit_preference %>
+      <div class="block">
+        <%= render :partial => 'ingredient_unit_preferences/preferences', :object => current_user.ingredient_unit_preference %>
+      </div>
 
-			<br/><a href="&url_for(:action =>'account', :id => @User.id)">Account page</a><br/>
-		</section>
-	</content:>
+      <br/>
+
+      <div class="block">
+        <% form_remote_for( @User,
+          :url => { :action => "update_default_locked_recipes", :id => @User.id },
+          :html => {:id => "lock_#{@User.id}"},
+          :loading => "Hobo.showSpinner('Saving ...');",
+          :complete => "Hobo.hideSpinner();" ) do |f|%>
+          <%= f.check_box 'default_locked_recipes', :onchange => "$('lock_#{@User.id}').onsubmit();" %>&nbsp;<b>Default to locked recipe weights</b>
+          <br/><br/><p>This item will make brewtools behaviour more like traditional recipe editors, where
+            recipe weights for hops and fermentables are not automatically adjusted to keep the gravity and
+            IBU contribution constant.</p>
+        <% end %>
+      </div>
+
+
+      <br/><a href="&url_for(:action =>'account', :id => @User.id)">Account page</a><br/>
+    </section>
+  </content:>
 </page>
 
 <!--

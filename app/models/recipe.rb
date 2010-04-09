@@ -111,6 +111,7 @@ class Recipe < ActiveRecord::Base
       self.volume = user.default_brewery_volume unless self.volume
       self.efficency = user.default_brewery_efficency unless self.efficency
       self.hop_utilisation_method = user.units.hop_utilisation_method unless hop_utilisation_method
+      self.locked = user.default_locked_recipes
     else
       self.volume = 23.0 unless self.volume
       self.efficency = 75.0 unless self.efficency
@@ -623,6 +624,8 @@ class Recipe < ActiveRecord::Base
   def name
     name = read_attribute( :name )
 
+    return "" unless name  #Need to cater for the recipe creation scenario where the name is null.
+    
     return name.empty? ? "<no name>" : name
   end
 

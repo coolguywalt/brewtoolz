@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
 		name :string, :unique, :login => true, :name => true
 		email_address :email_address
 		administrator :boolean, :default => false
+    default_locked_recipes :boolean, :default => false
 		timestamps
 	end
 
