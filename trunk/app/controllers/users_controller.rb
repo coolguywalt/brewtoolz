@@ -22,14 +22,31 @@ class UsersController < ApplicationController
   auto_actions :all, :except => [ :index, :new, :create ]
 
   before_filter :link_return
-  
-private
 
-# handles storing return links in the session
-def link_return
-  if params[:return_uri]
-    session[:return_to] = params[:return_uri]
+  def update_default_locked_recipes
+
+    #Could probably rename this as the generic update method.
+    @user = User.find( params[:id] )
+
+    if !@user.updatable_by?(current_user)
+      notifyattempt(request, "UsersController.update_default_locked_recipes not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+    end
+
+		@user.update_attributes(params[:user])
+    render( :nothing => true )
+
   end
-end
+
+  
+  private
+
+  # handles storing return links in the session
+  def link_return
+    if params[:return_uri]
+      session[:return_to] = params[:return_uri]
+    end
+  end
 
 end
