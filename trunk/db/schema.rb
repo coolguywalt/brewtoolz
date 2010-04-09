@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100403114706) do
+ActiveRecord::Schema.define(:version => 20100409103127) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -270,6 +270,7 @@ ActiveRecord::Schema.define(:version => 20100403114706) do
     t.string   "email_address"
     t.string   "state",                                   :default => "active"
     t.datetime "key_timestamp"
+    t.boolean  "default_locked_recipes",                  :default => false
   end
 
   create_table "yeast_types", :force => true do |t|
