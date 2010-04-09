@@ -97,6 +97,8 @@ table.item-list {
     border-spacing: 1px;
     /* overflow: auto; */
 }
+
+
 table.item-list th { text-align: left; font-size:10pt; font-weight: bold; border-bottom-style: double; border-bottom-color: black;
                      border-bottom-width: 1px;}
 /*Removed 'width: 28px' item below that was causing ie6 rendering problems*/
@@ -106,7 +108,10 @@ table.item-list tr.even { background: #e0e0e0; }
 
 
 div.item-list { border: black solid 1px; }
-.ie div.item-list { width:90%; height: 170px; overflow: auto; border: black solid 1px; }
+.ie div.item-list {height: 170px; overflow: auto; border: black solid 1px; }
+
+div.item-list-unlimited { border: black solid 1px; }
+
 
 table.item-list th { text-align: left; font-size:10pt; font-weight: bold }
 
@@ -205,8 +210,8 @@ body {
 .page-header .navigation.main-nav a:hover {background-color: #606060;}
 
 .navigation-div {
-     background: url(../images/foot_back.png) repeat-x scroll 0 0;
-     padding:0px 15px 7px;
+    background: url(../images/foot_back.png) repeat-x scroll 0 0;
+    padding:0px 15px 7px;
 }
 .navigation a {
     background-color: #322626;
@@ -248,9 +253,9 @@ body {
 }
 
 .floatright {
-   float:right;
+    float:right;
 }
 
 .floatleft {
-   float:left;
+    float:left;
 }
