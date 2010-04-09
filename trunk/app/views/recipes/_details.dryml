@@ -38,11 +38,11 @@
     <tr>
       <td><b>Alcohol By Volume:</b><span id="abv"><%= @recipe.abv %></span>%</td>
       <td><b>Estimated Attenuation:</b> <span id="atten"><%= percentage(@recipe.attenuation*100) %></span></td>
-    <tr/>
+    </tr>
     <tr>
       <td><b>Bitterness [IBU]:</b> <%= number_with_precision( @recipe.ibu, 2 ) %></td>
       <td><b>Color [SRM(EBC)]:</b> <span id="colour"><%= number_with_precision( @recipe.srm, 2 ) %> (<%= number_with_precision( @recipe.ebc, 2 ) %>)</span></td>
-    <tr/>
+    </tr>
   </table>
   <table class="item-list">
     <tr>
@@ -52,7 +52,3 @@
     </tr>
   </table>
 </div>
-
-
-
-

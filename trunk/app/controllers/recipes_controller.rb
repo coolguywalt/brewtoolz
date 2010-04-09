@@ -99,6 +99,16 @@ class RecipesController < ApplicationController
 		end
 	end
 
+  def scale_recipe
+    @recipe = Recipe.find(params[:id])
+		params[:new_volume] = BrewingUnits::input_recipe_vol( params[:new_volume], current_user.units.volume ) if params[:new_volume]
+
+    #Check units
+    @recipe.scale(params[:new_volume],params[:new_eff])
+    update_details_and_fermentables( @recipe )
+    
+  end
+
 	def index
 		@recipes = index_recipes_list()
 
@@ -178,7 +188,7 @@ class RecipesController < ApplicationController
 
     # Need to do in two steps to avoid race condition
 		@brew_entry = @recipe.brew_entries.create(:actual_og => @recipe.og,
-			 :user => current_user )
+      :user => current_user )
 
  		@brew_entry.volume_to_ferementer = @recipe.volume
     @brew_entry.brew_date = Date.today
@@ -209,7 +219,14 @@ class RecipesController < ApplicationController
       return
     end
 
+    old_og = @recipe.og
+
 		Fermentable.delete(params[:comment])
+    
+		@recipe = Recipe.find(params[:id])
+    new_og = @recipe.og
+    @recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
+
 		update_details_and_fermentables( @recipe )
 	end
 
@@ -265,8 +282,13 @@ class RecipesController < ApplicationController
 
 		@fermentable_type = FermentableType.find(params[:ferementable_type_id])
 
+    old_og = @recipe.og
+
 		# Create new fermentable
 		@fermentable = @recipe.fermentables.create( :fermentable_type => @fermentable_type, :points => 5.0 )
+
+    new_og = @recipe.og
+    @recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
 		update_details_and_fermentables( @recipe )
 	end
@@ -483,22 +505,22 @@ class RecipesController < ApplicationController
   #		update_details_and_hops( @recipe )
   #	end
   #
-  	def update_hop_utilisation
-  		@recipe =  Recipe.find(params[:id])
+  def update_hop_utilisation
+    @recipe =  Recipe.find(params[:id])
   
-      if !@recipe.updatable_by?(current_user)  || !request.xhr?
-        #      flash[:error] = "Update - permission denied."
-        #      update_details_and_hops( @recipe )
-        notifyattempt(request, "RecipesController.update_hop_utilisation not from authorized user: #{current_user}")
-        render( :nothing => true )
-        return
-      end
+    if !@recipe.updatable_by?(current_user)  || !request.xhr?
+      #      flash[:error] = "Update - permission denied."
+      #      update_details_and_hops( @recipe )
+      notifyattempt(request, "RecipesController.update_hop_utilisation not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+    end
   
-  		@recipe.hop_utilisation_method = params[:util_method]
-  		@recipe.save
+    @recipe.hop_utilisation_method = params[:util_method]
+    @recipe.save
   
-  		update_just_hops( @recipe )
-  	end
+    update_just_hops( @recipe )
+  end
   #
   #
   #	def update_hop_ibu

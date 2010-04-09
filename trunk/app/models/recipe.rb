@@ -39,6 +39,9 @@ class Recipe < ActiveRecord::Base
 
     hop_cubed :boolean
 
+
+    locked :boolean  #Signifies all ingredients should be considered locked.
+
     # -- simple recipe representation that does not have ingredients assigned
     #    could be a placeholder for something done in the past, or for an uploaded
     #    recipe from another brewing calculator software.
@@ -228,11 +231,15 @@ class Recipe < ActiveRecord::Base
 
     ratio_change = new_og_f/total_points
 
+    old_og = total_points
+
     fermentables.each do |fermentable|
       next unless fermentable
       fermentable.points *= ratio_change
       fermentable.save
     end
+
+    adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
   end
 
@@ -473,7 +480,7 @@ class Recipe < ActiveRecord::Base
     logger.debug "Change factor: #{change_factor}"
 
     # Change locked elements so that they are no effected by the new volume.
-    adjust_weights( change_factor )
+    adjust_weights( change_factor ) unless change_factor == 1.0
  
     # Save the new volume.
 
@@ -484,9 +491,32 @@ class Recipe < ActiveRecord::Base
     #@volume = new_volume
   end
 
-  def adjust_weights( factor )
+  def efficency= ( new_efficency )
+
+    new_efficency = new_efficency.to_f
+    old_efficency = read_attribute(:efficency).to_f
+
+    change_factor = 1.0 #Cater for recipe creation when efficency is not already set
+    change_factor = 0.0 + (new_efficency/old_efficency) if old_efficency
+    logger.debug "Change factor: #{change_factor}"
+
+    # Change locked elements so that they are no effected by the new volume.
+    adjust_weights( change_factor, true ) unless change_factor == 1.0
+
+    # Save the new volume.
+
+    write_attribute( :efficency, new_efficency)
+    #save
+    #reload
+
+    #@volume = new_volume
+  end
+
+  def adjust_weights( factor, hops_og_only = false )
     # Check for locked ferementables
     logger.debug "Checking for locked fermentables"
+
+    old_og = self.og
 
     fermentables.each do |fermentable|
       next unless fermentable
@@ -501,15 +531,9 @@ class Recipe < ActiveRecord::Base
     # Check for locked hops
     logger.debug "Checking for locked hops"
 
-    hops.each do |hop|
-      next unless hop
-      if hop.is_weight_locked? then
-        logger.debug "Hop old ibu: #{hop.ibu_l}"
-        hop.adjust(factor)
-        hop.save
-        logger.debug "Hop new ibu: #{hop.ibu_l}"
-      end
-    end
+    factor = 1.0 if hops_og_only
+    adjust_fixed_hops_for_change( factor, self.og, old_og )
+
 
   end
 
@@ -569,7 +593,37 @@ class Recipe < ActiveRecord::Base
       hop.adjust_for_cubing( new_val)
       hop.save
     }
-
-    
   end
+
+  def adjust_fixed_hops_for_change( factor, new_og, old_og )
+
+    hops.each do |hop|
+      next unless hop
+      if hop.is_weight_locked? then
+        logger.debug "Hop old ibu: #{hop.ibu_l}"
+
+        # Need to adjust for change in fermentables as well.
+        hop.adjust(factor, old_og, new_og)
+        hop.save
+        
+        logger.debug "Hop new ibu: #{hop.ibu_l}"
+      end
+    end
+  end
+
+  def scale( new_volume, new_efficency )
+    # Scaling is done automatically, so just need to bypass the weight adjustment checks
+    logger.debug "++scale: new_volume-#{new_volume} new_efficency-#{new_efficency}"
+
+    write_attribute( :efficency, new_efficency) if new_efficency and (new_efficency != "")
+    write_attribute( :volume, new_volume) if new_volume and (new_volume != "")
+    save
+  end
+
+  def name
+    name = read_attribute( :name )
+
+    return name.empty? ? "<no name>" : name
+  end
+
 end

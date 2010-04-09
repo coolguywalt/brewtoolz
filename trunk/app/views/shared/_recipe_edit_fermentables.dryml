@@ -17,7 +17,7 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 
-<div class="item-list" id="fermentable_items"> 
+<div class="item-list" id="fermentable_items">
   <table id="fermentables_list" class="item-list">
     <thead>
     <th><b>Locked</b></th>
@@ -31,7 +31,7 @@
 
     <repeat with="&recipe_fermentable_list(recipe_edit_fermentables)">
       <tr class="<%= cycle('odd','even') -%>">
-        <td><%=  ajax_lock_edit(this, "lock_weight", "fermentables", "update", "none" )%></td>
+        <td><%=  ajax_lock_edit(this, "lock_weight", "fermentables", "update", "none", this.recipe.locked )%></td>
         <td ><%= fermentable_type(this) %></td>
         <td><%= ajax_points_editor(this) %></td>
         <td id="fp_per_#{this.id}"><%= percentage(this.percentage_points * 100) %></td>

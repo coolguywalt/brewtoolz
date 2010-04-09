@@ -195,7 +195,7 @@
 <def tag="form" for="Recipe">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, genealogy, volume, efficency, rating, hop_utilisation_method, hop_cubed, recipe_type, brew_entry, style, user" param/>
+    <field-list fields="name, description, genealogy, volume, efficency, rating, hop_utilisation_method, hop_cubed, locked, recipe_type, brew_entry, style, user" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>

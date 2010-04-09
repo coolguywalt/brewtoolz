@@ -23,9 +23,9 @@
 </div>
 
 
-<div id="yeast_items" class="item-list"> 
+<div id="yeast_items" class="item-list-unlimited">
 <!-- %= render :partial => 'yeast_items' % -->
-<table id="hops_list" class="item-list">
+<table id="yeasts_list" class="item-list">
   <tr>
     <th><b>Type</b></th>
     <th><b>Flocculation</b></th>

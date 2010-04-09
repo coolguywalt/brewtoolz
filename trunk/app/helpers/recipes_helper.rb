@@ -46,10 +46,13 @@ module RecipesHelper
 				page.replace_html 'details_div', :partial => 'shared/recipe_edit_summary', :object => recipe
 			else
 				page.replace_html 'details_div', :partial => 'details', :object => recipe
+        page.replace_html 'scale_div', :partial => 'shared/recipe_scale', :object => recipe
 			end
 			page.replace_html 'fermentables_items_div', :partial => 'shared/recipe_edit_fermentables', :object => recipe
 			page.replace_html 'hops_items_div', :partial => 'shared/recipe_edit_hops', :object => recipe
 			page.replace_html 'recipe_errors_div', :partial => 'shared/recipe_errors'
+     
+
 		}
 
 	end
@@ -280,33 +283,33 @@ module RecipesHelper
 		#			url_for(  :controller => "recipes", :action => :update_og, :id => @recipe.id ), "Update OG" )
 	end
 
-#  def ajax_simple_og_editor( recipe )
-#		ajax_edit_field( "simple_og",
-#			BrewingUnits::values_array_for_display( current_user.units.gravity, recipe.simple_og, 3 ),
-#			"simple_og",
-#			url_for( :action => :update_simple_og, :id => recipe.id ), "Update OG" )
-#	end
-#
-#	def ajax_simple_fg_editor( recipe )
-#		ajax_edit_field( "simple_fg",
-#			BrewingUnits::values_array_for_display( current_user.units.gravity,recipe.simple_fg , 3 ),
-#			"simple_fg",
-#			url_for( :action => :update_simple_fg, :id => recipe.id ), "Update FG" )
-#	end
-#
-#	def ajax_simple_ibu_editor( recipe )
-#		ajax_edit_field( "simple_ibu",
-#			[ (recipe.simple_ibu ? number_with_precision(recipe.simple_ibu,2) : "invalid") ],
-#			"simple_ibu",
-#			url_for( :action => :update_simple_ibu, :id => recipe.id ), "Update IBU" )
-#	end
-#
-#  def ajax_simple_srm_editor( recipe )
-#		ajax_edit_field( "simple_srm",
-#			[ (recipe.simple_srm ? number_with_precision(recipe.simple_srm,2) : "invalid") ],
-#			"simple_srm",
-#			url_for( :action => :update_simple_srm, :id => recipe.id ), "Update SRM" )
-#	end
+  #  def ajax_simple_og_editor( recipe )
+  #		ajax_edit_field( "simple_og",
+  #			BrewingUnits::values_array_for_display( current_user.units.gravity, recipe.simple_og, 3 ),
+  #			"simple_og",
+  #			url_for( :action => :update_simple_og, :id => recipe.id ), "Update OG" )
+  #	end
+  #
+  #	def ajax_simple_fg_editor( recipe )
+  #		ajax_edit_field( "simple_fg",
+  #			BrewingUnits::values_array_for_display( current_user.units.gravity,recipe.simple_fg , 3 ),
+  #			"simple_fg",
+  #			url_for( :action => :update_simple_fg, :id => recipe.id ), "Update FG" )
+  #	end
+  #
+  #	def ajax_simple_ibu_editor( recipe )
+  #		ajax_edit_field( "simple_ibu",
+  #			[ (recipe.simple_ibu ? number_with_precision(recipe.simple_ibu,2) : "invalid") ],
+  #			"simple_ibu",
+  #			url_for( :action => :update_simple_ibu, :id => recipe.id ), "Update IBU" )
+  #	end
+  #
+  #  def ajax_simple_srm_editor( recipe )
+  #		ajax_edit_field( "simple_srm",
+  #			[ (recipe.simple_srm ? number_with_precision(recipe.simple_srm,2) : "invalid") ],
+  #			"simple_srm",
+  #			url_for( :action => :update_simple_srm, :id => recipe.id ), "Update SRM" )
+  #	end
 
 
 	def decimal( value )
@@ -470,17 +473,34 @@ module RecipesHelper
 
 	end
 
-  def ajax_lock_edit( item, field_name, controller, action, render )
+  def ajax_lock_edit( item, field_name, controller, action, render, is_disabled=false, show_ajax_indicator=false )
 
     action_url = url_for(:controller => controller, :action => action, :id => item.id, :render => render)
 
-    render( :inline => %{
+      render( :inline => %{
     <% form_remote_for( item,
-          :url => action_url, :html => {:id => "lock_#{item.id}"} ) do |f|%>
-          <%= f.check_box field_name, :onchange => "$('lock_#{item.id}').onsubmit();" %>
+          :url => action_url, :html => {:id => "lock_#{item.id}"}  #{show_ajax_indicator ? ', :loading => "Hobo.showSpinner(\"Processing ...\");", :complete => "Hobo.hideSpinner();"': ''}  ) do |f|%>
+          <%= f.check_box field_name, :onchange => "$('lock_#{item.id}').onsubmit();" #{is_disabled ? ', :disabled => "disabled"' : ''}  %>
     <% end %>
-      }, :locals => {:action_url => action_url, :item => item, :field_name => field_name } )
-    #, :locals => {:item => item, :url_for_edit => url_for_edit, :field_name => field_name }
+        }, :locals => {:action_url => action_url, :item => item, :field_name => field_name } )
+   
+  end
+
+  def scale_recipe(recipe)
+  
+    render( :inline => %{
+   <% form_remote_tag(
+           :url => {  :controller => "recipes", :action => :scale_recipe, :id => recipe.id, :new_volume => new_volume, :new_eff => eff  },
+           :html => {:id => "scale_recipe_#{recipe.id}"},
+			     :loading => "Hobo.showSpinner('Scaling Recipe');",
+			     :complete => "Hobo.hideSpinner();",
+        ) do |f|%>
+           <label>New Volume [<%= volume_unit(current_user) %>]: </label><input type="text" name="new_volume" size="4" /><br/>
+           <label>New Efficiency [%]: </label><input type="text" name="new_eff" size="4" /><br/>
+           <submit value="Ok" class="button small-button"/>
+      <% end %>
+      } )
+  
   end
 
 

@@ -20,6 +20,7 @@ class BrewEntriesController < ApplicationController
 	hobo_model_controller
 	include BrewEntriesHelper
   include AppSecurity
+  include ActionView::Helpers::TextHelper
 
 
 	auto_actions :all
@@ -148,6 +149,8 @@ class BrewEntriesController < ApplicationController
       case params[:render]
       when "update_all_brewday"
         update_all_brewday
+      when "update_values_div"
+        update_values_div
       else
         updated_values_and_recipe_div
       end
@@ -600,7 +603,7 @@ class BrewEntriesController < ApplicationController
 
 		if request.xhr?
 			# html_escape guards against cross site scripting and other undersireables
-			render :text => "<pre>" + ERB::Util.html_escape(@brew_entry.comment) + "</pre>"
+			render :text => simple_format( ERB::Util.html_escape(@brew_entry.comment) )
 		end
 
 	end
