@@ -26,3 +26,5 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+ExceptionNotifier.exception_recipients = %w(chris@brewtoolz.com chris.taylor.98@gmail.com)
