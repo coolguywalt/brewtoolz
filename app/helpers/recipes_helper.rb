@@ -83,7 +83,7 @@ module RecipesHelper
 
 			#Original gravity
 			page['og_s'].update(BrewingUnits::values_for_display( current_user.units.gravity,@recipe.og , 3 ) )
-			page['og_e'].update(BrewingUnits::value_for_display( current_user.units.gravity,@recipe.og , 3 ) )
+			page['og_e'].value = (BrewingUnits::value_for_display( current_user.units.gravity,@recipe.og , 3 ) )
 
       page['abv'].update(@recipe.abv)
 			page['atten'].update(percentage(@recipe.attenuation*100))
@@ -108,7 +108,7 @@ module RecipesHelper
 				page["#{id_prefix}_e"].value = value_str
 			end
 
-			#Update associated partials
+     	#Update associated partials
 			# page.replace_html 'hops_div', :partial => 'shared/recipe_edit_hops', :object => fermentable.recipe
 			page.replace_html 'recipe_errors_div', :partial => 'shared/recipe_errors'
 		}
@@ -138,28 +138,28 @@ module RecipesHelper
 			id_prefix = "hw_#{hop.id}"
 
 			page["#{id_prefix}_s"].update( values_str  )
-			page["#{id_prefix}_e"].update( value_str  )
+			page["#{id_prefix}_e"].value = value_str
 
       #Update per ibu values
 			value_str = number_with_precision(hop.ibu_l,2)
 			id_prefix = "ibu_#{hop.id}"
 
 			page["#{id_prefix}_s"].update( value_str  )
-			page["#{id_prefix}_e"].update( value_str  )
+			page["#{id_prefix}_e"].value = value_str
 
       #Update per aa values
 			value_str = number_with_precision(hop.aa,2)
 			id_prefix = "aa_#{hop.id}"
 
 			page["#{id_prefix}_s"].update( value_str  )
-			page["#{id_prefix}_e"].update( value_str  )
+			page["#{id_prefix}_e"].value = value_str
 
       #Update per minutes values
 			value_str = hop_minutes_format(hop)
 			id_prefix = "minutes_#{hop.id}"
 
 			page["#{id_prefix}_s"].update( value_str  )
-			page["#{id_prefix}_e"].update( value_str  )
+			page["#{id_prefix}_e"].value = value_str
 
 
 			#Update points values
