@@ -28,13 +28,14 @@
   </table>
 </div>
 
-<br/>
+
 <div id="menu">
   <br/>
   <div id="fermentables_div" >
     <div class="navigation-div">
       <recipeedit-nav current="fermentables"/><br/>
     </div>
+    <br/>
     <div id="fermentables_items_div">
       <%= render :partial => 'shared/recipe_edit_fermentables', :object => recipe_edit %>
     </div>
@@ -45,11 +46,11 @@
 
 
   <div id="hops_div" class="hidden">
-    <br/>
+
     <div class="navigation-div">
       <recipeedit-nav current="hops"/><br/>
     </div>
-
+<br/>
 		<div id="hops_items_div" class="item-list-unlimited">
 			<%= render :partial => 'shared/recipe_edit_hops', :object => recipe_edit %>
 		</div>
