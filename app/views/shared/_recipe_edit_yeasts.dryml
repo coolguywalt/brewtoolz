@@ -22,7 +22,7 @@
 	<recipeedit-nav current="yeast"/><br/>
 </div>
 
-
+<br/>
 <div id="yeast_items" class="item-list-unlimited">
 <!-- %= render :partial => 'yeast_items' % -->
 <table id="yeasts_list" class="item-list">

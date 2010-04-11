@@ -22,6 +22,7 @@
 	<recipeedit-nav current="mash profile"/><br/>
 </div>
 
+<br/>
 
 <div class="item-list-unlimited" id="mashprofile_items">
 	<table id="mashprofile_list" class="item-list">
