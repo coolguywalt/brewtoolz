@@ -195,7 +195,7 @@ module BrewingUnits
     return Float(ltr)
   rescue
 	  ltr
-end
+  end
   
   def self.from_gal( gal )
     return Float(gal) * $GAL
@@ -214,7 +214,7 @@ end
   def self.to_qt_per_lb( ltr_per_kg )
     return Float(ltr_per_kg) / 2.0864
   rescue
-	return ltr_per_kg
+    return ltr_per_kg
   end
 
   def self.to_ltr_per_kg( ltr_per_kg )
@@ -239,12 +239,12 @@ end
 
     logger.debug("Unit in: #{unit}")
 
-      unit_str = unit.downcase
-      unit_str = unit_str.sub(/\//, "_per_")
+    unit_str = unit.downcase
+    unit_str = unit_str.sub(/\//, "_per_")
 
     logger.debug("Unit out: #{unit_str}")
 
-      return unit_str
+    return unit_str
   end
   
   def self.values_for_display( unitstr, value, precision=2 ) 
@@ -268,8 +268,8 @@ end
     
     return str
   
-  #rescue
-  #  :invalid
+    #rescue
+    #  :invalid
   end
 
   def self.value_for_display( unitstr, value, precision=2 ) 
@@ -284,8 +284,8 @@ end
 
     return str
   
-  #rescue
-  #  :invalid
+    #rescue
+    #  :invalid
   end
   
   def self.values_array_for_display( unitstr, value, precision=2 ) 
@@ -305,8 +305,8 @@ end
     
     return str_array
   
-  #rescue
-  #  [:invalid]
+    #rescue
+    #  [:invalid]
   end
   
   def self.units_for_display( unitstr ) 
@@ -326,8 +326,8 @@ end
     
     return str
   
-  #rescue
-  #  :invalid
+    #rescue
+    #  :invalid
   end
 
   def self.unit_for_display( unitstr ) 
@@ -339,8 +339,8 @@ end
     
     return str
   
-  #rescue
-  #  :invalid
+    #rescue
+    #  :invalid
   end
   
   # Translates the value back into the default type for storage into the database.
@@ -351,61 +351,61 @@ end
     return avalue
   end
 
-def self.points_to_brix( points )
-	sg = 1.0 + Float(points)/1000.0
-	brix = -676.67 + 1286.4*sg - 800.47*(sg ** 2) + 190.74*(sg ** 3)
-rescue
-	return points
-end
+  def self.points_to_brix( points )
+    sg = 1.0 + Float(points)/1000.0
+    brix = -676.67 + 1286.4*sg - 800.47*(sg ** 2) + 190.74*(sg ** 3)
+  rescue
+    return points
+  end
 
-def self.refractomer_to_points( refract_reading, og_points )
+  def self.refractomer_to_points( refract_reading, og_points )
 
-	refract_reading = Float(refract_reading)
-	og_points = Float(og_points)
+    refract_reading = Float(refract_reading)
+    og_points = Float(og_points)
 
-	#og_as_plato = (BigDecimal.new(og_points.to_s)/1000.0-0.000019) / 0.00387863426128
-	og_as_plato = points_to_brix(og_points)
+    #og_as_plato = (BigDecimal.new(og_points.to_s)/1000.0-0.000019) / 0.00387863426128
+    og_as_plato = points_to_brix(og_points)
 
-	logger.debug "og_as_plato: #{og_as_plato}"
+    logger.debug "og_as_plato: #{og_as_plato}"
 
-	#Formula for compensation of ethanol effect on refractometer:
-	#    SG=1.001843-0.002318474(OB)-0.000007775(OB^2)-0.000000034(OB^3)+0.00574(AB) +0.00003344(AB^2)+0.000000086(AB^3)
+    #Formula for compensation of ethanol effect on refractometer:
+    #    SG=1.001843-0.002318474(OB)-0.000007775(OB^2)-0.000000034(OB^3)+0.00574(AB) +0.00003344(AB^2)+0.000000086(AB^3)
 
-	#SG = Specific Gravity, OB = Original Brix, AB = Actual Brix (Brix Readings During Fermentation)
+    #SG = Specific Gravity, OB = Original Brix, AB = Actual Brix (Brix Readings During Fermentation)
 
-	#Formula to convert from SG to Brix (for those who prefer Brix  measurements):
+    #Formula to convert from SG to Brix (for those who prefer Brix  measurements):
 
-	#Brix (Plato) = -676.67 + 1286.4*SG - 800.47*(SG^2) + 190.74*(SG^3)
+    #Brix (Plato) = -676.67 + 1286.4*SG - 800.47*(SG^2) + 190.74*(SG^3)
 
 
-	# 1.001843
-	# -0.002318474*(A$7)
-	# -0.000007775*(A$7^2)
-	# -0.000000034*(A$7^3)
-	# +0.00574*($A11)
-	# +0.00003344*($A11^2)
-	# +0.000000086*($A11^3))
-	# +(1.313454-0.132674*B11+0.002057793*(B11^2)-0.000002627634*(B11^3))*0.001;0)
+    # 1.001843
+    # -0.002318474*(A$7)
+    # -0.000007775*(A$7^2)
+    # -0.000000034*(A$7^3)
+    # +0.00574*($A11)
+    # +0.00003344*($A11^2)
+    # +0.000000086*($A11^3))
+    # +(1.313454-0.132674*B11+0.002057793*(B11^2)-0.000002627634*(B11^3))*0.001;0)
 
-	# refract_reading_bd = BigDecimal.new( refract_reading.to_s)
+    # refract_reading_bd = BigDecimal.new( refract_reading.to_s)
 
-	#      points = 1.0
-	#      points = 1.001843-0.002318474*(og_as_plato)
-	#      points += -0.000007775*(og_as_plato**2)-0.000000034*(og_as_plato** 3)
-	#      points += 0.00574*(refract_reading_bd)+0.00003344*(refract_reading_bd** 2)
-	#      points += 0.000000086*(refract_reading_bd** 3)
-	#      points = (points-1.0)*1000.0
+    #      points = 1.0
+    #      points = 1.001843-0.002318474*(og_as_plato)
+    #      points += -0.000007775*(og_as_plato**2)-0.000000034*(og_as_plato** 3)
+    #      points += 0.00574*(refract_reading_bd)+0.00003344*(refract_reading_bd** 2)
+    #      points += 0.000000086*(refract_reading_bd** 3)
+    #      points = (points-1.0)*1000.0
 
-	sg = 1.001843  -  0.002318474*(og_as_plato)  - 0.000007775*(og_as_plato**2)  - 0.000000034*(og_as_plato** 3)+ 0.00574*(refract_reading) +  0.00003344*(refract_reading ** 2) + 0.000000086*(refract_reading ** 3)
+    sg = 1.001843  -  0.002318474*(og_as_plato)  - 0.000007775*(og_as_plato**2)  - 0.000000034*(og_as_plato** 3)+ 0.00574*(refract_reading) +  0.00003344*(refract_reading ** 2) + 0.000000086*(refract_reading ** 3)
 
-	points = (sg-1.0) * 1000.0
+    points = (sg-1.0) * 1000.0
 
-	return points
+    return points
 
 	rescue
-      logger.error "refractometer conversion failed for: refract_reading - #{refract_reading}, og_points - #{og_points}"
+    logger.error "refractometer conversion failed for: refract_reading - #{refract_reading}, og_points - #{og_points}"
 	  return nil
-end
+  end
 
   
   def self.logger
@@ -418,7 +418,7 @@ end
     return result
   end
 
-    def self.input_gravity( specific_gravity, gravity_units )
+  def self.input_gravity( specific_gravity, gravity_units )
     result= BrewingUnits::value_for_storage( gravity_units, specific_gravity)
     
     return result
