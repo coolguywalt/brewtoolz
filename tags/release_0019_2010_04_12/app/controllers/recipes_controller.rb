@@ -522,7 +522,7 @@ class RecipesController < ApplicationController
       hop_weights[ahop.id] = ahop.weight if ahop.is_weight_locked?
     }
 
-    logger.debug "++update_hop_utilisation: number of locked hops: #{hop_weights.count()}"
+    #logger.debug "++update_hop_utilisation: number of locked hops: #{hop_weights.count()}"
 
     @recipe.hop_utilisation_method = params[:util_method]
     @recipe.save
