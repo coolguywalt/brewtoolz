@@ -1,0 +1,114 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<br/>
+<div class="navigation-div">
+	<recipeedit-nav current="mash profile"/><br/>
+</div>
+
+<br/>
+
+<div class="item-list-unlimited" id="mashprofile_items">
+	<table id="mashprofile_list" class="item-list">
+		<thead>
+			<tr><th>
+					<div style="width:180px;float:left"><b><label>Name:</label></b></div>
+					<div style="width:80px;float:left" ><b><label>Type:</label></b></div>
+					<div style="width:200px;float:left"><b><label>Temperature [<%= temp_units %>]:</label></b></div>
+					<div style="float:left"><b><label>Time [Minutes]:</label></b></div>
+				</th></tr>
+		</thead>
+
+		<tbody class="scroll-list">
+		<repeat with="&recipe_mashprofile_list(recipe_edit_mashprofile)">
+			<tr class="<%= cycle('odd','even') -%>">
+
+				<td>
+					<div id="mash_step_show_#{this.id}" onclick="Element.show('mash_step_edit_#{this.id}');Element.hide('mash_step_show_#{this.id}');"  class="input-hl">
+						<div style="width:180px;float:left" class="input-hl"><view:name/></div>
+						<div style="width:80px;float:left" class="input-hl"><view:steptype/></div>
+						<div style="width:200px;float:left" class="input-hl"><%= temperature_displays( this.temperature ) %></div>
+						<div style="float:left" class="input-hl"><view:time/></div>
+					</div>
+
+					<span id="mash_step_edit_#{this.id}" style="display:none;" >
+
+						<% remote_form_for( this, :url =>
+							  { :action=>'update_mashstep', :controller => 'recipes',
+								:id => recipe_edit_mashprofile.id, :mashstep_id => this.id },
+							:loading => "Hobo.showSpinner('Update Mash Entry');",
+							:complete => "Hobo.hideSpinner();",
+							:success => "Element.hide('mash_step_edit_#{this.id}');Element.show('mash_step_show_#{this.id}');"
+						) do |f| %>
+							<b><label>Name:</label></b><%= f.text_field :name, :class => 'medium' %>
+							<b><label>Type:</label></b>
+							<%= f.select(:steptype, [['Direct heat','direct'], ['Infusion', 'infusion'], ['Decoction', 'decoction']], {:prompt => true} ) %>
+							<b><label>Temperature [<%= temp_unit %>]:</label></b><%= f.text_field :temperature, :value=> temperature_display( this.temperature ), :size => 4 %>
+							<b><label>Time [Minutes]:</label></b><%= f.text_field :time, :size => 4 %>
+							<br/>
+							<input  type="submit" value="Ok"  class="button submit-button small-button"/>
+							<button class="button small-button" onclick="Element.hide('mash_step_edit_#{this.id}');Element.show('mash_step_show_#{this.id}');return false;">Cancel</button>
+
+						<% end %>
+					</span>
+				</td>
+
+
+				<td><%= del_mashstep_link(this) %></td>
+			</tr>
+		</repeat>
+		</tbody>
+	</table>
+</div>
+<br/>
+<%= link_to_remote "Add step",
+  :loading => "Hobo.showSpinner('Adding Mash Step');",
+  :complete => "Hobo.hideSpinner();",
+  :url => { :controller => "recipes", :action => "add_mash_step", :id => recipe_edit_mashprofile.id  },
+  :html => { :class => 'button small-button' } %>
+
+<br/><br/>
+<div class="block" >
+	<h2>Mash rests temperature ranges</h2>
+
+	<table class="item-list">
+		<tr class="odd"><th>Name</th><th>Min temp [<%= temp_units %>]</th><th>Max temp [<%= temp_units %>]</th><th>Duration</th><th>Purpose</th></tr>
+		<tr class="even"><td><b>Acid Rest</b></td><td><%= temperature_displays(35) %> </td><td><%= temperature_displays(48.89) %></td><td>up to 2 hours</td>
+			<td>This rest helps acidify the mash when the brewing water has a low calcium content and roasted grains are not part of the grist.<br/>
+				Another group of active enzyme in this range are the beta-glucanases, which break down gums in the undermodified malts.<br/>
+				Some adjuncts, particularly rye, have high levels of these substances, and stuck mashes or other problems can result if this rest is not applied..</td></tr>
+		<tr class="odd"><td><b>Ferulic Acid Rest</b></td><td><%= temperature_displays(43) %> </td><td><%= temperature_displays(43) %></td><td>15 minutes</td><td>Sometimes used in wheat beers to encourage more clove phenolic.</td></tr>
+		<tr class="even"><td><b>Protein Rest</b></td><td><%= temperature_displays(45) %> </td><td><%= temperature_displays(52.78) %></td><td>15 minutes</td>
+			<td>Required in under-modified malts to ensure complete conversion is achieved.  A lot of modern malts are almost fully modified and should not have the rest applied, as it may result in negative impact on the body and head retention of the resulting beer.
+				Malts with high protein content (such as wheat) also benefit from this rest.</td></tr>
+		<tr class="odd"><td><b>Sacchrification Rest</b></td><td><%= temperature_displays(54.44) %> </td><td><%= temperature_displays(71.11) %></td><td>60 to 90 minutes</td>
+			<td>This rest is of prime importance to the conversion of starches into sugars.
+				There are two main enzymes  (beta-amalayse and alpha-amalyse)  involved at this temperature range, and depending on which temperature chosen it will flavour either a more fermentable (drier beer) with less body, or a less fermentable full body wort.
+
+				Temperatures below <%= temperature_displays(65.56)%> flavour a more fermentable wort, while temperatures above <%= temperature_displays(68.33)%> flavour a less fermentable, higher dextrinous wort.</td></tr>
+		<tr class="even"><td><b>Mash out</b></td><td><%= temperature_displays(75) %> </td><td><%= temperature_displays(75) %></td><td>10 minutes</td>
+			<td>Not technically a rest.  The mash out stops the mashing process and locks in the sugar profile.
+			Not as necessary for batch sparging, but highly recommended for fly sparge systems.  Will also assist in
+			making the wort more viscous and making the sparge run easier.  It is not recommended to take the temperature above <%= temperature_displays(75)%>
+			as this may result in greater tannin extraction from the grain husks.</td></tr>
+
+
+	</table>
+</div>
+

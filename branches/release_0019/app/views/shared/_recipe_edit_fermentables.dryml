@@ -1,0 +1,46 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<div class="item-list" id="fermentable_items">
+  <table id="fermentables_list" class="item-list">
+    <thead>
+    <th><b>Locked</b></th>
+    <th><b>Type</b></th>
+    <th><b>Gravity [<%= gravity_units %>]</b></th>
+    <th><b>Gravity(%)</b></th>
+    <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+    <th><b>Weight(%)</b></th><th><b> </b></th>
+    </thead>
+    <tbody class="scroll-list">
+
+    <repeat with="&recipe_fermentable_list(recipe_edit_fermentables)">
+      <tr class="<%= cycle('odd','even') -%>">
+        <td><%=  ajax_lock_edit(this, "lock_weight", "fermentables", "update", "none", this.recipe.locked )%></td>
+        <td ><%= fermentable_type(this) %></td>
+        <td><%= ajax_points_editor(this) %></td>
+        <td id="fp_per_#{this.id}"><%= percentage(this.percentage_points * 100) %></td>
+        <td><%= ajax_weight_editor(this) %></td>
+        <td id="fw_per_#{this.id}"><%= percentage(this.percentage_weight * 100) %></td>
+        <td><%= del_fermentable_link(this) %></td>
+      </tr>
+    </repeat>
+    </tbody>
+    <!-- %= render :partial => 'fermentable', :collection => recipe_fermentable_list(@recipe) % -->
+  </table>
+</div>
