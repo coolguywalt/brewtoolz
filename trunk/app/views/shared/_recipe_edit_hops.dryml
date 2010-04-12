@@ -20,7 +20,10 @@
 
 <h3>&nbsp;&nbsp;<b>Hop utilisation method:</b>&nbsp;
   <!-- input:hop_utilisation_method/ -->
-
+<%
+   # Required for proper function of the radio buttons and boxes
+   @recipe = recipe_edit_hops
+%>
 
   <% f1 = ajax_updater(  url_for(  :controller => "recipes", :action => :update_hop_utilisation),
     "Change hop utilisation method.",
@@ -31,7 +34,7 @@
     :method => "post",
     :params => {:id => recipe_edit_hops.id, :util_method => :rager })
 
-  f3 = ajax_updater( url_for(:controller => :recipes, :action => :update, :id => recipe_edit_hops.id),
+  f3 = ajax_updater( url_for(:controller => :recipes, :action => :update_no_chill, :id => recipe_edit_hops.id),
     "Change hop no chill method.",
     :method => "put",
     :params => {"recipe[hop_cubed]" => Hobo.raw_js('this.checked'), :render => "details_and_hops"} )
@@ -40,7 +43,7 @@
   <%= radio_button("recipe","hop_utilisation_method",:tinseth, :onclick => "#{f1}" ) %><%= label("recipe_hop_utilisation_method", :tinseth,"Tinseth") %>
   <%= radio_button("recipe","hop_utilisation_method",:rager, :onclick => "#{f2}") %><%= label("recipe_hop_utilisation_method", :rager,"Rager") %>
 &nbsp;&nbsp;&nbsp;&nbsp;
-  <%= label("recipe", "hop_cubed", "No chill (cubed) cooling method") %><%= check_box(:recipe, :hop_cubed, :onclick => "#{f3}")%>
+  <%= label("recipe_hop_cubed", :hop_cubed, "No chill (cubed) cooling method") %><%= check_box("recipe", "hop_cubed", :onclick => "#{f3}")%>
 
 </h3><br/>
 <table id="hops_list" class="item-list">

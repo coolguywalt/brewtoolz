@@ -59,6 +59,8 @@ BU:GU ratio:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.bug
  <!-- Hops -->
 <p>-------------------------------------------------------------------------</p>
 Hops:<br/>
+Hop Utilisation Method: <%= recipe_view_items.hop_utilisation_method.capitalize %>  <if test="&recipe_view_items.is_cubed?">- No chill cooling method</if><br/>
+
 Type - Time[minutes] - Weight[<%= hop_weight_units %>] - AA(%) - IBU  <br/>
 
     <repeat with="&recipe_hops_list(recipe_view_detailed_text)" >

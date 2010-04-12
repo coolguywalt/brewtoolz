@@ -40,7 +40,7 @@
       <td><b>Estimated Attenuation:</b> <span id="atten"><%= percentage(@recipe.attenuation*100) %></span></td>
     </tr>
     <tr>
-      <td><b>Bitterness [IBU]:</b> <%= number_with_precision( @recipe.ibu, 2 ) %></td>
+      <td><b>Bitterness [IBU]:</b> <span id="ibu_tot"><%= number_with_precision( @recipe.ibu, 2 ) %></span></td>
       <td><b>Color [SRM(EBC)]:</b> <span id="colour"><%= number_with_precision( @recipe.srm, 2 ) %> (<%= number_with_precision( @recipe.ebc, 2 ) %>)</span></td>
     </tr>
   </table>

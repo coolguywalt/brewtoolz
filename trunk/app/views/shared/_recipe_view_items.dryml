@@ -69,6 +69,8 @@
 <!-- Hops -->
 <div class="block">
   <h2>Hops</h2>
+  <b>Hop Utilisation Method:</b> <%= recipe_view_items.hop_utilisation_method.capitalize %>  <if test="&recipe_view_items.is_cubed?">- No chill cooling method</if>
+
   <table id="hops_list" class="item-list">
     <tr>
       <th><b>Type</b></th>

@@ -39,7 +39,7 @@ class HopsController < ApplicationController
 
 
 		#Do unit conversions if required.
-    params[:hop][:weight] = BrewingUnits::input_gravity( params[:hop][:weight], current_user.units.hops ) if  params[:hop][:weight]
+    params[:hop][:weight] = BrewingUnits::value_for_storage( current_user.units.hops, params[:hop][:weight] ) if  params[:hop][:weight]
 
     ahop_use = :boil unless params[:hop][:minutes].nil?
     
@@ -64,6 +64,9 @@ class HopsController < ApplicationController
     @hop.hop_use = ahop_use.to_s  unless params[:hop][:minutes].nil?  #Only set if the minutes value is explicitly set
 
 		if @hop.update_attributes(params[:hop])
+
+      #Force reload of parent recipe record.
+      # @hop.recipe.reload
 
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.

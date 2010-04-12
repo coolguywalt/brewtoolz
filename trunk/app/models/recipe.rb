@@ -598,6 +598,8 @@ class Recipe < ActiveRecord::Base
 
   def adjust_fixed_hops_for_change( factor, new_og, old_og )
 
+    logger.debug "++ adjust_fixed_hops_for_change - new_og: #{new_og} old_og: #{old_og}"
+
     hops.each do |hop|
       next unless hop
       if hop.is_weight_locked? then
