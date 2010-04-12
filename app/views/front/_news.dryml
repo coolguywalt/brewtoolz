@@ -20,6 +20,11 @@
 <div id="aside-news" class="aside-news">
   <h2>News:</h2>
 
+   <div class="block">
+    <h3>Lock whole recipe</h3>
+    Ability to lock a whole recipe weights for fermentables and hops.  Will make behaviour similar to other recipe calculators.
+  </div>
+
  <div class="block">
     <h3>No chill hops calculations</h3>
     Added ability for no chill hops calculation adjustments, and post boil hop addtions (allowing negative minutes times).
@@ -32,21 +37,12 @@
     For brewday log recipes weights default to locked after the brew date has passed.
   </div>
 
-  <div class="block">
-    <h3>Delete Recipes</h3>
-    Users can now delete their own recipes within a 2 week period of creating them.
-  </div>
-
 
   <div class="block">
     <h3>Help Menu added</h3>
     Some basic help pages added to help explain the relationship between recipes, breweries and brewlogs.
   </div>
 
-  <div class="block">
-    <h3>Yeast Pitching Tool added</h3>
-		 Yeast pitching tool added to the tools menu.
-  </div>
 
 
 </div>
