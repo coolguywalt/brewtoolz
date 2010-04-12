@@ -1,0 +1,47 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<div class="block" >
+	<table class="list">
+		<tr><td><b>Estimated required yeast cells (billion):</b></td>
+			<td class ="big"><%= number_with_precision(yeast_pitch_results/1e9, 2) %></td></tr>
+	</table>
+</div>
+
+<br/>
+<div class="block" >
+	<table class="list">
+		<tr><td><b>Dried yeast (gm):</b></td>
+			<td class="big"><%= number_with_precision(dried_yeast_grams(yeast_pitch_results),2) %></td></tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr><td><b>No of liquid yeast(Wyeast/Whitelabs) packs:</b></td>
+			<td class="big"><%= number_with_precision(no_yeast_packets(yeast_pitch_results),2) %></td><td>(Assumes 94% viability)</td></tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr><td><b>Approximate amount of solid slurry (ml):</b></td>
+			<td></td><td></td></tr>
+
+		<tr><td class="right">One hour settling</td>
+			<td class="big"><%= number_with_precision(yeast_slurry_onehour(yeast_pitch_results),2) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
+		<tr><td class="right">One day settling</td>
+			<td class="big"><%= number_with_precision(yeast_slurry_oneday(yeast_pitch_results),2) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
+		<tr><td class="right">Longer than 1 week settling</td>
+			<td class="big"><%= number_with_precision(yeast_slurry_final(yeast_pitch_results,0.8),2) %></td><td>(Assumes 25% trub and 80% viability)</td></tr>
+	</table>
+</div>
+
