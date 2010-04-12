@@ -91,6 +91,7 @@ module RecipesHelper
 			page['bugu'].update(number_with_precision( @recipe.bugu, 3 ))
 			page['rte'].update(number_with_precision( @recipe.rte, 2 ))
 			page['bal'].update(number_with_precision( @recipe.balance, 3 ))
+      page['ibu_tot'].update(number_with_precision( @recipe.ibu, 2 ))
 
 			#Update percentage fermentable values
 			fermentable.recipe.fermentables.each do |ferm|
@@ -183,6 +184,8 @@ module RecipesHelper
 			page['bugu'].update(number_with_precision( @recipe.bugu, 3 ))
       #		page['rte'].update(number_with_precision( @recipe.rte, 2 ))
 			page['bal'].update(number_with_precision( @recipe.balance, 3 ))
+
+      page['ibu_tot'].update(number_with_precision( @recipe.ibu, 2 ))
 
 			#Update percentage fermentable values
       #			fermentable.recipe.fermentables.each do |ferm|

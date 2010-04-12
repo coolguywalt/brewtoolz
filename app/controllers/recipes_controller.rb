@@ -515,11 +515,58 @@ class RecipesController < ApplicationController
       render( :nothing => true )
       return
     end
-  
+
+    #Need to record hop weights prior to the update for case where hops are locked.
+    hop_weights = Hash.new
+    @recipe.hops.each { |ahop|
+      hop_weights[ahop.id] = ahop.weight if ahop.is_weight_locked?
+    }
+
+    logger.debug "++update_hop_utilisation: number of locked hops: #{hop_weights.count()}"
+
     @recipe.hop_utilisation_method = params[:util_method]
     @recipe.save
-  
-    update_just_hops( @recipe )
+    @recipe.reload
+
+    @recipe.hops.each { |ahop|
+      ahop.weight= hop_weights[ahop.id] if ahop.is_weight_locked?
+    }
+    @recipe.reload
+
+    update_details_and_hops( @recipe )
+  end
+
+  def update_no_chill
+    return unless params[:recipe][:hop_cubed]
+
+    @recipe =  Recipe.find(params[:id])
+
+    if !@recipe.updatable_by?(current_user)  || !request.xhr?
+      #      flash[:error] = "Update - permission denied."
+      #      update_details_and_hops( @recipe )
+      notifyattempt(request, "RecipesController.update_hop_utilisation not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+    end
+
+    #Need to record hop weights prior to the update for case where hops are locked.
+    hop_weights = Hash.new
+    @recipe.hops.each { |ahop|
+      hop_weights[ahop.id] = ahop.weight if ahop.is_weight_locked?
+    }
+
+    @recipe.hop_cubed = params[:recipe][:hop_cubed]
+    @recipe.save
+    @recipe.reload
+   
+    #We assert original hop weights for items that where locked.
+    @recipe.hops.each { |ahop|
+      ahop.weight= hop_weights[ahop.id] if ahop.is_weight_locked?
+    }
+    @recipe.reload
+    
+
+    update_details_and_hops( @recipe )
   end
   #
   #

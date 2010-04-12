@@ -217,6 +217,7 @@
 
 
       <h3>Hops:</h3>
+      <b>Hop Utilisation Method:</b> <%= @brew_entry.therecipe.hop_utilisation_method.capitalize %>  <if test="&@brew_entry.therecipe.is_cubed?">- No chill cooling method</if>
 
       <table id="hops_list" class="item-list">
         <tr>

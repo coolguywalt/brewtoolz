@@ -95,26 +95,42 @@ class Hop < ActiveRecord::Base
 	end
 
   def adjusted_mins( mins=nil, is_cubed=nil )
+
+    logger.debug "++adjusted_mins - mins:#{mins} is_cubed:#{is_cubed}"
+
     return read_attribute(:minutes) if (recipe.nil? and mins.nil?) #Possible on hop creation scenario
+
     is_cubed = false if (recipe.nil? and is_cubed.nil?) #Corner case when recipe object is still nill for creation scenario
 
 
     mins = read_attribute(:minutes) if mins.nil?
     is_cubed = recipe.is_cubed? if is_cubed.nil?
 
-    return mins + (is_cubed ? $CUBED_MINS_OFFSET : 0)
+    logger.debug "++adjusted_mins - is_cubed:#{is_cubed}"
+
+    if (is_cubed == true) then
+      mins += $CUBED_MINS_OFFSET
+    end
+ 
+    return mins 
   end
 
   def weight=( new_weight )
 
+    logger.debug "++hop.weight= - id:#{self.id} new_weight:#{new_weight}"
+
 		if (no_utilisation?) then
 			logger.debug "setting dry hop weight"
 			write_attribute(:dry_hop_amount_l, (Float(new_weight)/recipe.volume) )
+      write_attribute(:ibu_l, 0.0 )
+      save
 			return
 		end
 
 		new_ibu_l = ibu_l_from_weight(new_weight)
 		write_attribute(:ibu_l, new_ibu_l)
+    write_attribute(:dry_hop_amount_l, 0.0 )
+    save
     #rescue
     #	write_attribute(:ibu_l, new_weight)  # do this to cause validation errors to be propigated
 	end
@@ -285,7 +301,7 @@ class Hop < ActiveRecord::Base
   end
 
   def no_utilisation?
-    return (self[:ibu_l] <= 0.0)
+    return (adjusted_mins <= 0.0)
   end
 
   def adjust_for_cubing( is_cubed )
@@ -299,11 +315,12 @@ class Hop < ActiveRecord::Base
   protected
 
   def set_minutes( new_minute, is_cubed=nil  )
-    logger.debug( "Setting minutes from: #{self.minutes} to #{new_minute}" )
+    logger.debug( "Setting minutes from: #{self.minutes} to #{new_minute}  is_cubed: #{is_cubed}" )
 
     dry_hop_ammnt = dry_hop_amount_l || 0.0
     new_minute = new_minute.to_i
     adj_new_minute = adjusted_mins(new_minute, is_cubed ) #Take into account offset for no chill method.
+    logger.debug "++set_minutes - adj_new_minute:#{adj_new_minute}"
 
     if adjusted_mins == adj_new_minute  #Nothing to do
       logger.debug "No update required asjusted_mins:#{adjusted_mins} adj_new_minute:#{adj_new_minute}"
@@ -339,11 +356,18 @@ class Hop < ActiveRecord::Base
       logger.debug "New ibu per liter: #{new_ibu_l}"
 			write_attribute(:ibu_l, new_ibu_l )
 			write_attribute(:dry_hop_amount_l, 0.0 )
+      save
 
 		end
 
     logger.debug "Writing new minutes value to db"
 		write_attribute(:minutes, new_minute)
+
+    #Check for case where hop weight is locked and readjust if necessary.
+    if (old_weight > 0.0) and (adj_new_minute > 0) and (is_weight_locked?) then
+      self.weight= old_weight
+    end
+
   end
 
 end
