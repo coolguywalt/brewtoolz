@@ -552,7 +552,7 @@ class RecipesController < ApplicationController
     #Need to record hop weights prior to the update for case where hops are locked.
     hop_weights = Hash.new
     @recipe.hops.each { |ahop|
-      hop_weights[ahop.id] = ahop.weight if ahop.is_weight_locked?
+      hop_weights[ahop.id] = ahop.weight if (ahop.is_weight_locked?) or (ahop.minutes == 0)
     }
 
     @recipe.hop_cubed = params[:recipe][:hop_cubed]
@@ -561,7 +561,7 @@ class RecipesController < ApplicationController
    
     #We assert original hop weights for items that where locked.
     @recipe.hops.each { |ahop|
-      ahop.weight= hop_weights[ahop.id] if ahop.is_weight_locked?
+      ahop.weight= hop_weights[ahop.id] if (ahop.is_weight_locked?) or (ahop.minutes == 0)
     }
     @recipe.reload
     
