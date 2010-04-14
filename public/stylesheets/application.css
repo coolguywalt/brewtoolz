@@ -135,9 +135,7 @@ table.list td {
 body {
     width: auto;
     min-width: 950px;
-    background: #FFFFFF;
-
-
+    background: #666666 none repeat scroll 0 0;
 }
 
 .section.content {
