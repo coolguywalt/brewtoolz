@@ -24,8 +24,8 @@
              <li><a href="/help/brewlog">Brewlog<br/></a></li>
           </ul>
           <a href="/help/faq">Frequently asked questions</a><br/>
-          <a href="/help/features">Features</a><br/>
+          <%#*<a href="/help/features">Features</a><br/>%>
           <a href="/help/discussion">Discussion group</a><br/>
-          <a href="/help/future">Up and coming ...</a><br/>
-          <a href="/help/feedback">Feedback</a><br/>
-          <a href="/help/opensource">Open source</a><br/>
+          <%#*<a href="/help/future">Up and coming ...</a><br/>%>
+          <%#*<a href="/help/feedback">Feedback</a><br/>%>
+          <%#*<a href="/help/opensource">Open source</a><br/>%>
