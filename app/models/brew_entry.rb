@@ -395,9 +395,9 @@ class BrewEntry < ActiveRecord::Base
   end
 
   def boil_time
-    local_boiltime = read_attribute('boil_time')
+    local_boiltime = read_attribute(:boil_time)
     return local_boiltime if local_boiltime
-    return thebrewery.boil_time if thebrewery
+    return thebrewery.boil_time if thebrewery && thebrewery.boil_time
     return 60 # default to 60 minutes
   end
 
