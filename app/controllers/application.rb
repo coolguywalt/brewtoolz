@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   include ExceptionNotifiable
   include AppSecurity
 
-  before_filter :logaction
+  before_filter :logaction, :set_timezone
 
   helper :all # include all helpers, all the time
 
@@ -31,12 +31,17 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'fd57b350e2172bb77b944923ef2148ed'
 
- protected
+  protected
   def logaction
     logger.debug "Called audit log"
 
     audit_log( request, current_user )
 
+  end
+
+  def set_timezone
+    tz_off = cookies[:timezone]
+    Time.zone = ActiveSupport::TimeZone[tz_off.to_i] unless tz_off.nil?
   end
 
 
