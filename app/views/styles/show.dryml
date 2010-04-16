@@ -1,4 +1,13 @@
 <show-page>
+
+  	<content-body:>
+		<div id="recipe_collecion_div">
+                  <%= will_paginate style_recipes( this ) %>
+		   <collection with="&style_recipes( this )" />
+		</div>
+
+	</content-body:>
+
 </show-page>
 
 <!--
