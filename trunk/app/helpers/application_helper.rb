@@ -188,4 +188,9 @@ module ApplicationHelper
   def del_recipe_link(recipe)
 		link_to( "Del", { :controller => :recipes, :action => 'del_recipe', :id => recipe.id , :class => 'button small_button'} )
 	end
+
+  	def style_recipes( style )
+		style.recipes.paginate(:all, :per_page =>30, :order => 'name', :conditions => 'brew_entry_id IS NULL', :page => params[:page])
+	end
+
 end
