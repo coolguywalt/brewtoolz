@@ -648,7 +648,7 @@ class BrewEntry < ActiveRecord::Base
 
       logger.debug("Entry log date: #{entry.log_date}, Brew date: #{brew_date}")
 
-      next unless entry.specific_gravity
+      next unless entry.specific_gravity and entry.log_date
 
       log_date = entry.log_date.to_date
       date_distance = (log_date - brew_date).to_i
