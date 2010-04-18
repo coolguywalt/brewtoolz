@@ -1,0 +1,51 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<h2>Refractometer Correction Tool</h2>
+
+<div class="block">
+
+  <p>This tool provides a way of estimating corrected refractomer readings of fermented wort, taking into account the alcohol present.
+			You need to enter the approximate original gravity of the unfermented wort, and the refractometer reading.</p>
+</div>
+<br/>
+<div class="block">
+
+  <% form_remote_tag( :loading => "Hobo.showSpinner('Processing');",
+		      :complete => "Hobo.hideSpinner();",
+		      :url => "/tools/refractometer_correction"  ) do |f|%>
+    <table>
+
+      <tr><td><label>OG [<%= gravity_unit(current_user) %>]: </label></td><td><input type="text" name="OG" size="4" /></td></tr>
+      <tr><td><label>Refractomter reading [Plato/Brix]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="refract_reading" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><%=  submit_tag  "Ok", :class => "button small-button" %></td></tr>
+    </table>
+  <% end %>
+</div>
+<br/>
+
+<div class="block">
+  <h2>Results:</h2>
+  <table>
+    <tr><td><label class="right">Corrected reading [<%= gravity_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+      <td><span ><b><label id="refract_value_sg" class="big"/></b></span></td></tr>
+    <tr><td><label class="right">Corrected reading [Plato/brix]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+      <td><span ><b><label id="refract_value_p" class="big"/></b></span></td></tr>
+  </table>
+</div>
