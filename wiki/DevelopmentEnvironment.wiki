@@ -29,3 +29,5 @@ Gems required
     * hobofields 
 
 Recommended IDE - Netbeans 
+
+If you are keen to get an environment setup, email me (chris@brewtoolz.com) and I will work through with you setting up a development database etc. 
