@@ -18,6 +18,8 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+  $PRIMARY_RECIPE_FILTER = "(brew_entry_id IS NULL) AND (name IS NOT NULL) AND (name <> \"\")"
+
 	def stored_location
 		session[:return_to] || "/"
   end
@@ -94,25 +96,25 @@ module ApplicationHelper
 		logger.debug "primary_recipes called"
 		# Find parent recipes that do not belong to brew_entries
 		#@recipes = Recipe.find(:all, :conditions => "brew_entry_id IS NULL", :order => 'name')
-		return Recipe.paginate(:per_page =>30, :order =>'name', :conditions => "brew_entry_id IS NULL", :page => params[:page] )
+		return Recipe.paginate(:per_page =>30, :order =>'name', :conditions => $PRIMARY_RECIPE_FILTER, :page => params[:page] )
 
 		#return @recipes
 	end
 
 	def top_rated_recipes()
-		Recipe.find(:all, :order => 'rating DESC', :limit => 7,  :conditions => 'brew_entry_id IS NULL')
+		Recipe.find(:all, :order => 'rating DESC', :limit => 7,  :conditions => $PRIMARY_RECIPE_FILTER)
 	end
 
 	def recent_recipes()
-		Recipe.find(:all, :order => 'created_at DESC', :limit => 5,  :conditions => 'brew_entry_id IS NULL')
+		Recipe.find(:all, :order => 'created_at DESC', :limit => 5,  :conditions => $PRIMARY_RECIPE_FILTER)
 	end
 
 	def last_15_members_recipes(user)
-		Recipe.find_all_by_user_id(user.id, :order => 'created_at ASC', :limit => 15,  :conditions => 'brew_entry_id IS NULL')
+		Recipe.find_all_by_user_id(user.id, :order => 'created_at ASC', :limit => 15,  :conditions => $PRIMARY_RECIPE_FILTER)
 	end
 
 	def brewers_recipes(user)
-		Recipe.find_all_by_user_id(user.id, :order => 'name', :conditions => 'brew_entry_id IS NULL')
+		Recipe.find_all_by_user_id(user.id, :order => 'name', :conditions => $PRIMARY_RECIPE_FILTER)
 	end
 
 	def brewers_logs(user)
@@ -190,7 +192,7 @@ module ApplicationHelper
 	end
 
   	def style_recipes( style )
-		style.recipes.paginate(:all, :per_page =>30, :order => 'name', :conditions => 'brew_entry_id IS NULL', :page => params[:page])
+		style.recipes.paginate(:all, :per_page =>30, :order => 'name', :conditions => $PRIMARY_RECIPE_FILTER, :page => params[:page])
 	end
 
 end
