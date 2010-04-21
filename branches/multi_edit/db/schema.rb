@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100409103127) do
+ActiveRecord::Schema.define(:version => 20100421114230) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -224,6 +224,27 @@ ActiveRecord::Schema.define(:version => 20100409103127) do
     t.string   "use_for"
     t.text     "notes"
     t.integer  "recipe_id"
+  end
+
+  create_table "recipe_shareds", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "last_updated"
+    t.integer  "recipe_id"
+  end
+
+  create_table "recipe_user_shareds", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "shared_state"
+    t.boolean  "can_edit"
+    t.boolean  "can_invite"
+    t.boolean  "can_update_message_log"
+    t.boolean  "can_email_group"
+    t.string   "notification_type"
+    t.datetime "last_notified"
+    t.integer  "recipe_shared_id"
+    t.integer  "user_id"
   end
 
   create_table "recipes", :force => true do |t|
