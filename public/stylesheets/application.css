@@ -65,6 +65,11 @@ div.banner_img {
     padding:2px;
 }
 
+.error_list {
+    color: red;
+     padding-left:63px;
+}
+
 img {
     behavior: url(/iepngfix.htc)
 }
