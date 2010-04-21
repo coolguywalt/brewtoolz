@@ -72,4 +72,12 @@
   <div id="mashprofile_div" class="hidden">
     <%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
   </div>
+
+  <div id="sharededit_div" class="hidden">
+    <if test="&!recipe_edit.is_brewday?">
+      <%= render :partial => 'shared/recipe_edit_multiuser', :object => recipe_edit %>
+    </if>
+
+  </div>
+
 </div>
