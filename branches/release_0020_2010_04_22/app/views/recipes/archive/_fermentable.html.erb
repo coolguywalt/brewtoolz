@@ -1,0 +1,8 @@
+<tr class="<%= cycle('odd','even') -%>">
+  <td ><%= fermentable_type(fermentable) %></td>  
+  <td><%= ajax_points_editor(fermentable) %></td>
+  <td><%= percentage(fermentable.percentage_points * 100) %></td>
+  <td><%= ajax_weight_editor(fermentable) %></td>
+  <td><%= ajax_per_weight_editor(fermentable) %></td>
+  <td><%= del_fermentable_link(fermentable) %></td>
+</tr>
