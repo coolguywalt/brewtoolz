@@ -73,8 +73,11 @@ class Recipe < ActiveRecord::Base
   has_many :brew_entries, :dependent => :destroy
   has_many :mash_steps, :dependent => :destroy
 
+  has_one :recipe_shared, :dependent => :destroy
+
   #before_destroy :pre_destroy
 
+   has_one :recipe_shared, :dependent => :destroy
 
   # --- Permissions --- #
 
@@ -86,7 +89,7 @@ class Recipe < ActiveRecord::Base
   def update_permitted?
     logger.debug "++update_permitted?"
 	  logger.debug "Acting user: #{acting_user}"
-	  user_is? acting_user || acting_user.administrator?
+	  user_is? acting_user or acting_user.administrator? or shared_edit?
   end
 
   def destroy_permitted?
@@ -102,7 +105,24 @@ class Recipe < ActiveRecord::Base
   end
 
   def edit_permitted(attribute)
-	  user_is? acting_user || acting_user.administrator?
+	  user_is? acting_user or acting_user.administrator? or shared_edit?
+  end
+
+  def is_shared?
+    return false unless recipe_shared
+    return false unless recipe_shared.recipe_user_shared.count > 0
+    return true
+  end
+
+  def shared_edit?
+    logger.debug "++ shared.edit?"
+
+    return false unless recipe_shared
+    return recipe_shared.can_edit(acting_user)
+  end
+
+  def is_owner?
+    user_is? acting_user
   end
 
   def initialize(params = nil)
@@ -453,7 +473,7 @@ class Recipe < ActiveRecord::Base
 
   def self.search_condition
     logger.debug "recipe search_condition called"
-    return "brew_entry_id IS NULL"
+    return $PRIMARY_RECIPE_FILTER
   end
 
   def is_brewday?
@@ -629,6 +649,21 @@ class Recipe < ActiveRecord::Base
     return "" unless name  #Need to cater for the recipe creation scenario where the name is null.
     
     return name.empty? ? "<no name>" : name
+  end
+
+  def add_to_shared( user )
+
+    #Dont add the owner to the shared list
+    return if (user == self.user)
+
+    #Ensure shared recipe record exists
+    create_recipe_shared unless recipe_shared
+
+    #Add new user if not already in the list.
+    if not recipe_shared.recipe_user_shared.find_by_user_id( user.id )
+      recipe_shared.recipe_user_shared.create( :user => user, :shared_state => :invited.to_s, :can_edit => true )
+    end
+    
   end
 
 end

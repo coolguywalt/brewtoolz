@@ -67,11 +67,13 @@
 <def tag="recipeedit-nav">
   <navigation merge>
     <!--nav-item href="#menu">Kits</nav-item-->
-    <nav-item href="#menu" onclick="Hobo.show('fermentables_div'); Hobo.hide('hops_div','yeast_div','mashprofile_div','misc_div');">Fermentables</nav-item>
-    <nav-item href="#menu" onclick="Hobo.show('hops_div'); Hobo.hide('fermentables_div','yeast_div','mashprofile_div','misc_div');">Hops</nav-item>
-    <nav-item href="#menu" onclick="Hobo.show('yeast_div'); Hobo.hide('fermentables_div','hops_div','mashprofile_div','misc_div');">Yeast</nav-item>
-    <nav-item href="#menu" onclick="Hobo.show('misc_div');Hobo.hide('fermentables_div','hops_div','yeast_div','mashprofile_div');">Misc</nav-item>
-    <nav-item href="#menu" onclick="Hobo.show('mashprofile_div');Hobo.hide('fermentables_div','hops_div','yeast_div','misc_div');">Mash Profile</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('fermentables_div'); Hobo.hide('hops_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Fermentables</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('hops_div'); Hobo.hide('fermentables_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Hops</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('yeast_div'); Hobo.hide('fermentables_div','hops_div','mashprofile_div','misc_div','sharededit_div');">Yeast</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('misc_div');Hobo.hide('fermentables_div','hops_div','yeast_div','mashprofile_div','sharededit_div');">Misc</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('mashprofile_div');Hobo.hide('fermentables_div','hops_div','yeast_div','misc_div','sharededit_div');">Mash Profile</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('sharededit_div');Hobo.hide('fermentables_div','hops_div','yeast_div','misc_div','mashprofile_div');">Share</nav-item>
+
   </navigation>
 </def>
 

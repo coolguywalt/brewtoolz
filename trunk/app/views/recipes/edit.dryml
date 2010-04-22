@@ -54,6 +54,12 @@
 
   </content-body:>
 
+  <aside-right:>
+    <div id="shared_user_status_div" class="block">
+      <%= render :partial => 'shared/recipe_shared_users', :object => @recipe %>
+    </div>
+  </aside-right:>
+
 </edit-page>
 
 <!--

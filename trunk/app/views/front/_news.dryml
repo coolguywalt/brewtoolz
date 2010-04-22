@@ -20,12 +20,23 @@
 <div id="aside-news" class="aside-news">
   <h2>News:</h2>
 
-   <div class="block">
+  <div class="block">
+    <h3>Shared (multi-user) recipe editing</h3>
+    Multi user editing has arrived!<br/>
+    <ul>
+      <li>Got a joint brewday coming up</li>
+      <li>Club trying to colaborate on a recipe</li>
+      <li>Or just want to get others to help perfect your recipe.</li>
+    </ul>
+    Shared recipe editing is probably what you have been looking for.
+  </div>
+
+  <div class="block">
     <h3>Lock whole recipe</h3>
     Ability to lock a whole recipe weights for fermentables and hops.  Will make behaviour similar to other recipe calculators.
   </div>
 
- <div class="block">
+  <div class="block">
     <h3>No chill hops calculations</h3>
     Added ability for no chill hops calculation adjustments, and post boil hop addtions (allowing negative minutes times).
   </div>
@@ -36,13 +47,6 @@
     Ability to lock hop and fermentable weights so that they are not automatically adjusted when the volume changes.<br/>
     For brewday log recipes weights default to locked after the brew date has passed.
   </div>
-
-
-  <div class="block">
-    <h3>Help Menu added</h3>
-    Some basic help pages added to help explain the relationship between recipes, breweries and brewlogs.
-  </div>
-
 
 
 </div>
