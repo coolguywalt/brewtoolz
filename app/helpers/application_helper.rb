@@ -113,7 +113,16 @@ module ApplicationHelper
 		Recipe.find_all_by_user_id(user.id, :order => 'created_at ASC', :limit => 15,  :conditions => $PRIMARY_RECIPE_FILTER)
 	end
 
-	def brewers_recipes(user)
+	def brewers_shared_recipes(user)
+    list = RecipeUserShared.find_all_by_user_id( user.id )
+
+    return list.sort { |a,b|
+      a.recipe_shared.recipe.name <=> b.recipe_shared.recipe.name
+    }
+		# RecipeUserShared.find_all_by_user_id(user.id).recipe_shared.recipe.find( :order => 'name', :conditions => $PRIMARY_RECIPE_FILTER)
+	end
+
+  def brewers_recipes(user)
 		Recipe.find_all_by_user_id(user.id, :order => 'name', :conditions => $PRIMARY_RECIPE_FILTER)
 	end
 
@@ -191,7 +200,7 @@ module ApplicationHelper
 		link_to( "Del", { :controller => :recipes, :action => 'del_recipe', :id => recipe.id , :class => 'button small_button'} )
 	end
 
-  	def style_recipes( style )
+  def style_recipes( style )
 		style.recipes.paginate(:all, :per_page =>30, :order => 'name', :conditions => $PRIMARY_RECIPE_FILTER, :page => params[:page])
 	end
 

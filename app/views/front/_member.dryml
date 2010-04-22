@@ -18,17 +18,25 @@
 -->
 
 <h2>Recent recipes added</h2>
-   <%= render :partial => 'shared/recipe_list', :object => recent_recipes %>
+<%= render :partial => 'shared/recipe_list', :object => recent_recipes %>
 <br/>
 <h2>Brewer's brewlog</h2>
-  <%= render :partial => 'shared/brewentry_list_scrollable', :object => brewers_logs(current_user) %>
+<%= render :partial => 'shared/brewentry_list_scrollable', :object => brewers_logs(current_user) %>
 <br/>
+
+<% shared_recipes=brewers_shared_recipes(current_user) %>
+<if test="&shared_recipes.count > 0">
+  <h2>Shared recipes</h2>
+  <%= render :partial => 'shared/recipe_list_shared', :object => shared_recipes %>
+  <br/>
+</if>
+
 <h2>Brewer's recipes</h2>
-	<div class="header-buttons">
-	   <if test="&logged_in?"><%= link_to("Add recipe", { :controller => :recipes, :action => "new" }, :class => 'button') %></if>
-	</div>
-    <%= render :partial => 'shared/recipe_list_scrollable', :object => brewers_recipes(current_user) %>
-    
+<div class="header-buttons">
+  <if test="&logged_in?"><%= link_to("Add recipe", { :controller => :recipes, :action => "new" }, :class => 'button') %></if>
+</div>
+<%= render :partial => 'shared/recipe_list_scrollable', :object => brewers_recipes(current_user) %>
+
 <br/>
 
 
