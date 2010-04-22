@@ -23,6 +23,7 @@
              <li><a href="/help/brewery">Brewery<br/></a></li>
              <li><a href="/help/brewlog">Brewlog<br/></a></li>
           </ul>
+            <a href="/help/multiuseredit">Multi-user editing</a><br/>
           <a href="/help/faq">Frequently asked questions</a><br/>
           <%#*<a href="/help/features">Features</a><br/>%>
           <a href="/help/discussion">Discussion group</a><br/>
