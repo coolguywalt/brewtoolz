@@ -527,11 +527,12 @@ module RecipesHelper
 	end
 
  def del_shared_user_link(recipe, shared_user)
-		link_to_remote( "Del",
-			:loading => "Hobo.showSpinner('Delete Shared User');",
-			:complete => "Hobo.hideSpinner();",
-			:url => {  :controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id  },
-			:html => { :class => 'button small-button' }     )
+
+   if( recipe.user == current_user ) then
+     return link_to_remote( "Del", :loading => "Hobo.showSpinner('Delete Shared User');", :complete => "Hobo.hideSpinner();", :url => {  :controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id  }, :html => { :class => 'button small-button' }  )
+   else
+     return link_to( "Del", {:controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id }, :class => 'button small-button' )
+   end
 	end
 
 	def del_yeast_link(yeast)

@@ -107,6 +107,12 @@ class Recipe < ActiveRecord::Base
 	  user_is? acting_user or acting_user.administrator? or shared_edit?
   end
 
+  def is_shared?
+    return false unless recipe_shared
+    return false unless recipe_shared.recipe_user_shared.count > 0
+    return true
+  end
+
   def shared_edit?
     logger.debug "++ shared.edit?"
 

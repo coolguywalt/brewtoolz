@@ -264,10 +264,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @shared_user = RecipeUserShared.find(params[:shared_user_id])
 
-    if !@shared_user.can_remove(current_user)  || !request.xhr?
+    if !@shared_user.can_remove(current_user)
       #      flash[:error] = "Delete yeast - permission denied."
       #      update_details_and_yeast( @recipe )
-      notifyattempt(request, "RecipesController.remove_yeast not from authorized user: #{current_user}")
+      notifyattempt(request, "RecipesController.remove_shared_user not from authorized user: #{current_user}")
       render( :nothing => true )
       return
 		end

@@ -21,24 +21,22 @@
   <div class="ie">
 <![endif]-->
 
-<div class="scroll-list-div">
-  <table class="item-list scroll-table" >
+  <table class="item-list" >
     <thead>
-    <th>Name</th><th>Style</th><th>Rating</th><th>Actions</th>
+    <th>Name</th><th>Style</th><th>Owner</th>
     </thead>
-    <tbody class="scroll-list">
-    <repeat with="&recipe_list_scrollable">
+    <tbody >
+    <repeat with="&recipe_list_shared">
+      <% recipe = this.recipe_shared.recipe %>
       <tr class="<%= cycle('odd','even') -%>">
-        <td><a><%= h(this.name) %></a> <if test="&this.is_shared?"><b>[shared]</b></if> </td>
-        <td><a to="&this.style"><view:style.name/></a></td>
-        <td><%= view_rating(this.rating) %></td>
-        <td><if test="&this.destroyable_by?(current_user)"><%= del_recipe_link(this) %></if></td>
+        <td><a to="&recipe" ><%= h(recipe.name) %></a></td>
+        <td><a to="&recipe.style"><%=recipe.style.name%></a></td>
+        <td><%=recipe.user.name%></td>
       </tr>
     </repeat>
     </tbody>
   </table>
 
-</div>
 
 <!--[if IE]>
   </div>
