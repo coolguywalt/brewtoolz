@@ -25,7 +25,7 @@
 <br/>
 
 <% shared_recipes=brewers_shared_recipes(current_user) %>
-<if test="&shared_recipes.count > 0">
+<if test="&shared_recipes.size > 0">
   <h2>Shared recipes</h2>
   <%= render :partial => 'shared/recipe_list_shared', :object => shared_recipes %>
   <br/>
