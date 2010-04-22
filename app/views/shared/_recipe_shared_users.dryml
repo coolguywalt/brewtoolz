@@ -1,3 +1,27 @@
+<br/>
+<if test="&(recipe_shared_users.recipe_shared) and (recipe_shared_users.recipe_shared.recipe_user_shared.count > 0)" >
+  Owner: <b><%= recipe_shared_users.user %></b><br/>
+  Shared with:<br/>
+  <table class="item-list" >
+    <th>Name</th><th> </th>
+
+    <repeat with="&recipe_shared_users.recipe_shared.recipe_user_shared">
+
+      <tr class="<%= cycle('odd','even') -%>">
+        <td><view:user/></td>
+      <td>
+      <if test="&this.can_remove(current_user)">
+        <%= del_shared_user_link( recipe_shared_users, this ) %>
+      </if>
+      </td>
+      </tr>
+
+    </repeat>
+
+  </table>
+
+</if>
+
 <!--
     This file is part of Brewtools.
 
@@ -16,30 +40,3 @@
 
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
-
-<!--[if IE]>
-  <div class="ie">
-<![endif]-->
-
-<div class="scroll-list-div">
-  <table class="item-list scroll-table" >
-    <thead>
-    <th>Name</th><th>Style</th><th>Rating</th><th>Actions</th>
-    </thead>
-    <tbody class="scroll-list">
-    <repeat with="&recipe_list_scrollable">
-      <tr class="<%= cycle('odd','even') -%>">
-        <td><a><%= h(this.name) %></a> <if test="&this.is_shared?"><b>[shared]</b></if> </td>
-        <td><a to="&this.style"><view:style.name/></a></td>
-        <td><%= view_rating(this.rating) %></td>
-        <td><if test="&this.destroyable_by?(current_user)"><%= del_recipe_link(this) %></if></td>
-      </tr>
-    </repeat>
-    </tbody>
-  </table>
-
-</div>
-
-<!--[if IE]>
-  </div>
-<![endif]-->

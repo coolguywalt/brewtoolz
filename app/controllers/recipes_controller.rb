@@ -260,6 +260,28 @@ class RecipesController < ApplicationController
 		update_details_and_yeast( @recipe )
 	end
 
+  def remove_shared_user
+    @recipe = Recipe.find(params[:id])
+    @shared_user = RecipeUserShared.find(params[:shared_user_id])
+
+    if !@shared_user.can_remove(current_user)
+      #      flash[:error] = "Delete yeast - permission denied."
+      #      update_details_and_yeast( @recipe )
+      notifyattempt(request, "RecipesController.remove_shared_user not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+		end
+
+    RecipeUserShared.delete(params[:shared_user_id])
+
+    if( @shared_user.user == current_user ) then
+      redirect_to( url_for( :controller => 'recipes', :action => 'show', :id => @recipe.id ) )
+    else
+      update_shared_users( @recipe )
+    end
+
+  end
+
 
 	def add_fermentable
 		@recipe = Recipe.find(params[:id])
@@ -841,7 +863,44 @@ class RecipesController < ApplicationController
 
   end
 
+  def add_shared_user
 
+		@recipe = Recipe.find(params[:id])
+
+    if !@recipe.updatable_by?(current_user) || !request.xhr?
+      #      flash[:error] = "Delete misc - permission denied."
+      #      render_misc( @recipe )
+      notifyattempt(request, "RecipesController.validate_shared_user not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+    end
+
+    #Check that names have been added.
+    unless params[:users_to_add]
+       render( :nothing => true )
+       return
+    end
+    
+    #Parse user string
+    names = params[:users_to_add].split(",")
+
+    error_list = ""
+
+    #Process user string
+    names.each { |name|
+      #Find user if they exist.
+      user = User.find_by_name( name.strip )
+      if( user )
+        # Add to shared list.
+        @recipe.add_to_shared( user )
+      else
+        # Unknown username
+        error_list = error_list + "Unknown user: <b>#{name}</b>\n"
+      end
+    }
+  
+    update_shared_users( @recipe, error_list )
+  end
 
 end
 

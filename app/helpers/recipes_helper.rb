@@ -254,6 +254,17 @@ module RecipesHelper
 			page.replace_html 'recipe_errors_div', :partial => 'shared/recipe_errors'    }
 	end
 
+  def update_shared_users( recipe, error_list=nil )
+
+    render(:update) { |page|
+			if( error_list ) then
+				page.replace_html 'add_name_results', simple_format(error_list)
+			end
+			page.replace_html 'shared_user_status_div', :partial => 'shared/recipe_shared_users', :object => recipe
+    }
+
+  end
+
 	def ajax_volume_editor
 
 		ajax_edit_field2( @recipe, "volume",
@@ -480,12 +491,12 @@ module RecipesHelper
 
     action_url = url_for(:controller => controller, :action => action, :id => item.id, :render => render)
 
-      render( :inline => %{
+    render( :inline => %{
     <% form_remote_for( item,
           :url => action_url, :html => {:id => "lock_#{item.id}"}  #{show_ajax_indicator ? ', :loading => "Hobo.showSpinner(\"Processing ...\");", :complete => "Hobo.hideSpinner();"': ''}  ) do |f|%>
           <%= f.check_box field_name, :onclick => "$('lock_#{item.id}').onsubmit();" #{is_disabled ? ', :disabled => "disabled"' : ''}  %>
     <% end %>
-        }, :locals => {:action_url => action_url, :item => item, :field_name => field_name } )
+      }, :locals => {:action_url => action_url, :item => item, :field_name => field_name } )
    
   end
 
@@ -513,6 +524,15 @@ module RecipesHelper
 			:complete => "Hobo.hideSpinner();",
 			:url => {  :controller => "recipes", :action => :remove_hop, :id => hop.recipe.id, :hop_id => hop.id  },
 			:html => { :class => 'button small-button' }     )
+	end
+
+ def del_shared_user_link(recipe, shared_user)
+
+   if( recipe.user == current_user ) then
+     return link_to_remote( "Del", :loading => "Hobo.showSpinner('Delete Shared User');", :complete => "Hobo.hideSpinner();", :url => {  :controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id  }, :html => { :class => 'button small-button' }  )
+   else
+     return link_to( "Del", {:controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id }, :class => 'button small-button' )
+   end
 	end
 
 	def del_yeast_link(yeast)
@@ -550,7 +570,7 @@ module RecipesHelper
 		logger.debug "index recipe list"
 
 
-		return Recipe.find(:all, :order => 'created_at DESC, name', :conditions => 'brew_entry_id IS NULL')
+		return Recipe.find(:all, :order => 'created_at DESC, name', :conditions => $PRIMARY_RECIPE_FILTER )
 	end
 
 	def can_clone?
@@ -577,7 +597,7 @@ module RecipesHelper
 		filter = ""
 		filter = session[:recipeSearchFilter] + " AND " if session[:recipeSearchFilter]
 		filter = filter +  "(style_id in (#{session[:recipeStyleSelection].join(',')}))"  + " AND " if session[:recipeStyleSelection]
-		filter = filter + "(brew_entry_id IS NULL)"
+		filter = filter + "(" + $PRIMARY_RECIPE_FILTER + ")"
 
 		logger.debug "Current search filter: #{filter}"
 
@@ -593,7 +613,7 @@ module RecipesHelper
 	def index_search_filter_exclude_styles()
 		filter = ""
 		filter = session[:recipeSearchFilter] + " AND " if session[:recipeSearchFilter]
-		filter = filter + "(brew_entry_id IS NULL)"
+		filter = filter + "(" + $PRIMARY_RECIPE_FILTER + ")"
 
 		logger.debug "Current search filter: #{filter}"
 
