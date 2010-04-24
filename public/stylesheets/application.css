@@ -264,3 +264,8 @@ body {
 .floatleft {
     float:left;
 }
+
+ .centerimage   {
+    text-align:center;
+    
+    }
