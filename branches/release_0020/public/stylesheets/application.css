@@ -23,7 +23,8 @@ img {
 }
 
 html {
-    background:#666666 none repeat scroll 0 0;
+    background: gray;
+    color: black;
 }
 
 div h1.app-name {
@@ -140,7 +141,8 @@ table.list td {
 body {
     width: auto;
     min-width: 950px;
-    background: #FFFFFF;
+    /*background: #FFFFFF;*/
+     background: gray;
 
 
 }
