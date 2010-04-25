@@ -52,7 +52,7 @@ div.banner_img {
 }
 
 .main-nav {
-    padding: 0 92px;
+    padding: 0 0 0 92px;
 }
 
 .page-header {
@@ -140,7 +140,7 @@ table.list td {
 
 body {
     width: auto;
-    min-width: 950px;
+    min-width: 1190px;
     /*background: #FFFFFF;*/
      background: gray;
 
