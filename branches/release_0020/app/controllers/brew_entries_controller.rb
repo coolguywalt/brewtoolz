@@ -21,6 +21,7 @@ class BrewEntriesController < ApplicationController
 	include BrewEntriesHelper
   include AppSecurity
   include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::TagHelper
 
 
 	auto_actions :all
@@ -602,8 +603,8 @@ class BrewEntriesController < ApplicationController
 		@brew_entry.save
 
 		if request.xhr?
-			# html_escape guards against cross site scripting and other undersireables
-			render :text => simple_format( ERB::Util.html_escape(@brew_entry.comment) )
+			# html_escape guards against cross site scripting and other undesirables
+			render :text => simple_format( h(@brew_entry.comment) )
 		end
 
 	end
