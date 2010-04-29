@@ -627,7 +627,7 @@ class BrewEntriesController < ApplicationController
 		@brew_entry.setbrewery( @new_brewery )
 		@brew_entry.save
 
-		updated_values_and_recipe_div
+		update_values_div
 
 	end
 
