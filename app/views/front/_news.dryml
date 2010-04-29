@@ -17,7 +17,7 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 
-<div id="aside-news" class="aside-news">
+<div id="aside-news" class="aside-news largerfont">
   <h2>News:</h2>
 
   <div class="block">
@@ -25,7 +25,7 @@
     Multi user editing has arrived!<br/>
     <ul>
       <li>Got a joint brewday coming up</li>
-      <li>Club trying to colaborate on a recipe</li>
+      <li>Club trying to collaborate on a recipe</li>
       <li>Or just want to get others to help perfect your recipe.</li>
     </ul>
     Shared recipe editing is probably what you have been looking for.<br/><br/>
@@ -39,7 +39,7 @@
 
   <div class="block">
     <h3>No chill hops calculations</h3>
-    Added ability for no chill hops calculation adjustments, and post boil hop addtions (allowing negative minutes times).
+    Added ability for no chill hops calculation adjustments, and post boil hop additions (allowing negative minutes times).
   </div>
 
 

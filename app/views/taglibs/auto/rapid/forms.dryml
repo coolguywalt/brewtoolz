@@ -123,7 +123,7 @@
 <def tag="form" for="KitType">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="" param/>
+    <field-list fields="name, points, yeild, ibus, colour, volume, weight, description, designed_volume, kit_type" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>
@@ -135,7 +135,7 @@
 <def tag="form" for="Kit">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="recipe" param/>
+    <field-list fields="quantity, kit_type, recipe" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>

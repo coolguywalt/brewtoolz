@@ -24,7 +24,7 @@
       <td><b>Estimated Mash Efficiency:</b><%= ajax_eff_editor(@recipe) %>%</td>
     </tr>
     <tr>
-      <td><b>Original Gravity [<%= gravity_units %>]:</b> <%= ajax_og_editor %></td>
+      <td><b>Original Gravity [<%= gravity_units %>]:</b> <span id="og_s"><%= gravity_values( @recipe.og ) %></span></td>
       <td><b>Final Gravity [<%= gravity_units %>]:</b> <%= gravity_values( @recipe.fg ) %></td>
     </tr>
   </table>

@@ -21,4 +21,39 @@ class KitsController < ApplicationController
 
   auto_actions :all
 
+  def update
+
+    @kit = Kit.find(params[:id])
+
+
+    unless @kit.recipe.updatable_by?(current_user)
+      #      flash[:error] = "Update fermentable - permission denied."
+      #      update_details_and_hop( @hop )
+      notifyattempt( request,"KitController.update not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+    end
+
+		if @kit.update_attributes(params[:kit])
+			if request.xhr?
+				# Route to correct update as specified or the whole screen if not.
+				case params[:render]
+				when "details_and_kit"
+					update_details_and_kit( @kit )
+        when "none"
+          render( :nothing => true )
+				else
+          redirect_to  :action => 'edit', :controller => :recipes, :id =>@kit.recipe.id
+				end
+			else # Updated for a regualar post method.
+				flash[:notice] = "Successfully updated recipe and kits."
+				redirect unless @kit.update_permitted?
+			end
+
+		else
+			render :action => 'edit'
+		end
+
+  end
+
 end

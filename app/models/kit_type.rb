@@ -20,6 +20,19 @@ class KitType < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
+    name :string
+    points :float
+    yeild :float
+    ibus :float
+    colour :float   # note colour is in EBC units
+    volume :float   
+    weight :float   
+    description :text
+
+    designed_volume :float
+
+    kit_type enum_string(:can, :freshwort)
+
     timestamps
   end
 
@@ -42,4 +55,11 @@ class KitType < ActiveRecord::Base
     true
   end
 
+  def is_can?
+    return (self.kit_type == :can.to_s)
+  end
+
+  def is_fresh_wort?
+    return (self.kit_type == :freshwort.to_s)
+  end
 end

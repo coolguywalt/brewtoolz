@@ -23,23 +23,24 @@
   </aside-left:>
 
   <aside-right:>
-    <div class="block">
+    <div class="block largerfont">
       <br/>
       <div class="centerimage">
-        <img src="/images/brewtoolz_needs_you_small.jpg"/>
+        <img class="shadow" src="/images/brewtoolz_needs_you_small.jpg"/>
       </div>
 
       <br/>
 
       Brewtoolz is an <a href="http://code.google.com/p/brewtoolz"><b>open source</b></a> online brewing and logging tool.  Written for brewers, by brewers.<br/>
       <br/>
-      We are currently looking for people to get on board and contribute.  You dont have to be a developmer to make a difference.<br/>
+      We are currently looking for people to get on board and contribute.  You dont have to be a developer to make a difference.<br/>
       <br/>
-      <b>So sign up to the discussion group and give us some feedback.</b>
+      <b>So sign up to the discussion group and start giving some feedback.</b>
       <br/>
       <a href="http://groups.google.com.au/group/brewtoolz">http://groups.google.com.au/group/brewtoolz</a><br/>
       <br/>
-      Tell us what is good, and not so good.  Features that you are just itching to see.  Help make Brewtoolz do what you want it to.
+      Tell us what is good, and not so good.  Features that you are just itching to see.  <br/>
+      Help us make Brewtoolz do what you want it to.
       <br/>
 <br/>
 
