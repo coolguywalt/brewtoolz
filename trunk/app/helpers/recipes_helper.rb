@@ -57,6 +57,29 @@ module RecipesHelper
 
 	end
 
+
+  def update_details_and_kits( recipe )
+		# Need to update hops because the weight is dependent on the OG value.
+
+		render(:update) { |page|
+			if( recipe.brew_entry ) then
+				page.replace_html 'details_div', :partial => 'shared/recipe_edit_summary', :object => recipe
+			else
+				page.replace_html 'details_div', :partial => 'details', :object => recipe
+        page.replace_html 'scale_div', :partial => 'shared/recipe_scale', :object => recipe
+			end
+
+			page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kits', :object => recipe
+			page.replace_html 'recipe_errors_div', :partial => 'shared/recipe_errors'
+ 
+		}
+
+	end
+
+
+
+
+
 	def update_details_and_fermentable( fermentable )
 		# Need to update hops because the weight is dependent on the OG value.
 
@@ -83,7 +106,7 @@ module RecipesHelper
 
 			#Original gravity
 			page['og_s'].update(BrewingUnits::values_for_display( current_user.units.gravity,@recipe.og , 3 ) )
-			page['og_e'].value = (BrewingUnits::value_for_display( current_user.units.gravity,@recipe.og , 3 ) )
+			# page['og_e'].value = (BrewingUnits::value_for_display( current_user.units.gravity,@recipe.og , 3 ) )
 
       page['abv'].update(@recipe.abv)
 			page['atten'].update(percentage(@recipe.attenuation*100))
@@ -210,6 +233,80 @@ module RecipesHelper
 
 	end
 
+
+  def update_details_and_kit( kit )
+
+		render(:update) { |page|
+
+			#Update per weight values
+			values_str = BrewingUnits::values_for_display( current_user.units.hops, hop.weight , 2 )
+			value_str = BrewingUnits::value_for_display( current_user.units.hops, hop.weight , 2 )
+			id_prefix = "hw_#{hop.id}"
+
+			page["#{id_prefix}_s"].update( values_str  )
+			page["#{id_prefix}_e"].value = value_str
+
+      #Update per ibu values
+			value_str = number_with_precision(hop.ibu_l,2)
+			id_prefix = "ibu_#{hop.id}"
+
+			page["#{id_prefix}_s"].update( value_str  )
+			page["#{id_prefix}_e"].value = value_str
+
+      #Update per aa values
+			value_str = number_with_precision(hop.aa,2)
+			id_prefix = "aa_#{hop.id}"
+
+      
+			page["#{id_prefix}_s"].update( value_str  )
+			page["#{id_prefix}_e"].value = value_str
+
+      #Update per minutes values
+			value_str = hop_minutes_format(hop)
+			id_prefix = "minutes_#{hop.id}"
+
+			page["#{id_prefix}_s"].update( value_str  )
+			page["#{id_prefix}_e"].value = value_str
+
+
+
+			#Recipe details
+			@recipe = kit.recipe
+
+			#Original gravity
+      page['og_s'].update(BrewingUnits::values_for_display( current_user.units.gravity,@recipe.og , 3 ) )
+      # page['og_e'].update(BrewingUnits::value_for_display( current_user.units.gravity,@recipe.og , 3 ) )
+
+      page['abv'].update(@recipe.abv)
+      page['atten'].update(percentage(@recipe.attenuation*100))
+      page['colour'].update(number_with_precision( @recipe.srm, 2 ).to_s + " (" + number_with_precision( @recipe.ebc, 2 ).to_s + ")")
+			page['bugu'].update(number_with_precision( @recipe.bugu, 3 ))
+      page['rte'].update(number_with_precision( @recipe.rte, 2 ))
+			page['bal'].update(number_with_precision( @recipe.balance, 3 ))
+
+      page['ibu_tot'].update(number_with_precision( @recipe.ibu, 2 ))
+
+			#Update percentage fermentable values
+      #			fermentable.recipe.fermentables.each do |ferm|
+      #				page["fp_per_#{ferm.id}"].update( percentage(ferm.percentage_points * 100) )
+      #				page["fw_per_#{ferm.id}"].update(percentage(ferm.percentage_weight * 100))
+      #			end
+
+			#Update percentage hop weight values
+			hop.recipe.hops.each do |ahop|
+				value_str = percentage( ahop.percentage_ibu()*100 )
+				#value_str = ( current_user.units.hop, ahop.weight , 2 )
+				id_prefix = "hpw_#{ahop.id}"
+
+				page["#{id_prefix}"].update( value_str  )
+				#page["#{id_prefix}_e"].update( value_str  )
+			end
+
+			#Update associated partials
+			page.replace_html 'recipe_errors_div', :partial => 'shared/recipe_errors'
+		}
+
+	end
 
 
 	# Updates the details partial and the fermentables partial
@@ -359,6 +456,12 @@ module RecipesHelper
 		end
 	end
 
+  def recipe_kits_list ( recipe )
+		recipe.kits.sort do |a,b|
+      a.kit_type.name <=> b.kit_type.name
+		end
+	end
+
 	def recipe_yeast_list ( recipe )
 		recipe.yeasts.sort do |a,b|
 			a.yeast_type.name <=> b.yeast_type.name
@@ -372,6 +475,25 @@ module RecipesHelper
 	def hop_type( hop )
 		hop.hop_type || '(Undefined type)'
 	end
+
+  def kit_type( kit )
+    kit.kit_type || '(Undefined type)'
+  end
+
+  def kit_volume( kit )
+    return "n/a" unless kit.volume
+    return volume_values( kit.volume )
+  end
+
+    def kit_designed_volume( kit )
+    return "n/a" unless kit.designed_volume
+    return volume_values( kit.designed_volume )
+  end
+
+  def kit_weight( kit )
+    return "n/a" unless kit.weight
+    return ferm_weight_values(kit.weight)
+  end
 
 	def yeast_type( yeast )
 		yeast.yeast_type || '(Undefined type)'
@@ -487,6 +609,14 @@ module RecipesHelper
 
 	end
 
+  def ajax_quantity_editor( kit )
+    ajax_edit_field2( kit, "quantity",
+			{ :action => :update, :controller => :kits, :id => kit.id, :render => "details_and_kit" },
+			[ number_with_precision(kit.quantity,2)],
+      nil, nil, "quantity_#{kit.id}")
+	end
+
+
   def ajax_lock_edit( item, field_name, controller, action, render, is_disabled=false, show_ajax_indicator=false )
 
     action_url = url_for(:controller => controller, :action => action, :id => item.id, :render => render)
@@ -526,13 +656,21 @@ module RecipesHelper
 			:html => { :class => 'button small-button' }     )
 	end
 
- def del_shared_user_link(recipe, shared_user)
+  def del_kit_link(kit)
+		link_to_remote( "Delete",
+			:loading => "Hobo.showSpinner('Delete Kit');",
+			:complete => "Hobo.hideSpinner();",
+			:url => {  :controller => "recipes", :action => :remove_kit, :id => kit.recipe.id, :kit_id => kit.id  },
+			:html => { :class => 'button small-button' }     )
+	end
 
-   if( recipe.user == current_user ) then
-     return link_to_remote( "Del", :loading => "Hobo.showSpinner('Delete Shared User');", :complete => "Hobo.hideSpinner();", :url => {  :controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id  }, :html => { :class => 'button small-button' }  )
-   else
-     return link_to( "Del", {:controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id }, :class => 'button small-button' )
-   end
+  def del_shared_user_link(recipe, shared_user)
+
+    if( recipe.user == current_user ) then
+      return link_to_remote( "Del", :loading => "Hobo.showSpinner('Delete Shared User');", :complete => "Hobo.hideSpinner();", :url => {  :controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id  }, :html => { :class => 'button small-button' }  )
+    else
+      return link_to( "Del", {:controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id }, :class => 'button small-button' )
+    end
 	end
 
 	def del_yeast_link(yeast)

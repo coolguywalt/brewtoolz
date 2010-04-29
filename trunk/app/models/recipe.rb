@@ -77,7 +77,7 @@ class Recipe < ActiveRecord::Base
 
   #before_destroy :pre_destroy
 
-   has_one :recipe_shared, :dependent => :destroy
+  has_one :recipe_shared, :dependent => :destroy
 
   # --- Permissions --- #
 
@@ -175,6 +175,12 @@ class Recipe < ActiveRecord::Base
     }
 
 
+    kits.each{ |kit|
+      next unless kit
+      new_recipe.kits.create!( kit.attributes() )
+    }
+
+
     mash_steps.each{ |mash_step|
       next unless mash_step
       new_recipe.mash_steps.create!( mash_step.attributes() )
@@ -223,46 +229,47 @@ class Recipe < ActiveRecord::Base
     return total_points
   end
 
-  def og=( new_og)
-    # No argument so just ignore
-    return unless new_og
-
-    new_og_f = 0.0
-    @submitted_og = new_og
-    logger.debug "new_og: #{new_og}"
-
-    # Check supplied value is a number
-    begin
-      new_og_f = Float( new_og )
-    rescue
-      logger.debug "og format error"
-      #   errors.add(:recipe, "og must be a number")
-      @submitted_og = new_og
-      return
-    end
-
-    logger.debug "new_og_f: #{new_og_f}"
-
-    # Check greater than 0
-    if( new_og_f <= 0 ) then
-      logger.debug "og less then 0"
-      #   errors.add(:recipe, "og must be greater than 0")
-      return
-    end
-
-    ratio_change = new_og_f/total_points
-
-    old_og = total_points
-
-    fermentables.each do |fermentable|
-      next unless fermentable
-      fermentable.points *= ratio_change
-      fermentable.save
-    end
-
-    adjust_fixed_hops_for_change(1.0, new_og, old_og)
-
-  end
+  #Function depricated for now.
+  #  def og=( new_og)
+  #    # No argument so just ignore
+  #    return unless new_og
+  #
+  #    new_og_f = 0.0
+  #    @submitted_og = new_og
+  #    logger.debug "new_og: #{new_og}"
+  #
+  #    # Check supplied value is a number
+  #    begin
+  #      new_og_f = Float( new_og )
+  #    rescue
+  #      logger.debug "og format error"
+  #      #   errors.add(:recipe, "og must be a number")
+  #      @submitted_og = new_og
+  #      return
+  #    end
+  #
+  #    logger.debug "new_og_f: #{new_og_f}"
+  #
+  #    # Check greater than 0
+  #    if( new_og_f <= 0 ) then
+  #      logger.debug "og less then 0"
+  #      #   errors.add(:recipe, "og must be greater than 0")
+  #      return
+  #    end
+  #
+  #    ratio_change = new_og_f/total_points
+  #
+  #    old_og = total_points
+  #
+  #    fermentables.each do |fermentable|
+  #      next unless fermentable
+  #      fermentable.points *= ratio_change
+  #      fermentable.save
+  #    end
+  #
+  #    adjust_fixed_hops_for_change(1.0, new_og, old_og)
+  #
+  #  end
 
   def fg
     fg = og
@@ -282,6 +289,10 @@ class Recipe < ActiveRecord::Base
       else
         fg -= fermentable.points * att
       end
+    end
+
+    kits.each do |kit|
+      fg -= kit.points * att
     end
 
     return fg
@@ -304,6 +315,16 @@ class Recipe < ActiveRecord::Base
       srm_total += mcu
     end
 
+    kits.each do |kit|
+      next unless kit
+      next unless kit.kit_type
+
+      # srm_contrib = srm_contrib + fermentable.weight.to_f
+      mcu = (gms_to_lbs(kit.weight * kit.quantity) * (kit.kit_type.colour/1.97)) / ltrs_to_gal( volume )
+
+      srm_total += mcu
+    end
+
     if( srm_total > 1) then
       srm_total = 1.4922 * (srm_total ** 0.6859)
 
@@ -322,6 +343,11 @@ class Recipe < ActiveRecord::Base
     hops.each do |hop|
       next unless hop
       total_ibu += hop.ibu_l
+    end
+
+    kits.each do |kit|
+      next unless kit
+      total_ibu += kit.ibu
     end
     return total_ibu
   end
@@ -357,6 +383,11 @@ class Recipe < ActiveRecord::Base
     fermentables.each do |fermentable|
       next unless fermentable
       total_points += fermentable.points
+    end
+
+    kits.each do |kit|
+      next unless kit
+      total_points += kit.points
     end
     return total_points
   end

@@ -64,7 +64,7 @@ class Fermentable < ActiveRecord::Base
 		# need to know the default reference brewery details.  Lets assume 23L 75% eff for now.
 		brewery_capacity = recipe.volume || brewery_capacity = 23.0
 		brewery_efficiency = recipe.efficency || brewery_efficiency = 75.0
-		brewery_efficiency = 100.0 if fermentable_type.fullyfermentable
+		brewery_efficiency = 100.0 unless fermentable_type.mashed
 
 		lb_gal_to_kg_ltr =  0.1198264
 		lb_per_kg =  2.2046226
@@ -93,7 +93,7 @@ class Fermentable < ActiveRecord::Base
 
     logger.debug "++Recipe volume: #{recipe.volume}"
 
-		brewery_efficiency = 100.0 if fermentable_type.fullyfermentable
+		brewery_efficiency = 100.0 unless fermentable_type.mashed
 
 		lb_per_kg =  2.2046226
 		gal_per_ltr = 0.264172052

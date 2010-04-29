@@ -50,15 +50,29 @@
     <div class="navigation-div">
       <recipeedit-nav current="hops"/><br/>
     </div>
-<br/>
-		<div id="hops_items_div" class="item-list-unlimited">
-			<%= render :partial => 'shared/recipe_edit_hops', :object => recipe_edit %>
-		</div>
-		<br/>
-		<div id="hops_list_div" class="item-list">
-			<%= render :partial => 'shared/recipe_edit_hops_list', :object => recipe_edit %>
-		</div>
+    <br/>
+    <div id="hops_items_div" class="item-list-unlimited">
+      <%= render :partial => 'shared/recipe_edit_hops', :object => recipe_edit %>
+    </div>
+    <br/>
+    <div id="hops_list_div" class="item-list">
+      <%= render :partial => 'shared/recipe_edit_hops_list', :object => recipe_edit %>
+    </div>
 
+  </div>
+
+  <div id="kits_div" class="hidden">
+    <div class="navigation-div">
+      <recipeedit-nav current="kits"/><br/>
+    </div>
+    <br/>
+    <div id="kit_items_div" class="item-list-unlimited">
+      <%= render :partial => 'shared/recipe_edit_kits', :object => recipe_edit %>
+    </div>
+    <br/>
+    <div id="kit_list_div" class="item-list">
+      <%= render :partial => 'shared/recipe_edit_kits_list', :object => recipe_edit %>
+    </div>
   </div>
 
   <div id="yeast_div" class="hidden">

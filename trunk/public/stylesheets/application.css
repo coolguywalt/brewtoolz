@@ -51,7 +51,7 @@ div.banner_img {
 }
 
 .main-nav {
-    padding: 0 92px;
+    padding: 0 0 0 92px;
 }
 
 .page-header {
@@ -67,7 +67,7 @@ div.banner_img {
 
 .error_list {
     color: red;
-     padding-left:63px;
+    padding-left:63px;
 }
 
 img {
@@ -139,8 +139,8 @@ table.list td {
 
 body {
     width: auto;
-    min-width: 950px;
-    background: #FFFFFF;
+    min-width: 1190px;
+    background: gray;
 
 
 }
@@ -265,7 +265,15 @@ body {
     float:left;
 }
 
- .centerimage   {
+.centerimage   {
     text-align:center;
-    
-    }
+
+}
+
+.largerfont {
+   font-size: 120%
+}
+
+.shadow {
+   -moz-box-shadow: 0 4px 10px #8B8B8B;
+}

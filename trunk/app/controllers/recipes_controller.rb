@@ -315,6 +315,33 @@ class RecipesController < ApplicationController
 		update_details_and_fermentables( @recipe )
 	end
 
+  def add_kit
+		@recipe = Recipe.find(params[:id])
+
+    unless (@recipe.kits.size() < 15)
+      flash[:error] = "Add kit - too many kits."
+      update_details_and_kits( @recipe )
+      return
+		end
+
+
+		if !@recipe.updatable_by?(current_user) || !request.xhr?
+      #      flash[:error] = "Add fermentable - permission denied."
+      #      update_details_and_fermentables( @recipe )
+      notifyattempt(request, "RecipesController.add_kits not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+		end
+
+		@kit_type = KitType.find(params[:kit_type_id])
+
+ 		# Create new kit
+		@kit = @recipe.kits.create( :kit_type => @kit_type, :quantity => 1.0 )
+
+ 
+		update_details_and_kits( @recipe )
+	end
+
 	def add_hop
 		@recipe = Recipe.find(params[:id])
 
@@ -877,8 +904,8 @@ class RecipesController < ApplicationController
 
     #Check that names have been added.
     unless params[:users_to_add]
-       render( :nothing => true )
-       return
+      render( :nothing => true )
+      return
     end
     
     #Parse user string

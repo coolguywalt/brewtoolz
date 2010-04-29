@@ -47,7 +47,7 @@
   <h2>Fermentables</h2>
   <table id="fermentables_list" class="item-list">
     <tr>
-      
+
       <th><b>Type</b></th>
       <th><b>Gravity [<%= gravity_units %>]</b></th>
       <th><b>Gravity(%)</b></th>
@@ -56,7 +56,7 @@
     </tr>
     <repeat with="&recipe_fermentable_list(recipe_view_items)" >
       <tr class="<%= cycle('odd','even') -%>">
-        
+
         <td ><%=  fermentable_type( this ) %></td>
         <td><%= gravity_values(this.points) %></td>
         <td><%= percentage(this.percentage_points*100) %></td>
@@ -66,33 +66,69 @@
     </repeat>
   </table>
 </div>
+
 <!-- Hops -->
-<div class="block">
-  <h2>Hops</h2>
-  <b>Hop Utilisation Method:</b> <%= recipe_view_items.hop_utilisation_method.capitalize %>  <if test="&recipe_view_items.is_cubed?">- No chill cooling method</if>
+<if test="&recipe_view_items.hops.count > 0" >
+  <div class="block">
+    <h2>Hops</h2>
+    <b>Hop Utilisation Method:</b> <%= recipe_view_items.hop_utilisation_method.capitalize %>  <if test="&recipe_view_items.is_cubed?">- No chill cooling method</if>
 
-  <table id="hops_list" class="item-list">
-    <tr>
-      <th><b>Type</b></th>
-      <th><b>AA(%)</b></th>
-      <th><b>IBU</b></th>
-      <th><b>IBU(%)</b></th>
-      <th><b>Weight [<%= hop_weight_units %>]</b></th>
-      <th><b>Time(minutes)</b></th>
-    </tr>
-
-    <repeat with="&recipe_hops_list(recipe_view_items)" >
-      <tr class="<%= cycle('odd','even') -%>">
-        <td ><%= hop_type( this ) %></td>
-        <td><%= percentage(this.aa) %></td>
-        <td><%= decimal(this.ibu_l) %></td>
-        <td><%= percentage(this.percentage_ibu*100)%> </td>
-        <td><%= hop_weight_values(this.weight) %></td>
-        <td><%= hop_minutes_format( this ) %></td>
+    <table id="hops_list" class="item-list">
+      <tr>
+        <th><b>Type</b></th>
+        <th><b>AA(%)</b></th>
+        <th><b>IBU</b></th>
+        <th><b>IBU(%)</b></th>
+        <th><b>Weight [<%= hop_weight_units %>]</b></th>
+        <th><b>Time(minutes)</b></th>
       </tr>
-    </repeat>
-  </table>
-</div>
+
+      <repeat with="&recipe_hops_list(recipe_view_items)" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td ><%= hop_type( this ) %></td>
+          <td><%= percentage(this.aa) %></td>
+          <td><%= decimal(this.ibu_l) %></td>
+          <td><%= percentage(this.percentage_ibu*100)%> </td>
+          <td><%= hop_weight_values(this.weight) %></td>
+          <td><%= hop_minutes_format( this ) %></td>
+        </tr>
+      </repeat>
+    </table>
+  </div>
+</if>
+
+<!-- Kits -->
+<if test="&recipe_view_items.kits.count > 0" >
+  <div class="block">
+        <h2>Kits</h2>
+    <table id="kits_list" class="item-list">
+      <tr>
+        <th><b>Type</b></th>
+        <th><b>Quantity</b></th>
+        <th><b>IBU</b></th>
+        <th><b>IBU(%)</b></th>
+        <th><b>Gravity [<%= gravity_units %>]</b></th>
+        <th><b>Gravity(%)</b></th>
+        <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+        <th><b>Volume [<%= volume_units %>]</b></th>
+
+      </tr>
+
+      <repeat with="&recipe_kits_list(recipe_view_items)" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td ><%= kit_type( this ) %></td>
+          <td><%= decimal(this.quantity) %></td>
+          <td><%= decimal(this.ibu) %></td>
+          <td><%= percentage(this.percentage_ibu*100) %></td>
+          <td><%= gravity_values(this.points) %></td>
+          <td><%= percentage(this.percentage_points*100) %></td>
+          <td><%= kit_weight(this.kit_type) %></td>
+          <td><%= kit_volume( this.kit_type ) %></td>
+        </tr>
+      </repeat>
+    </table>
+  </div>
+</if>
 <!-- Yeast -->
 <div class="block">
   <h2>Yeast</h2>
