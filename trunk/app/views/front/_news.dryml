@@ -22,9 +22,7 @@
 
     <div class="block">
     <h3>Support for Kits</h3>
-    Added support for kits as ingredients<br/>
-
-    You can now enter can kits as ingredients for recipes.
+    Added support for kits as ingredients.<br/>
 
   </div>
 
@@ -38,11 +36,6 @@
     </ul>
     Shared recipe editing is probably what you have been looking for.<br/><br/>
     See the <a href="/help/multiuseredit">online help</a> for more details.<br/>
-  </div>
-
-  <div class="block">
-    <h3>Lock whole recipe</h3>
-    Ability to lock a whole recipe weights for fermentables and hops.  Will make behaviour similar to other recipe calculators.
   </div>
 
   <div class="block">
