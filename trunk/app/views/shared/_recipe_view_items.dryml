@@ -142,7 +142,7 @@
       <th><b>Attenuation</b></th>
       <th><b>Min Temp[<%= temp_units %>]</b></th>
       <th><b>Max Temp[<%= temp_units %>]</b></th>
-      <th><b>Alcohol Tollerance</b></th>
+      <th><b>Alcohol Tolerance</b></th>
     </tr>
 
     <repeat with="&recipe_yeast_list(recipe_view_items)" >
