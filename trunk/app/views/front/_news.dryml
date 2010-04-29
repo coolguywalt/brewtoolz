@@ -20,6 +20,14 @@
 <div id="aside-news" class="aside-news largerfont">
   <h2>News:</h2>
 
+    <div class="block">
+    <h3>Support for Kits</h3>
+    Added support for kits as ingredients<br/>
+
+    You can now enter can kits as ingredients for recipes.
+
+  </div>
+
   <div class="block">
     <h3>Shared (multi-user) recipe editing</h3>
     Multi user editing has arrived!<br/>
@@ -40,13 +48,6 @@
   <div class="block">
     <h3>No chill hops calculations</h3>
     Added ability for no chill hops calculation adjustments, and post boil hop additions (allowing negative minutes times).
-  </div>
-
-
-  <div class="block">
-    <h3>Lock hop and fermentable weights</h3>
-    Ability to lock hop and fermentable weights so that they are not automatically adjusted when the volume changes.<br/>
-    For brewday log recipes weights default to locked after the brew date has passed.
   </div>
 
 
