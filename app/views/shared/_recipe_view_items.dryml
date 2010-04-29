@@ -43,6 +43,7 @@
 
 <!-- Ingredients -->
 <!-- Fermentables -->
+<if test="&recipe_view_items.fermentables.count > 0" >
 <div class="block">
   <h2>Fermentables</h2>
   <table id="fermentables_list" class="item-list">
@@ -66,6 +67,7 @@
     </repeat>
   </table>
 </div>
+</if>
 
 <!-- Hops -->
 <if test="&recipe_view_items.hops.count > 0" >
@@ -130,6 +132,7 @@
   </div>
 </if>
 <!-- Yeast -->
+<if test="&recipe_view_items.yeasts.count > 0" >
 <div class="block">
   <h2>Yeast</h2>
   <table id="yeast_list" class="item-list">
@@ -154,6 +157,7 @@
     </repeat>
   </table>
 </div>
+</if>
 
 <if test="&recipe_view_items.misc_ingredients.count > 0" >
   <div class="block" >
