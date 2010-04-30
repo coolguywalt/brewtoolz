@@ -33,13 +33,13 @@
       <tr class="<%= cycle('odd','even') -%>">
       <td><view:name/></td>
 
-      <td><%= decimal(this.ibus) %></td>
-      <td><%= gravity_values(this.points) %></td>
+      <td><%= kit_ibus( this, recipe_edit_kits_list.volume) %></td>
+      <td><%= kit_points(this, recipe_edit_kits_list.volume) %></td>
 
       <td><%= kit_volume(this) %></td>
       <td><%= kit_weight(this) %></td>
 
-            <td><%= kit_designed_volume(this) %></td>
+      <td><%= kit_designed_volume(this) %></td>
 
 
       <td><%= link_to_remote "Add",

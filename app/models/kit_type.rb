@@ -62,4 +62,54 @@ class KitType < ActiveRecord::Base
   def is_fresh_wort?
     return (self.kit_type == :freshwort.to_s)
   end
+
+  def kit_points( target_volume, quantity=1.0 )
+    #Calculate gravity contribution in current recipe volume
+    return 0.0 unless target_volume
+
+    if is_can? then
+      lb_per_kg =  2.2046226
+      gal_per_ltr = 0.264172052
+
+      gu_lb_gal = yeild/100.0 * 46.2
+      weight_in_lbs = weight/1000.0 * quantity * lb_per_kg
+
+
+      #weight_in_lbs = points / (gu_lb_gal)
+      #weight_in_lbs / (brewery_capacity * gal_per_ltr) = points / (gu_lb_gal)
+      calc_points = weight_in_lbs * gu_lb_gal / (target_volume * gal_per_ltr)
+
+      #calc_points = weight_in_lbs / (gu_lb_gal) * brewery_capacity * gal_per_ltr
+      return calc_points
+    end
+
+    if is_fresh_wort? then
+      calc_points = points * quantity * target_volume / volume
+
+      return calc_points
+    end
+
+    #Should not get here .. means the data for the kit is incorrect
+    return 0.0
+  end
+
+  def kit_ibus( target_volume, quantity=1.0 )
+
+    return 0.0 unless target_volume
+    if is_can? then
+      # Assume ibu is per kg ltr as per beer xml
+      calc_ibu = ibus * weight/1000.0 * quantity / target_volume
+      return calc_ibu
+    end
+
+    if is_fresh_wort? then
+      # Assume ibu is per the volume in the wort kit
+      calc_ibu = ibus * quantity * volume / target_volume
+      return calc_ibu
+    end
+
+    #Should never get here.
+    return 0.0
+
+  end
 end

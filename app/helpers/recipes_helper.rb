@@ -51,8 +51,26 @@ module RecipesHelper
 			page.replace_html 'fermentables_items_div', :partial => 'shared/recipe_edit_fermentables', :object => recipe
 			page.replace_html 'hops_items_div', :partial => 'shared/recipe_edit_hops', :object => recipe
 			page.replace_html 'recipe_errors_div', :partial => 'shared/recipe_errors'
-     
+		}
 
+	end
+
+  def update_details_and_fermentables_and_kits( recipe )
+		# Need to update hops because the weight is dependent on the OG value.
+
+		render(:update) { |page|
+			if( recipe.brew_entry ) then
+				page.replace_html 'details_div', :partial => 'shared/recipe_edit_summary', :object => recipe
+			else
+				page.replace_html 'details_div', :partial => 'details', :object => recipe
+        page.replace_html 'scale_div', :partial => 'shared/recipe_scale', :object => recipe
+			end
+			page.replace_html 'fermentables_items_div', :partial => 'shared/recipe_edit_fermentables', :object => recipe
+			page.replace_html 'hops_items_div', :partial => 'shared/recipe_edit_hops', :object => recipe
+			page.replace_html 'recipe_errors_div', :partial => 'shared/recipe_errors'
+
+      page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kits', :object => recipe
+      page.replace_html 'kit_list_div', :partial => 'shared/recipe_edit_kits_list', :object => recipe
 		}
 
 	end
@@ -365,7 +383,7 @@ module RecipesHelper
 	def ajax_volume_editor
 
 		ajax_edit_field2( @recipe, "volume",
-			{ :action => :update, :controller => :recipes, :id => @recipe.id, :render => "details_and_fermentables" },
+			{ :action => :update, :controller => :recipes, :id => @recipe.id, :render => "details_and_fermentables_and_kits" },
 			BrewingUnits::values_array_for_display( current_user.units.volume, @recipe.volume, 2 ) )
 	end
 
@@ -485,7 +503,7 @@ module RecipesHelper
     return volume_values( kit.volume )
   end
 
-    def kit_designed_volume( kit )
+  def kit_designed_volume( kit )
     return "n/a" unless kit.designed_volume
     return volume_values( kit.designed_volume )
   end
@@ -493,6 +511,14 @@ module RecipesHelper
   def kit_weight( kit )
     return "n/a" unless kit.weight
     return ferm_weight_values(kit.weight)
+  end
+
+  def kit_ibus( kit, volume )
+    return decimal(ferm_weight_values(kit.kit_ibus(volume)))
+  end
+
+  def kit_points( kit, volume )
+    return gravity_values( kit.kit_points(volume))
   end
 
 	def yeast_type( yeast )

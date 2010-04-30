@@ -83,6 +83,8 @@ class RecipesController < ApplicationController
         @recipe.reload
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]
+        when "details_and_fermentables_and_kits"
+					update_details_and_fermentables_and_kits( @recipe )
 				when "details_and_fermentables"
 					update_details_and_fermentables( @recipe )
         when "details_and_hops"
