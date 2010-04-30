@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100427122424) do
+ActiveRecord::Schema.define(:version => 20100430115841) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -188,14 +188,14 @@ ActiveRecord::Schema.define(:version => 20100427122424) do
     t.datetime "updated_at"
     t.string   "name"
     t.float    "points"
+    t.float    "yeild"
     t.float    "ibus"
     t.float    "colour"
     t.float    "volume"
     t.float    "weight"
     t.text     "description"
-    t.float    "yeild"
-    t.string   "kit_type"
     t.float    "designed_volume"
+    t.string   "kit_type"
   end
 
   create_table "kits", :force => true do |t|
