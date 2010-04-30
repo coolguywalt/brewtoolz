@@ -52,31 +52,7 @@ class Kit < ActiveRecord::Base
   def points
     #Calculate gravity contribution in current recipe volume
     brewery_capacity = recipe.volume || brewery_capacity = 23.0
-
-    if kit_type.is_can? then
-      lb_per_kg =  2.2046226
-      gal_per_ltr = 0.264172052
-
-      gu_lb_gal = kit_type.yeild/100.0 * 46.2
-      weight_in_lbs = kit_type.weight/1000.0 * quantity * lb_per_kg
-
-      
-      #weight_in_lbs = points / (gu_lb_gal)
-      #weight_in_lbs / (brewery_capacity * gal_per_ltr) = points / (gu_lb_gal)
-      calc_points = weight_in_lbs * gu_lb_gal / (brewery_capacity * gal_per_ltr)
-      
-      #calc_points = weight_in_lbs / (gu_lb_gal) * brewery_capacity * gal_per_ltr
-      return calc_points
-    end
-
-    if kit_type.is_fresh_wort? then
-      calc_points = kit_type.points * quantity * kit_type.volume / brewery_capacity
-
-      return calc_points
-    end
-
-    #Should not get here .. means the data for the kit is incorrect
-    return 0.0
+    return kit_type.kit_points( brewery_capacity, quantity )
   end
 
   def percentage_points
@@ -89,29 +65,13 @@ class Kit < ActiveRecord::Base
   def percentage_ibu
 		return 0.0 if recipe.ibu <= 0.0
 
-		per_ibu = ibu / recipe.ibu
+		per_ibu = ibus / recipe.ibu
 		return per_ibu
   end
 
-  def ibu
-
+  def ibus
     brewery_capacity = recipe.volume || brewery_capacity = 23.0
-
-    if kit_type.is_can? then
-      # Assume ibu is per kg ltr as per beer xml
-      calc_ibu = kit_type.ibus * kit_type.weight/1000.0 * quantity / brewery_capacity
-      return calc_ibu
-    end
-
-    if kit_type.is_fresh_wort? then
-      # Assume ibu is per the volume in the wort kit
-      calc_ibu = kit_type.ibus * quantity * kit_type.volume / brewery_capacity
-      return calc_ibu
-    end
-
-    #Should never get here.
-    return 0.0
-
+    return kit_type.kit_ibus( brewery_capacity, quantity )
   end
 
   def weight

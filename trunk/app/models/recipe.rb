@@ -347,7 +347,7 @@ class Recipe < ActiveRecord::Base
 
     kits.each do |kit|
       next unless kit
-      total_ibu += kit.ibu
+      total_ibu += kit.ibus
     end
     return total_ibu
   end
