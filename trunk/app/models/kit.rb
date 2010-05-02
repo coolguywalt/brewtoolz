@@ -75,7 +75,13 @@ class Kit < ActiveRecord::Base
   end
 
   def weight
+    return 0.0 unless kit_type.weight
     return kit_type.weight * quantity
+  end
+
+  def kit_volume
+    return 0.0 unless kit_type.volume
+    return kit_type.volume * quantity
   end
 
 end

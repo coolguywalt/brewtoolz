@@ -20,12 +20,12 @@
 <div class="block">
   <table class="item-list">
     <tr>
-      <td><b>Target Volume [<%= volume_units %>]:</b><%= ajax_volume_editor %></td>
-      <td><b>Estimated Mash Efficiency:</b><%= ajax_eff_editor(@recipe) %>%</td>
+      <td><b>Target Volume [<%= volume_units %>]:</b><%= ajax_volume_editor( details ) %></td>
+      <td><b>Estimated Mash Efficiency:</b><%= ajax_eff_editor(details) %>%</td>
     </tr>
     <tr>
-      <td><b>Original Gravity [<%= gravity_units %>]:</b> <span id="og_s"><%= gravity_values( @recipe.og ) %></span></td>
-      <td><b>Final Gravity [<%= gravity_units %>]:</b> <%= gravity_values( @recipe.fg ) %></td>
+      <td><b>Original Gravity [<%= gravity_units %>]:</b> <span id="og_s"><%= gravity_values( details.og ) %></span></td>
+      <td><b>Final Gravity [<%= gravity_units %>]:</b> <%= gravity_values( details.fg ) %></td>
     </tr>
   </table>
 </div>
@@ -36,19 +36,19 @@
 <div class="block">
   <table class="item-list">
     <tr>
-      <td><b>Alcohol By Volume:</b><span id="abv"><%= @recipe.abv %></span>%</td>
-      <td><b>Estimated Attenuation:</b> <span id="atten"><%= percentage(@recipe.attenuation*100) %></span></td>
+      <td><b>Alcohol By Volume:</b><span id="abv"><%= details.abv %></span>%</td>
+      <td><b>Estimated Attenuation:</b> <span id="atten"><%= percentage(details.attenuation*100) %></span></td>
     </tr>
     <tr>
-      <td><b>Bitterness [IBU]:</b> <span id="ibu_tot"><%= number_with_precision( @recipe.ibu, 2 ) %></span></td>
-      <td><b>Color [SRM(EBC)]:</b> <span id="colour"><%= number_with_precision( @recipe.srm, 2 ) %> (<%= number_with_precision( @recipe.ebc, 2 ) %>)</span></td>
+      <td><b>Bitterness [IBU]:</b> <span id="ibu_tot"><%= number_with_precision( details.ibu, 2 ) %></span></td>
+      <td><b>Color [SRM(EBC)]:</b> <span id="colour"><%= number_with_precision( details.srm, 2 ) %> (<%= number_with_precision( details.ebc, 2 ) %>)</span></td>
     </tr>
   </table>
   <table class="item-list">
     <tr>
-      <td><b>BU:GU ratio:</b> <span id="bugu"><%= number_with_precision( @recipe.bugu, 3 ) %></span></td>
-      <td><b>Real Terminal Extract :</b> <span id="rte"><%= number_with_precision( @recipe.rte, 2 ) %></span></td>
-      <td><b>Balance:</b> <span id="bal"><%= number_with_precision( @recipe.balance, 3 ) %></span></td>
+      <td><b>BU:GU ratio:</b> <span id="bugu"><%= number_with_precision( details.bugu, 3 ) %></span></td>
+      <td><b>Real Terminal Extract :</b> <span id="rte"><%= number_with_precision( details.rte, 2 ) %></span></td>
+      <td><b>Balance:</b> <span id="bal"><%= number_with_precision( details.balance, 3 ) %></span></td>
     </tr>
   </table>
 </div>
