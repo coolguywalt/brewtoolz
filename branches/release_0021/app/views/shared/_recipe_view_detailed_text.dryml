@@ -36,8 +36,9 @@ Colour [SRM(EBC)]:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_te
 Balance:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.balance, 3 ) %><br/>
 BU:GU ratio:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.bugu, 3 ) %><br/>
 <br/>
-<p>-------------------------------------------------------------------------</p>
+
 <if test="&recipe_view_detailed_text.mash_steps.count > 0" >
+<p>-------------------------------------------------------------------------</p>
   Mash schedule:<br/>
   Name - Type - Temperature - Time[Minutes]<br/>
   <repeat with="&recipe_mashprofile_list(recipe_view_detailed_text)">
@@ -45,10 +46,9 @@ BU:GU ratio:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.bug
   </repeat>
   <br/>
 </if>
-
-
 <!-- Ingredients -->
 <!-- Fermentables -->
+ <if test="&recipe_view_detailed_text.fermentables.count > 0" >
 <p>-------------------------------------------------------------------------</p>
  Fermentables:<br/>
  Type - Weight[<%= ferm_weight_units %>] - Gravity[<%= gravity_units %>] - Weight(%)<br/>
@@ -56,10 +56,12 @@ BU:GU ratio:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.bug
         <%=  fermentable_type( this ) %> - <%= ferm_weight_values(this.weight)%><%= ferm_weight_units %> - <%= gravity_values(this.points) %> - <%= percentage(this.percentage_weight * 100) %><br/>
     </repeat>
  <br/>
+ </if>
  <!-- Hops -->
+ <if test="&recipe_view_detailed_text.hops.count > 0" >
 <p>-------------------------------------------------------------------------</p>
 Hops:<br/>
-Hop Utilisation Method: <%= recipe_view_items.hop_utilisation_method.capitalize %>  <if test="&recipe_view_items.is_cubed?">- No chill cooling method</if><br/>
+Hop Utilisation Method: <%= recipe_view_detailed_text.hop_utilisation_method.capitalize %>  <if test="&recipe_view_detailed_text.is_cubed?">- No chill cooling method</if><br/>
 
 Type - Time[minutes] - Weight[<%= hop_weight_units %>] - AA(%) - IBU  <br/>
 
@@ -67,8 +69,22 @@ Type - Time[minutes] - Weight[<%= hop_weight_units %>] - AA(%) - IBU  <br/>
 <%= hop_type( this ) %> - @<%= hop_minutes_format( this ) %> - <%= hop_weight_values(this.weight) %><%= hop_weight_units %> - <%= percentage(this.aa) %> - <%= decimal(this.ibu_l) %><br/>
     </repeat>
 <br/>
-<!-- Yeast -->
+ </if>
 
+  <if test="&recipe_view_detailed_text.kits.count > 0" >
+<p>-------------------------------------------------------------------------</p>
+Kits:<br/>
+Type - Quantity - IBU - IBU(%) - Gravity [<%= gravity_units %>] - Gravity(%) - Volume [<%= volume_units %>] - Weight [<%= ferm_weight_units %>]<br/>
+    <repeat with="&recipe_kits_list(recipe_view_detailed_text)" >
+<%= kit_type(this) %> - <%= number_with_precision( this.quantity, 2 ) %> - <%= number_with_precision( this.ibus, 2 ) %> -
+<%= percentage(this.percentage_ibu * 100) %> - <%= gravity_values(this.points) %> - <%= percentage(this.percentage_points * 100) %> -
+<%= kit_volume(this.kit_type) %> - <%= kit_weight(this.kit_type) %><br/>
+    </repeat>
+<br/>
+ </if>
+
+<!-- Yeast -->
+<if test="&recipe_view_detailed_text.yeasts.count > 0" >
 <p>-------------------------------------------------------------------------</p>
 Yeast:
 Type - Attenuation% - Min Temp[<%= temp_units %>] - Max Temp[<%= temp_units %>]<br/>
@@ -76,7 +92,7 @@ Type - Attenuation% - Min Temp[<%= temp_units %>] - Max Temp[<%= temp_units %>]<
 <%= yeast_type( this ) %> - <%= percentage(this.yeast_type.attenuation) %> - <%= temp_values( this.yeast_type.min_temp ) %><%= temp_units %> - <%= temp_values( this.yeast_type.max_temp ) %><%= temp_units %><br/>
     </repeat>
 <br/>
-
+</if>
 <if test="&recipe_view_detailed_text.misc_ingredients.count > 0" >
 <p>-------------------------------------------------------------------------</p>
 Miscellaneous:<br/>
