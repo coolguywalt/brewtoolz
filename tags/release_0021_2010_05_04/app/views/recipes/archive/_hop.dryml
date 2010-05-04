@@ -1,0 +1,10 @@
+<tr class="<%= cycle('odd','even') -%>">
+  <td><%= hop_type(hop) %></td>  
+  <td><%= ajax_aa_editor(hop) %></td>
+  <td><%= ajax_ibu_editor(hop) %></td>
+  <td><%= percentage(hop.percentage_ibu * 100) %></td>
+  <td><%= ajax_hop_weight_editor(hop) %></td>
+  <td><%= ajax_minutes_editor(hop) %></td>
+  <td><%= del_hop_link(hop) %></td>
+  
+</tr>

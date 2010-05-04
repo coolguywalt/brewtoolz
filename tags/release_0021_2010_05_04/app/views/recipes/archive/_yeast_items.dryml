@@ -1,0 +1,12 @@
+    <table id="hops_list" class="item-list">
+      <tr>
+        <th><b>Type</b></th>
+        <th><b>Flocculation</b></th>
+        <th><b>Attenuation</b></th>
+        <th><b>Min Temp[<%= temp_units %>]</b></th>
+        <th><b>Max Temp[<%= temp_units %>]</b></th>
+        <th><b>Alcohol Tollerance</b></th>
+        <th><b> </b></th>
+      </tr>
+      <%= render :partial => 'yeast', :collection => recipe_yeast_list(@recipe) %>
+    </table>
