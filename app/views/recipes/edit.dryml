@@ -36,7 +36,7 @@
     <br/>
 
     <div id="details_div">
-      <%= render :partial => 'details', :object => @recipe %>
+      <%= render :partial => 'details' %>
     </div>
 
     <div id="scale_div">

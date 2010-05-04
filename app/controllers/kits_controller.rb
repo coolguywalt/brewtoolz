@@ -17,8 +17,6 @@
 
 class KitsController < ApplicationController
 
-  include RecipesHelper
-
   hobo_model_controller
 
   auto_actions :all
@@ -41,7 +39,7 @@ class KitsController < ApplicationController
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]
 				when "details_and_kit"
-					update_details_and_kits(@kit.recipe)
+					update_details_and_kit( @kit )
         when "none"
           render( :nothing => true )
 				else
