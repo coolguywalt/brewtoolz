@@ -219,7 +219,7 @@
 <def tag="form" for="User">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, email_address, administrator, default_locked_recipes" param/>
+    <field-list fields="name, email_address, administrator, default_locked_recipes, last_activity" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>

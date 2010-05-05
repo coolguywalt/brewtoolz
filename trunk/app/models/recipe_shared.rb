@@ -42,4 +42,22 @@ class RecipeShared < ActiveRecord::Base
      
   end
 
+  def updated_since?( time )
+
+    logger.debug "++updated_since: time #{time}"
+
+    return false unless time
+    return false unless last_updated
+
+    logger.debug "++updated_since: last_updated #{last_updated}"
+
+    return (time < last_updated)
+  end
+
+  def mark_update( time=nil )
+    time = DateTime.now unless time
+    self.last_updated = time
+    save
+  end
+
 end

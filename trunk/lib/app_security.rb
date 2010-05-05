@@ -25,8 +25,12 @@ module AppSecurity
 
   def audit_log( request, user )
 
-    return if request.remote_ip == "66.154.123.72" # Dont bother logging the monit html pings
+    return if request.remote_ip == "66.154.123.72" # Don't bother logging the monit html pings
+    return if request.path =~ /check_shared_updates/
+    return if request.env["HTTP_USER_AGENT"][/Slurp/]  #Filter out yahoo search engine hits
+    return if request.env["HTTP_USER_AGENT"][/Googlebot/] #Filter out google search engine hits
 
+    #Create log.
     Audit.new do |al|
 
       if user
@@ -49,5 +53,13 @@ module AppSecurity
 
       al.save
     end
+
+    unless user.guest? then
+      #Updated user timestamp
+      @user = User.find(user.id)
+      @user.last_activity = Time.now.to_i
+      @user.save
+    end
+
   end
 end

@@ -81,6 +81,8 @@ class RecipesController < ApplicationController
 			if request.xhr?
         @recipe.save
         @recipe.reload
+
+         @recipe.mark_update(  "Recipe update: #{params}")
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]
         when "details_and_fermentables_and_kits"
@@ -229,7 +231,11 @@ class RecipesController < ApplicationController
     new_og = @recipe.og
     @recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
+    @recipe.mark_update(  "Fermentable removed")
+
 		update_details_and_fermentables( @recipe )
+
+
 	end
 
 	def remove_hop
@@ -244,6 +250,9 @@ class RecipesController < ApplicationController
     end
 
 		Hop.delete(params[:hop_id])
+
+     @recipe.mark_update( "Hop removed")
+
 		update_details_and_hops( @recipe )
 	end
 
@@ -259,6 +268,9 @@ class RecipesController < ApplicationController
 		end
 
 		Yeast.delete(params[:yeast_id])
+
+    @recipe.mark_update( "Yeast removed")
+
 		update_details_and_yeast( @recipe )
 	end
 
@@ -266,7 +278,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @shared_user = RecipeUserShared.find(params[:shared_user_id])
 
-    if !@shared_user.can_remove(current_user)
+    if !@shared_user.can_remove(current_user) 
       #      flash[:error] = "Delete yeast - permission denied."
       #      update_details_and_yeast( @recipe )
       notifyattempt(request, "RecipesController.remove_shared_user not from authorized user: #{current_user}")
@@ -314,6 +326,8 @@ class RecipesController < ApplicationController
     new_og = @recipe.og
     @recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
+    @recipe.mark_update(  "Added fermentable: #{@fermentable}")
+
 		update_details_and_fermentables( @recipe )
 	end
 
@@ -340,7 +354,9 @@ class RecipesController < ApplicationController
  		# Create new kit
 		@kit = @recipe.kits.create( :kit_type => @kit_type, :quantity => 1.0 )
 
- 
+
+    @recipe.mark_update(  "Kit added: #{@kit}")
+
 		update_details_and_kits( @recipe )
 	end
 
@@ -365,7 +381,7 @@ class RecipesController < ApplicationController
 
 		# Create new hop
 		@hop = @recipe.hops.create(:hop_type => @hop_type, :ibu_l => 10.0, :minutes => 60, :aa => @hop_type.aa)
-
+    @recipe.mark_update(  "Added hop: #{@hop}")
 
 		update_details_and_hops( @recipe )
 	end
@@ -391,7 +407,7 @@ class RecipesController < ApplicationController
 
 		# Create new yeast
 		@yeast = @recipe.yeasts.create(:yeast_type => @yeast_type, :amount_to_pitch => 1.0)
-
+    @recipe.mark_update(  "Added yeast: #{@yeast}")
 		update_details_and_yeast( @recipe )
 	end
 
@@ -584,6 +600,8 @@ class RecipesController < ApplicationController
     }
     @recipe.reload
 
+    @recipe.mark_update( "Update hop utilsation: #{params}")
+
     update_details_and_hops( @recipe )
   end
 
@@ -616,6 +634,8 @@ class RecipesController < ApplicationController
     }
     @recipe.reload
     
+
+     @recipe.mark_update( "Changed no chill status: #{params}")
 
     update_details_and_hops( @recipe )
   end
@@ -727,6 +747,7 @@ class RecipesController < ApplicationController
 		# Create new hop
 		@mashstep = @recipe.mash_steps.create(:name => 'Sacchrification', :steptype => 'infusion', :time => 60, :temperature => 67.0)
 
+    @recipe.mark_update(  "Mash step added: #{@mashstep}")
 
 		render_mashsteps( @recipe )
 	end
@@ -752,6 +773,8 @@ class RecipesController < ApplicationController
 
 		@mash_step.save
 
+    @mash_step.recipe.mark_update( "Update mash step: #{params}")
+
 		render_mashsteps( @recipe)
 
 	end
@@ -768,6 +791,9 @@ class RecipesController < ApplicationController
     end
 
 		MashStep.delete(params[:mashstep_id])
+
+    @recipe.mark_update( "Mashstep removed")
+
 		render_mashsteps( @recipe)
 	end
 
@@ -793,6 +819,7 @@ class RecipesController < ApplicationController
 		# Create new hop
 		@misc = @recipe.misc_ingredients.create()
 
+    @recipe.mark_update(  "Misc. ingredient added")
 
 		render_misc( @recipe )
 	end
@@ -833,6 +860,9 @@ class RecipesController < ApplicationController
     end
 
 		MiscIngredient.delete(params[:misc_id])
+
+    @recipe.mark_update( "Misc removed")
+
 		render_misc( @recipe)
 	end
 
@@ -896,7 +926,7 @@ class RecipesController < ApplicationController
 
 		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user) || !request.xhr?
+    if !@recipe.updatable_by?(current_user) or !request.xhr? or !@recipe.is_owner?(current_user)
       #      flash[:error] = "Delete misc - permission denied."
       #      render_misc( @recipe )
       notifyattempt(request, "RecipesController.validate_shared_user not from authorized user: #{current_user}")
@@ -930,6 +960,44 @@ class RecipesController < ApplicationController
   
     update_shared_users( @recipe, error_list )
   end
+
+  #Refresh the recipe if it has been edited
+  def check_shared_updates
+    @recipe = Recipe.find(params[:id])
+    @last_refreshed = Time.at( params[:last_refreshed].to_i )
+    #last_time = session["last_refeshed_#{@recipe.id}"]
+    #last_time = Time.now unless last_time
+    #@last_refreshed = Time.at( last_time.to_i )
+
+    logger.debug "++check_shared_updates: last refeshed: #{@last_refreshed}"
+
+    if @recipe.is_dirty?( @last_refreshed ) then
+      #Refresh all the recipe data.
+
+      logger.debug "++check_shared_updates: Page dirty, refreshing for user: #{current_user} recipe: #{@recipe}"
+
+      #session["last_refeshed_#{@recipe.id}"] = Time.now.to_i
+
+      update_all( @recipe )
+
+
+    else
+      
+      if (@last_refreshed < 10.minutes.ago) then
+        update_shared_users( @recipe )  #Updated the online status of the shared users
+      else
+        render( :nothing => true )
+      end
+      
+      
+    end
+  end
+
+  
+#  def mark_update( recipe, msg=nil )
+#    recipe.mark_update( msg)
+#    # session["last_refeshed_#{recipe.id}"] = Time.now.to_i
+#  end
 
 end
 

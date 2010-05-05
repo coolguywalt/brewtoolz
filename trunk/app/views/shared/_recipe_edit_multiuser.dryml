@@ -16,13 +16,6 @@
 
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
-
-<br/>
-<div class="navigation-div">
-  <recipeedit-nav current="multiuser"/><br/>
-</div>
-
-
 <!-- if test="&recipe_edit_multiuser.is_owner?" -->
 <div id="invite_people">
   <h2><b>Add people:</b></h2>

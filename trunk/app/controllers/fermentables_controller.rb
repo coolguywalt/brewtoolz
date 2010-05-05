@@ -49,6 +49,8 @@ class FermentablesController < ApplicationController
       new_og = @fermentable.recipe.og
       @fermentable.recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
+       @fermentable.recipe.mark_update("Fermentable update: #{params}")
+
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]

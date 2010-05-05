@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def logaction
-    logger.debug "Called audit log"
+    #logger.debug "Called audit log"
 
     audit_log( request, current_user )
 
