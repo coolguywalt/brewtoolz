@@ -26,7 +26,9 @@ module AppSecurity
   def audit_log( request, user )
 
     return if request.remote_ip == "66.154.123.72" # Dont bother logging the monit html pings
-
+    return if request.env["HTTP_USER_AGENT"][/Slurp/]  #Filter out yahoo search engine hits
+    return if request.env["HTTP_USER_AGENT"][/Googlebot/] #Filter out google search engine hits
+    
     Audit.new do |al|
 
       if user
