@@ -21,10 +21,15 @@ class Guest < Hobo::Guest
     false
   end
 
-    def units
+  def units
     # Get session units object or create one if it does not exist.
-	# TODO: extened to make a guess of local and generate units accordingly
+    # TODO: extened to make a guess of local and generate units accordingly
     return IngredientUnitPreference.new()
+  end
+
+  #Meaningless for guest user
+  def is_online?
+    return true
   end
 
 end

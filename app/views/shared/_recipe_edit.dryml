@@ -19,21 +19,15 @@
 
 <%= render :partial => 'shared/recipe_errors' %>
 
-<div class="block">
-  <table>
-    <tr>
-      <td><%=ajax_lock_edit(recipe_edit, "locked", "recipes", "update", "details_and_fermentables", false, true )%></td>
-      <td><b>Lock all recipe weights</b></td>
-    </tr>
-  </table>
+<div class="block" id="lock_all_div">
+  <%= render :partial => 'shared/recipe_lock_all', :object => recipe_edit %>
 </div>
-
 
 <div id="menu">
   <br/>
   <div id="fermentables_div" >
     <div class="navigation-div">
-      <recipeedit-nav current="fermentables"/><br/>
+      <recipeedit-nav current="fermentables" is-owner="&recipe_edit.is_owner?(current_user)"/><br/>
     </div>
     <br/>
     <div id="fermentables_items_div">
@@ -44,11 +38,9 @@
     </div>
   </div>
 
-
   <div id="hops_div" class="hidden">
-
     <div class="navigation-div">
-      <recipeedit-nav current="hops"/><br/>
+      <recipeedit-nav current="hops"  is-owner="&recipe_edit.is_owner?(current_user)"/><br/>
     </div>
     <br/>
     <div id="hops_items_div" class="item-list-unlimited">
@@ -58,12 +50,11 @@
     <div id="hops_list_div" class="item-list">
       <%= render :partial => 'shared/recipe_edit_hops_list', :object => recipe_edit %>
     </div>
-
   </div>
 
   <div id="kits_div" class="hidden">
     <div class="navigation-div">
-      <recipeedit-nav current="kits"/><br/>
+      <recipeedit-nav current="kits"  is-owner="&recipe_edit.is_owner?(current_user)"/><br/>
     </div>
     <br/>
     <div id="kit_items_div" class="item-list-unlimited">
@@ -76,22 +67,60 @@
   </div>
 
   <div id="yeast_div" class="hidden">
-    <%= render :partial => 'shared/recipe_edit_yeasts', :object => recipe_edit %>
+    <br/>
+    <div class="navigation-div">
+      <recipeedit-nav current="yeast" is-owner="&recipe_edit.is_owner?(current_user)"/><br/>
+    </div>
+    <div id="yeast_items_div">
+      <%= render :partial => 'shared/recipe_edit_yeasts', :object => recipe_edit %>
+    </div>
+    <div>
+      <%= render :partial => 'shared/recipe_edit_yeasts_list', :object => recipe_edit %>
+    </div>
   </div>
 
   <div id="misc_div" class="hidden">
-    <%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
+    <br/>
+    <div class="navigation-div">
+      <recipeedit-nav current="misc" is-owner="&recipe_edit.is_owner?(current_user)"/><br/>
+    </div>
+    <div id="misc_items_div">
+      <%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
+    </div>
+    <%= link_to_remote "Add misc",
+      :loading => "Hobo.showSpinner('Adding Misc Item');",
+      :complete => "Hobo.hideSpinner();",
+      :url => { :controller => "recipes", :action => "add_misc", :id => recipe_edit.id  },
+      :html => { :class => 'button small-button' } %>
+    <br/><br/>
   </div>
 
   <div id="mashprofile_div" class="hidden">
-    <%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
+    <br/>
+    <div class="navigation-div">
+      <recipeedit-nav current="mash profile" is-owner="&recipe_edit.is_owner?(current_user)"/><br/>
+    </div>
+    <div id="mashprofile_items_div">
+      <%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
+    </div>
+    <div>
+      <%= render :partial => 'shared/recipe_edit_mashprofile_list', :object => recipe_edit %>
+    </div>
   </div>
 
   <div id="sharededit_div" class="hidden">
-    <if test="&!recipe_edit.is_brewday?">
+    <if test="&recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?">
+      <br/>
+      <div class="navigation-div">
+        <recipeedit-nav current="multiuser" is-owner="&recipe_edit.is_owner?"/><br/>
+      </div>
       <%= render :partial => 'shared/recipe_edit_multiuser', :object => recipe_edit %>
     </if>
+  </div>
 
+  <br/><br/>
+  <div class="block" id="recipe_log_div">
+    Update log to go here.
   </div>
 
 </div>

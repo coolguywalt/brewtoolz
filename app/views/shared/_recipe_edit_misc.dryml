@@ -18,11 +18,6 @@
 -->
 
 <br/>
-<div class="navigation-div">
-  <recipeedit-nav current="misc"/><br/>
-</div>
-
-<br/>
 <div class="item-list-unlimited" id="misc_items">
   <table id="misc_list" class="item-list">
     <thead>
@@ -85,12 +80,6 @@
   </table>
 </div>
 <br/>
-<%= link_to_remote "Add misc",
-  :loading => "Hobo.showSpinner('Adding Misc Item');",
-  :complete => "Hobo.hideSpinner();",
-  :url => { :controller => "recipes", :action => "add_misc", :id => recipe_edit_misc.id  },
-  :html => { :class => 'button small-button' } %>
 
-<br/><br/>
 
 

@@ -47,6 +47,9 @@ class MiscIngredientsController < ApplicationController
 		params[:misc_ingredient].delete(:amount)
 
 		if @misc.update_attributes(params[:misc_ingredient])
+
+       @misc.recipe.mark_update( "Misc update: #{params}")
+
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]

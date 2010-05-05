@@ -277,3 +277,8 @@ body {
 .shadow {
    -moz-box-shadow: 0 4px 10px #8B8B8B;
 }
+
+.green-bold {
+    font-weight: bold;
+    color: green;
+}

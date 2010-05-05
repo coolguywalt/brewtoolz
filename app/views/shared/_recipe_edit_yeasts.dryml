@@ -18,12 +18,7 @@
 -->
 
 <br/>
-<div class="navigation-div">
-	<recipeedit-nav current="yeast"/><br/>
-</div>
-
-<br/>
-<div id="yeast_items" class="item-list-unlimited">
+<div class="item-list-unlimited">
 <!-- %= render :partial => 'yeast_items' % -->
 <table id="yeasts_list" class="item-list">
   <tr>
@@ -52,24 +47,4 @@
   </tbody>
 </table>
 
-</div>
-
-<!-- Yeast selection list. -->
-<h3><b>Select yeast:</b></h3>
-<div class="item-list" >
-  <table id="yeast_list" class="item-list" >
-    <th>Type</th><th> </th>
-    <tbody class="scroll-list">
-      <repeat with="&YeastType.find(:all, :order => 'name')" >
-        <tr class="<%= cycle('odd','even') -%>">
-          <td><view:name/></td>
-          <td><%= link_to_remote "Add",
-          :loading => "Hobo.showSpinner('Adding yeast');",
-          :complete => "Hobo.hideSpinner();",
-              :url => { :controller => "recipes", :action => "add_yeast", :id => recipe_edit_yeasts.id, :yeast_type_id => this.id},
-              :html => { :class => 'button small-button', :id => "yeast_#{this.id}" }  %></td>
-        </tr>
-      </repeat>
-    </tbody>
-  </table>
 </div>

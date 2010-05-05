@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 		email_address :email_address
 		administrator :boolean, :default => false
     default_locked_recipes :boolean, :default => false
+    last_activity :integer
 		timestamps
 	end
 
@@ -111,5 +112,10 @@ class User < ActiveRecord::Base
 		return ingredient_unit_preference
 	end
 
+
+  def is_online?
+    return false unless last_activity
+    return (10.minutes.ago.to_i < last_activity)
+  end
 
 end

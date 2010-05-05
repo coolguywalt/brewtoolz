@@ -18,27 +18,27 @@
 -->
 
 <div class="block">
-        <table class="item-list">
-          <tr>
-            <td><b>Estimated Original Gravity[<%= gravity_units %>]:</b></td><td><span class="big"><%= gravity_values( recipe_edit_summary.og ) %></span> </td>
-            <td><b>Estimated Final Gravity[<%= gravity_units %>]:</b></td><td><span class="big"><%= gravity_values( recipe_edit_summary.fg ) %></span></td>
-          </tr>
-          <tr>
-            <td><b>Estimated Attenuation:</b></td><td><span class="big"><%= percentage(recipe_edit_summary.attenuation*100) %></span></td>
-            <td><b>Estimated Mash Efficiency:</b></td><td><span class="big"><%= ajax_eff_editor(recipe_edit_summary)  %></span></td>
-          </tr>
-        </table>
-      </div>
-      <br/>
-      <div class="block">
-        <table class="item-list">
-          <tr>
-            <td><b>Bitterness [IBU]:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_edit_summary.ibu, 2 ) %></span></td>
-            <td><b>Colour [SRM(EBC)]:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_edit_summary.srm, 2 ) %> (<%= number_with_precision( recipe_edit_summary.ebc, 2 ) %>)</span></td>
-          </tr>
-          <tr>
-            <td><b>Balance:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_edit_summary.balance, 3 ) %></span></td>
-            <td><b>BU:GU ratio:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_edit_summary.bugu, 3 ) %></span></td>
-          </tr>
-        </table>
-      </div>
+  <table class="item-list">
+    <tr>
+      <td><b>Estimated Original Gravity[<%= gravity_units %>]:</b></td><td><span class="big"><%= gravity_values( recipe_edit_summary.og ) %></span> </td>
+      <td><b>Estimated Final Gravity[<%= gravity_units %>]:</b></td><td><span class="big"><%= gravity_values( recipe_edit_summary.fg ) %></span></td>
+    </tr>
+    <tr>
+      <td><b>Estimated Attenuation:</b></td><td><span class="big"><%= percentage(recipe_edit_summary.attenuation*100) %></span></td>
+      <td><b>Estimated Mash Efficiency:</b></td><td><span class="big"><%= ajax_eff_editor(recipe_edit_summary)  %></span></td>
+    </tr>
+  </table>
+</div>
+<br/>
+<div class="block">
+  <table class="item-list">
+    <tr>
+      <td><b>Bitterness [IBU]:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_edit_summary.ibu, 2 ) %></span></td>
+      <td><b>Colour [SRM(EBC)]:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_edit_summary.srm, 2 ) %> (<%= number_with_precision( recipe_edit_summary.ebc, 2 ) %>)</span></td>
+    </tr>
+    <tr>
+      <td><b>Balance:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_edit_summary.balance, 3 ) %></span></td>
+      <td><b>BU:GU ratio:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_edit_summary.bugu, 3 ) %></span></td>
+    </tr>
+  </table>
+</div>

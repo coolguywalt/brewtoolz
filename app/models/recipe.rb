@@ -121,8 +121,9 @@ class Recipe < ActiveRecord::Base
     return recipe_shared.can_edit(acting_user)
   end
 
-  def is_owner?
-    user_is? acting_user
+  def is_owner?( user=nil )
+    return (user_is? acting_user) unless user
+    return self.user == user
   end
 
   def initialize(params = nil)
@@ -695,6 +696,17 @@ class Recipe < ActiveRecord::Base
       recipe_shared.recipe_user_shared.create( :user => user, :shared_state => :invited.to_s, :can_edit => true )
     end
     
+  end
+
+  def is_dirty?( time )
+    return false unless is_shared?
+    time = DateTime.now.minutes_ago( 10 ) unless time
+    return recipe_shared.updated_since?(time)
+  end
+
+  def mark_update( msg=nil )
+    return unless is_shared?
+    recipe_shared.mark_update
   end
 
 end

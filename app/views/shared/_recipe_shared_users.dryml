@@ -1,14 +1,19 @@
 <br/>
+
+<p id="last_updated" class="hidden"><%= Time.now().to_i %></p>
+
 <if test="&(recipe_shared_users.recipe_shared) and (recipe_shared_users.recipe_shared.recipe_user_shared.count > 0)" >
-  Owner: <b><%= recipe_shared_users.user %></b><br/>
+   <% owclass = (recipe_shared_users.user.is_online? ? 'green-bold' : '') %>
+  Owner: <b><span class="#{owclass}"><%= recipe_shared_users.user %></span></b><br/>
   Shared with:<br/>
   <table class="item-list" >
     <th>Name</th><th> </th>
 
     <repeat with="&recipe_shared_users.recipe_shared.recipe_user_shared">
 
+      <% aaclass = (this.user.is_online? ? 'green-bold' : '') %>
       <tr class="<%= cycle('odd','even') -%>">
-        <td><view:user/></td>
+        <td><span class="#{aaclass}"><%= this.user %></span></td>
       <td>
       <if test="&this.can_remove(current_user)">
         <%= del_shared_user_link( recipe_shared_users, this ) %>

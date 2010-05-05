@@ -37,6 +37,9 @@ class KitsController < ApplicationController
     end
 
 		if @kit.update_attributes(params[:kit])
+
+      @kit.recipe.mark_update("Kit update: #{params}")
+
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]

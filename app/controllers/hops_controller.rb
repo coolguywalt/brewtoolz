@@ -68,6 +68,8 @@ class HopsController < ApplicationController
       #Force reload of parent recipe record.
       # @hop.recipe.reload
 
+      @hop.recipe.mark_update( "Hop update: #{params}")
+
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]
