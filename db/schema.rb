@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100505015220) do
+ActiveRecord::Schema.define(:version => 20100506112206) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -204,6 +204,16 @@ ActiveRecord::Schema.define(:version => 20100505015220) do
     t.integer  "recipe_id"
     t.float    "quantity"
     t.integer  "kit_type_id"
+  end
+
+  create_table "log_messages", :force => true do |t|
+    t.text     "message"
+    t.datetime "msgtime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.text     "msgtype"
+    t.integer  "recipe_id"
   end
 
   create_table "mash_steps", :force => true do |t|
