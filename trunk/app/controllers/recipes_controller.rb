@@ -73,6 +73,13 @@ class RecipesController < ApplicationController
       return
     end
 
+        # Create log message before conversions applied.
+    msg=""
+    params[:recipe].each_pair{ |key, value|
+      msg += "#{key.capitalize} => #{value} "
+    }
+
+
 		#Do unit conversions if required.
 		params[:recipe][:volume] = BrewingUnits::input_recipe_vol( params[:recipe][:volume], current_user.units.volume ) if params[:recipe][:volume]
     params[:recipe][:og] = BrewingUnits::input_gravity( params[:recipe][:og], current_user.units.gravity ) if  params[:recipe][:og]
@@ -82,7 +89,10 @@ class RecipesController < ApplicationController
         @recipe.save
         @recipe.reload
 
-         @recipe.mark_update(  "Recipe update: #{params}")
+        #Determine log messages.
+        msg = "Details (Name, Type, Description)" if params[:recipe][:name]
+
+         @recipe.mark_update(  "Recipe update: #{msg}", current_user)
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]
         when "details_and_fermentables_and_kits"
@@ -225,13 +235,16 @@ class RecipesController < ApplicationController
 
     old_og = @recipe.og
 
+    fermentable = Fermentable.find(params[:comment])
+    fermname = fermentable.fermentable_type.name
+    
 		Fermentable.delete(params[:comment])
     
 		@recipe = Recipe.find(params[:id])
     new_og = @recipe.og
     @recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
-    @recipe.mark_update(  "Fermentable removed")
+    @recipe.mark_update(  "Fermentable [#{fermname}] removed", current_user)
 
 		update_details_and_fermentables( @recipe )
 
@@ -249,9 +262,12 @@ class RecipesController < ApplicationController
       return
     end
 
+    hop = Hop.find(params[:hop_id])
+    hopname = hop.hop_type.name
+
 		Hop.delete(params[:hop_id])
 
-     @recipe.mark_update( "Hop removed")
+     @recipe.mark_update( "Hop [#{hopname}] removed", current_user)
 
 		update_details_and_hops( @recipe )
 	end
@@ -267,9 +283,11 @@ class RecipesController < ApplicationController
       return
 		end
 
+    yeast = Yeast.find(params[:yeast_id])
+    yeastname = yeast.yeast_type.name
 		Yeast.delete(params[:yeast_id])
 
-    @recipe.mark_update( "Yeast removed")
+    @recipe.mark_update( "Yeast [#{yeastname}] removed", current_user)
 
 		update_details_and_yeast( @recipe )
 	end
@@ -326,7 +344,7 @@ class RecipesController < ApplicationController
     new_og = @recipe.og
     @recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
-    @recipe.mark_update(  "Added fermentable: #{@fermentable}")
+    @recipe.mark_update(  "Added fermentable: #{@fermentable_type.name}", current_user)
 
 		update_details_and_fermentables( @recipe )
 	end
@@ -355,7 +373,7 @@ class RecipesController < ApplicationController
 		@kit = @recipe.kits.create( :kit_type => @kit_type, :quantity => 1.0 )
 
 
-    @recipe.mark_update(  "Kit added: #{@kit}")
+    @recipe.mark_update(  "Kit added: #{@kit_type.name}", current_user)
 
 		update_details_and_kits( @recipe )
 	end
@@ -381,7 +399,7 @@ class RecipesController < ApplicationController
 
 		# Create new hop
 		@hop = @recipe.hops.create(:hop_type => @hop_type, :ibu_l => 10.0, :minutes => 60, :aa => @hop_type.aa)
-    @recipe.mark_update(  "Added hop: #{@hop}")
+    @recipe.mark_update(  "Added hop: #{@hop_type.name}", current_user)
 
 		update_details_and_hops( @recipe )
 	end
@@ -407,7 +425,7 @@ class RecipesController < ApplicationController
 
 		# Create new yeast
 		@yeast = @recipe.yeasts.create(:yeast_type => @yeast_type, :amount_to_pitch => 1.0)
-    @recipe.mark_update(  "Added yeast: #{@yeast}")
+    @recipe.mark_update(  "Added yeast: #{@yeast_type.name}", current_user)
 		update_details_and_yeast( @recipe )
 	end
 
@@ -600,7 +618,9 @@ class RecipesController < ApplicationController
     }
     @recipe.reload
 
-    @recipe.mark_update( "Update hop utilsation: #{params}")
+
+
+    @recipe.mark_update( "Updated hop utilsation method to #{params[:util_method].capitalize}", current_user)
 
     update_details_and_hops( @recipe )
   end
@@ -635,7 +655,7 @@ class RecipesController < ApplicationController
     @recipe.reload
     
 
-     @recipe.mark_update( "Changed no chill status: #{params}")
+    @recipe.mark_update( "Changed no chill status to #{params[:recipe][:hop_cubed].capitalize}", current_user)
 
     update_details_and_hops( @recipe )
   end
@@ -747,7 +767,7 @@ class RecipesController < ApplicationController
 		# Create new hop
 		@mashstep = @recipe.mash_steps.create(:name => 'Sacchrification', :steptype => 'infusion', :time => 60, :temperature => 67.0)
 
-    @recipe.mark_update(  "Mash step added: #{@mashstep}")
+    @recipe.mark_update(  "Mash step added: #{@mashstep.name}", current_user)
 
 		render_mashsteps( @recipe )
 	end
@@ -766,6 +786,12 @@ class RecipesController < ApplicationController
     end
 
 		@mash_step.attributes = params[:mash_step]
+    # Create log message before conversions applied.
+    msg=""
+    params[:mash_step].each_pair{ |key, value|
+      msg += "#{key.capitalize} => #{value} "
+    }
+
 
 		#Convert temperature in regards to proper unit.
 		@mash_step.temperature = input_temperature( @mash_step.temperature )
@@ -773,7 +799,7 @@ class RecipesController < ApplicationController
 
 		@mash_step.save
 
-    @mash_step.recipe.mark_update( "Update mash step: #{params}")
+    @mash_step.recipe.mark_update( "Update mash step: #{msg}", current_user)
 
 		render_mashsteps( @recipe)
 
@@ -790,9 +816,11 @@ class RecipesController < ApplicationController
       return
     end
 
+    mashstep = MashStep.find(params[:mashstep_id])
+    mashstepname = mashstep.name
 		MashStep.delete(params[:mashstep_id])
 
-    @recipe.mark_update( "Mashstep removed")
+    @recipe.mark_update( "Mashstep [#{mashstepname}] removed", current_user)
 
 		render_mashsteps( @recipe)
 	end
@@ -819,7 +847,7 @@ class RecipesController < ApplicationController
 		# Create new hop
 		@misc = @recipe.misc_ingredients.create()
 
-    @recipe.mark_update(  "Misc. ingredient added")
+    @recipe.mark_update("Misc. ingredient added", current_user)
 
 		render_misc( @recipe )
 	end
@@ -859,12 +887,36 @@ class RecipesController < ApplicationController
       return
     end
 
+    ingred = MiscIngredient.find(params[:misc_id])
+    ingredname = ingred.name
 		MiscIngredient.delete(params[:misc_id])
 
-    @recipe.mark_update( "Misc removed")
+    @recipe.mark_update("Misc. ingredient [#{ingredname}] removed", current_user)
 
 		render_misc( @recipe)
 	end
+
+  	def  remove_kit
+
+		@recipe = Recipe.find(params[:id])
+
+    if !@recipe.updatable_by?(current_user) || !request.xhr?
+      #      flash[:error] = "Delete misc - permission denied."
+      #      render_misc( @recipe )
+      notifyattempt(request, "RecipesController.remove_kit not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+    end
+
+    kit = Kit.find(params[:kit_id])
+    kitname = kit.kit_type.name
+		Kit.delete(params[:kit_id])
+
+    @recipe.mark_update("Kit [#{kitname}] removed", current_user)
+
+		update_details_and_kits( @recipe )
+	end
+
 
 	
 	def clone
@@ -999,7 +1051,7 @@ class RecipesController < ApplicationController
 #    # session["last_refeshed_#{recipe.id}"] = Time.now.to_i
 #  end
 
-end
+ end
 
 
 

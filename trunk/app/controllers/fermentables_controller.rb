@@ -37,6 +37,12 @@ class FermentablesController < ApplicationController
       return
     end
 
+    # Create log message before conversions applied.
+    msg=""
+    params[:fermentable].each_pair{ |key, value|
+      msg += "#{key.capitalize} => #{value} "
+    }
+
 		#Do unit conversions if required.
     params[:fermentable][:points] = BrewingUnits::input_gravity( params[:fermentable][:points], current_user.units.gravity ) if  params[:fermentable][:points]
     params[:fermentable][:weight] = input_fermentable_weight( params[:fermentable][:weight] ) if  params[:fermentable][:weight]
@@ -49,7 +55,7 @@ class FermentablesController < ApplicationController
       new_og = @fermentable.recipe.og
       @fermentable.recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
-       @fermentable.recipe.mark_update("Fermentable update: #{params}")
+      @fermentable.recipe.mark_update("Fermentable [#{@fermentable.fermentable_type.name}] update: #{msg}", current_user)
 
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.

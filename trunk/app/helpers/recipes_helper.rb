@@ -94,6 +94,7 @@ module RecipesHelper
       page.replace_html 'misc_items_div', :partial => 'shared/recipe_edit_misc', :object => recipe
       page.replace_html 'yeast_items_div', :partial => 'shared/recipe_edit_yeasts', :object => recipe
       page.replace_html 'lock_all_div', :partial => 'shared/recipe_lock_all', :object => recipe
+      page.replace_html 'log_list_div', :partial => 'log', :object => recipe
 		}
 
 	end
@@ -374,7 +375,7 @@ module RecipesHelper
 
 
   def decimal( value )
-    number_with_precision( value, 2 )
+    number_with_precision( value, :precision => 2 )
   end
 
   def percentage( value )

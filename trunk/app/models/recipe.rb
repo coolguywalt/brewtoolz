@@ -77,7 +77,9 @@ class Recipe < ActiveRecord::Base
 
   #before_destroy :pre_destroy
 
-  has_one :recipe_shared, :dependent => :destroy
+  #has_one :recipe_shared, :dependent => :destroy
+
+  has_many :log_message, :dependent => :destroy
 
   # --- Permissions --- #
 
@@ -704,9 +706,15 @@ class Recipe < ActiveRecord::Base
     return recipe_shared.updated_since?(time)
   end
 
-  def mark_update( msg=nil )
+  def mark_update( msg=nil, user=nil )
     return unless is_shared?
+    user = acting_user unless user
     recipe_shared.mark_update
+
+    if msg then
+      self.log_message.create(:message => msg, :msgtype => "Recipe update", :msgtime => Time.now(),
+      :user => user )
+    end
   end
 
 end
