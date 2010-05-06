@@ -38,7 +38,13 @@ class KitsController < ApplicationController
 
 		if @kit.update_attributes(params[:kit])
 
-      @kit.recipe.mark_update("Kit update: #{params}")
+      # Create log message before conversions applied.
+      msg=""
+      params[:kit].each_pair{ |key, value|
+        msg += "#{key.capitalize} => #{value} "
+      }
+
+      @kit.recipe.mark_update("Kit [#{@kit.kit_type.name}]  update: #{msg}", current_user)
 
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.

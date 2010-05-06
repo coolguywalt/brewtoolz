@@ -1665,6 +1665,10 @@
             <h3 param="kits-collection-heading">Kits</h3>
             <collection:kits  param="kits-collection"/>
           </section>
+          <section param="log_message-collection-section">
+            <h3 param="log_message-collection-heading">Log Message</h3>
+            <collection:log_message  param="log_message-collection"/>
+          </section>
           <section param="mash_steps-collection-section">
             <h3 param="mash_steps-collection-heading">Mash Steps</h3>
             <collection:mash_steps  param="mash_steps-collection"/>
@@ -1867,7 +1871,7 @@
           </header>
     
           <section param="content-body">
-            <field-list fields="email_address" param/>
+            <field-list fields="email_address, last_activity" param/>
           </section>
     </content:>
     

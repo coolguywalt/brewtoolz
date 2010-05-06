@@ -109,6 +109,14 @@
   </card>
 </def>
 
+<def tag="card" for="LogMessage">
+  <card class="log-message" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+  </card>
+</def>
+
 <def tag="card" for="MashStep">
   <card class="mash-step" param="default" merge>
     <header: param>

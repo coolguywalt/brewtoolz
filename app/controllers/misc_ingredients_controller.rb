@@ -36,6 +36,12 @@ class MiscIngredientsController < ApplicationController
       return
     end
 
+    # Create log message before conversions applied.
+    msg=""
+    params[:misc_ingredient].each_pair{ |key, value|
+      msg += "#{key.capitalize} => #{value} "
+    }
+
 		#Do unit conversions if required.
 		if( params[:misc_ingredient][:is_solid] ) then
 			params[:misc_ingredient][:amount] = BrewingUnits::value_for_storage( current_user.units.volume, params[:misc_ingredient][:amount] ) if  params[:misc_ingredient][:amount]
@@ -48,7 +54,7 @@ class MiscIngredientsController < ApplicationController
 
 		if @misc.update_attributes(params[:misc_ingredient])
 
-       @misc.recipe.mark_update( "Misc update: #{params}")
+       @misc.recipe.mark_update( "Misc. ingredient update: #{msg}", current_user)
 
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.

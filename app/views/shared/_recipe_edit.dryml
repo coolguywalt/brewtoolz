@@ -118,9 +118,4 @@
     </if>
   </div>
 
-  <br/><br/>
-  <div class="block" id="recipe_log_div">
-    Update log to go here.
-  </div>
-
 </div>

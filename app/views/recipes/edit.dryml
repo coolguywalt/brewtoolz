@@ -52,21 +52,27 @@
     <br/>
 
     <%= render :partial => 'shared/recipe_edit', :object => @recipe %>
-    
+
     <br/><a to="&@recipe" class="button">Done</a>
+    
+    <if test="&@recipe.is_shared?">
+    <br/><br/>
+      <div id="log_list_div" >
+        <%= render :partial => 'log', :object => @recipe %>
+    </div>
+  </if>
 
-
-    <!--[if IE]>
+  <!--[if IE]>
 		   </div>
 		 <![endif]-->
 
-  </content-body:>
+</content-body:>
 
-  <aside-right:>
-    <div id="shared_user_status_div" class="block">
-      <%= render :partial => 'shared/recipe_shared_users', :object => @recipe %>
-    </div>
-  </aside-right:>
+<aside-right:>
+  <div id="shared_user_status_div" class="block">
+    <%= render :partial => 'shared/recipe_shared_users', :object => @recipe %>
+  </div>
+</aside-right:>
 
 </edit-page>
 

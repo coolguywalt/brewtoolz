@@ -37,6 +37,12 @@ class HopsController < ApplicationController
       return
     end
 
+        # Create log message before conversions applied.
+    msg=""
+    params[:hop].each_pair{ |key, value|
+      msg += "#{key.capitalize} => #{value} "
+    }
+
 
 		#Do unit conversions if required.
     params[:hop][:weight] = BrewingUnits::value_for_storage( current_user.units.hops, params[:hop][:weight] ) if  params[:hop][:weight]
@@ -68,7 +74,8 @@ class HopsController < ApplicationController
       #Force reload of parent recipe record.
       # @hop.recipe.reload
 
-      @hop.recipe.mark_update( "Hop update: #{params}")
+      
+      @hop.recipe.mark_update( "Hop [#{@hop.hop_type.name}] update: #{msg}", current_user)
 
 			if request.xhr?
 				# Route to correct update as specified or the whole screen if not.
