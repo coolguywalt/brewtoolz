@@ -297,7 +297,8 @@ module BrewingUnits
     logger.debug("values_array_for_display unitstr:#{unitstr} units:#{units} value:#{value}" )
     for a in 0..units.length-1 do 
       avalue = self.send('to_' + unit_str(units[a]), value )
-      str = "%01.#{precision}f" % avalue
+      str = "%01.#{precision}f" % avalue if avalue
+      str = "n/a" unless avalue
       str_array.push(str)
     end
     
