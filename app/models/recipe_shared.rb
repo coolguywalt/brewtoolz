@@ -42,6 +42,18 @@ class RecipeShared < ActiveRecord::Base
      
   end
 
+  #Used to mark when the user has last looked at this shared recipe
+  def sharer_viewed( user )
+    
+    logger.debug "++ recipe_shared.sharer_viewed - checking user: #{user}"
+    shared_record = recipe_user_shared.find_by_user_id( user.id)
+    return unless shared_record
+
+    shared_record.last_viewed = Time.now()
+    shared_record.save
+
+  end
+
   def updated_since?( time )
 
     logger.debug "++updated_since: time #{time}"
@@ -60,4 +72,14 @@ class RecipeShared < ActiveRecord::Base
     save
   end
 
+
+  def stale_view?( user )
+    return false unless user
+
+    #locate user.
+    shared_record = recipe_user_shared.find_by_user_id( user.id)
+    return false unless shared_record
+
+    return shared_record.stale_view?(user)
+  end
 end

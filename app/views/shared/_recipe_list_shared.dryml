@@ -29,7 +29,10 @@
     <repeat with="&recipe_list_shared">
       <% recipe = this.recipe_shared.recipe %>
       <tr class="<%= cycle('odd','even') -%>">
-        <td><a to="&recipe" ><%= h(recipe.name) %></a></td>
+        <td>
+          <a to="&recipe" ><%= h(recipe.name) %></a>
+          <if test="&this.stale_view?(current_user)"><span class="updated"> [Updated]</span></if>
+        </td>
         <td><a to="&recipe.style"><%=recipe.style.name%></a></td>
         <td><%=recipe.user.name%></td>
       </tr>

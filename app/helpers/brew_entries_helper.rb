@@ -61,7 +61,7 @@ module BrewEntriesHelper
     eff = entry.therecipe.efficency if entry.therecipe.efficency
 
     ajax_edit_field( "efficency",
-      [number_with_precision(eff,2)],
+      [decimal(eff)],
 			"efficency",
 			url_for(  :controller => "brew_entries", :action => :update_efficency, :id => entry.id, :render => "update_all_brewday" ), "Update Efficency" )
 	end
@@ -89,7 +89,7 @@ module BrewEntriesHelper
 #
             ajax_edit_field2( entry, "evaporation_rate",
 			{ :action => :update, :controller => :brew_entries, :id => entry.id, :render => "update_all_brewday" },
-			[number_with_precision(entry.evaporation_rate,2)], "Update Evapouration Rate"  )
+			[decimal(entry.evaporation_rate)], "Update Evapouration Rate"  )
 
   end
 
@@ -102,7 +102,7 @@ module BrewEntriesHelper
 
     ajax_edit_field2( entry, "boil_time",
 			{ :action => :update, :controller => :brew_entries, :id => entry.id, :render => "update_all_brewday" },
-			[number_with_precision(entry.boil_time,2)], "Update Boil Time"  )
+			[decimal(entry.boil_time)], "Update Boil Time"  )
   end
 
   def ajax_brewday_boiler_lose_editor( entry )
@@ -127,7 +127,7 @@ module BrewEntriesHelper
     mc = entry.mash_conversion if entry.mash_conversion
 
     ajax_edit_field( "conversion",
-      [number_with_precision(mc,2)],
+      [decimal(mc)],
 			"conversion",
 			url_for(  :controller => "brew_entries", :action => :update_conversion, :id => entry.id ), "Update Mash Conversion" )
 	end
@@ -150,7 +150,7 @@ module BrewEntriesHelper
 
 	def ajax_log_colour_editor( entry )
 		colour =  "&nbsp;&nbsp;"
-		colour = number_with_precision(entry.actual_colour,2) if entry.actual_colour
+		colour = decimal(entry.actual_colour) if entry.actual_colour
 
 		ajax_edit_field( "colour",
 			[ colour ],

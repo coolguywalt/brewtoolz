@@ -29,10 +29,10 @@
         <%= ajax_ferment_volume_editor(@brew_entry) %>
       </if>
       <else>
-        <%= number_with_precision(@brew_entry.volume_to_ferementer,2) %>
+        <%= decimal(@brew_entry.volume_to_ferementer) %>
       </else>
       </td>
-      <th>Alcohol by volume:</th><td class="big"><%=number_with_precision(@brew_entry.actual_abv,2) %>%</td>
+      <th>Alcohol by volume:</th><td class="big"><%=decimal(@brew_entry.actual_abv) %>%</td>
       <th>Apparent Attenuation:</th><td class="big"><%= percentage(@brew_entry.actual_attenuation*100) %></td>
       </tr>
 
@@ -61,14 +61,14 @@
         <%= ajax_log_colour_editor(@brew_entry) %>
       </if>
       <else>
-        <if test="&@brew_entry.actual_colour">(<%= number_with_precision( @brew_entry.actual_colour, 2 ) %>)</if>
+        <if test="&@brew_entry.actual_colour">(<%= decimal( @brew_entry.actual_colour) %>)</if>
       </else>
-      <if test="&@brew_entry.actual_colour">(<%= number_with_precision( @brew_entry.actual_colour*1.97, 2 ) %>)</if></td>
+      <if test="&@brew_entry.actual_colour">(<%= decimal( @brew_entry.actual_colour*1.97) %>)</if></td>
       </tr>
       <tr><td><br/></td></tr>
       <tr>
-        <th>BU/GU ratio:</th><td class="big"><%=number_with_precision(@brew_entry.actual_bugu_ratio,2) %></td>
-        <th>Balance:</th><td class="big"><%=number_with_precision(@brew_entry.actual_balance,2) %></td>
+        <th>BU/GU ratio:</th><td class="big"><%=decimal(@brew_entry.actual_bugu_ratio) %></td>
+        <th>Balance:</th><td class="big"><%=decimal(@brew_entry.actual_balance) %></td>
 
       </tr>
 
@@ -80,7 +80,7 @@
   <h2>Recipe Values:</h2>
   <table class="list">
     <tr><th>Expected Mash Efficiency:</th><td class="big"><%= percentage(@brew_entry.therecipe.efficency) %></td>
-      <th>Expected Bitterness[IBU]:</th><td class="big"><%= number_with_precision(@brew_entry.therecipe.ibu,2) %></td></tr>
+      <th>Expected Bitterness[IBU]:</th><td class="big"><%= decimal(@brew_entry.therecipe.ibu) %></td></tr>
     <tr><th>Actual Mash Efficiency:</th><td class="big"><%= percentage(@brew_entry.brewhouse_efficency * 100) || "n/a" %></td></tr>
   </table>
 </div>
@@ -103,19 +103,19 @@
       <tr>
         <th> </th><td> </td>
         <th>Alcohol by volume:</th>
-        <td class="big"><%=number_with_precision(@brew_entry.therecipe.abv,2) %>%</td>
+        <td class="big"><%=decimal(@brew_entry.therecipe.abv) %>%</td>
       </tr>
       <tr><td><br/></td></tr>
       <tr>
         <th>Original Gravity[<%= gravity_unit %>]:</th><td class="big"><%=gravity_value(@brew_entry.therecipe.og) %></td>
         <th>Final Gravity[<%= gravity_unit %>]:</th><td class="big"><%=gravity_value(@brew_entry.therecipe.fg) %></td>
-        <th>Colour [SRM]:</th><td class="big"><%= number_with_precision( @brew_entry.therecipe.srm, 2 ) %>
+        <th>Colour [SRM]:</th><td class="big"><%= decimal( @brew_entry.therecipe.srm) %>
         </td>
       </tr>
       <tr><td><br/></td></tr>
       <tr>
-        <th>BU/GU ratio:</th><td class="big"><%=number_with_precision(@brew_entry.therecipe.bugu,2) %></td>
-        <th>Balance:</th><td class="big"><%=number_with_precision(@brew_entry.therecipe.balance,2) %></td>
+        <th>BU/GU ratio:</th><td class="big"><%=decimal(@brew_entry.therecipe.bugu,3) %></td>
+        <th>Balance:</th><td class="big"><%=decimal(@brew_entry.therecipe.balance,3) %></td>
         <th>Apparent Attenuation:</th>
         <td class="big"><%= percentage(@brew_entry.therecipe.attenuation*100) %></td>
       </tr>

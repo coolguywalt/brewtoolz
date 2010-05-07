@@ -56,7 +56,9 @@ class Recipe < ActiveRecord::Base
     #    simple_recipe_filename :string
     #    simple_recipe_content_type :string
     #    simple_recipe_filedata :binary,  :limit => 2.megabyte
-	
+
+    last_viewed :datetime   #Time list viewed by the recipe owner.
+
     timestamps
   end
 
@@ -114,6 +116,23 @@ class Recipe < ActiveRecord::Base
     return false unless recipe_shared
     return false unless recipe_shared.recipe_user_shared.count > 0
     return true
+  end
+
+  def is_sharer?( user )
+    return false unless user
+    return false unless recipe_shared
+    return false unless recipe_shared.recipe_user_shared.count > 0
+    return recipe_shared.can_edit(user)
+  end
+
+  def is_contributor?( user )
+    return (is_sharer?( user ) or is_owner?( user ))
+  end
+
+  def sharer_viewed( user )
+    return  unless recipe_shared
+    return unless recipe_shared.recipe_user_shared.count > 0
+    recipe_shared.sharer_viewed( user )
   end
 
   def shared_edit?
@@ -713,8 +732,17 @@ class Recipe < ActiveRecord::Base
 
     if msg then
       self.log_message.create(:message => msg, :msgtype => "Recipe update", :msgtime => Time.now(),
-      :user => user )
+        :user => user )
     end
+  end
+
+  def stale_view?( user )
+    return false unless user
+    return false unless is_shared?
+    
+    return is_dirty?( last_viewed ) if is_owner?( user )
+
+    return recipe_shared.stale_view?( user )
   end
 
 end

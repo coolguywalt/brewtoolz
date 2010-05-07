@@ -40,7 +40,7 @@ module ApplicationHelper
 	def hop_minutes_format( hop )
 		return "Dry Hopped" if hop.hop_use == :dry_hop
   	return "Hop Tea" if hop.hop_use == :hop_tea
-		return  number_with_precision(hop.minutes,2)
+		return  decimal(hop.minutes)
 	end
 
 	def ajax_edit_field( id_prefix, values, tag_field, url_for_edit, spinner_message )
@@ -134,7 +134,7 @@ module ApplicationHelper
 
 	def view_rating( therating )
 		return "n/a" if therating < 0.0
-		return number_with_precision(therating, 2)
+		return decimal(therating)
 	end
 
 	def element_groups( group )
@@ -204,5 +204,13 @@ module ApplicationHelper
   def style_recipes( style )
 		style.recipes.paginate(:all, :per_page =>30, :order => 'name', :conditions => 'brew_entry_id IS NULL', :page => params[:page])
 	end
+
+  def decimal( value, places=2 )
+    number_with_precision( value, :precision => places )
+  end
+
+  def percentage( value )
+    number_to_percentage(value, :precision => 2)
+  end
 
 end

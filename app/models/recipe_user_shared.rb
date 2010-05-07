@@ -17,6 +17,7 @@ class RecipeUserShared < ActiveRecord::Base
     #-- notification rules
     notification_type enum_string(:daily_updates, :weekly_updates, :no_udpates)
     last_notified :datetime
+    last_viewed :datetime
     
   end
 
@@ -45,4 +46,14 @@ class RecipeUserShared < ActiveRecord::Base
     return true if (recipe_shared.recipe.user == user)
     return false
   end
+
+  def stale_view?( user )
+    return false unless user
+
+    #locate user.
+    return false unless last_viewed
+
+    return (last_viewed < recipe_shared.last_updated)
+  end
+
 end

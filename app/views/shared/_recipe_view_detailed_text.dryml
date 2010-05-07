@@ -24,17 +24,17 @@ Description:<br/>
 
 <p>-------------------------------------------------------------------------</p>
 Target Volume [<%= volume_units %>]:&nbsp;&nbsp;<%= volume_values(recipe_view_detailed_text.volume) %><br/>
-Alcohol By Volume:&nbsp;&nbsp;<%= number_with_precision(recipe_view_detailed_text.abv, 2) %>%<br/>
+Alcohol By Volume:&nbsp;&nbsp;<%= decimal(recipe_view_detailed_text.abv) %>%<br/>
 <br/>
 Estimated Original Gravity[<%= gravity_units %>]:&nbsp;&nbsp;<%= gravity_values( recipe_view_detailed_text.og ) %><br/>
 Estimated Final Gravity[<%= gravity_units %>]:&nbsp;&nbsp;<%= gravity_values( recipe_view_detailed_text.fg ) %><br/>
 Estimated Attenuation:<%= percentage(recipe_view_detailed_text.attenuation*100) %><br/>
 Estimated Mash Efficiency:<%= percentage(recipe_view_detailed_text.efficency)  %><br/>
 <br/>
-Bitterness [IBU]:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.ibu, 2 ) %><br/>
-Colour [SRM(EBC)]:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.srm, 2 ) %> (<%= number_with_precision( recipe_view_detailed_text.ebc, 2 ) %>)<br/>
-Balance:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.balance, 3 ) %><br/>
-BU:GU ratio:&nbsp;&nbsp;<%= number_with_precision( recipe_view_detailed_text.bugu, 3 ) %><br/>
+Bitterness [IBU]:&nbsp;&nbsp;<%= decimal( recipe_view_detailed_text.ibu) %><br/>
+Colour [SRM(EBC)]:&nbsp;&nbsp;<%= decimal( recipe_view_detailed_text.srm) %> (<%= decimal( recipe_view_detailed_text.ebc) %>)<br/>
+Balance:&nbsp;&nbsp;<%= decimal( recipe_view_detailed_text.balance, 3 ) %><br/>
+BU:GU ratio:&nbsp;&nbsp;<%= decimal( recipe_view_detailed_text.bugu, 3 ) %><br/>
 <br/>
 <p>-------------------------------------------------------------------------</p>
 <if test="&recipe_view_detailed_text.mash_steps.count > 0" >

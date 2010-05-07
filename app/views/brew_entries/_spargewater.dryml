@@ -24,8 +24,8 @@
     <h3>General:</h3>
     <table class="list">
        <tr>
-        <th>Minimum required efficiency:</th><td class="big"><%= number_with_precision(spargewater.therecipe.efficency,2)%> %</td>
-        <th>Max expected efficiency</th><td class="big"><%= number_with_precision(spargewater.preboilefficiency * 100,2) %> %</td>
+        <th>Minimum required efficiency:</th><td class="big"><%= decimal(spargewater.therecipe.efficency)%> %</td>
+        <th>Max expected efficiency</th><td class="big"><%= decimal(spargewater.preboilefficiency * 100) %> %</td>
       </tr>
 
 
@@ -43,47 +43,47 @@
       <tr><th>Sparge No</th><th><b> Water addition [l]</b></th><th><b>Expected recovered volume [l]</b></th><th><b>Required gravity</b></th><th><b>Max expected gravity</b></th></tr>
       <tr class="<%= cycle('odd','even') -%>">
         <td>1</td>
-        <td><%= number_with_precision(spargewater.sparge1_water_addition,2) %></td>
-        <td><%= number_with_precision(spargewater.sparge1_volume,2) %></td>
-        <td><%= number_with_precision(spargewater.sparge1_required_gravity,2) %></td>
-        <td><%= number_with_precision(spargewater.sparge1_gravity,2) %></td>
+        <td><%= decimal(spargewater.sparge1_water_addition) %></td>
+        <td><%= decimal(spargewater.sparge1_volume) %></td>
+        <td><%= decimal(spargewater.sparge1_required_gravity) %></td>
+        <td><%= decimal(spargewater.sparge1_gravity) %></td>
       </tr>
       <if test="&spargewater.the_no_batches > 1">
         <tr class="<%= cycle('odd','even') -%>">
 
           <td>2</td>
-          <td><%= number_with_precision(spargewater.sparge2_water_addition,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge2_volume,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge2_required_gravity,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge2_gravity,2) %></td>
+          <td><%= decimal(spargewater.sparge2_water_addition) %></td>
+          <td><%= decimal(spargewater.sparge2_volume) %></td>
+          <td><%= decimal(spargewater.sparge2_required_gravity) %></td>
+          <td><%= decimal(spargewater.sparge2_gravity) %></td>
         </tr>
       </if>
       <if test="&spargewater.the_no_batches > 2">
         <tr class="<%= cycle('odd','even') -%>">
 
           <td>3</td>
-          <td><%= number_with_precision(spargewater.sparge3_water_addition,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge3_volume,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge3_required_gravity,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge3_gravity,2) %></td>
+          <td><%= decimal(spargewater.sparge3_water_addition) %></td>
+          <td><%= decimal(spargewater.sparge3_volume) %></td>
+          <td><%= decimal(spargewater.sparge3_required_gravity) %></td>
+          <td><%= decimal(spargewater.sparge3_gravity) %></td>
         </tr>
       </if>
       <if test="&spargewater.the_no_batches > 3">
         <tr class="<%= cycle('odd','even') -%>">
 
           <td>3</td>
-          <td><%= number_with_precision(spargewater.sparge4_water_addition,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge4_volume,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge4_required_gravity,2) %></td>
-          <td><%= number_with_precision(spargewater.sparge4_gravity,2) %></td>
+          <td><%= decimal(spargewater.sparge4_water_addition) %></td>
+          <td><%= decimal(spargewater.sparge4_volume) %></td>
+          <td><%= decimal(spargewater.sparge4_required_gravity) %></td>
+          <td><%= decimal(spargewater.sparge4_gravity) %></td>
         </tr>
       </if>
       <tr>
         <td><b>Combined</b></td>
-        <td><b><%= number_with_precision(spargewater.total_spargewater,2)%></b></td>
-        <td><b><%= number_with_precision(spargewater.preboilvolume,2) %></b></td>
-        <td><b><%= number_with_precision(spargewater.preboilrequiredgravity,2) %></b></td>
-        <td><b><%= number_with_precision(spargewater.preboilgravity,2) %></b></td>
+        <td><b><%= decimal(spargewater.total_spargewater)%></b></td>
+        <td><b><%= decimal(spargewater.preboilvolume) %></b></td>
+        <td><b><%= decimal(spargewater.preboilrequiredgravity) %></b></td>
+        <td><b><%= decimal(spargewater.preboilgravity) %></b></td>
       </tr>
     </table>
   </div>
