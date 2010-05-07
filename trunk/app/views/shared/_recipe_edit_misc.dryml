@@ -61,7 +61,7 @@
               <b><label>Name:</label></b><%= f.text_field :name,:size => 20 %> &nbsp;&nbsp;
               <b><label>Type:</label></b><%= f.select(:misc_type, [['Spice','spice'], ['Fining', 'fining'], ['Water Agent', 'wateragent'], ['Herb', 'herb'], ['Flavor','flavor'], ['Other', 'other']], {:prompt => true} ) %> &nbsp;&nbsp;
               <b><label>Use:</label></b><%= f.select(:misc_use, [['Boil','boil'], ['Mash', 'mash'], ['Primary', 'primary'], ['Secondary', 'secondary'], ['Bottling','bottling']], {:prompt => true} ) %> &nbsp;&nbsp;
-              <b><label>Amount [<%= hop_weight_unit %> or <%= volume_unit %>]:</label></b><%=  f.text_field :amount, :size => 4, :value => number_with_precision(this.amount,2) %> &nbsp;&nbsp;
+              <b><label>Amount [<%= hop_weight_unit %> or <%= volume_unit %>]:</label></b><%=  f.text_field :amount, :size => 4, :value => decimal(this.amount) %> &nbsp;&nbsp;
               <b><label>Solid?:</label></b><%=  f.check_box :is_solid %> <br/>
               <b><label>Use for:</label></b><%= f.text_field :use_for, :size => 20 %> &nbsp;&nbsp;
               <b><label>Time [Minutes]:</label></b><%=  f.text_field :time, :size => 4 %>

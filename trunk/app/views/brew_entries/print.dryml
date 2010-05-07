@@ -10,16 +10,16 @@
       <table class="list">
         <tr>
           <th>Volume to fermenter[<%= volume_units %>]:</th>
-          <td class="big"><%= number_with_precision(@brew_entry.volume_to_ferementer,2) %></td>
+          <td class="big"><%= decimal(@brew_entry.volume_to_ferementer) %></td>
           <th>Original Gravity[<%= gravity_units %>]:</th><td class="big"><%= gravity_values( @brew_entry.og ) %></td>
 
         </tr>
         <tr>
           <th>Mash Efficiency [%]:</th> <td class="big"><%= percentage(@brew_entry.therecipe.efficency) %></td>
-          <th>Bitterness[IBU]:</th><td class="big"><%= number_with_precision(@brew_entry.therecipe.ibu,2) %></td>
+          <th>Bitterness[IBU]:</th><td class="big"><%= decimal(@brew_entry.therecipe.ibu) %></td>
         </tr>
         <tr>
-          <th>Colour [SRM(EBC)]:</th><td class="big"><%= number_with_precision( @brew_entry.therecipe.srm, 2 ) %>(<%= number_with_precision( @brew_entry.therecipe.srm*1.97, 2 ) %>)</td>
+          <th>Colour [SRM(EBC)]:</th><td class="big"><%= decimal( @brew_entry.therecipe.srm) %>(<%= decimal( @brew_entry.therecipe.srm*1.97) %>)</td>
         </tr>
       </table>
     </div>
@@ -112,8 +112,8 @@
       <h2>Sparge</h2>
       <table class="list">
         <tr>
-          <th>Minimum required efficiency:</th><td class="big"><%= number_with_precision(@brew_entry.therecipe.efficency,2)%> %</td>
-          <th>Max expected efficiency</th><td class="big"><%= number_with_precision(@brew_entry.preboilefficiency * 100,2) %> %</td>
+          <th>Minimum required efficiency:</th><td class="big"><%= decimal(@brew_entry.therecipe.efficency)%> %</td>
+          <th>Max expected efficiency</th><td class="big"><%= decimal(@brew_entry.preboilefficiency * 100) %> %</td>
         </tr>
       </table>
 
@@ -124,10 +124,10 @@
         <tr><th>Sparge No</th><th><b> Water addition [l]</b></th><th><b>Expected recovered volume [l]</b></th><th><b>Required gravity</b></th><th><b>Max expected gravity</b></th></tr>
         <tr class="<%= cycle('odd','even') -%>">
           <td>1</td>
-          <td><%= number_with_precision(@brew_entry.sparge1_water_addition,2) %></td>
-          <td><%= number_with_precision(@brew_entry.sparge1_volume,2) %></td>
-          <td><%= number_with_precision(@brew_entry.sparge1_required_gravity,2) %></td>
-          <td><%= number_with_precision(@brew_entry.sparge1_gravity,2) %></td>
+          <td><%= decimal(@brew_entry.sparge1_water_addition) %></td>
+          <td><%= decimal(@brew_entry.sparge1_volume) %></td>
+          <td><%= decimal(@brew_entry.sparge1_required_gravity) %></td>
+          <td><%= decimal(@brew_entry.sparge1_gravity) %></td>
         </tr>
         <tr class="<%= cycle('odd','even') -%>">
           <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
@@ -136,10 +136,10 @@
           <tr class="<%= cycle('odd','even') -%>">
 
             <td>2</td>
-            <td><%= number_with_precision(@brew_entry.sparge2_water_addition,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge2_volume,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge2_required_gravity,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge2_gravity,2) %></td>
+            <td><%= decimal(@brew_entry.sparge2_water_addition) %></td>
+            <td><%= decimal(@brew_entry.sparge2_volume) %></td>
+            <td><%= decimal(@brew_entry.sparge2_required_gravity) %></td>
+            <td><%= decimal(@brew_entry.sparge2_gravity) %></td>
           </tr>
           <tr class="<%= cycle('odd','even') -%>">
             <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
@@ -149,10 +149,10 @@
           <tr class="<%= cycle('odd','even') -%>">
 
             <td>3</td>
-            <td><%= number_with_precision(@brew_entry.sparge3_water_addition,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge3_volume,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge3_required_gravity,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge3_gravity,2) %></td>
+            <td><%= decimal(@brew_entry.sparge3_water_addition) %></td>
+            <td><%= decimal(@brew_entry.sparge3_volume) %></td>
+            <td><%= decimal(@brew_entry.sparge3_required_gravity) %></td>
+            <td><%= decimal(@brew_entry.sparge3_gravity) %></td>
           </tr>
           <tr class="<%= cycle('odd','even') -%>">
             <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
@@ -162,10 +162,10 @@
           <tr class="<%= cycle('odd','even') -%>">
 
             <td>3</td>
-            <td><%= number_with_precision(@brew_entry.sparge4_water_addition,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge4_volume,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge4_required_gravity,2) %></td>
-            <td><%= number_with_precision(@brew_entry.sparge4_gravity,2) %></td>
+            <td><%= decimal(@brew_entry.sparge4_water_addition) %></td>
+            <td><%= decimal(@brew_entry.sparge4_volume) %></td>
+            <td><%= decimal(@brew_entry.sparge4_required_gravity) %></td>
+            <td><%= decimal(@brew_entry.sparge4_gravity) %></td>
           </tr>
           <tr class="<%= cycle('odd','even') -%>">
             <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
@@ -173,10 +173,10 @@
         </if>
         <tr>
           <td><b>Combined</b></td>
-          <td><b><%= number_with_precision(@brew_entry.total_spargewater,2)%></b></td>
-          <td><b><%= number_with_precision(@brew_entry.preboilvolume,2) %></b></td>
-          <td><b><%= number_with_precision(@brew_entry.preboilrequiredgravity,2) %></b></td>
-          <td><b><%= number_with_precision(@brew_entry.preboilgravity,2) %></b></td>
+          <td><b><%= decimal(@brew_entry.total_spargewater)%></b></td>
+          <td><b><%= decimal(@brew_entry.preboilvolume) %></b></td>
+          <td><b><%= decimal(@brew_entry.preboilrequiredgravity) %></b></td>
+          <td><b><%= decimal(@brew_entry.preboilgravity) %></b></td>
         </tr>
         <tr >
           <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
@@ -325,26 +325,26 @@
       <br/>
       <table class="list">
         <tr><td><b>Estimated required yeast cells (billion):</b></td>
-          <td class ="big"><%= number_with_precision(this.yeast_pitching_rate/1e9, 2) %></td></tr>
+          <td class ="big"><%= decimal(this.yeast_pitching_rate/1e9) %></td></tr>
       </table>
 
       <br/>
       <table class="list">
         <tr><td><b>Dried yeast (gm):</b></td>
-          <td class="big"><%= number_with_precision(dried_yeast_grams(@brew_entry.yeast_pitching_rate),2) %></td></tr>
+          <td class="big"><%= decimal(dried_yeast_grams(@brew_entry.yeast_pitching_rate)) %></td></tr>
         <tr><td>&nbsp;</td></tr>
         <tr><td><b>No of liquid yeast(Wyeast/Whitelabs) packs:</b></td>
-          <td class="big"><%= number_with_precision(no_yeast_packets(@brew_entry.yeast_pitching_rate),2) %></td><td>(Assumes 94% viability)</td></tr>
+          <td class="big"><%= decimal(no_yeast_packets(@brew_entry.yeast_pitching_rate)) %></td><td>(Assumes 94% viability)</td></tr>
         <tr><td>&nbsp;</td></tr>
         <tr><td><b>Approximate amount of solid slurry (ml):</b></td>
           <td></td><td></td></tr>
 
         <tr><td class="right">One hour settling</td>
-          <td class="big"><%= number_with_precision(yeast_slurry_onehour(@brew_entry.yeast_pitching_rate),2) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
+          <td class="big"><%= decimal(yeast_slurry_onehour(@brew_entry.yeast_pitching_rate)) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
         <tr><td class="right">One day settling</td>
-          <td class="big"><%= number_with_precision(yeast_slurry_oneday(@brew_entry.yeast_pitching_rate),2) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
+          <td class="big"><%= decimal(yeast_slurry_oneday(@brew_entry.yeast_pitching_rate)) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
         <tr><td class="right">Longer than 1 week settling</td>
-          <td class="big"><%= number_with_precision(yeast_slurry_final(@brew_entry.yeast_pitching_rate,0.8),2) %></td><td>(Assumes 25% trub and 80% viability)</td></tr>
+          <td class="big"><%= decimal(yeast_slurry_final(@brew_entry.yeast_pitching_rate,0.8)) %></td><td>(Assumes 25% trub and 80% viability)</td></tr>
       </table>
 
     </div>

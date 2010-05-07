@@ -26,8 +26,8 @@
 			<td><a><%= h(this.name) %></a></td>
 			<td><a to="&this.style"><view:style.name/></a></td>
 			<td><view:user/></td>
-		<td><%= number_with_precision(this.abv, 2) %>%</td>
-		<td><%= number_with_precision(this.balance, 2) %></td>
+		<td><%= decimal(this.abv) %>%</td>
+		<td><%= decimal(this.balance) %></td>
 		</tr>
 	</repeat>
 

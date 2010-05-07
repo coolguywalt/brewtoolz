@@ -40,15 +40,15 @@
       <td><b>Estimated Attenuation:</b> <span id="atten"><%= percentage(details.attenuation*100) %></span></td>
     </tr>
     <tr>
-      <td><b>Bitterness [IBU]:</b> <span id="ibu_tot"><%= number_with_precision( details.ibu, 2 ) %></span></td>
-      <td><b>Color [SRM(EBC)]:</b> <span id="colour"><%= number_with_precision( details.srm, 2 ) %> (<%= number_with_precision( details.ebc, 2 ) %>)</span></td>
+      <td><b>Bitterness [IBU]:</b> <span id="ibu_tot"><%= decimal( details.ibu ) %></span></td>
+      <td><b>Color [SRM(EBC)]:</b> <span id="colour"><%= decimal( details.srm ) %> (<%= decimal( details.ebc) %>)</span></td>
     </tr>
   </table>
   <table class="item-list">
     <tr>
-      <td><b>BU:GU ratio:</b> <span id="bugu"><%= number_with_precision( details.bugu, 3 ) %></span></td>
-      <td><b>Real Terminal Extract :</b> <span id="rte"><%= number_with_precision( details.rte, 2 ) %></span></td>
-      <td><b>Balance:</b> <span id="bal"><%= number_with_precision( details.balance, 3 ) %></span></td>
+      <td><b>BU:GU ratio:</b> <span id="bugu"><%=  decimal( details.bugu, 3 ) %></span></td>
+      <td><b>Real Terminal Extract :</b> <span id="rte"><%= decimal( details.rte ) %></span></td>
+      <td><b>Balance:</b> <span id="bal"><%= decimal( details.balance, 3 ) %></span></td>
     </tr>
   </table>
 </div>

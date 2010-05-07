@@ -27,15 +27,15 @@
     <tr>
       <td><b>Estimated Original Gravity[<%= gravity_units %>]:</b>&nbsp;&nbsp;<span class="big"><%= gravity_values( recipe_view_brewday.og ) %></span> </td>
       <td><b>Estimated Final Gravity[<%= gravity_units %>]:</b>&nbsp;&nbsp;<span class="big"><%= gravity_values( recipe_view_brewday.fg ) %></span></td>
-      <td><b>Alcohol By Volume[%]:</b> <span class="big">&nbsp;&nbsp;<%= number_with_precision(recipe_view_brewday.abv, 2) %></span></td>
+      <td><b>Alcohol By Volume[%]:</b> <span class="big">&nbsp;&nbsp;<%= decimal(recipe_view_brewday.abv) %></span></td>
     </tr>
     <tr>
-      <td><b>Bitterness [IBU]:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_brewday.ibu, 2 ) %></span></td>
-      <td><b>Colour [SRM(EBC)]:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_brewday.srm, 2 ) %> (<%= number_with_precision( recipe_view_brewday.ebc, 2 ) %>)</span></td>
+      <td><b>Bitterness [IBU]:</b>&nbsp;&nbsp;<span class="big"><%= decimal( recipe_view_brewday.ibu) %></span></td>
+      <td><b>Colour [SRM(EBC)]:</b>&nbsp;&nbsp;<span class="big"><%= decimal( recipe_view_brewday.srm) %> (<%= decimal( recipe_view_brewday.ebc, 2 ) %>)</span></td>
     </tr>
     <tr>
-      <td><b>Balance:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_brewday.balance, 3 ) %></span></td>
-      <td><b>BU:GU ratio:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_brewday.bugu, 3 ) %></span></td>
+      <td><b>Balance:</b>&nbsp;&nbsp;<span class="big"><%= decimal( recipe_view_brewday.balance, 3 ) %></span></td>
+      <td><b>BU:GU ratio:</b>&nbsp;&nbsp;<span class="big"><%= decimal( recipe_view_brewday.bugu, 3 ) %></span></td>
     </tr>
   </table>
 </div>

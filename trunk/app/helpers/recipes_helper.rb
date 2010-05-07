@@ -146,11 +146,11 @@ module RecipesHelper
 
       page['abv'].update(@recipe.abv)
 			page['atten'].update(percentage(@recipe.attenuation*100))
-			page['colour'].update(number_with_precision( @recipe.srm, 2 ).to_s + " (" + number_with_precision( @recipe.ebc, 2 ).to_s + ")")
-			page['bugu'].update(number_with_precision( @recipe.bugu, 3 ))
-			page['rte'].update(number_with_precision( @recipe.rte, 2 ))
-			page['bal'].update(number_with_precision( @recipe.balance, 3 ))
-      page['ibu_tot'].update(number_with_precision( @recipe.ibu, 2 ))
+			page['colour'].update(decimal( @recipe.srm).to_s + " (" + decimal( @recipe.ebc).to_s + ")")
+			page['bugu'].update(decimal( @recipe.bugu, 3 ))
+			page['rte'].update(decimal( @recipe.rte))
+			page['bal'].update(decimal( @recipe.balance, 3 ))
+      page['ibu_tot'].update(decimal( @recipe.ibu))
 
 			#Update percentage fermentable values
 			fermentable.recipe.fermentables.each do |ferm|
@@ -199,14 +199,14 @@ module RecipesHelper
       page["#{id_prefix}_e"].value = value_str
 
       #Update per ibu values
-      value_str = number_with_precision(hop.ibu_l,2)
+      value_str = decimal(hop.ibu_l)
       id_prefix = "ibu_#{hop.id}"
 
       page["#{id_prefix}_s"].update( value_str  )
       page["#{id_prefix}_e"].value = value_str
 
       #Update per aa values
-      value_str = number_with_precision(hop.aa,2)
+      value_str = decimal(hop.aa)
       id_prefix = "aa_#{hop.id}"
 
       page["#{id_prefix}_s"].update( value_str  )
@@ -237,12 +237,12 @@ module RecipesHelper
 
       #     page['abv'].update(@recipe.abv)
       #		page['atten'].update(percentage(@recipe.attenuation*100))
-      #		page['colour'].update(number_with_precision( @recipe.srm, 2 ).to_s + " (" + number_with_precision( @recipe.ebc, 2 ).to_s + ")")
-      page['bugu'].update(number_with_precision( @recipe.bugu, 3 ))
-      #		page['rte'].update(number_with_precision( @recipe.rte, 2 ))
-      page['bal'].update(number_with_precision( @recipe.balance, 3 ))
+      #		page['colour'].update(decimal( @recipe.srm, 2 ).to_s + " (" + decimal( @recipe.ebc, 2 ).to_s + ")")
+      page['bugu'].update(decimal( @recipe.bugu, 3 ))
+      #		page['rte'].update(decimal( @recipe.rte, 2 ))
+      page['bal'].update(decimal( @recipe.balance, 3 ))
 
-      page['ibu_tot'].update(number_with_precision( @recipe.ibu, 2 ))
+      page['ibu_tot'].update(decimal( @recipe.ibu ))
 
       #Update percentage fermentable values
       #			fermentable.recipe.fermentables.each do |ferm|
@@ -327,7 +327,7 @@ module RecipesHelper
       {  :action => :update, :controller => :recipes, :id => recipe.id, :render => "details_and_fermentables" } )
 		
     #		ajax_edit_field( "efficency",
-    #			[ number_with_precision(recipe.efficency,2) ],
+    #			[ decimal(recipe.efficency,2) ],
     #			"efficency",
     #			url_for(  :controller => "recipes", :action => :update_eff, :id => recipe.id ),
     #			" Update Efficency" )
@@ -361,26 +361,18 @@ module RecipesHelper
   #
   #	def ajax_simple_ibu_editor( recipe )
   #		ajax_edit_field( "simple_ibu",
-  #			[ (recipe.simple_ibu ? number_with_precision(recipe.simple_ibu,2) : "invalid") ],
+  #			[ (recipe.simple_ibu ? decimal(recipe.simple_ibu,2) : "invalid") ],
   #			"simple_ibu",
   #			url_for( :action => :update_simple_ibu, :id => recipe.id ), "Update IBU" )
   #	end
   #
   #  def ajax_simple_srm_editor( recipe )
   #		ajax_edit_field( "simple_srm",
-  #			[ (recipe.simple_srm ? number_with_precision(recipe.simple_srm,2) : "invalid") ],
+  #			[ (recipe.simple_srm ? decimal(recipe.simple_srm,2) : "invalid") ],
   #			"simple_srm",
   #			url_for( :action => :update_simple_srm, :id => recipe.id ), "Update SRM" )
   #	end
 
-
-  def decimal( value )
-    number_with_precision( value, :precision => 2 )
-  end
-
-  def percentage( value )
-    number_to_percentage(value, :precision => 2)
-  end
 
   def recipe_fermentable_list( recipe )
     recipe.fermentables.sort { |a,b|
@@ -492,7 +484,7 @@ module RecipesHelper
 
   def ajax_per_weight_editor( fermentable )
     ajax_edit_field_group( "per_weight_#{fermentable.id}",
-      [ number_with_precision(fermentable.percentage_weight*100,2) ],
+      [ decimal(fermentable.percentage_weight*100) ],
       "per_weight",
       url_for(  :controller => "recipes", :action => :update_fermentable_per_weight ,
         :id => fermentable.recipe.id,
@@ -509,7 +501,7 @@ module RecipesHelper
 
   def ajax_aa_editor( hop )
     #		ajax_edit_field_group( "aa_#{hop.id}",
-    #			[ number_with_precision(hop.aa,2) ],
+    #			[ decimal(hop.aa,2) ],
     #			"aa",
     #			url_for(  :controller => "recipes", :action => :update_hop_aa ,
     #				:id => hop.recipe.id,
@@ -518,13 +510,13 @@ module RecipesHelper
     #
     ajax_edit_field2( hop, "aa",
       { :action => :update, :controller => :hops, :id => hop.id, :render => "details_and_hop" },
-      [ number_with_precision(hop.aa,2) ],
+      [ decimal(hop.aa) ],
       nil, nil, "aa_#{hop.id}")
   end
 
   def ajax_ibu_editor( hop )
     #		ajax_edit_field_group( "ibu_#{hop.id}",
-    #			[ number_with_precision(hop.ibu_l,2) ],
+    #			[ decimal(hop.ibu_l,2) ],
     #			"ibu",
     #			url_for( :controller => "recipes", :action => :update_hop_ibu ,
     #				:id => hop.recipe.id,
@@ -533,7 +525,7 @@ module RecipesHelper
 
     ajax_edit_field2( hop, "ibu_l",
       { :action => :update, :controller => :hops, :id => hop.id, :render => "details_and_hop" },
-      [ number_with_precision(hop.ibu_l,2) ],
+      [ decimal(hop.ibu_l) ],
       "Updating IBU", nil, "ibu_#{hop.id}")
 
 
@@ -571,7 +563,7 @@ module RecipesHelper
   def ajax_quantity_editor( kit )
     ajax_edit_field2( kit, "quantity",
       { :action => :update, :controller => :kits, :id => kit.id, :render => "details_and_kit" },
-      [ number_with_precision(kit.quantity,2)],
+      [ decimal(kit.quantity)],
       nil, nil, "quantity_#{kit.id}")
   end
 

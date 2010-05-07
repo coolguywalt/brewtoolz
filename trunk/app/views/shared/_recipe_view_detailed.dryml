@@ -54,12 +54,12 @@
 <div class="block">
   <table class="item-list">
     <tr>
-      <td><b>Bitterness [IBU]:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_detailed.ibu, 2 ) %></span></td>
-      <td><b>Colour [SRM(EBC)]:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_detailed.srm, 2 ) %> (<%= number_with_precision( recipe_view_detailed.ebc, 2 ) %>)</span></td>
+      <td><b>Bitterness [IBU]:</b>&nbsp;&nbsp;<span class="big"><%= decimal( recipe_view_detailed.ibu) %></span></td>
+      <td><b>Colour [SRM(EBC)]:</b>&nbsp;&nbsp;<span class="big"><%= decimal( recipe_view_detailed.srm) %> (<%= decimal( recipe_view_detailed.ebc ) %>)</span></td>
     </tr>
     <tr>
-      <td><b>Balance:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_detailed.balance, 3 ) %></span></td>
-      <td><b>BU:GU ratio:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_detailed.bugu, 3 ) %></span></td>
+      <td><b>Balance:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_detailed.balance, :precision => 3 ) %></span></td>
+      <td><b>BU:GU ratio:</b>&nbsp;&nbsp;<span class="big"><%= number_with_precision( recipe_view_detailed.bugu, :precision => 3 ) %></span></td>
     </tr>
   </table>
 </div>

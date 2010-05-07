@@ -20,7 +20,7 @@
 <div class="block" >
 	<table class="list">
 		<tr><td><b>Estimated required yeast cells (billion):</b></td>
-			<td class ="big"><%= number_with_precision(this.yeast_pitching_rate/1e9, 2) %></td></tr>
+			<td class ="big"><%= decimal(this.yeast_pitching_rate/1e9) %></td></tr>
 	</table>
 </div>
 
@@ -28,20 +28,20 @@
 <div class="block" >
 	<table class="list">
 		<tr><td><b>Dried yeast (gm):</b></td>
-			<td class="big"><%= number_with_precision(dried_yeast_grams(this.yeast_pitching_rate),2) %></td></tr>
+			<td class="big"><%= decimal(dried_yeast_grams(this.yeast_pitching_rate)) %></td></tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr><td><b>No of liquid yeast(Wyeast/Whitelabs) packs:</b></td>
-			<td class="big"><%= number_with_precision(no_yeast_packets(this.yeast_pitching_rate),2) %></td><td>(Assumes 94% viability)</td></tr>
+			<td class="big"><%= decimal(no_yeast_packets(this.yeast_pitching_rate)) %></td><td>(Assumes 94% viability)</td></tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr><td><b>Approximate amount of solid slurry (ml):</b></td>
 			<td></td><td></td></tr>
 
 		<tr><td class="right">One hour settling</td>
-			<td class="big"><%= number_with_precision(yeast_slurry_onehour(this.yeast_pitching_rate),2) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
+			<td class="big"><%= decimal(yeast_slurry_onehour(this.yeast_pitching_rate)) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
 		<tr><td class="right">One day settling</td>
-			<td class="big"><%= number_with_precision(yeast_slurry_oneday(this.yeast_pitching_rate),2) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
+			<td class="big"><%= decimal(yeast_slurry_oneday(this.yeast_pitching_rate)) %></td><td>(Assumes 25% trub and 94% viability)</td></tr>
 		<tr><td class="right">Longer than 1 week settling</td>
-			<td class="big"><%= number_with_precision(yeast_slurry_final(this.yeast_pitching_rate,0.8),2) %></td><td>(Assumes 25% trub and 80% viability)</td></tr>
+			<td class="big"><%= decimal(yeast_slurry_final(this.yeast_pitching_rate,0.8)) %></td><td>(Assumes 25% trub and 80% viability)</td></tr>
 	</table>
 </div>
 

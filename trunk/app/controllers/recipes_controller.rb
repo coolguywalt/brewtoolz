@@ -24,6 +24,9 @@ class RecipesController < ApplicationController
 
 	auto_actions :all
 
+  after_filter :last_viewed_status  #Used to updated status for last viewing of a shared recipe
+
+
 	def print
 		@recipe = Recipe.find(params[:id])
 	end
@@ -73,9 +76,10 @@ class RecipesController < ApplicationController
       return
     end
 
-        # Create log message before conversions applied.
+    # Create log message before conversions applied.
     msg=""
     params[:recipe].each_pair{ |key, value|
+      next if (key == "existing_fermentable_attributes" )
       msg += "#{key.capitalize} => #{value} "
     }
 
@@ -92,7 +96,7 @@ class RecipesController < ApplicationController
         #Determine log messages.
         msg = "Details (Name, Type, Description)" if params[:recipe][:name]
 
-         @recipe.mark_update(  "Recipe update: #{msg}", current_user)
+        @recipe.mark_update(  "Recipe update: #{msg}", current_user)
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]
         when "details_and_fermentables_and_kits"
@@ -267,7 +271,7 @@ class RecipesController < ApplicationController
 
 		Hop.delete(params[:hop_id])
 
-     @recipe.mark_update( "Hop [#{hopname}] removed", current_user)
+    @recipe.mark_update( "Hop [#{hopname}] removed", current_user)
 
 		update_details_and_hops( @recipe )
 	end
@@ -896,7 +900,7 @@ class RecipesController < ApplicationController
 		render_misc( @recipe)
 	end
 
-  	def  remove_kit
+  def  remove_kit
 
 		@recipe = Recipe.find(params[:id])
 
@@ -1043,15 +1047,30 @@ class RecipesController < ApplicationController
       
       
     end
+
+    @recipe = nil #Ensures that last_viewed callback does not updated the last viewed date.
   end
 
-  
-#  def mark_update( recipe, msg=nil )
-#    recipe.mark_update( msg)
-#    # session["last_refeshed_#{recipe.id}"] = Time.now.to_i
-#  end
+  private
 
- end
+  def last_viewed_status
+    logger.debug "++last_view_status filter called"
+
+    return unless @recipe
+
+    if @recipe.is_owner?(current_user) then
+      logger.debug "++last_view_status owner viewed"
+      @recipe.last_viewed = Time.now()
+      @recipe.save
+    end
+
+    if @recipe.is_sharer?(current_user) then
+      @recipe.sharer_viewed( current_user )
+    end
+    
+  end
+
+end
 
 
 

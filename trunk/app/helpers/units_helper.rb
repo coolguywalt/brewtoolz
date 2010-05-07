@@ -125,13 +125,13 @@ module UnitsHelper
 		BrewingUnits::unit_for_display( current_user.units.temperature )
 	end
   
-	def decimal( value )
-		number_with_precision( value, 2 )
-	end
-  
-	def percentage( value )
-		number_to_percentage(value, :precision => 2)
-	end
+#	def decimal( value )
+#		number_with_precision( value, :precision => 2 )
+#	end
+#
+#	def percentage( value )
+#		number_to_percentage(value, :precision => 2)
+#	end
     
 
 	def gms_to_lbs( wght_gms )

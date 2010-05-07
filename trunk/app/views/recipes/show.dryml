@@ -53,14 +53,23 @@
             <tr class="<%= cycle('odd','even') -%>">
               <td><a><view:brew_date/></a></td>
               <td><view:user/></td>
-            <td><%=number_with_precision(this.actual_abv,2) %>%</td>
-            <td><%=number_with_precision(this.actual_balance,2) %></td>
-            <td><%=this.rating > 0.0 ? number_with_precision(this.rating,2) : "n/a" %></td>
+            <td><%=decimal(this.actual_abv) %>%</td>
+            <td><%=decimal(this.actual_balance) %></td>
+            <td><%=this.rating > 0.0 ? decimal(this.rating) : "n/a" %></td>
             <td><%= brew_log_link(this) %> <%= brew_day_link(this) %></td>
             </tr>
           </repeat>
         </table>
       </div>
+    </if>
+
+    <if test="&@recipe.is_contributor?(current_user)">
+    <br/><br/>
+    <h2>Shared Updates Log</h2>
+      <div id="log_list_div" >
+        <%= render :partial => 'log', :object => @recipe %>
+    </div>
+      
     </if>
     <!--[if IE]>
       </div>
