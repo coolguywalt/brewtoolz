@@ -23,6 +23,9 @@ module ApplicationModelsHelper
 
   def is_weight_locked_func?( weight_lock, recipe)
 
+    #Check for valid parameters
+    return false unless recipe
+
     return true if recipe.locked
 
     logger.debug "Checking lock weight attribute"
