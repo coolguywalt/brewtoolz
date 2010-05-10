@@ -1051,6 +1051,24 @@ class RecipesController < ApplicationController
     @recipe = nil #Ensures that last_viewed callback does not updated the last viewed date.
   end
 
+  def add_shared_log_message
+    @recipe = Recipe.find(params[:id])
+
+    #return unless @recipe
+    #return unless @recipe.is_shared?
+
+    if !@recipe.updatable_by?(current_user) or !@recipe.is_shared?
+      notifyattempt(request, "RecipesController.add_shared_log_mesage not from authorized user: #{current_user}")
+      render( :nothing => true )
+      return
+    end
+
+     @recipe.mark_update(params[:message], current_user, "User comment")
+
+    update_shared_log( @recipe )
+    
+  end
+
   private
 
   def last_viewed_status
@@ -1069,6 +1087,8 @@ class RecipesController < ApplicationController
     end
     
   end
+
+
 
 end
 
