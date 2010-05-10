@@ -54,25 +54,37 @@
     <%= render :partial => 'shared/recipe_edit', :object => @recipe %>
 
     <br/><a to="&@recipe" class="button">Done</a>
-    
+
     <if test="&@recipe.is_shared?">
-    <br/><br/>
+      <br/><br/>
+
+      <div class="block">
+
+        <% form_remote_tag( :loading => "Hobo.showSpinner('Add Mesage');",
+          :complete => "Hobo.hideSpinner();",
+          :url => {  :controller => "recipes", :action => :add_shared_log_message, :id => @recipe.id }  ) do |f|%>
+              <h2>Message:</h2>
+              <%= text_area_tag( :message, nil, :class => "recipe-description-edit" ) %><br/>
+              <%=  submit_tag "Add Shared Log Message", :class => "button small-button"%>
+        <%  end %>
+      </div>
+
       <div id="log_list_div" >
         <%= render :partial => 'log', :object => @recipe %>
-    </div>
-  </if>
+      </div>
+    </if>
 
-  <!--[if IE]>
+    <!--[if IE]>
 		   </div>
 		 <![endif]-->
 
-</content-body:>
+  </content-body:>
 
-<aside-right:>
-  <div id="shared_user_status_div" class="block">
-    <%= render :partial => 'shared/recipe_shared_users', :object => @recipe %>
-  </div>
-</aside-right:>
+  <aside-right:>
+    <div id="shared_user_status_div" class="block">
+      <%= render :partial => 'shared/recipe_shared_users', :object => @recipe %>
+    </div>
+  </aside-right:>
 
 </edit-page>
 

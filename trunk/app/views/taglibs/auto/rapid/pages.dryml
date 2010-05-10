@@ -1643,7 +1643,7 @@
     
           <section param="content-body" with-flash-messages>
             <view:description param="description"/>
-            <field-list fields="genealogy, volume, efficency, rating, hop_utilisation_method, recipe_type, style" param/>
+            <field-list fields="genealogy, volume, efficency, rating, hop_utilisation_method, recipe_type, last_viewed, style" param/>
             <section param="collection-section">
               <h3 param="collection-heading">Brew Entries</h3>
               

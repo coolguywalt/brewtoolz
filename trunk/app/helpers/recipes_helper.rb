@@ -99,6 +99,15 @@ module RecipesHelper
 
 	end
 
+  def update_shared_log( recipe )
+		# Need to update hops because the weight is dependent on the OG value.
+
+		render(:update) { |page|
+       page.replace_html 'log_list_div', :partial => 'log', :object => recipe
+		}
+
+	end
+
 
   def update_details_and_kits( recipe )
 		# Need to update hops because the weight is dependent on the OG value.
@@ -622,6 +631,14 @@ module RecipesHelper
     else
       return link_to( "Del", {:controller => "recipes", :action => :remove_shared_user, :id => recipe.id, :shared_user_id => shared_user.id }, :class => 'button small-button' )
     end
+  end
+
+    def add_shared_msg_link(recipe)
+    link_to_remote( "Add Shared Log Message",
+      :loading => "Hobo.showSpinner('Adding Message');",
+      :complete => "Hobo.hideSpinner();",
+      :url => {  :controller => "recipes", :action => :add_shared_log_message, :id => recipe.id, :message => ""  },
+      :html => { :class => 'button small-button' }     )
   end
 
   def del_yeast_link(yeast)

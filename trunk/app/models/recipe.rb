@@ -725,13 +725,13 @@ class Recipe < ActiveRecord::Base
     return recipe_shared.updated_since?(time)
   end
 
-  def mark_update( msg=nil, user=nil )
+  def mark_update( msg=nil, user=nil, msg_type=nil )
     return unless is_shared?
     user = acting_user unless user
     recipe_shared.mark_update
 
     if msg then
-      self.log_message.create(:message => msg, :msgtype => "Recipe update", :msgtime => Time.now(),
+      self.log_message.create(:message => msg, :msgtype => (msg_type ? msg_type : "Recipe update"), :msgtime => Time.now(),
         :user => user )
     end
   end
