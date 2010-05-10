@@ -44,7 +44,7 @@
     Errors are displayed beside the entry box.<br/>
 <br/>
 
-    If sucessfull the right hand window will show a list of the users that have been added, with a "Del" button next to them
+    If successful the right hand window will show a list of the users that have been added, with a "Del" button next to them
     so that they can be removed from the shared list.<br/>
 <br/>
 
@@ -64,7 +64,7 @@
     Any recipe that an owner has as shared will be marked with the word [shared] against it in their Brewer's Recipes list on the bottom of the home page.<br/>
 <br/>
 
-    There are no email notifications or change log at this stage.  That will be coming in subsequent releases.
+    There are no email notifications at this stage.  That will be coming in subsequent releases.
 
 
 
