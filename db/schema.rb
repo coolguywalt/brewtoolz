@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100506112206) do
+ActiveRecord::Schema.define(:version => 20100510114615) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -267,6 +267,7 @@ ActiveRecord::Schema.define(:version => 20100506112206) do
     t.datetime "last_notified"
     t.integer  "recipe_shared_id"
     t.integer  "user_id"
+    t.datetime "last_viewed"
   end
 
   create_table "recipes", :force => true do |t|
@@ -285,6 +286,7 @@ ActiveRecord::Schema.define(:version => 20100506112206) do
     t.string   "hop_utilisation_method"
     t.boolean  "hop_cubed"
     t.boolean  "locked"
+    t.datetime "last_viewed"
   end
 
   add_index "recipes", ["name"], :name => "name"
