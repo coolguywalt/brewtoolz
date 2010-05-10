@@ -56,6 +56,12 @@ class BreweriesController < ApplicationController
 		redirect_to url_for( :controller => 'breweries', :action => 'index' )
 
 	end
-
+  
+  def index
+    @breweries =  Brewery.paginate( :page => params[:page],
+      :per_page   => 20,
+      :conditions => "user_id = #{current_user.id}",
+      :order => "name" )
+  end
 
 end
