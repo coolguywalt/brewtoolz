@@ -198,3 +198,16 @@
     </prepend-body:>
   </old-card>
 </extend>
+
+
+<extend tag="card" for="Brewery">
+  <old-card merge>
+    <body:>
+      <label><b>Description:</b></label>&nbsp;&nbsp;<%= truncate( this.description, 100 ) %><br/>
+      <label><b>Capacity [<%= volume_units()%>]:</b></label>&nbsp;&nbsp;<%= volume_values(this.capacity) %>&nbsp;&nbsp;<br/>
+      <label><b>Is Default:</b></label>&nbsp;&nbsp;<view:isDefault/>&nbsp;&nbsp;
+      <label><b>Is All Grain:</b></label>&nbsp;&nbsp;<view:isAllGrain/>&nbsp;&nbsp;
+    </body:>
+
+  </old-card>
+</extend>
