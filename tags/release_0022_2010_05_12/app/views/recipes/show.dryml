@@ -1,0 +1,100 @@
+<show-page>
+
+  <!-- Show recipe -->
+  <title:>
+    Recipe: <%= @recipe.name %> - Brewtoolz
+  </title:>
+
+  <content-header:>
+
+    <h2><name/></h2>
+
+    <div class="header-buttons">
+      <a action="edit" if="&can_edit?" class="button">Edit</a>
+
+      <if test="&can_clone?">        <%= link_to("Clone", { :action => "clone", :id => @recipe.id },
+          :class => 'button') %> </if>
+      <if test="&logged_in?"><%= link_to("Brew", { :action => "brew", :id => @recipe.id }, :class => 'button') %></if>
+
+      <%= link_to("Print", { :action => "print", :id => @recipe.id },
+        :class => 'button', :target => "_blank") %>
+
+      <%= link_to("Print Text", { :action => "print_text", :id => @recipe.id },
+        :class => 'button', :target => "_blank") %>
+    </div>
+  </content-header:>
+
+  <content-body:>
+    <!--[if IE]>
+	<div class="ie">
+    <![endif]-->
+    <!-- Details -->
+    <%= render :partial => 'shared/recipe_view_detailed', :object => @recipe %>
+
+
+    <!-- show the brew log list -->
+    <if test="@recipe.brew_entries.count > 0">
+      <div class="block">
+        <h2>Brewlog
+          <!--div class="right_justify"-->
+          <if test="&logged_in?">&nbsp;&nbsp;<%= link_to("Brew recipe", { :action => "brew", :id => @recipe.id }, :class => 'button') %></if>
+          <!--/div --></h2>
+        <table id="brewlog_list" class="item-list">
+          <tr>
+            <th><b>Date Brewed</b></th>
+            <th><b>Brewer</b></th>
+            <th><b>ABV</b></th>
+            <th><b>Balance</b></th>
+            <th><b>Rating</b></th>
+            <th><b>Actions</b></th>
+
+          </tr>
+          <repeat with="&recipe_brewlog_list(@recipe)">
+            <tr class="<%= cycle('odd','even') -%>">
+              <td><a><view:brew_date/></a></td>
+              <td><view:user/></td>
+            <td><%=decimal(this.actual_abv) %>%</td>
+            <td><%=decimal(this.actual_balance) %></td>
+            <td><%=this.rating > 0.0 ? decimal(this.rating) : "n/a" %></td>
+            <td><%= brew_log_link(this) %> <%= brew_day_link(this) %></td>
+            </tr>
+          </repeat>
+        </table>
+      </div>
+    </if>
+
+    <if test="&@recipe.is_contributor?(current_user)">
+    <br/><br/>
+    <h2>Shared Updates Log</h2>
+      <div id="log_list_div" >
+        <%= render :partial => 'log', :object => @recipe %>
+    </div>
+      
+    </if>
+    <!--[if IE]>
+      </div>
+   <![endif]-->
+  </content-body:>
+  <aside:></aside:>
+</show-page>
+
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+
