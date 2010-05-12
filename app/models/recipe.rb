@@ -42,6 +42,8 @@ class Recipe < ActiveRecord::Base
 
     locked :boolean  #Signifies all ingredients should be considered locked.
 
+    draft :boolean #Mark the recipe as in a draft editing state
+
     # -- simple recipe representation that does not have ingredients assigned
     #    could be a placeholder for something done in the past, or for an uploaded
     #    recipe from another brewing calculator software.
@@ -611,43 +613,6 @@ class Recipe < ActiveRecord::Base
 
   end
 
-
-  #  protected
-  #  def pre_destroy
-  #    #Remove brew_entries
-  #
-  #    brew_entries.each { |brew_entry|
-  #      next unless brew_entry
-  #      brew_entry.destroy
-  #    }
-  #
-  #    #Remove other recipe artifacts
-  #    fermentables.each { |fermentable|
-  #      next unless fermentable
-  #      fermentable.destroy
-  #    }
-  #
-  #    hops.each { |hop|
-  #      hop.destroy
-  #    }
-  #
-  #    yeasts.each{ |yeast|
-  #      next unless yeast
-  #      yeast.destroy
-  #    }
-  #
-  #
-  #    mash_steps.each{ |mash_step|
-  #      next unless mash_step
-  #      mash_step.destroy
-  #    }
-  #
-  #    misc_ingredients.each{ |misc|
-  #      next unless misc
-  #      misc.destroy
-  #    }
-  #  end
-
   def is_cubed?
     return false if hop_cubed.nil?
     return hop_cubed
@@ -694,6 +659,11 @@ class Recipe < ActiveRecord::Base
     write_attribute( :efficency, new_efficency) if new_efficency and (new_efficency != "")
     write_attribute( :volume, new_volume) if new_volume and (new_volume != "")
     save
+  end
+
+  def is_draft?
+    return false unless draft  #Take care of nil case
+    return draft
   end
 
   def name
@@ -745,4 +715,4 @@ class Recipe < ActiveRecord::Base
     return recipe_shared.stale_view?( user )
   end
 
-end
+    end

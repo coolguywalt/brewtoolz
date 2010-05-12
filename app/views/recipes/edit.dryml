@@ -42,6 +42,13 @@
 
     <br/>
 
+    <div class="block">
+      <table><tr>
+          <td><%=  ajax_lock_edit(this, "draft", "recipes", "update", "none" )%></td><td><b>Mark As Draft&nbsp;</b></td>
+        </tr></table>
+    </div>
+
+    <br/>
     <div id="details_div">
       <%= render :partial => 'details', :object => @recipe %>
     </div>
