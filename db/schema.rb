@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100510114615) do
+ActiveRecord::Schema.define(:version => 20100512134834) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -287,6 +287,7 @@ ActiveRecord::Schema.define(:version => 20100510114615) do
     t.boolean  "hop_cubed"
     t.boolean  "locked"
     t.datetime "last_viewed"
+    t.boolean  "draft"
   end
 
   add_index "recipes", ["name"], :name => "name"

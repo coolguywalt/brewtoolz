@@ -287,3 +287,8 @@ body {
     font-weight: bold;
     color: green;
 }
+
+.draft {
+    font-weight: bold;
+    color: blue;
+}
