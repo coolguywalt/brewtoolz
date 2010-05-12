@@ -168,6 +168,7 @@
 <extend tag="card" for="Recipe">
   <old-card merge>
     <prepend-body:>
+      <if test="&this.is_draft?"><span class="draft">&nbsp;Draft</span><br/></if>
       <label><b>Style:</b></label>&nbsp;&nbsp;<a:style/>&nbsp;&nbsp;<br/>
       <label><b>Description:</b></label>&nbsp;&nbsp;<%= truncate( this.description, 100 ) %><br/>
       <label><b>ABV:</b></label>&nbsp;&nbsp;<view:abv/>%&nbsp;&nbsp;

@@ -19,16 +19,19 @@
 
 <table class="item-list">
 
-	<tr><th>Name</th><th>Style</th><th>Brewer</th><th>ABV</th><th>Balance</th></tr>
+  <tr><th>Name</th><th>Style</th><th>Brewer</th><th>ABV</th><th>Balance</th></tr>
 
-	<repeat with="&recipe_list">
-		<tr class="<%= cycle('odd','even') -%>">
-			<td><a><%= h(this.name) %></a></td>
-			<td><a to="&this.style"><view:style.name/></a></td>
-			<td><view:user/></td>
-		<td><%= decimal(this.abv) %>%</td>
-		<td><%= decimal(this.balance) %></td>
-		</tr>
-	</repeat>
+  <repeat with="&recipe_list">
+    <tr class="<%= cycle('odd','even') -%>">
+      <td>
+        <a><%= h(this.name) %></a>
+        <if test="&this.is_draft?"><span class="draft">&nbsp;[Draft]</span></if>
+      </td>
+      <td><a to="&this.style"><view:style.name/></a></td>
+      <td><view:user/></td>
+      <td><%= decimal(this.abv) %>%</td>
+      <td><%= decimal(this.balance) %></td>
+    </tr>
+  </repeat>
 
 </table>

@@ -974,6 +974,8 @@ class RecipesController < ApplicationController
 
     @recipe.destroy
 
+    @recipe = nil  #Ensure that "after" processing is not attempted.
+
     redirect_to "/"
 
   end

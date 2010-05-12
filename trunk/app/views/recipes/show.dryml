@@ -7,7 +7,7 @@
 
   <content-header:>
 
-    <h2><name/></h2>
+    <h2><name/><if test="&this.is_draft?"><span class="draft">&nbsp;[Draft]</span></if></h2>
 
     <div class="header-buttons">
       <a action="edit" if="&can_edit?" class="button">Edit</a>
@@ -64,12 +64,12 @@
     </if>
 
     <if test="&@recipe.is_contributor?(current_user)">
-    <br/><br/>
-    <h2>Shared Updates Log</h2>
+      <br/><br/>
+      <h2>Shared Updates Log</h2>
       <div id="log_list_div" >
         <%= render :partial => 'log', :object => @recipe %>
-    </div>
-      
+      </div>
+
     </if>
     <!--[if IE]>
       </div>
