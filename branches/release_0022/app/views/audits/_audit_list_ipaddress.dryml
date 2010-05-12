@@ -1,0 +1,44 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<div id="audit_list_div">
+
+     <h2>IP address history</h2>
+
+     <%=link_to_remote "Back to unfiltered view", :url => {:action => :index }%><br/>
+
+   <%= will_paginate audit_list_ipaddress, :params => {:action => "ipaddress_history"} %>
+
+    <table class="item-list">
+      <tr>
+        <th>Date</th><th>User</th><th>Ip Address</th><th>Url</th><th>Params</th><th>Ajax</th>
+      </tr>
+      <repeat with="&audit_list_ipaddress" >
+        <tr class="<%= cycle('odd','even') -%>">
+        <td><view:created_at/></td>
+        <td><%=link_to_remote this.username, :url => { :action => "user_history", :user_id => this.user_id} %></td>
+        <td><view:ipaddress/></td>
+        <td><view:url/></td>
+        <td><view:params/></td>
+        <td><view:ajax/></td>
+        </tr>
+      </repeat>
+    </table>
+
+   </div>

@@ -1,0 +1,2135 @@
+<!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
+
+<!-- ====== Main Navigation ====== -->
+
+<def tag="main-nav">
+  <navigation class="main-nav" merge-attrs param="default">
+    <nav-item href="#{base_url}/">Home</nav-item>
+    <nav-item with="&Audit">Audits</nav-item>
+    <nav-item with="&BrewEntry">Brew Entries</nav-item>
+    <nav-item with="&BrewEntryLog">Brew Entry Logs</nav-item>
+    <nav-item with="&Brewery">Breweries</nav-item>
+    <nav-item with="&Category">Categories</nav-item>
+  </navigation>
+</def>
+
+
+
+  
+<!-- ====== Audit Pages ====== -->
+
+
+<def tag="index-page" for="Audit">
+  <page merge title="Audits">
+    <body: class="index-page audit" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Audits</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Audit">
+  <page merge title="New Audit">
+    <body: class="new-page audit" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Audit</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Audit"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Audit">
+  <page merge title="Audit">
+
+    <body: class="show-page audit" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="ajax" param/>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="url, ipaddress, log, username, params, user" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Audit">
+  <page merge title="Edit Audit">
+
+    <body: class="edit-page audit" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Audit" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== BrewEntry Pages ====== -->
+
+
+<def tag="index-page" for="BrewEntry">
+  <page merge title="Brew Entries">
+    <body: class="index-page brew-entry" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Brew Entries</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="BrewEntry">
+  <page merge title="New Brew Entry">
+    <body: class="new-page brew-entry" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Brew Entry</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Brew Entry"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="BrewEntry">
+  <page merge title="Brew Entry">
+
+    <body: class="show-page brew-entry" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:recipe param="parent-link">&laquo; <name/></a:recipe>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Brew Entry</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="brew_date, comment, actual_fg, bottled_kegged, actual_og, volume_to_ferementer, pitching_temp, actual_colour, rating, absorbtion_rate, mash_conversion, volume_from_mash, volume_to_boil, mash_dead_space, ambient_temp, actual_extract_volume, actual_extract_sg, liquor_to_grist, boiler_loses, evaporation_rate, boil_time, sparge_method, no_batches, batch1_volume, batch1_gravity_actual, batch1_volume_actual, batch2_volume, batch2_gravity_actual, batch2_volume_actual, batch3_volume, batch3_gravity_actual, batch3_volume_actual, batch4_volume, batch4_gravity_actual, batch4_volume_actual, preboil_gravity_actual, preboil_volume_actual, postboil_gravity_actual, postboil_volume_actual, brewery" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">Brew Entry Logs</h3>
+              
+              <collection:brew_entry_logs param/>
+            </section>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="BrewEntry">
+  <page merge title="Edit Brew Entry">
+
+    <body: class="edit-page brew-entry" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Brew Entry" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== BrewEntryLog Pages ====== -->
+
+
+<def tag="index-page" for="BrewEntryLog">
+  <page merge title="Brew Entry Logs">
+    <body: class="index-page brew-entry-log" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Brew Entry Logs</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="BrewEntryLog">
+  <page merge title="New Brew Entry Log">
+    <body: class="new-page brew-entry-log" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Brew Entry Log</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Brew Entry Log"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="BrewEntryLog">
+  <page merge title="Brew Entry Log">
+
+    <body: class="show-page brew-entry-log" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:brew_entry param="parent-link">&laquo; <name/></a:brew_entry>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Brew Entry Log</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="log_date, comment, log_type, specific_gravity, temperature, rating" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="BrewEntryLog">
+  <page merge title="Edit Brew Entry Log">
+
+    <body: class="edit-page brew-entry-log" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Brew Entry Log" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Brewery Pages ====== -->
+
+
+<def tag="index-page" for="Brewery">
+  <page merge title="Breweries">
+    <body: class="index-page brewery" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Breweries</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Brewery">
+  <page merge title="New Brewery">
+    <body: class="new-page brewery" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Brewery</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Brewery"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Brewery">
+  <page merge title="Brewery">
+
+    <body: class="show-page brewery" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="isDefault, isAllGrain" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Brewery</a>
+          </header>
+    
+          <section param="content-body">
+            <view:description param="description"/>
+            <field-list fields="capacity, efficency, liquor_to_grist, boil_time, mash_tun_capacity, mash_tun_deadspace, evapouration_rate, boiler_loses" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Brewery">
+  <page merge title="Edit Brewery">
+
+    <body: class="edit-page brewery" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Brewery" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Category Pages ====== -->
+
+
+<def tag="index-page" for="Category">
+  <page merge title="Categories">
+    <body: class="index-page category" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Categories</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Category">
+  <page merge title="New Category">
+    <body: class="new-page category" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Category</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Category"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Category">
+  <page merge title="Category">
+
+    <body: class="show-page category" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Category</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="designator" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Category">
+  <page merge title="Edit Category">
+
+    <body: class="edit-page category" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Category" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== FermentableType Pages ====== -->
+
+
+<def tag="index-page" for="FermentableType">
+  <page merge title="Fermentable Types">
+    <body: class="index-page fermentable-type" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Fermentable Types</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="FermentableType">
+  <page merge title="New Fermentable Type">
+    <body: class="new-page fermentable-type" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Fermentable Type</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Fermentable Type"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="FermentableType">
+  <page merge title="Fermentable Type">
+
+    <body: class="show-page fermentable-type" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="converted, fullyfermentable, mashed" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Fermentable Type</a>
+          </header>
+    
+          <section param="content-body">
+            <view:description param="description"/>
+            <field-list fields="yeild, colour" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="FermentableType">
+  <page merge title="Edit Fermentable Type">
+
+    <body: class="edit-page fermentable-type" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Fermentable Type" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Fermentable Pages ====== -->
+
+
+<def tag="index-page" for="Fermentable">
+  <page merge title="Fermentables">
+    <body: class="index-page fermentable" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Fermentables</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Fermentable">
+  <page merge title="New Fermentable">
+    <body: class="new-page fermentable" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Fermentable</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Fermentable"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Fermentable">
+  <page merge title="Fermentable">
+
+    <body: class="show-page fermentable" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:recipe param="parent-link">&laquo; <name/></a:recipe>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="lock_weight" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Fermentable</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="points, fermentable_type" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Fermentable">
+  <page merge title="Edit Fermentable">
+
+    <body: class="edit-page fermentable" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Fermentable" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== HopType Pages ====== -->
+
+
+<def tag="index-page" for="HopType">
+  <page merge title="Hop Types">
+    <body: class="index-page hop-type" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Hop Types</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="HopType">
+  <page merge title="New Hop Type">
+    <body: class="new-page hop-type" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Hop Type</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Hop Type"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="HopType">
+  <page merge title="Hop Type">
+
+    <body: class="show-page hop-type" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Hop Type</a>
+          </header>
+    
+          <section param="content-body">
+            <view:description param="description"/>
+            <field-list fields="aa, hop_use, hop_use_type, beta, hsi, origin, humulene, caryophllene, cohumulone, myrcene" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="HopType">
+  <page merge title="Edit Hop Type">
+
+    <body: class="edit-page hop-type" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Hop Type" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Hop Pages ====== -->
+
+
+<def tag="index-page" for="Hop">
+  <page merge title="Hops">
+    <body: class="index-page hop" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Hops</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Hop">
+  <page merge title="New Hop">
+    <body: class="new-page hop" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Hop</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Hop"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Hop">
+  <page merge title="Hop">
+
+    <body: class="show-page hop" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:recipe param="parent-link">&laquo; <name/></a:recipe>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="lock_weight" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Hop</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="minutes, aa, ibu_l, dry_hop_amount_l, notes, hop_use, hop_use_type, hop_form, beta, humulene, caryophllene, cohumulone, myrcene, hop_type" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Hop">
+  <page merge title="Edit Hop">
+
+    <body: class="edit-page hop" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Hop" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== IngredientUnitPreference Pages ====== -->
+
+
+<def tag="index-page" for="IngredientUnitPreference">
+  <page merge title="Ingredient Unit Preferences">
+    <body: class="index-page ingredient-unit-preference" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Ingredient Unit Preferences</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="IngredientUnitPreference">
+  <page merge title="New Ingredient Unit Preference">
+    <body: class="new-page ingredient-unit-preference" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Ingredient Unit Preference</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Ingredient Unit Preference"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="IngredientUnitPreference">
+  <page merge title="Ingredient Unit Preference">
+
+    <body: class="show-page ingredient-unit-preference" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Ingredient Unit Preference</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="hops, fermentable, volume, wateradditions, temperature, gravity, liquor_to_grist, hop_utilisation_method" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="IngredientUnitPreference">
+  <page merge title="Edit Ingredient Unit Preference">
+
+    <body: class="edit-page ingredient-unit-preference" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Ingredient Unit Preference" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== KitType Pages ====== -->
+
+
+<def tag="index-page" for="KitType">
+  <page merge title="Kit Types">
+    <body: class="index-page kit-type" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Kit Types</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="KitType">
+  <page merge title="New Kit Type">
+    <body: class="new-page kit-type" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Kit Type</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Kit Type"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="KitType">
+  <page merge title="Kit Type">
+
+    <body: class="show-page kit-type" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Kit Type</a>
+          </header>
+    
+          <section param="content-body">
+            <view:description param="description"/>
+            <field-list fields="points, yeild, ibus, colour, volume, weight, designed_volume, kit_type" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="KitType">
+  <page merge title="Edit Kit Type">
+
+    <body: class="edit-page kit-type" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Kit Type" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Kit Pages ====== -->
+
+
+<def tag="index-page" for="Kit">
+  <page merge title="Kits">
+    <body: class="index-page kit" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Kits</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Kit">
+  <page merge title="New Kit">
+    <body: class="new-page kit" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Kit</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Kit"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Kit">
+  <page merge title="Kit">
+
+    <body: class="show-page kit" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:recipe param="parent-link">&laquo; <name/></a:recipe>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Kit</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="quantity, kit_type" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Kit">
+  <page merge title="Edit Kit">
+
+    <body: class="edit-page kit" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Kit" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== MashStep Pages ====== -->
+
+
+<def tag="index-page" for="MashStep">
+  <page merge title="Mash Steps">
+    <body: class="index-page mash-step" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Mash Steps</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="MashStep">
+  <page merge title="New Mash Step">
+    <body: class="new-page mash-step" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Mash Step</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Mash Step"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="MashStep">
+  <page merge title="Mash Step">
+
+    <body: class="show-page mash-step" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:recipe param="parent-link">&laquo; <name/></a:recipe>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Mash Step</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="temperature, time, liquor_to_grist, steptype, addition_amount, addition_temp" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="MashStep">
+  <page merge title="Edit Mash Step">
+
+    <body: class="edit-page mash-step" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Mash Step" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== MashStep Pages ====== -->
+
+
+<def tag="index-page" for="MashStep">
+  <page merge title="Mash Steps">
+    <body: class="index-page mash-step" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Mash Steps</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="MashStep">
+  <page merge title="New Mash Step">
+    <body: class="new-page mash-step" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Mash Step</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Mash Step"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="MashStep">
+  <page merge title="Mash Step">
+
+    <body: class="show-page mash-step" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:recipe param="parent-link">&laquo; <name/></a:recipe>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Mash Step</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="temperature, time, liquor_to_grist, steptype, addition_amount, addition_temp" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="MashStep">
+  <page merge title="Edit Mash Step">
+
+    <body: class="edit-page mash-step" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Mash Step" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== MiscIngredientType Pages ====== -->
+
+
+<def tag="index-page" for="MiscIngredientType">
+  <page merge title="Misc Ingredient Types">
+    <body: class="index-page misc-ingredient-type" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Misc Ingredient Types</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="MiscIngredientType">
+  <page merge title="New Misc Ingredient Type">
+    <body: class="new-page misc-ingredient-type" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Misc Ingredient Type</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Misc Ingredient Type"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="MiscIngredientType">
+  <page merge title="Misc Ingredient Type">
+
+    <body: class="show-page misc-ingredient-type" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Misc Ingredient Type</a>
+          </header>
+    
+          <section param="content-body">
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="MiscIngredientType">
+  <page merge title="Edit Misc Ingredient Type">
+
+    <body: class="edit-page misc-ingredient-type" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Misc Ingredient Type" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== MiscIngredient Pages ====== -->
+
+
+<def tag="index-page" for="MiscIngredient">
+  <page merge title="Misc Ingredients">
+    <body: class="index-page misc-ingredient" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Misc Ingredients</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="MiscIngredient">
+  <page merge title="New Misc Ingredient">
+    <body: class="new-page misc-ingredient" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Misc Ingredient</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Misc Ingredient"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="MiscIngredient">
+  <page merge title="Misc Ingredient">
+
+    <body: class="show-page misc-ingredient" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:recipe param="parent-link">&laquo; <name/></a:recipe>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="is_solid" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Misc Ingredient</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="misc_type, misc_use, time, amount_l, use_for, notes" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="MiscIngredient">
+  <page merge title="Edit Misc Ingredient">
+
+    <body: class="edit-page misc-ingredient" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Misc Ingredient" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Recipe Pages ====== -->
+
+
+<def tag="index-page" for="Recipe">
+  <page merge title="Recipes">
+    <body: class="index-page recipe" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Recipes</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Recipe">
+  <page merge title="New Recipe">
+    <body: class="new-page recipe" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Recipe</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Recipe"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Recipe">
+  <page merge title="Recipe">
+
+    <body: class="show-page recipe" param/>
+
+    <content: param>
+      <section-group>
+        <section param="main-content">
+          <header param="content-header">
+            <a:brew_entry param="parent-link">&laquo; <name/></a:brew_entry>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="hop_cubed, locked" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Recipe</a>
+          </header>
+    
+          <section param="content-body" with-flash-messages>
+            <view:description param="description"/>
+            <field-list fields="genealogy, volume, efficency, rating, hop_utilisation_method, recipe_type, last_viewed, style" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">Brew Entries</h3>
+              
+              <collection:brew_entries param/>
+            </section>
+          </section>
+        </section>
+        
+        <aside param>
+          <section param="fermentables-collection-section">
+            <h3 param="fermentables-collection-heading">Fermentables</h3>
+            <collection:fermentables  param="fermentables-collection"/>
+          </section>
+          <section param="hops-collection-section">
+            <h3 param="hops-collection-heading">Hops</h3>
+            <collection:hops  param="hops-collection"/>
+          </section>
+          <section param="kits-collection-section">
+            <h3 param="kits-collection-heading">Kits</h3>
+            <collection:kits  param="kits-collection"/>
+          </section>
+          <section param="log_message-collection-section">
+            <h3 param="log_message-collection-heading">Log Message</h3>
+            <collection:log_message  param="log_message-collection"/>
+          </section>
+          <section param="mash_steps-collection-section">
+            <h3 param="mash_steps-collection-heading">Mash Steps</h3>
+            <collection:mash_steps  param="mash_steps-collection"/>
+          </section>
+          <section param="misc_ingredients-collection-section">
+            <h3 param="misc_ingredients-collection-heading">Misc Ingredients</h3>
+            <collection:misc_ingredients  param="misc_ingredients-collection"/>
+          </section>
+          <section param="yeasts-collection-section">
+            <h3 param="yeasts-collection-heading">Yeasts</h3>
+            <collection:yeasts  param="yeasts-collection"/>
+          </section>
+        </aside>
+      </section-group>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Recipe">
+  <page merge title="Edit Recipe">
+
+    <body: class="edit-page recipe" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Recipe" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Style Pages ====== -->
+
+
+<def tag="index-page" for="Style">
+  <page merge title="Styles">
+    <body: class="index-page style" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Styles</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Style">
+  <page merge title="New Style">
+    <body: class="new-page style" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Style</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Style"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Style">
+  <page merge title="Style">
+
+    <body: class="show-page style" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Style</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="designator, category" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Style">
+  <page merge title="Edit Style">
+
+    <body: class="edit-page style" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Style" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== User Pages ====== -->
+
+
+<def tag="index-page" for="User">
+  <page merge title="Users">
+    <body: class="index-page user" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Users</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="User">
+  <page merge title="New User">
+    <body: class="new-page user" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New User</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create User"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="User">
+  <page merge title="User">
+
+    <body: class="show-page user" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="administrator, default_locked_recipes" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit User</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="email_address, last_activity" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="User">
+  <page merge title="Edit User">
+
+    <body: class="edit-page user" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This User" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="signup-page" polymorphic/>
+<def tag="signup-page" for="User">
+
+  <page title="Signup" merge>
+
+    <body: class="lifecycle-start-page signup-page" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Signup</h2>
+      </header>
+
+      <section param="content-body">
+        <signup-form param="form"/>
+      </section>
+    </content:>
+
+  </page>
+</def>
+
+<def tag="reset-password-page" polymorphic/>
+<def tag="reset-password-page" for="User">
+  <page title="Reset Password" merge>
+    
+    <body: class="lifecycle-transition-page reset-password-page" param/>
+    
+    <content:>
+      <header param="content-header">
+        <h2 param="heading">Reset Password</h2>
+      </header>
+      
+      <section param="content-body">
+        <reset-password-form param="form"/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+  
+<!-- ====== YeastType Pages ====== -->
+
+
+<def tag="index-page" for="YeastType">
+  <page merge title="Yeast Types">
+    <body: class="index-page yeast-type" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Yeast Types</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="YeastType">
+  <page merge title="New Yeast Type">
+    <body: class="new-page yeast-type" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Yeast Type</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Yeast Type"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="YeastType">
+  <page merge title="Yeast Type">
+
+    <body: class="show-page yeast-type" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Yeast Type</a>
+          </header>
+    
+          <section param="content-body">
+            <view:description param="description"/>
+            <field-list fields="min_temp, max_temp, flocculation, attenuation, alcohol_tollerance" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="YeastType">
+  <page merge title="Edit Yeast Type">
+
+    <body: class="edit-page yeast-type" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Yeast Type" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Yeast Pages ====== -->
+
+
+<def tag="index-page" for="Yeast">
+  <page merge title="Yeasts">
+    <body: class="index-page yeast" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Yeasts</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Yeast">
+  <page merge title="New Yeast">
+    <body: class="new-page yeast" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Yeast</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Yeast"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Yeast">
+  <page merge title="Yeast">
+
+    <body: class="show-page yeast" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:recipe param="parent-link">&laquo; <name/></a:recipe>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Yeast</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="amount_to_pitch, amount_to_pitch_min, amount_to_pitch_max, notes, yeast_type" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Yeast">
+  <page merge title="Edit Yeast">
+
+    <body: class="edit-page yeast" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Yeast" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+

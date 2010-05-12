@@ -1,0 +1,45 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<!--[if IE]>
+  <div class="ie">
+<![endif]-->
+
+<div class="scroll-list-div">
+  <table class="item-list scroll-table" >
+    <thead>
+    <th>Name</th><th>Style</th><th>Rating</th><th>Actions</th>
+    </thead>
+    <tbody class="scroll-list">
+    <repeat with="&recipe_list_scrollable">
+      <tr class="<%= cycle('odd','even') -%>">
+        <td><span class="<%= this.stale_view?(current_user) ? 'updated' : '' %>"><a><%= h(this.name) %></a> <if test="&this.is_shared?"><b>[shared]</b></if></span> </td>
+        <td><a to="&this.style"><view:style.name/></a></td>
+        <td><%= view_rating(this.rating) %></td>
+        <td><if test="&this.destroyable_by?(current_user)"><%= del_recipe_link(this) %></if></td>
+      </tr>
+    </repeat>
+    </tbody>
+  </table>
+
+</div>
+
+<!--[if IE]>
+  </div>
+<![endif]-->
