@@ -5,12 +5,12 @@
 		   <div class="ie">
 		<![endif]-->
 
-    <if test="&@recipe.is_shared?">
-      <%= periodically_call_remote :url => {:action => 'check_shared_updates', :id => @recipe.id },
-        :with => "'last_refreshed=' + $('last_updated').innerHTML",
-        :frequency => 15
-    %>
-    </if>
+
+    <%= periodically_call_remote :url => {:action => 'check_shared_updates', :id => @recipe.id },
+      :with => "'last_refreshed=' + $('last_updated').innerHTML",
+      :frequency => 30,
+      :condition => "document.getElementById('shared_user_list')"
+  %>
 
 
     <div id="misc_recipe_div">
@@ -55,25 +55,11 @@
 
     <br/><a to="&@recipe" class="button">Done</a>
 
-    <if test="&@recipe.is_shared?">
-      <br/><br/>
-
-      <div class="block">
-
-        <% form_remote_tag( :loading => "Hobo.showSpinner('Add Mesage');",
-          :complete => "Hobo.hideSpinner();",
-          :url => {  :controller => "recipes", :action => :add_shared_log_message, :id => @recipe.id }  ) do |f|%>
-              <h2>Message:</h2>
-              <%= text_area_tag( :message, nil, :class => "recipe-description-edit" ) %><br/>
-              <%=  submit_tag "Add Shared Log Message", :class => "button small-button"%>
-        <%  end %>
-      </div>
-
-      <div id="log_list_div" >
+    <div id="log_list_div" >
+      <if test="&@recipe.is_shared?">
         <%= render :partial => 'log', :object => @recipe %>
-      </div>
-    </if>
-
+      </if>
+    </div>
     <!--[if IE]>
 		   </div>
 		 <![endif]-->

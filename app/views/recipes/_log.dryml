@@ -16,22 +16,39 @@
 
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
+<if test="&log.is_shared?">
+  <div>
+    <br/><br/>
 
-<h3><b>Log:</b></h3>
-<div class="item-list" >
-  <table id="log_list" class="item-list" >
-    <thead>
-    <th>Time</th><th>User</th><th>Type</th><th>Message</th>
-    </thead>
-    <tbody class="scroll-list">
-    <repeat with="&log.log_message.find(:all, :order => 'msgtime DESC')" >
-      <tr class="<%= cycle('odd','even') -%>">
-        <td><view:msgtime/></td>
-      <td><view:user/></td>
-      <td><view:msgtype/></td>
-      <td><view:message/></td>
-      </tr>
-    </repeat>
-    </tbody>
-  </table>
-</div>
+    <div class="block">
+
+      <% form_remote_tag( :loading => "Hobo.showSpinner('Add Mesage');",
+        :complete => "Hobo.hideSpinner();",
+        :url => {  :controller => "recipes", :action => :add_shared_log_message, :id => log.id }  ) do |f|%>
+        <h2>Message:</h2>
+        <%= text_area_tag( :message, nil, :class => "recipe-description-edit" ) %><br/>
+        <%=  submit_tag "Add Shared Log Message", :class => "button small-button"%>
+      <%  end %>
+    </div>
+
+
+    <h3><b>Log:</b></h3>
+    <div class="item-list" >
+      <table id="log_list" class="item-list" >
+        <thead>
+        <th>Time</th><th>User</th><th>Type</th><th>Message</th>
+        </thead>
+        <tbody class="scroll-list">
+        <repeat with="&log.log_message.find(:all, :order => 'msgtime DESC')" >
+          <tr class="<%= cycle('odd','even') -%>">
+            <td><view:msgtime/></td>
+          <td><view:user/></td>
+          <td><view:msgtype/></td>
+          <td><view:message/></td>
+          </tr>
+        </repeat>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</if>
