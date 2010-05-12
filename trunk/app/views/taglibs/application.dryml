@@ -64,9 +64,9 @@
 </def>
 
 
-<def tag="recipeedit-nav" attrs="is-owner">
+<def tag="recipeedit-nav" attrs="show-shared">
   <navigation merge>
-    <if test="&is_owner">
+    <if test="&show_shared">
       <nav-item href="#menu" onclick="Hobo.show('fermentables_div'); Hobo.hide('hops_div','kits_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Fermentables</nav-item>
       <nav-item href="#menu" onclick="Hobo.show('hops_div'); Hobo.hide('fermentables_div','kits_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Hops</nav-item>
       <nav-item href="#menu" onclick="Hobo.show('kits_div'); Hobo.hide('fermentables_div','hops_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Kits</nav-item>

@@ -77,6 +77,7 @@ module RecipesHelper
 			page.replace_html 'hops_items_div', :partial => 'shared/recipe_edit_hops', :object => recipe
       page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kits', :object => recipe
       page.replace_html 'kit_list_div', :partial => 'shared/recipe_edit_kits_list', :object => recipe
+      page.replace_html 'log_list_div', :partial => 'log', :object => recipe
 		}
 
 	end
@@ -100,10 +101,8 @@ module RecipesHelper
 	end
 
   def update_shared_log( recipe )
-		# Need to update hops because the weight is dependent on the OG value.
-
 		render(:update) { |page|
-       page.replace_html 'log_list_div', :partial => 'log', :object => recipe
+      page.replace_html 'log_list_div', :partial => 'log', :object => recipe
 		}
 
 	end
@@ -311,6 +310,18 @@ module RecipesHelper
     }
   end
 
+  def update_shared_users_and_log( recipe, error_list=nil )
+
+    render(:update) { |page|
+      if( error_list ) then
+        page.replace_html 'add_name_results', simple_format(error_list)
+      end
+      page.replace_html 'shared_user_status_div', :partial => 'shared/recipe_shared_users', :object => recipe
+      page.replace_html 'log_list_div', :partial => 'log', :object => recipe
+    }
+
+  end
+
   def update_shared_users( recipe, error_list=nil )
 
     render(:update) { |page|
@@ -318,6 +329,7 @@ module RecipesHelper
         page.replace_html 'add_name_results', simple_format(error_list)
       end
       page.replace_html 'shared_user_status_div', :partial => 'shared/recipe_shared_users', :object => recipe
+      page.replace_html 'log_list_div', :partial => 'log', :object => recipe
     }
 
   end
@@ -633,7 +645,7 @@ module RecipesHelper
     end
   end
 
-    def add_shared_msg_link(recipe)
+  def add_shared_msg_link(recipe)
     link_to_remote( "Add Shared Log Message",
       :loading => "Hobo.showSpinner('Adding Message');",
       :complete => "Hobo.hideSpinner();",

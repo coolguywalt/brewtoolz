@@ -6,7 +6,7 @@
    <% owclass = (recipe_shared_users.user.is_online? ? 'green-bold' : '') %>
   Owner: <b><span class="#{owclass}"><%= recipe_shared_users.user %></span></b><br/>
   Shared with:<br/>
-  <table class="item-list" >
+  <table class="item-list" id="shared_user_list" >
     <th>Name</th><th> </th>
 
     <repeat with="&recipe_shared_users.recipe_shared.recipe_user_shared">
