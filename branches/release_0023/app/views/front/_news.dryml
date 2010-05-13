@@ -43,5 +43,10 @@
     Added ability for no chill hops calculation adjustments, and post boil hop additions (allowing negative minutes times).
   </div>
 
+      <div class="block">
+    <h3>Mark recipes as draft versions</h3>
+    Ability to mark a recipe as a draft version.  This allows other users to know it is incomplete, and also makes sure it won't
+    appear in the recently added list until you are ready for other's to see it.
+  </div>
 
 </div>
