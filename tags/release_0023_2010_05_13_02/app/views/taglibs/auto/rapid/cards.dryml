@@ -1,0 +1,203 @@
+<!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
+
+<def tag="card" for="Audit">
+  <card class="audit" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="BrewEntry">
+  <card class="brew-entry" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+      <count:brew_entry_logs param/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="BrewEntryLog">
+  <card class="brew-entry-log" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Brewery">
+  <card class="brewery" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Category">
+  <card class="category" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Fermentable">
+  <card class="fermentable" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="FermentableType">
+  <card class="fermentable-type" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Hop">
+  <card class="hop" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="HopType">
+  <card class="hop-type" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="IngredientUnitPreference">
+  <card class="ingredient-unit-preference" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Kit">
+  <card class="kit" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="KitType">
+  <card class="kit-type" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="LogMessage">
+  <card class="log-message" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="MashStep">
+  <card class="mash-step" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="MiscIngredient">
+  <card class="misc-ingredient" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="MiscIngredientType">
+  <card class="misc-ingredient-type" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Recipe">
+  <card class="recipe" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+      <count:brew_entries param/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="RecipeShared">
+  <card class="recipe-shared" param="default" merge>
+    <body: param>
+      <count:recipe_user_shared param/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="RecipeUserShared">
+  <card class="recipe-user-shared" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Style">
+  <card class="style" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="User">
+  <card class="user" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Yeast">
+  <card class="yeast" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="YeastType">
+  <card class="yeast-type" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
