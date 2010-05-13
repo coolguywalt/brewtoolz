@@ -1,0 +1,463 @@
+--- 
+fermentable_111: 
+  fermentable_type_id: 13
+  updated_at: 2008-06-05 22:42:18
+  points: "5"
+  recipe_id: 26
+  id: 111
+  created_at: 2008-06-05 22:42:18
+fermentable_100: 
+  fermentable_type_id: 4
+  updated_at: 2008-09-01 20:58:14
+  points: "1.00752"
+  recipe_id: 17
+  id: 100
+  created_at: 2008-05-14 21:18:30
+fermentable_90: 
+  fermentable_type_id: 11
+  updated_at: 2008-08-05 22:58:27
+  points: "21.643"
+  recipe_id: 10
+  id: 90
+  created_at: 2008-05-07 00:03:53
+fermentable_79: 
+  fermentable_type_id: 13
+  updated_at: 2008-08-31 22:51:48
+  points: "2.79111"
+  recipe_id: 1
+  id: 79
+  created_at: 2008-04-28 21:47:48
+fermentable_57: 
+  fermentable_type_id: 3
+  updated_at: 2008-04-28 22:47:39
+  points: "20.2418"
+  recipe_id: 2
+  id: 57
+  created_at: 2008-04-28 19:11:20
+fermentable_46: 
+  fermentable_type_id: 1
+  updated_at: 2008-06-14 00:08:21
+  points: "0.0190866"
+  recipe_id: 8
+  id: 46
+  created_at: 2008-04-28 16:19:19
+fermentable_112: 
+  fermentable_type_id: 11
+  updated_at: 2008-06-12 22:49:15
+  points: "5"
+  recipe_id: 30
+  id: 112
+  created_at: 2008-06-12 22:49:15
+fermentable_101: 
+  fermentable_type_id: 7
+  updated_at: 2008-09-01 20:58:14
+  points: "4.01505"
+  recipe_id: 17
+  id: 101
+  created_at: 2008-05-14 21:18:36
+fermentable_91: 
+  fermentable_type_id: 13
+  updated_at: 2008-08-05 22:58:27
+  points: "2.58986"
+  recipe_id: 10
+  id: 91
+  created_at: 2008-05-07 13:31:30
+fermentable_80: 
+  fermentable_type_id: 3
+  updated_at: 2008-04-29 21:12:52
+  points: "10"
+  recipe_id: 7
+  id: 80
+  created_at: 2008-04-29 21:12:52
+fermentable_58: 
+  fermentable_type_id: 13
+  updated_at: 2008-04-28 22:47:39
+  points: "1.76015"
+  recipe_id: 2
+  id: 58
+  created_at: 2008-04-28 19:11:38
+fermentable_47: 
+  fermentable_type_id: 1
+  updated_at: 2008-06-14 00:08:21
+  points: "0.0190866"
+  recipe_id: 8
+  id: 47
+  created_at: 2008-04-28 16:50:48
+fermentable_113: 
+  fermentable_type_id: 13
+  updated_at: 2008-06-12 22:55:54
+  points: "20"
+  recipe_id: 30
+  id: 113
+  created_at: 2008-06-12 22:49:28
+fermentable_102: 
+  fermentable_type_id: 1
+  updated_at: 2008-05-14 21:22:58
+  points: "35"
+  recipe_id: 16
+  id: 102
+  created_at: 2008-05-14 21:18:47
+fermentable_92: 
+  fermentable_type_id: 7
+  updated_at: 2008-06-11 22:31:40
+  points: "31.235"
+  recipe_id: 15
+  id: 92
+  created_at: 2008-05-07 22:05:30
+fermentable_81: 
+  fermentable_type_id: 1
+  updated_at: 2008-04-29 21:13:14
+  points: "20"
+  recipe_id: 7
+  id: 81
+  created_at: 2008-04-29 21:13:14
+fermentable_48: 
+  fermentable_type_id: 3
+  updated_at: 2008-06-14 00:08:21
+  points: "9.80146"
+  recipe_id: 8
+  id: 48
+  created_at: 2008-04-28 16:52:03
+fermentable_6: 
+  fermentable_type_id: 1
+  updated_at: 2008-06-28 21:56:39
+  points: "49"
+  recipe_id: 3
+  id: 6
+  created_at: 2008-04-22 23:43:56
+fermentable_93: 
+  fermentable_type_id: 3
+  updated_at: 2008-06-11 22:31:40
+  points: "21.678"
+  recipe_id: 15
+  id: 93
+  created_at: 2008-05-07 22:05:56
+fermentable_82: 
+  fermentable_type_id: 1
+  updated_at: 2008-04-30 00:06:57
+  points: "35"
+  recipe_id: 13
+  id: 82
+  created_at: 2008-04-29 21:48:15
+morey_1: 
+  fermentable_type_id: 22
+  updated_at: 2008-08-05 22:58:27
+  points: "5.532"
+  recipe_id: 207
+  id: 246
+  created_at: 2008-04-28 13:47:47
+fermentable_114: 
+  fermentable_type_id: 13
+  updated_at: 2008-07-10 00:42:03
+  points: "5"
+  recipe_id: 19
+  id: 114
+  created_at: 2008-07-10 00:42:03
+fermentable_103: 
+  fermentable_type_id: 11
+  updated_at: 2008-05-14 21:21:32
+  points: "5"
+  recipe_id: 16
+  id: 103
+  created_at: 2008-05-14 21:19:05
+fermentable_94: 
+  fermentable_type_id: 13
+  updated_at: 2008-06-11 22:31:40
+  points: "5.27704"
+  recipe_id: 15
+  id: 94
+  created_at: 2008-05-07 22:06:32
+fermentable_83: 
+  fermentable_type_id: 11
+  updated_at: 2008-04-30 00:08:16
+  points: "3.5"
+  recipe_id: 13
+  id: 83
+  created_at: 2008-04-29 21:48:33
+fermentable_28: 
+  fermentable_type_id: 3
+  updated_at: 2008-05-07 23:39:28
+  points: "96"
+  recipe_id: 11
+  id: 28
+  created_at: 2008-04-24 19:57:48
+morey_2: 
+  fermentable_type_id: 21
+  updated_at: 2008-08-05 22:58:27
+  points: "39.357"
+  recipe_id: 207
+  id: 247
+  created_at: 2008-04-28 13:47:47
+fermentable_126: 
+  fermentable_type_id: 1
+  updated_at: 2008-08-10 14:02:00
+  points: "6"
+  recipe_id: 43
+  id: 126
+  created_at: 2008-08-10 14:02:00
+fermentable_115: 
+  fermentable_type_id: 13
+  updated_at: 2008-09-01 13:29:17
+  points: "2.05351"
+  recipe_id: 32
+  id: 115
+  created_at: 2008-07-10 00:43:43
+fermentable_104: 
+  fermentable_type_id: 12
+  updated_at: 2008-05-14 21:21:32
+  points: "5"
+  recipe_id: 16
+  id: 104
+  created_at: 2008-05-14 21:19:25
+fermentable_95: 
+  fermentable_type_id: 6
+  updated_at: 2008-06-11 22:26:54
+  points: "4.50888"
+  recipe_id: 15
+  id: 95
+  created_at: 2008-05-07 22:07:08
+fermentable_73: 
+  fermentable_type_id: 9
+  updated_at: 2008-04-28 22:47:39
+  points: "5"
+  recipe_id: 2
+  id: 73
+  created_at: 2008-04-28 19:12:54
+fermentable_62: 
+  fermentable_type_id: 12
+  updated_at: 2008-04-28 22:47:39
+  points: "5"
+  recipe_id: 2
+  id: 62
+  created_at: 2008-04-28 19:12:20
+fermentable_40: 
+  fermentable_type_id: 1
+  updated_at: 2008-08-31 22:51:48
+  points: "21.348"
+  recipe_id: 1
+  id: 40
+  created_at: 2008-04-26 22:42:31
+fermentable_127: 
+  fermentable_type_id: 1
+  updated_at: 2008-08-10 14:03:14
+  points: "6"
+  recipe_id: 43
+  id: 127
+  created_at: 2008-08-10 14:03:14
+fermentable_116: 
+  fermentable_type_id: 2
+  updated_at: 2008-09-01 13:29:17
+  points: "45"
+  recipe_id: 32
+  id: 116
+  created_at: 2008-07-10 00:43:46
+fermentable_105: 
+  fermentable_type_id: 3
+  updated_at: 2008-05-15 19:47:58
+  points: "30.0388"
+  recipe_id: 18
+  id: 105
+  created_at: 2008-05-15 19:43:20
+fermentable_96: 
+  fermentable_type_id: 12
+  updated_at: 2008-06-11 22:31:40
+  points: "1.93842"
+  recipe_id: 15
+  id: 96
+  created_at: 2008-05-07 22:07:48
+fermentable_74: 
+  fermentable_type_id: 10
+  updated_at: 2008-04-28 22:47:39
+  points: "5"
+  recipe_id: 2
+  id: 74
+  created_at: 2008-04-28 19:12:56
+fermentable_128: 
+  fermentable_type_id: 12
+  updated_at: 2008-08-10 14:03:31
+  points: "23"
+  recipe_id: 43
+  id: 128
+  created_at: 2008-08-10 14:03:21
+fermentable_117: 
+  fermentable_type_id: 11
+  updated_at: 2008-09-01 13:29:17
+  points: "5"
+  recipe_id: 32
+  id: 117
+  created_at: 2008-07-10 00:43:50
+fermentable_106: 
+  fermentable_type_id: 6
+  updated_at: 2008-05-15 19:47:58
+  points: "37.55"
+  recipe_id: 18
+  id: 106
+  created_at: 2008-05-15 19:43:30
+fermentable_97: 
+  fermentable_type_id: 1
+  updated_at: 2008-05-07 23:43:05
+  points: "50"
+  recipe_id: 4
+  id: 97
+  created_at: 2008-05-07 23:42:49
+fermentable_86: 
+  fermentable_type_id: 7
+  updated_at: 2008-08-31 22:51:48
+  points: "21.348"
+  recipe_id: 1
+  id: 86
+  created_at: 2008-05-04 23:56:37
+fermentable_75: 
+  fermentable_type_id: 11
+  updated_at: 2008-04-28 22:47:39
+  points: "5"
+  recipe_id: 2
+  id: 75
+  created_at: 2008-04-28 19:12:58
+fermentable_42: 
+  fermentable_type_id: 1
+  updated_at: 2008-04-28 13:46:24
+  points: "20.3675"
+  recipe_id: 9
+  id: 42
+  created_at: 2008-04-28 12:58:52
+fermentable_130: 
+  fermentable_type_id: 1
+  updated_at: 2008-09-01 22:43:34
+  points: "5"
+  recipe_id: 45
+  id: 130
+  created_at: 2008-09-01 22:43:34
+fermentable_129: 
+  fermentable_type_id: 13
+  updated_at: 2008-08-10 14:05:12
+  points: "6"
+  recipe_id: 43
+  id: 129
+  created_at: 2008-08-10 14:05:12
+fermentable_118: 
+  fermentable_type_id: 1
+  updated_at: 2008-07-25 22:47:05
+  points: "3"
+  recipe_id: 33
+  id: 118
+  created_at: 2008-07-22 21:30:39
+fermentable_107: 
+  fermentable_type_id: 2
+  updated_at: 2008-06-20 13:31:23
+  points: "45.1852"
+  recipe_id: 19
+  id: 107
+  created_at: 2008-05-26 13:18:30
+fermentable_98: 
+  fermentable_type_id: 11
+  updated_at: 2008-06-11 22:31:40
+  points: "5.41889"
+  recipe_id: 15
+  id: 98
+  created_at: 2008-05-09 17:58:31
+fermentable_76: 
+  fermentable_type_id: 4
+  updated_at: 2008-04-28 22:47:39
+  points: "5"
+  recipe_id: 2
+  id: 76
+  created_at: 2008-04-28 19:13:01
+fermentable_54: 
+  fermentable_type_id: 11
+  updated_at: 2008-04-28 22:47:39
+  points: "7.54541"
+  recipe_id: 2
+  id: 54
+  created_at: 2008-04-28 19:07:22
+fermentable_43: 
+  fermentable_type_id: 2
+  updated_at: 2008-04-28 13:46:02
+  points: "12"
+  recipe_id: 9
+  id: 43
+  created_at: 2008-04-28 13:09:52
+fermentable_119: 
+  fermentable_type_id: 1
+  updated_at: 2008-07-24 00:44:42
+  points: "7"
+  recipe_id: 42
+  id: 119
+  created_at: 2008-07-23 21:53:51
+fermentable_108: 
+  fermentable_type_id: 11
+  updated_at: 2008-06-20 13:31:23
+  points: "3.06131"
+  recipe_id: 19
+  id: 108
+  created_at: 2008-05-26 13:18:36
+fermentable_99: 
+  fermentable_type_id: 3
+  updated_at: 2008-09-01 20:58:14
+  points: "45.3383"
+  recipe_id: 17
+  id: 99
+  created_at: 2008-05-14 21:18:23
+fermentable_88: 
+  fermentable_type_id: 1
+  updated_at: 2008-05-05 23:08:31
+  points: "39.9746"
+  recipe_id: 14
+  id: 88
+  created_at: 2008-05-05 23:08:13
+fermentable_77: 
+  fermentable_type_id: 5
+  updated_at: 2008-04-28 22:47:39
+  points: "5"
+  recipe_id: 2
+  id: 77
+  created_at: 2008-04-28 19:13:03
+fermentable_66: 
+  fermentable_type_id: 5
+  updated_at: 2008-04-28 22:47:39
+  points: "5"
+  recipe_id: 2
+  id: 66
+  created_at: 2008-04-28 19:12:34
+fermentable_110: 
+  fermentable_type_id: 1
+  updated_at: 2008-06-05 22:42:29
+  points: "45"
+  recipe_id: 26
+  id: 110
+  created_at: 2008-06-05 22:42:13
+fermentable_109: 
+  fermentable_type_id: 12
+  updated_at: 2008-06-20 13:31:23
+  points: "2.35756"
+  recipe_id: 19
+  id: 109
+  created_at: 2008-05-26 13:21:28
+fermentable_89: 
+  fermentable_type_id: 8
+  updated_at: 2008-05-05 23:09:24
+  points: "4.04681"
+  recipe_id: 14
+  id: 89
+  created_at: 2008-05-05 23:08:51
+fermentable_78: 
+  fermentable_type_id: 6
+  updated_at: 2008-04-28 22:47:39
+  points: "0.673888"
+  recipe_id: 2
+  id: 78
+  created_at: 2008-04-28 19:13:05
+fermentable_56: 
+  fermentable_type_id: 1
+  updated_at: 2008-04-28 22:47:39
+  points: "20.3675"
+  recipe_id: 2
+  id: 56
+  created_at: 2008-04-28 19:09:00
+fermentable_45: 
+  fermentable_type_id: 1
+  updated_at: 2008-08-05 22:58:27
+  points: "9.41929"
+  recipe_id: 10
+  id: 45
+  created_at: 2008-04-28 13:47:47
