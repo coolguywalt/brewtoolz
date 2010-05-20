@@ -1,0 +1,213 @@
+<include src="rapid" plugin="hobo"/>
+
+<include src="taglibs/auto/rapid/cards"/>
+<include src="taglibs/auto/rapid/pages"/>
+<include src="taglibs/auto/rapid/forms"/>
+
+<set-theme name="clean"/>
+
+<extend tag="page">
+  <old-page merge >
+    <append-head:>
+      <meta name="google-site-verification" content="s2TnQD_IuRQb9bcM94HoCFDha9E-gVHPVCbs4x5-uWQ" />
+    </append-head:>
+    <app-name:>
+      <div class="banner-image"><img src="/images/beer.png" /></div>
+      <div class="title-heading">Brewtoolz</div>
+    </app-name:>
+    <content: replace>
+      <section-group class="page-content">
+        <aside param="aside-left"/>
+
+        <section param="content"/>
+
+        <aside param="aside-right">
+          <div class="block">
+            <div id="googleads-sidebar" class="googleads_160_x_600" >
+            </div>
+          </div>
+        </aside>
+      </section-group>
+    </content:>
+
+    <footer: param>
+      <p>All rights reserved Brewtoolz (c) 2010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Contact us:</b>&nbsp;&nbsp;info@brewtoolz.com
+        &nbsp;&nbsp;&nbsp;<a href="http://groups.google.com.au/group/brewtoolz"><b>Discussion group</b></a></p>
+    </footer:>
+
+  </old-page>
+</extend>
+
+<def tag="app-name">Brewtoolz</def>
+
+<def tag="main-nav">
+  <navigation class="main-nav" merge-attrs param="default">
+    <nav-item href="#{base_url}/">Home</nav-item>
+    <nav-item with="&Recipe">Recipes</nav-item>
+    <nav-item href="/whatsbrewing">Whats Brewing</nav-item>
+
+    <if test="&logged_in?">
+      <nav-item with="&BrewEntry">Brew Log</nav-item>
+
+      <nav-item with="&Brewery">Breweries</nav-item>
+      <li><%= link_away "Preferences", :controller => 'users', :action => 'preferences', :id => current_user.id  %></li>
+    </if>
+
+    <if test="&current_user.administrator?">
+      <nav-item with="&Audit">Usage Logs</nav-item>
+    </if>
+
+    <nav-item href="/tools">Tools</nav-item>
+    <nav-item href="/help">Help</nav-item>
+  </navigation>
+</def>
+
+
+<def tag="recipeedit-nav" attrs="show-shared">
+  <navigation merge>
+    <if test="&show_shared">
+      <nav-item href="#menu" onclick="Hobo.show('fermentables_div'); Hobo.hide('hops_div','kits_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Fermentables</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('hops_div'); Hobo.hide('fermentables_div','kits_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Hops</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('kits_div'); Hobo.hide('fermentables_div','hops_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Kits</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('yeast_div'); Hobo.hide('fermentables_div','hops_div','kits_div','mashprofile_div','misc_div','sharededit_div');">Yeast</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('misc_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','mashprofile_div','sharededit_div');">Misc</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('mashprofile_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','misc_div','sharededit_div');">Mash Profile</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('sharededit_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','misc_div','mashprofile_div');">Share</nav-item>
+    </if>
+    <else>
+      <!--nav-item href="#menu">Kits</nav-item-->
+      <nav-item href="#menu" onclick="Hobo.show('fermentables_div'); Hobo.hide('hops_div','kits_div','yeast_div','mashprofile_div','misc_div');">Fermentables</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('hops_div'); Hobo.hide('fermentables_div','kits_div','yeast_div','mashprofile_div','misc_div');">Hops</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('kits_div'); Hobo.hide('fermentables_div','hops_div','yeast_div','mashprofile_div','misc_div');">Kits</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('yeast_div'); Hobo.hide('fermentables_div','hops_div','kits_div','mashprofile_div','misc_div');">Yeast</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('misc_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','mashprofile_div');">Misc</nav-item>
+      <nav-item href="#menu" onclick="Hobo.show('mashprofile_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','misc_div');">Mash Profile</nav-item>
+    </else>
+  </navigation>
+</def>
+
+<def tag="brewlogshow-nav">
+  <navigation merge>
+    <nav-item href="#menu" onclick="Hobo.show('log_obs_div');Hobo.hide('log_taste_div','recipe_div','yeast_calc_div')">Observations</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('log_taste_div');Hobo.hide('log_obs_div','recipe_div','yeast_calc_div')">Tastings</nav-item>
+<%#*<nav-item href="#menu" onclick="Hobo.show('recipe_div');Hobo.hide('log_obs_div','log_taste_div','yeast_calc_div')">Recipe</nav-item>%>
+<%#*<nav-item href="#menu" onclick="Hobo.show('yeast_calc_div');Hobo.hide('log_obs_div','log_taste_div','recipe_div')">Yeast</nav-item>%>
+  </navigation>
+</def>
+
+
+<%#*<def tag="brewday-nav">%>
+<%#*<navigation merge>%>
+<%#*<nav-item href="#bdmenu" onclick="Hobo.show('recipe_div'); Hobo.hide('sparge_div','mash_div','bdyeast_div','biab_div');">Recipe</nav-item>%>
+<%#*<nav-item href="#bdmenu" onclick="Hobo.show('bdyeast_div'); Hobo.hide('sparge_div','recipe_div','mash_div','biab_div');">Yeast</nav-item>%>
+<%#*<nav-item href="#bdmenu" onclick="Hobo.show('mash_div'); Hobo.hide('sparge_div','recipe_div','bdyeast_div','biab_div');">Mash</nav-item>%>
+<%#*<nav-item href="#bdmenu" onclick="Hobo.show('sparge_div'); Hobo.hide('mash_div','recipe_div','bdyeast_div','biab_div');">Sparge</nav-item>%>
+<%#*<nav-item href="#bdmenu" onclick="Hobo.show('biab_div'); Hobo.hide('mash_div','recipe_div','bdyeast_div','sparge_div');">BIAB</nav-item>%>
+<%#*</navigation>%>
+<%#*</def>%>
+
+<def tag="brewday-nav">
+  <navigation merge>
+    <nav-item href="#bdmenu" onclick="Hobo.show('recipe_div'); Hobo.hide('sparge_div','mash_div','bdyeast_div');">Recipe</nav-item>
+    <nav-item href="#bdmenu" onclick="Hobo.show('bdyeast_div'); Hobo.hide('sparge_div','recipe_div','mash_div');">Yeast</nav-item>
+    <nav-item href="#bdmenu" onclick="Hobo.show('mash_div'); Hobo.hide('sparge_div','recipe_div','bdyeast_div');">Mash</nav-item>
+    <nav-item href="#bdmenu" onclick="Hobo.show('sparge_div'); Hobo.hide('mash_div','recipe_div','bdyeast_div');">Sparge</nav-item>
+
+  </navigation>
+</def>
+
+
+<def tag="print-page">
+  <page layout="simple"  merge>
+    <body: class="print-page" param/>
+    <live-search: replace/>
+    <nav: replace/>
+    <header: replace/>
+    <footer: replace/>
+    <aside-left: replace/>
+    <aside-right: replace/>
+
+    <content: param>
+      <header param="content-header">
+        <br/><div class="image-pos" ><img src="/images/banner_dark.png" /></div>
+      </header>
+
+      <section param="content-body">
+      </section>
+    </content:>
+
+
+  </page>
+</def>
+
+<def tag="print-page-text">
+  <page layout="simple"  merge>
+    <body: class="print-page" param/>
+    <live-search: replace/>
+    <nav: replace/>
+    <header: replace/>
+    <footer: replace/>
+    <aside-left: replace/>
+    <aside-right: replace/>
+
+    <content: param>
+      <header param="content-header">
+        <br/>www.brewtoolz.com
+      </header>
+
+      <section param="content-body">
+      </section>
+    </content:>
+
+
+  </page>
+</def>
+
+
+<extend tag="card" for="Recipe">
+  <old-card merge>
+    <prepend-body:>
+      <if test="&this.is_draft?"><span class="draft">&nbsp;Draft</span><br/></if>
+      <label><b>Style:</b></label>&nbsp;&nbsp;<a:style/>&nbsp;&nbsp;<br/>
+      <label><b>Description:</b></label>&nbsp;&nbsp;<%= truncate( this.description, 100 ) %><br/>
+      <label><b>ABV:</b></label>&nbsp;&nbsp;<view:abv/>%&nbsp;&nbsp;
+      <label><b>Balance:</b></label>&nbsp;&nbsp;<view:balance format="%2.2f"/>&nbsp;&nbsp;
+      <label><b>Color [SRM]:</b></label>&nbsp;&nbsp;<view:srm format="%2.2f"/>&nbsp;&nbsp;
+      <label><b>Rating:</b></label>&nbsp;&nbsp;
+      <if test="&this.rating > 0"><view:rating format="%2.2f"/></if>
+      <else>n/a</else>
+      <br/>
+      <if test="&this.destroyable_by?(current_user)"><%= del_recipe_link_nf(this) %></if><br/>
+    </prepend-body:>
+
+  </old-card>
+</extend>
+
+<extend tag="card" for="BrewEntry">
+  <old-card merge>
+    <heading:>
+      <%= link_to h(this.recipe.name), { :controller => 'recipes', :action => 'show', :id => this.recipe.id} %>
+		- <%= link_to h(this.brew_date.to_s(:long)), { :action => 'show', :id => this.id } %>
+    </heading:>
+    <prepend-body:>
+      <label><b>Status:</b></label>&nbsp;&nbsp;<view:status/><br/>
+      <label><b>Rating:</b></label>&nbsp;&nbsp;
+      <if test="&this.rating > 0"><view:rating format="%2.2f"/></if>
+      <else>n/a</else>
+      <br/>
+    </prepend-body:>
+  </old-card>
+</extend>
+
+
+<extend tag="card" for="Brewery">
+  <old-card merge>
+    <body:>
+      <label><b>Description:</b></label>&nbsp;&nbsp;<%= truncate( this.description, 100 ) %><br/>
+      <label><b>Capacity [<%= volume_units()%>]:</b></label>&nbsp;&nbsp;<%= volume_values(this.capacity) %>&nbsp;&nbsp;<br/>
+      <label><b>Is Default:</b></label>&nbsp;&nbsp;<view:isDefault/>&nbsp;&nbsp;
+      <label><b>Is All Grain:</b></label>&nbsp;&nbsp;<view:isAllGrain/>&nbsp;&nbsp;
+    </body:>
+
+  </old-card>
+</extend>
