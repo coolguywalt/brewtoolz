@@ -36,6 +36,7 @@ div h1.app-name {
 
 .banner-image {
     position: relative;
+    width: 90px;
 
 }
 
@@ -43,6 +44,14 @@ div h1.app-name a {
     padding-left:63px;
     position:relative;
     top:-52px;
+}
+
+.title-heading {
+    position:absolute;
+
+    /* top:-52px; */
+    left:100px;
+    top:24px;
 }
 
 div.banner_img {
@@ -98,7 +107,6 @@ pre {
 
 table.item-list {
     width: 100%;
-    margin-top: 5px;
     border-spacing: 1px;
     /* overflow: auto; */
 }
@@ -112,10 +120,10 @@ table.item-list tr.odd { background: #eaeaea; }
 table.item-list tr.even { background: #e0e0e0; }
 
 
-div.item-list { border: black solid 1px; }
+/*div.item-list { border: black solid 1px; }*/
 .ie div.item-list {height: 170px; overflow: auto; border: black solid 1px; }
 
-div.item-list-unlimited { border: black solid 1px; }
+/*div.item-list-unlimited { border: black solid 1px; }*/
 
 
 table.item-list th { text-align: left; font-size:10pt; font-weight: bold }
@@ -182,8 +190,8 @@ body {
 }
 
 .scroll-list {
-    overflow: auto;
-    height: 180px;
+    /*overflow: auto;
+    height: 180px;*/
 }
 
 .image-pos {
@@ -271,11 +279,11 @@ body {
 }
 
 .largerfont {
-   font-size: 120%
+    font-size: 120%
 }
 
 .shadow {
-   -moz-box-shadow: 0 4px 10px #8B8B8B;
+    -moz-box-shadow: 0 4px 10px #8B8B8B;
 }
 
 .green-bold {
@@ -291,4 +299,31 @@ body {
 .draft {
     font-weight: bold;
     color: blue;
+}
+
+.scroll-table-wrap-div {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    float: left;
+    height: 200px;
+    overflow: hidden;
+    padding: 18px 0px 0px;
+    position: relative;
+    width: 100%;
+}
+
+.scroll-table-inner-div {
+    height:200px;
+    overflow:auto;
+    width:100%;
+}
+
+.scroll-table-last {
+    padding-right:15px;
+}
+
+table.scroll-table thead tr th p {
+    position:absolute;
+    top:0;
+
 }

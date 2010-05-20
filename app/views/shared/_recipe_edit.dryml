@@ -67,10 +67,10 @@
   </div>
 
   <div id="yeast_div" class="hidden">
-    <br/>
     <div class="navigation-div">
       <recipeedit-nav current="yeast" show-shared="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)"/><br/>
     </div>
+    <br/>
     <div id="yeast_items_div">
       <%= render :partial => 'shared/recipe_edit_yeasts', :object => recipe_edit %>
     </div>
@@ -80,10 +80,10 @@
   </div>
 
   <div id="misc_div" class="hidden">
-    <br/>
     <div class="navigation-div">
       <recipeedit-nav current="misc" show-shared="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)"/><br/>
     </div>
+    <br/>
     <div id="misc_items_div">
       <%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
     </div>
@@ -96,10 +96,11 @@
   </div>
 
   <div id="mashprofile_div" class="hidden">
-    <br/>
+
     <div class="navigation-div">
       <recipeedit-nav current="mash profile" show-shared="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)"/><br/>
     </div>
+    <br/>
     <div id="mashprofile_items_div">
       <%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
     </div>
@@ -110,7 +111,7 @@
 
   <div id="sharededit_div" class="hidden">
     <if test="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)">
-      <br/>
+      
       <div class="navigation-div">
         <recipeedit-nav current="multiuser" show-shared="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)"/><br/>
       </div>

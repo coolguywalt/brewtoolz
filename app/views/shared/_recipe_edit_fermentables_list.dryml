@@ -19,25 +19,27 @@
 
 <!-- Fermentable selection list. -->
 <h3><b>Select fermentable:</b></h3>
-<div class="item-list" >
-  <table id="fermentable_list" class="item-list" >
-    <thead>
-    <th>Type</th><th>Yield</th><th>Color</th><th>Converted?</th><th> </th>
-    </thead>
-    <tbody class="scroll-list">
-    <repeat with="&FermentableType.find(:all, :order => 'name')" >
-      <tr class="<%= cycle('odd','even') -%>">
-        <td><view:name/></td>
-      <td><view:yeild/></td>
-      <td><view:colour/></td>
-      <td><view:converted/></td>
-      <td><%= link_to_remote "Add",
-          :loading => "Hobo.showSpinner('Adding fermentable');",
-          :complete => "Hobo.hideSpinner();",
-          :url => { :controller => "recipes", :action => "add_fermentable", :id => recipe_edit_fermentables_list.id, :ferementable_type_id => this.id  },
-          :html => { :class => 'button small-button', :id =>"ferm_#{this.id}" } %></td>
-      </tr>
-    </repeat>
-    </tbody>
-  </table>
+<div class="scroll-table-wrap-div">
+  <div class="scroll-table-inner-div" >
+    <table id="fermentable_list" class="scroll-table item-list" >
+      <thead><tr>
+          <th><p>Type</p></th><th><p>Yield</p></th><th><p>Color</p></th><th><p>Converted?</p></th><th><p> </p></th>
+        </tr></thead>
+      <tbody class="scroll-list">
+      <repeat with="&FermentableType.find(:all, :order => 'name')" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><view:name/></td>
+        <td><view:yeild/></td>
+        <td><view:colour/></td>
+        <td><view:converted/></td>
+        <td><%= link_to_remote "Add",
+            :loading => "Hobo.showSpinner('Adding fermentable');",
+            :complete => "Hobo.hideSpinner();",
+            :url => { :controller => "recipes", :action => "add_fermentable", :id => recipe_edit_fermentables_list.id, :ferementable_type_id => this.id  },
+            :html => { :class => 'button small-button', :id =>"ferm_#{this.id}" } %></td>
+        </tr>
+      </repeat>
+      </tbody>
+    </table>
+  </div>
 </div>

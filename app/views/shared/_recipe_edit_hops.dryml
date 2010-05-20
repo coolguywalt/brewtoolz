@@ -46,16 +46,19 @@
   <%= label("recipe_hop_cubed", :hop_cubed, "No chill (cubed) cooling method") %><%= check_box("recipe", "hop_cubed", :onclick => "#{f3}")%>
 
 </h3><br/>
-<table id="hops_list" class="item-list">
-  <thead>
-  <th><b>Locked</b></th>
-  <th><b>Type</b></th>
-  <th><b>AA(%)</b></th>
-  <th><b>IBU</b></th>
-  <th><b>IBU(%)</b></th>
-  <th><b>Weight [<%= hop_weight_units %>]</b></th>
-  <th><b>Time(minutes)</b></th>
-  <th><b> </b></th>
+
+<div class="scroll-table-wrap-div">
+  <div class="scroll-table-inner-div">
+<table id="hops_list" class="scroll-table item-list">
+  <thead><tr>
+  <th><b><p>Locked</p></b></th>
+  <th><b><p>Type</p></b></th>
+  <th><b><p>AA(%)</p></b></th>
+  <th><b><p>IBU</p></b></th>
+  <th><b><p>IBU(%)</p></b></th>
+  <th><b><p>Weight [<%= hop_weight_units %>]</p></b></th>
+  <th><b><p>Time(minutes)</p></b></th>
+  <th><b><p> </p></b></th></tr>
 </thead>
 
 <!-- %= render :partial => 'hop', :collection => recipe_hops_list(@recipe) % -->
@@ -74,4 +77,5 @@
 </repeat>
 </tbody>
 </table>
+</div></div>
 

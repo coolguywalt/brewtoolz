@@ -22,7 +22,7 @@
 <br/>
 <h2>Brewer's brewlog</h2>
 <%= render :partial => 'shared/brewentry_list_scrollable', :object => brewers_logs(current_user) %>
-<br/>
+<br/><br/>
 
 <% shared_recipes=brewers_shared_recipes(current_user) %>
 <if test="&shared_recipes.size > 0">

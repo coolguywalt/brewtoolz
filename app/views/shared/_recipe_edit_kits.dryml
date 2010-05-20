@@ -18,34 +18,37 @@
 -->
 
 <br/>
-<table id="kits_list" class="item-list">
-  <thead>
-  <th><b>Type</b></th>
-  <th><b>Quantity</b></th>
-  <th><b>IBU</b></th>
-  <th><b>IBU(%)</b></th>
-  <th><b>Gravity [<%= gravity_units %>]</b></th>
-  <th><b>Gravity(%)</b></th>
-  <th><b>Volume [<%= volume_units %> ]</b></th>
-  <th><b>Weight [<%= ferm_weight_units %>]</b></th>
-  <th><b> </b></th>
-</thead>
+<div class="scroll-table-wrap-div">
+  <div class="scroll-table-inner-div" >
+    <table id="hits_list" class="scroll-table item-list" >
+      <thead><tr>
+          <th><b><p>Type</p></b></th>
+          <th><b><p>Quantity</p></b></th>
+          <th><b><p>IBU</p></b></th>
+          <th><b><p>IBU(%)</p></b></th>
+          <th><b><p>Grty [<%= gravity_units %>]</p></b></th>
+          <th><b><p>Grty(%)</p></b></th>
+          <th><b><p>Volume [<%= volume_units %>]</p></b></th>
+          <th><b><p>Weight [<%= ferm_weight_units %>]</p></b></th>
+          <th><b><p></p> </b></th></tr>
+      </thead>
 
-<!-- %= render :partial => 'hop', :collection => recipe_hops_list(@recipe) % -->
-<tbody class="scroll-list">
-<repeat  with="&recipe_kits_list(recipe_edit_kits)">
-  <tr class="<%= cycle('odd','even') -%>">
-    <td><%= kit_type(this) %></td>
-    <td><%= ajax_quantity_editor(this) %></td>
-    <td><%= decimal( this.ibus) %></td>
-    <td><span id="hpw_#{this.id}"><%= percentage(this.percentage_ibu * 100) %></span></td>
-    <td><%= gravity_values(this.points) %></td>
-    <td><%= percentage(this.percentage_points * 100) %></td>
-    <td><%= kit_volume(this.kit_type) %></td>
-    <td><%= kit_weight(this.kit_type) %></td>
-    <td><%= del_kit_link(this) %></td>
-  </tr>
-</repeat>
-</tbody>
-</table>
-
+      <!-- %= render :partial => 'hop', :collection => recipe_hops_list(@recipe) % -->
+      <tbody class="scroll-list">
+      <repeat  with="&recipe_kits_list(recipe_edit_kits)">
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><%= kit_type(this) %></td>
+          <td><%= ajax_quantity_editor(this) %></td>
+          <td><%= decimal( this.ibus) %></td>
+          <td><span id="hpw_#{this.id}"><%= percentage(this.percentage_ibu * 100) %></span></td>
+          <td><%= gravity_values(this.points) %></td>
+          <td><%= percentage(this.percentage_points * 100) %></td>
+          <td><%= kit_volume(this.kit_type) %></td>
+          <td><%= kit_weight(this.kit_type) %></td>
+          <td><%= del_kit_link(this) %></td>
+        </tr>
+      </repeat>
+      </tbody>
+    </table>
+  </div>
+</div>
