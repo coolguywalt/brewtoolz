@@ -1077,6 +1077,7 @@ class RecipesController < ApplicationController
     logger.debug "++last_view_status filter called"
 
     return unless @recipe
+    return if @recipe.frozen?   # Check for a record that has just been deleted.
 
     if @recipe.is_owner?(current_user) then
       logger.debug "++last_view_status owner viewed"
