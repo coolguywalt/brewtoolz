@@ -52,6 +52,7 @@ div h1.app-name a {
     /* top:-52px; */
     left:100px;
     top:24px;
+    line-height: 50px;
 }
 
 div.banner_img {
