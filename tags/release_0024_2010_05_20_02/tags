@@ -1,0 +1,1105 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+&	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def &(keys)$/;"	f	class:Hash
+&	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def &(keys)$/;"	f	class:HashWithIndifferentAccess
+&	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/where_fragment.rb	/^    def &(rhs)$/;"	f	class:Hobo.WhereFragment
+-	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def -(keys)$/;"	f	class:Hash
+-	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def -(keys)$/;"	f	class:HashWithIndifferentAccess
+<<	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def <<(params)$/;"	f	class:Hobo.DRYMLBuilder
+<=>	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def <=>(page)$/;"	f	class:ActionController.Pagination.Paginator.Page
+==	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def ==(page)$/;"	f	class:ActionController.Pagination.Paginator.Page
+ActionController	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^module ActionController$/;"	m
+ActionController	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/init.rb	/^class ActionController::Base$/;"	c
+ActionController	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^class ActionController::Base$/;"	c
+ActionController	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^class ActionController::Routing::RouteSet$/;"	c
+ActionView	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination_helper.rb	/^module ActionView$/;"	m
+ActionView	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/action_view_extensions/base.rb	/^module ActionView$/;"	m
+ActiveRecord	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/init.rb	/^class ActiveRecord::Base$/;"	c
+ActiveRecord	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_association.rb	/^module ActiveRecord::Associations$/;"	m
+ActiveRecord	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_through_association.rb	/^module ActiveRecord::Associations$/;"	m
+ActiveRecord	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/table_definition.rb	/^module ActiveRecord::ConnectionAdapters$/;"	m
+ActiveRecord	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^class ActiveRecord::Base$/;"	c
+ActiveRecord	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^module ActiveRecord::AttributeMethods::ClassMethods$/;"	m
+ActiveRecordTestCase	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^class ActiveRecordTestCase < Test::Unit::TestCase$/;"	c
+ActiveRecordTestConnector	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^class ActiveRecordTestConnector$/;"	c
+Ajax.InPlaceEditor	/home/chris/projects/hobo/brewtools/public/javascripts/controls.js	/^Ajax.InPlaceEditor.prototype.initialize.dealWithDeprecatedOptions = function(options) {$/;"	c
+Ajax.InPlaceEditor	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^Ajax.InPlaceEditor.prototype.removeForm = function() {$/;"	c
+Ajax.InPlaceEditor	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^Ajax.InPlaceEditor.prototype.removeForm = function() {$/;"	c
+Ajax.InPlaceEditor.function.fallback	/home/chris/projects/hobo/brewtools/public/javascripts/controls.js	/^  function fallback(name, expr) {$/;"	f
+Ajax.InPlaceEditor.initialize	/home/chris/projects/hobo/brewtools/public/javascripts/controls.js	/^Ajax.InPlaceEditor.prototype.initialize.dealWithDeprecatedOptions = function(options) {$/;"	m
+Ajax.InPlaceEditor.removeForm	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^Ajax.InPlaceEditor.prototype.removeForm = function() {$/;"	m
+Ajax.InPlaceEditor.removeForm	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^Ajax.InPlaceEditor.prototype.removeForm = function() {$/;"	m
+ApplicationController	/home/chris/projects/hobo/brewtools/app/controllers/application.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	/home/chris/projects/hobo/brewtools/app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+Attribute	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^  class Attribute$/;"	c
+AttributeExtensionString	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^    class AttributeExtensionString < String;$/;"	c	class:Hobo.Dryml
+AuthenticationSupport	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^  module AuthenticationSupport$/;"	m	class:Hobo
+Autocompleter.Base	/home/chris/projects/hobo/brewtools/public/javascripts/controls.js	/^Autocompleter.Base.prototype.getTokenBounds.getFirstDifferencePos = function(newS, oldS) {$/;"	c
+Autocompleter.Base.getTokenBounds	/home/chris/projects/hobo/brewtools/public/javascripts/controls.js	/^Autocompleter.Base.prototype.getTokenBounds.getFirstDifferencePos = function(newS, oldS) {$/;"	m
+Base	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/action_view_extensions/base.rb	/^  class Base$/;"	c	class:ActionView
+BaseParser	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    class BaseParser$/;"	c	class:REXML.Parsers
+Boot	/home/chris/projects/hobo/brewtools/config/boot.rb	/^  class Boot$/;"	c
+Bundle	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^  class Bundle$/;"	c
+CategoriesController	/home/chris/projects/hobo/brewtools/app/controllers/categories_controller.rb	/^class CategoriesController < ApplicationController$/;"	c
+CategoriesControllerTest	/home/chris/projects/hobo/brewtools/test/functional/categories_controller_test.rb	/^class CategoriesControllerTest < ActionController::TestCase$/;"	c
+CategoriesHelper	/home/chris/projects/hobo/brewtools/app/helpers/categories_helper.rb	/^module CategoriesHelper$/;"	m
+Category	/home/chris/projects/hobo/brewtools/app/models/category.rb	/^class Category < ActiveRecord::Base$/;"	c
+CategoryTest	/home/chris/projects/hobo/brewtools/test/unit/category_test.rb	/^class CategoryTest < ActiveSupport::TestCase$/;"	c
+Chronic	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  module Chronic$/;"	m
+ClassMethods	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    module ClassMethods$/;"	m	class:ActionController.Pagination
+ClassMethods	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    module ClassMethods$/;"	m	class:Hobo
+ClassMethods	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    module ClassMethods$/;"	m	class:Hobo
+ClassMethods	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    module ClassMethods$/;"	m	class:Hobo
+ClassMethods	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_support.rb	/^    module ClassMethods$/;"	m	class:Hobo.ModelSupport
+ClassMethods	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/predicate_dispatch.rb	/^  module ClassMethods$/;"	m	class:Hobo
+ClassMethods	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    module ClassMethods$/;"	m	class:Hobo.User
+Company	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/company.rb	/^class Company < ActiveRecord::Base$/;"	c
+CompositeModel	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^  class CompositeModel$/;"	c	class:Hobo
+Controller	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^  module Controller$/;"	m	class:Hobo
+DOM.Builder.fromHTML	/home/chris/projects/hobo/brewtools/public/javascripts/lowpro.js	/^DOM.Builder.fromHTML = function(html) {$/;"	f
+DOM.Builder.fromHTML	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/lowpro.js	/^DOM.Builder.fromHTML = function(html) {$/;"	f
+DRYMLBuilder	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^  class DRYMLBuilder$/;"	c	class:Hobo
+DeVeLoPeR	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/developer.rb	/^class DeVeLoPeR < ActiveRecord::Base$/;"	c
+DefinedScopeProxyExtender	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      module DefinedScopeProxyExtender$/;"	m
+DelegateClass	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^def DelegateClass(klass)$/;"	f
+Developer	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/developer.rb	/^class Developer < ActiveRecord::Base$/;"	c
+Document	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^  class Document$/;"	c
+Draggable	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^var Draggable = Class.create({$/;"	v
+Dryml	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^  module Dryml$/;"	m	class:Hobo
+Dryml	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^  module Dryml$/;"	m	class:Hobo
+Dryml	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/tag_parameters.rb	/^  module Dryml$/;"	m	class:Hobo
+Dryml	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^  module Dryml$/;"	m	class:Hobo
+DrymlException	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^    class DrymlException < Exception$/;"	c	class:Hobo.Dryml
+DrymlSyntaxError	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^    class DrymlSyntaxError < RuntimeError; end$/;"	c	class:Hobo.Dryml
+Effect.Appear	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Appear = function(element) {$/;"	f
+Effect.BlindDown	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.BlindDown = function(element) {$/;"	f
+Effect.BlindUp	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.BlindUp = function(element) {$/;"	f
+Effect.DropOut	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.DropOut = function(element) {$/;"	f
+Effect.Fade	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Fade = function(element) {$/;"	f
+Effect.Fold	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Fold = function(element) {$/;"	f
+Effect.Grow	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Grow = function(element) {$/;"	f
+Effect.MoveBy	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.MoveBy = function(element, toTop, toLeft) {$/;"	f
+Effect.Puff	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Puff = function(element) {$/;"	f
+Effect.Pulsate	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Pulsate = function(element) {$/;"	f
+Effect.Pulsate.reverser	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^  var reverser   = function(pos){ return transition(1-Effect.Transitions.pulse(pos, options.pulses)) };$/;"	f
+Effect.ScrollTo	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.ScrollTo = function(element) {$/;"	f
+Effect.Shake	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Shake = function(element) {$/;"	f
+Effect.Shrink	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Shrink = function(element) {$/;"	f
+Effect.SlideDown	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.SlideDown = function(element) {$/;"	f
+Effect.SlideUp	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.SlideUp = function(element) {$/;"	f
+Effect.Squish	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.Squish = function(element) {$/;"	f
+Effect.SwitchOff	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Effect.SwitchOff = function(element) {$/;"	f
+Element	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^  class Element$/;"	c
+Element.ClassNames	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^Element.ClassNames.prototype = {$/;"	c
+Element.Methods.	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^Element.Methods.$$ = function(e, css) {$/;"	f
+Element.Methods.	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^Element.Methods.$$ = function(e, css) {$/;"	f
+Element.collectTextNodes	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Element.collectTextNodes = function(element) {  $/;"	f
+Element.collectTextNodesIgnoreClass	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Element.collectTextNodesIgnoreClass = function(element, className) {  $/;"	f
+Element.findChildren	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^Element.findChildren = function(element, only, recursive, tagName) {   $/;"	f
+Element.findContaining	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^Element.findContaining = function(el, tag) {$/;"	f
+Element.findContaining	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^Element.findContaining = function(el, tag) {$/;"	f
+Element.forceRerendering	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Element.forceRerendering = function(element) {$/;"	f
+Element.getInlineOpacity	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Element.getInlineOpacity = function(element){$/;"	f
+Element.getStyles	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^  Element.getStyles = function(element) {$/;"	f
+Element.isParent	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^Element.isParent = function(child, element) {$/;"	f
+Element.offsetSize	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^Element.offsetSize = function (element, type) {$/;"	f
+Element.setContentZoom	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^Element.setContentZoom = function(element, percent) {$/;"	f
+EnumString	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/enum_string.rb	/^  class EnumString < String$/;"	c	class:Hobo
+Enumerable	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^module Enumerable$/;"	m
+Event.addBehavior	/home/chris/projects/hobo/brewtools/public/javascripts/lowpro.js	/^Event.addBehavior = function(rules) {$/;"	f
+Event.addBehavior	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/lowpro.js	/^Event.addBehavior = function(rules) {$/;"	f
+FalseClass	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class FalseClass$/;"	c
+Field	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^var Field = Form.Element;$/;"	v
+Field.scrollFreeActivate	/home/chris/projects/hobo/brewtools/public/javascripts/controls.js	/^Field.scrollFreeActivate = function(field) {$/;"	f
+Field.scrollFreeActivate	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^Field.scrollFreeActivate = function(field) {$/;"	f
+Field.scrollFreeActivate	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^Field.scrollFreeActivate = function(field) {$/;"	f
+FieldDeclarationsDsl	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_declaration_dsl.rb	/^  class FieldDeclarationsDsl$/;"	c	class:Hobo
+FieldSpec	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^  class FieldSpec$/;"	c	class:Hobo
+FrontController	/home/chris/projects/hobo/brewtools/app/controllers/front_controller.rb	/^class FrontController < ApplicationController$/;"	c
+FrontController	/home/chris/projects/hobo/brewtools/test/functional/front_controller_test.rb	/^class FrontController; def rescue_action(e) raise e end; end$/;"	c
+FrontControllerTest	/home/chris/projects/hobo/brewtools/test/functional/front_controller_test.rb	/^class FrontControllerTest < Test::Unit::TestCase$/;"	c
+FrontHelper	/home/chris/projects/hobo/brewtools/app/helpers/front_helper.rb	/^module FrontHelper$/;"	m
+GemBoot	/home/chris/projects/hobo/brewtools/config/boot.rb	/^  class GemBoot < Boot$/;"	c
+Guest	/home/chris/projects/hobo/brewtools/app/models/guest.rb	/^class Guest < Hobo::Guest$/;"	c
+Guest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/templates/guest.rb	/^class Guest < Hobo::Guest$/;"	c
+Guest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/guest.rb	/^  class Guest$/;"	c	class:Hobo
+HasManyAssociation	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_association.rb	/^  class HasManyAssociation$/;"	c	class:ActiveRecord
+HasManyThroughAssociation	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_through_association.rb	/^  class HasManyThroughAssociation$/;"	c	class:ActiveRecord
+Hash	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class Hash$/;"	c
+HashWithIndifferentAccess	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class HashWithIndifferentAccess$/;"	c
+Helper	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/enum_string.rb	/^    module Helper$/;"	m	class:Hobo.EnumString
+Helpers	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination_helper.rb	/^  module Helpers$/;"	m	class:ActionView
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^module Hobo::Dryml$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/scoped_variables.rb	/^module Hobo::Dryml$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/tag_parameters.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^module Hobo::Dryml$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^module Hobo::Dryml$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_handler.rb	/^module Hobo::Dryml$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/email_address.rb	/^class Hobo::EmailAddress < String$/;"	c
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/enum_string.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_declaration_dsl.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/generator.rb	/^class Hobo::Generator < Rails::Generator::Base$/;"	c
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/guest.rb	/^module Hobo $/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/html_string.rb	/^class Hobo::HtmlString < String$/;"	c
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/lazy_hash.rb	/^class Hobo::LazyHash < Hash$/;"	c
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/markdown_string.rb	/^class Hobo::MarkdownString < String$/;"	c
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/migrations.rb	/^module Hobo::Migrations$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_support.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/password_string.rb	/^class Hobo::PasswordString < String$/;"	c
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/percentage.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/predicate_dispatch.rb	/^module Hobo::PredicateDispatch$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/proc_binding.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^module Hobo::RapidHelper$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/text.rb	/^class Hobo::Text < String; end$/;"	c
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/textile_string.rb	/^class Hobo::TextileString < String$/;"	c
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined_access_error.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/where_fragment.rb	/^module Hobo$/;"	m
+Hobo	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^module Hobo::Dryml$/;"	m
+Hobo.showSpinner	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^        Hobo.showSpinner(message, options.spinnerNextTo)$/;"	f
+Hobo.showSpinner	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^        Hobo.showSpinner(message, options.spinnerNextTo)$/;"	f
+HoboError	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^class HoboError < RuntimeError; end$/;"	c
+HoboFrontControllerGenerator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/hobo_front_controller_generator.rb	/^class HoboFrontControllerGenerator < Rails::Generator::NamedBase$/;"	c
+HoboGenerator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/hobo_generator.rb	/^class HoboGenerator < Rails::Generator::Base$/;"	c
+HoboHelper	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^  module HoboHelper$/;"	m	class:Hobo
+HoboHelpers	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    class HoboHelpers$/;"	c	class:Test.HoboTesting
+HoboMigrationGenerator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^class HoboMigrationGenerator < Rails::Generator::Base$/;"	c
+HoboModelControllerGenerator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model_controller/hobo_model_controller_generator.rb	/^class HoboModelControllerGenerator < Rails::Generator::NamedBase$/;"	c
+HoboModelGenerator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model/hobo_model_generator.rb	/^class HoboModelGenerator < Rails::Generator::NamedBase$/;"	c
+HoboRapidGenerator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/hobo_rapid_generator.rb	/^class HoboRapidGenerator < Hobo::Generator$/;"	c
+HoboTesting	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^  module HoboTesting$/;"	m	class:Test
+HoboUserControllerGenerator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_controller/hobo_user_controller_generator.rb	/^class HoboUserControllerGenerator < Rails::Generator::NamedBase$/;"	c
+HoboUserModelGenerator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/hobo_user_model_generator.rb	/^class HoboUserModelGenerator < Rails::Generator::NamedBase$/;"	c
+Id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^      class Id < String; end$/;"	c	class:Hobo.Dryml.PartContext
+It	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class It$/;"	c
+Kernel	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^module Kernel$/;"	m
+Model	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^  module Model$/;"	m	class:Hobo
+ModelController	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^  module ModelController$/;"	m	class:Hobo
+ModelQueries	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^  class ModelQueries$/;"	c	class:Hobo
+ModelRouter	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^  class ModelRouter$/;"	c	class:Hobo
+ModelSupport	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_support.rb	/^  module ModelSupport$/;"	m	class:Hobo
+Module	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class Module$/;"	c
+NilClass	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class NilClass$/;"	c
+NoParameterError	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/tag_parameters.rb	/^    class NoParameterError < RuntimeError; end$/;"	c	class:Hobo.Dryml
+Object	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class Object$/;"	c
+Object.extend	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^Object.extend = function(destination) {$/;"	f
+Object.extend	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^Object.extend = function(destination, source) {$/;"	f
+Object.extend	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^Object.extend = function(destination) {$/;"	f
+Object.merge	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^Object.merge = function() {$/;"	f
+Object.merge	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^Object.merge = function() {$/;"	f
+PP	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^module PP::ObjectMixin$/;"	m
+Page	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      class Page$/;"	c	class:ActionController.Pagination.Paginator
+Pagination	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^  module Pagination$/;"	m	class:ActionController
+PaginationController	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  class PaginationController < ActionController::Base$/;"	c	class:PaginationTest
+PaginationHelper	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination_helper.rb	/^    module PaginationHelper$/;"	m	class:ActionView.Helpers
+PaginationHelperTest	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_helper_test.rb	/^class PaginationHelperTest < Test::Unit::TestCase$/;"	c
+PaginationTest	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^class PaginationTest < ActiveRecordTestCase$/;"	c
+Paginator	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    class Paginator$/;"	c	class:ActionController.Pagination
+Parsers	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^  module Parsers$/;"	m	class:REXML
+PartContext	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^    class PartContext$/;"	c	class:Hobo.Dryml
+Percentage	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/percentage.rb	/^  class Percentage < DelegateClass(Fixnum)$/;"	c	class:Hobo
+Proc	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class Proc$/;"	c
+ProcBinding	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/proc_binding.rb	/^  class ProcBinding$/;"	c	class:Hobo
+Project	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/project.rb	/^class Project < ActiveRecord::Base$/;"	c
+REXML	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^module REXML$/;"	m
+Rails	/home/chris/projects/hobo/brewtools/config/boot.rb	/^module Rails$/;"	m
+RawJs	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^  class RawJs < String; end$/;"	c	class:Hobo
+Recipe	/home/chris/projects/hobo/brewtools/app/models/recipe.rb	/^class Recipe < ActiveRecord::Base$/;"	c
+RecipeTest	/home/chris/projects/hobo/brewtools/test/unit/recipe_test.rb	/^class RecipeTest < ActiveSupport::TestCase$/;"	c
+RecipesController	/home/chris/projects/hobo/brewtools/app/controllers/recipes_controller.rb	/^class RecipesController < ApplicationController$/;"	c
+RecipesControllerTest	/home/chris/projects/hobo/brewtools/test/functional/recipes_controller_test.rb	/^class RecipesControllerTest < ActionController::TestCase$/;"	c
+RecipesHelper	/home/chris/projects/hobo/brewtools/app/helpers/recipes_helper.rb	/^module RecipesHelper$/;"	m
+RedCloth	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/textile_string.rb	/^class RedCloth$/;"	c
+Reply	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/reply.rb	/^class Reply < ActiveRecord::Base$/;"	c
+RexSource	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^  class RexSource < REXML::Source$/;"	c	class:Hobo
+SafeNil	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class SafeNil$/;"	c
+ScopedProxy	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      class ScopedProxy$/;"	c
+ScopedVariables	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/scoped_variables.rb	/^  class ScopedVariables$/;"	c	class:Hobo
+Selector.handlers.concat	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^  Selector.handlers.concat = function(a, b) {$/;"	f
+SortableObserver	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^var SortableObserver = Class.create({$/;"	v
+String	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^String.prototype.parseColor = function() {  $/;"	c
+String.parseColor	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^String.prototype.parseColor = function() {  $/;"	m
+String.parseStyle	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^String.prototype.parseStyle = function(){$/;"	m
+Style	/home/chris/projects/hobo/brewtools/app/models/style.rb	/^class Style < ActiveRecord::Base$/;"	c
+StyleTest	/home/chris/projects/hobo/brewtools/test/unit/style_test.rb	/^class StyleTest < ActiveSupport::TestCase$/;"	c
+StylesController	/home/chris/projects/hobo/brewtools/app/controllers/styles_controller.rb	/^class StylesController < ApplicationController$/;"	c
+StylesControllerTest	/home/chris/projects/hobo/brewtools/test/functional/styles_controller_test.rb	/^class StylesControllerTest < ActionController::TestCase$/;"	c
+StylesHelper	/home/chris/projects/hobo/brewtools/app/helpers/styles_helper.rb	/^module StylesHelper$/;"	m
+TableDefinition	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/table_definition.rb	/^  class TableDefinition$/;"	c	class:ActiveRecord
+TagParameters	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/tag_parameters.rb	/^    class TagParameters < Hash$/;"	c	class:Hobo.Dryml
+Taglib	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^    class Taglib$/;"	c	class:Hobo.Dryml
+TamperedWithPartContext	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^      class TamperedWithPartContext < StandardError; end$/;"	c	class:Hobo.Dryml.PartContext
+Template	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^  class Template$/;"	c	class:Hobo
+TemplateEnvironment	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^  class TemplateEnvironment$/;"	c	class:Hobo
+TemplateHandler	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_handler.rb	/^  class TemplateHandler$/;"	c	class:Hobo
+Test	/home/chris/projects/hobo/brewtools/test/test_helper.rb	/^class Test::Unit::TestCase$/;"	c
+Test	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^class Test::Unit::TestCase$/;"	c
+Topic	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/topic.rb	/^class Topic < ActiveRecord::Base$/;"	c
+TreeParser	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    class TreeParser$/;"	c	class:REXML
+TreeParser	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    class TreeParser$/;"	c	class:REXML.Parsers
+TrueClass	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^class TrueClass$/;"	c
+Undefined	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^  class Undefined$/;"	c	class:Hobo
+UndefinedAccessError	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined_access_error.rb	/^  class UndefinedAccessError < RuntimeError; end$/;"	c	class:Hobo
+UnknownSqlTypeError	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    class UnknownSqlTypeError < RuntimeError; end$/;"	c	class:Hobo.FieldSpec
+User	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+User	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^  module User$/;"	m	class:Hobo
+UserController	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^  module UserController$/;"	m	class:Hobo
+UserTest	/home/chris/projects/hobo/brewtools/test/unit/user_test.rb	/^class UserTest < ActiveSupport::TestCase$/;"	c
+UsersController	/home/chris/projects/hobo/brewtools/app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
+UsersControllerTest	/home/chris/projects/hobo/brewtools/test/functional/users_controller_test.rb	/^class UsersControllerTest < ActionController::TestCase$/;"	c
+UsersHelper	/home/chris/projects/hobo/brewtools/app/helpers/users_helper.rb	/^module UsersHelper$/;"	m
+UsersRecipesCategoriesStyles	/home/chris/projects/hobo/brewtools/db/migrate/001_users_recipes_categories_styles.rb	/^class UsersRecipesCategoriesStyles < ActiveRecord::Migration$/;"	c
+VendorBoot	/home/chris/projects/hobo/brewtools/config/boot.rb	/^  class VendorBoot < Boot$/;"	c
+WhereFragment	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/where_fragment.rb	/^  class WhereFragment$/;"	c	class:Hobo
+Window	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      class Window$/;"	c	class:ActionController.Pagination.Paginator
+[]	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def [](number)$/;"	f	class:ActionController.Pagination.Paginator
+[]	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/scoped_variables.rb	/^    def [](key)$/;"	f	class:Hobo.ScopedVariables
+[]	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/tag_parameters.rb	/^      def [](param_name)$/;"	f	class:Hobo.Dryml.TagParameters
+[]	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/lazy_hash.rb	/^  def [](key)$/;"	f	class:Hobo
+[]=	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/scoped_variables.rb	/^    def []=(key, val)$/;"	f	class:Hobo.ScopedVariables
+_?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^    def _?$/;"	f	class:DelegateClass
+_?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def _?()$/;"	f	class:NilClass
+_?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def _?()$/;"	f	class:Object
+_apply_scope	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^        def _apply_scope$/;"	f
+_as_params	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def _as_params(name, obj)$/;"	f
+_association_finder_sql	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def _association_finder_sql(assoc)$/;"	f	class:Hobo.ModelQueries
+_erbout	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def _erbout$/;"	f
+_include_bundle	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def _include_bundle(class_name, option_name, local_options)$/;"	f
+_output	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def _output(s)$/;"	f
+_query_table	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def _query_table$/;"	f	class:Hobo.ModelQueries
+_register_tag_attrs	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^            def _register_tag_attrs(tag, attrs)$/;"	f	class:Hobo.load
+_register_tag_attrs	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^      def _register_tag_attrs(tag_name, attrs)$/;"	f	class:Hobo.TemplateEnvironment
+_tag_context	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def _tag_context(attributes)$/;"	f
+_tag_locals	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def _tag_locals(attributes, locals)$/;"	f
+a_or_an	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^  def a_or_an(word)$/;"	f
+abort_with	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def abort_with(*args)$/;"	f
+access_denied	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def access_denied(user_model)$/;"	f	class:Hobo.AuthenticationSupport
+acts_as_list_with_fields	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def acts_as_list_with_fields(options = {})$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+add_build_instruction	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def add_build_instruction(type, params)$/;"	f	class:Hobo.DRYMLBuilder
+add_classes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def add_classes(attributes, *classes)$/;"	f	class:Hobo
+add_classes!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def add_classes!(attributes, *classes)$/;"	f	class:Hobo
+add_collection_actions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def add_collection_actions(name)$/;"	f	class:Hobo.ClassMethods
+add_options!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/hobo_generator.rb	/^    def add_options!(opt)$/;"	f	class:HoboGenerator
+add_options!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/hobo_front_controller_generator.rb	/^    def add_options!(opt)$/;"	f	class:HoboFrontControllerGenerator
+add_options!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/hobo_rapid_generator.rb	/^    def add_options!(opt)$/;"	f	class:HoboRapidGenerator
+add_part	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def add_part(name, src, line_num)$/;"	f	class:Hobo.DRYMLBuilder
+add_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/hobo_front_controller_generator.rb	/^  def add_routes$/;"	f	class:HoboFrontControllerGenerator
+add_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def add_routes(m)$/;"	f	class:find_by_search
+add_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^      def add_routes(map)$/;"	f	class:Hobo.ModelRouter
+add_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def add_routes$/;"	f
+add_routes_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^      def add_routes_for(map, subsite)$/;"	f	class:Hobo.ModelRouter
+add_to_controller	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def self.add_to_controller(controller)$/;"	F	class:Hobo.HoboHelper
+administrator?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/guest.rb	/^    def administrator?$/;"	f	class:Hobo.Guest
+advance_buffer	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def advance_buffer(md)$/;"	f	class:Hobo.RexSource
+ajax_update_response	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def ajax_update_response(this, page_path, render_specs, results={})$/;"	f	class:Hobo
+ajax_updater	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^  def ajax_updater(url_or_form, message, update, options={})$/;"	f	class:Hobo
+alias_method_chain	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def alias_method_chain(target, feature)$/;"	f
+all	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^        def all$/;"	f
+all	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def all(options={})$/;"	f
+all?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def all?(*args)$/;"	f	class:Hobo.ModelQueries
+all_models	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def all_models$/;"	f	class:find_by_search
+any?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def any?(*args)$/;"	f	class:Hobo.ModelQueries
+app_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/hobo_front_controller_generator.rb	/^  def app_name$/;"	f	class:HoboFrontControllerGenerator
+apply_control_attributes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def apply_control_attributes(expression, el)$/;"	f	class:Hobo
+attr_extension	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def attr_extension(s)$/;"	f	class:Hobo
+attribute_to_ruby	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def attribute_to_ruby(*args)$/;"	f
+attributes_with_hobo_type_conversion=	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def attributes_with_hobo_type_conversion=(attributes, guard_protected_attributes=true)$/;"	f
+attrs_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def attrs_for(name)$/;"	f	class:Hobo
+authenticate	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^      def authenticate(login, password)$/;"	f	class:Hobo.User.ClassMethods
+authenticated?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def authenticated?(password)$/;"	f	class:Hobo.User
+authorized?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def authorized?$/;"	f	class:Hobo.AuthenticationSupport
+auto_actions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def auto_actions(*args)$/;"	f	class:Hobo
+auto_dates	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/table_definition.rb	/^    def auto_dates$/;"	f	class:ActiveRecord.TableDefinition
+autocomplete_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def autocomplete_for(attr, options={}, &b)$/;"	f	class:Hobo
+autocompleter	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def autocompleter(name)$/;"	f	class:Hobo
+banner	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/hobo_generator.rb	/^    def banner$/;"	f	class:HoboGenerator
+banner	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/hobo_front_controller_generator.rb	/^    def banner$/;"	f	class:HoboFrontControllerGenerator
+banner	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model/hobo_model_generator.rb	/^    def banner$/;"	f	class:HoboModelGenerator
+banner	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/hobo_rapid_generator.rb	/^    def banner$/;"	f	class:HoboRapidGenerator
+banner	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/hobo_user_model_generator.rb	/^    def banner$/;"	f	class:HoboUserModelGenerator
+base_url	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def base_url$/;"	f	class:Hobo.HoboHelper
+behavior	/home/chris/projects/hobo/brewtools/public/javascripts/lowpro.js	/^    behavior.prototype.constructor = behavior;$/;"	c
+behavior	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/lowpro.js	/^    behavior.prototype.constructor = behavior;$/;"	c
+behavior.constructor	/home/chris/projects/hobo/brewtools/public/javascripts/lowpro.js	/^    behavior.prototype.constructor = behavior;$/;"	m
+behavior.constructor	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/lowpro.js	/^    behavior.prototype.constructor = behavior;$/;"	m
+belongs_to_with_foreign_key_declaration	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def belongs_to_with_foreign_key_declaration(name, *args, &block)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+belongs_to_with_hobo_metadata	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def belongs_to_with_hobo_metadata(name, *args, &block)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+block	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def block(b)$/;"	f	class:Hobo.ModelQueries
+bool_attr_accessor	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def bool_attr_accessor(*args)$/;"	f
+boot!	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def boot!$/;"	f	class:Rails
+booted?	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def booted?$/;"	f	class:Rails
+build	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def self.build(array)$/;"	F	class:Hash
+build	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def build(local_names, auto_taglibs, src_mtime)$/;"	f	class:Hobo.DRYMLBuilder
+build_hash	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def build_hash$/;"	f	class:Enumerable
+build_with_reverse_reflection	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_association.rb	/^    def build_with_reverse_reflection(*args)$/;"	f	class:ActiveRecord.HasManyAssociation
+bundle_model	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^      def bundle_model(name, &block)$/;"	f	class:Bundle
+bundle_model_controller	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^      def bundle_model_controller(model_name, &block)$/;"	f	class:Bundle
+call_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def call_name(el)$/;"	f	class:Hobo.Template.set_element
+call_part	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def call_part(dom_id, part_name, part_this=nil, *locals)$/;"	f	class:Hobo
+call_polymorphic_tag	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def call_polymorphic_tag(name, *args)$/;"	f	class:Hobo
+call_tag_parameter	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def call_tag_parameter(the_tag, attributes, parameters, caller_parameters, param_name)$/;"	f
+call_tag_parameter_with_default_content	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def call_tag_parameter_with_default_content(the_tag, attributes, default_content, overriding_content_proc)$/;"	f
+call_with_block	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def call_with_block(*args, &b)$/;"	f	class:Proc
+calls_method	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def calls_method(object, method, params={})$/;"	f	class:Test.HoboTesting
+can_call?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def can_call?(person, object, method)$/;"	f
+can_create?	/home/chris/projects/hobo/brewtools/app/models/guest.rb	/^  def can_create?(obj)$/;"	f	class:Guest
+can_create?	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^  def can_create?(obj)$/;"	f	class:User
+can_create?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/templates/guest.rb	/^  def can_create?(obj)$/;"	f	class:Guest
+can_create?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/model.rb	/^  def can_create?(obj)$/;"	f
+can_create?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def can_create?(person, object)$/;"	f
+can_create?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def can_create?(object=nil)$/;"	f
+can_delete?	/home/chris/projects/hobo/brewtools/app/models/guest.rb	/^  def can_delete?(obj)$/;"	f	class:Guest
+can_delete?	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^  def can_delete?(obj)$/;"	f	class:User
+can_delete?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/templates/guest.rb	/^  def can_delete?(obj)$/;"	f	class:Guest
+can_delete?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/model.rb	/^  def can_delete?(obj)$/;"	f
+can_delete?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def can_delete?(person, object)$/;"	f
+can_delete?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def can_delete?(object=nil)$/;"	f
+can_edit?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def can_edit?(person, object, field)$/;"	f
+can_edit?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def can_edit?(*args)$/;"	f
+can_see	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def can_see(s)$/;"	f	class:Test.HoboTesting
+can_update?	/home/chris/projects/hobo/brewtools/app/models/guest.rb	/^  def can_update?(obj, field)$/;"	f	class:Guest
+can_update?	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^  def can_update?(obj, new)$/;"	f	class:User
+can_update?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/templates/guest.rb	/^  def can_update?(obj, field)$/;"	f	class:Guest
+can_update?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/model.rb	/^  def can_update?(obj, new)$/;"	f
+can_update?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def can_update?(person, object, new)$/;"	f
+can_update?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def can_update?(object, new)$/;"	f
+can_view?	/home/chris/projects/hobo/brewtools/app/models/guest.rb	/^  def can_view?(obj, field)$/;"	f	class:Guest
+can_view?	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^  def can_view?(obj, field)$/;"	f	class:User
+can_view?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/templates/guest.rb	/^  def can_view?(obj, field)$/;"	f	class:Guest
+can_view?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/model.rb	/^  def can_view?(obj, field)$/;"	f
+can_view?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def can_view?(person, object, field=nil)$/;"	f
+can_view?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def can_view?(object=nil, field=nil)$/;"	f
+cant_create	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def cant_create(klass, params)$/;"	f	class:Test.HoboTesting
+cant_see	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def cant_see(s)$/;"	f	class:Test.HoboTesting
+cant_visit	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def cant_visit(obj, action=nil)$/;"	f	class:Test.HoboTesting
+change_column_back	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def change_column_back(table, column)$/;"	f	class:HoboMigrationGenerator.change_table.format_options
+change_table	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def change_table(model, current_table_name)$/;"	f	class:HoboMigrationGenerator
+check_permission	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def check_permission(permission, person, object, *args)$/;"	f
+children_to_erb	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def children_to_erb(nodes)$/;"	f	class:Hobo.Template
+class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^    def class$/;"	f	class:Hobo.Undefined
+class_def	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def class_def name, &blk$/;"	f	class:Object
+clear_build_cache	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^      def clear_build_cache$/;"	f	class:Hobo.Template
+clear_cache	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def clear_cache$/;"	f	class:Hobo.Dryml
+clear_cache	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^        def clear_cache$/;"	f	class:Hobo.Dryml.Taglib
+clear_instructions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def clear_instructions$/;"	f	class:Hobo.DRYMLBuilder
+client_side_storage	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^      def self.client_side_storage(contexts, session)$/;"	F	class:Hobo.Dryml
+collection_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def collection_routes$/;"	f
+collections	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def collections$/;"	f	class:Hobo.ClassMethods
+column	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def column(name)$/;"	f	class:Hobo.ClassMethods.dependent_collections
+column_options_from_reverted_table	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def column_options_from_reverted_table(table, column)$/;"	f	class:HoboMigrationGenerator.change_table.format_options
+comma_split	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def comma_split(x)$/;"	f
+companies	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^CREATE TABLE 'companies' ($/;"	t
+companies.id	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'id' INTEGER PRIMARY KEY NOT NULL,$/;"	F
+companies.name	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'name' TEXT DEFAULT NULL,$/;"	F
+companies.rating	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'rating' INTEGER DEFAULT 1$/;"	F
+compile	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def compile(local_names=[], auto_taglibs=[])$/;"	f	class:Hobo.Template
+compile_renderer_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def compile_renderer_class(renderer_class, template_src, template_path, locals, imports, included_taglibs=[])$/;"	f	class:Hobo.Dryml
+completions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^          def completions; hobo_completions end if include_action?(:completions)$/;"	f	class:Hobo
+compose	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^      def compose(*models)$/;"	f	class:Hobo.CompositeModel
+compose_with	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^    def compose_with(object, use=nil)$/;"	f	class:Hobo
+compose_with	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def compose_with(object, use=nil)$/;"	f
+conditions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def conditions(*args, &b)$/;"	f	class:Hobo.ClassMethods.dependent_collections
+consume	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def consume(pattern)$/;"	f	class:Hobo.RexSource
+context_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def context_id$/;"	f	class:Hobo
+controller_and_view_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^      def controller_and_view_for(page_path)$/;"	f	class:Hobo.Controller
+controller_class_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def controller_class_for(page)$/;"	f	class:Hobo.Dryml
+controller_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def controller_for(obj)$/;"	f	class:Hobo.HoboHelper
+controller_taglibs	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def controller_taglibs(controller_class)$/;"	f	class:Hobo.Dryml
+convert_type_for_mass_assignment	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def convert_type_for_mass_assignment(field_type, value)$/;"	f
+count	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def count(*args, &b)$/;"	f
+count_collection_for_pagination	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    def count_collection_for_pagination(model, options)$/;"	f	class:ActionController.Pagination
+creatable_by?	/home/chris/projects/hobo/brewtools/app/models/category.rb	/^  def creatable_by?(user)$/;"	f	class:Category
+creatable_by?	/home/chris/projects/hobo/brewtools/app/models/recipe.rb	/^  def creatable_by?(user)$/;"	f	class:Recipe
+creatable_by?	/home/chris/projects/hobo/brewtools/app/models/style.rb	/^  def creatable_by?(user)$/;"	f	class:Style
+creatable_by?	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^  def creatable_by?(creator)$/;"	f	class:User
+creatable_by?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model/templates/model.rb	/^  def creatable_by?(user)$/;"	f
+creatable_by?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/model.rb	/^  def creatable_by?(creator)$/;"	f
+create	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^          def create;  hobo_create  end if include_action?(:create) $/;"	f	class:Hobo
+create_all	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/generator.rb	/^  def create_all(m, src, dest)$/;"	f	class:Hobo
+create_auth_cookie	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def create_auth_cookie$/;"	f	class:Hobo.AuthenticationSupport
+create_controllers	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def create_controllers$/;"	f
+create_field	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def create_field(field_spec, field_name_width)$/;"	f	class:HoboMigrationGenerator
+create_models	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def create_models$/;"	f
+create_paginators_and_retrieve_collections	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    def create_paginators_and_retrieve_collections #:nodoc:$/;"	f	class:ActionController.Pagination
+create_render_page_method	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def create_render_page_method$/;"	f	class:Hobo.Template
+create_table	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def create_table(model)$/;"	f	class:HoboMigrationGenerator
+created_date	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def created_date$/;"	f
+creates	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def creates(klass, params)$/;"	f	class:Test.HoboTesting
+creates_and_visits	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def creates_and_visits(klass, params)$/;"	f	class:Test.HoboTesting
+creator_type	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def creator_type$/;"	f
+current_line	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def current_line$/;"	f	class:Hobo.RexSource
+current_page	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def current_page$/;"	f	class:ActionController.Pagination.Paginator
+current_page=	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def current_page=(page)$/;"	f	class:ActionController.Pagination.Paginator
+current_page_url	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def current_page_url$/;"	f
+current_should	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def current_should(s)$/;"	f	class:Test.HoboTesting
+current_user	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def current_user$/;"	f	class:Hobo.HoboHelper
+current_user=	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def current_user=(new_user)$/;"	f	class:Hobo.render_tags
+customize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def customize(name, &block)$/;"	f
+data	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    var data = elements.inject({ }, function(result, element) {$/;"	v
+data_filter	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def data_filter(name, &b)$/;"	f
+data_filter_conditions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def data_filter_conditions$/;"	f	class:hobo_template_exists?
+declared_attributes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def declared_attributes(def_element)$/;"	f	class:Hobo.Template.set_element.set_scoped_element
+def_element	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def def_element(el)$/;"	f	class:Hobo.Template.set_element.set_scoped_element
+def_scope	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def def_scope(name, scope=nil, &block)$/;"	f
+default	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def default$/;"	f	class:Hobo.FieldSpec
+default_method_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/predicate_dispatch.rb	/^    def default_method_for(method)$/;"	f	class:Hobo.ClassMethods
+default_param_proc	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def default_param_proc(el)$/;"	f	class:Hobo
+default_scopes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def default_scopes$/;"	f	class:Hobo.ClassMethods
+defaults	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def defaults; {}; end$/;"	f
+define_read_method	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^  def define_read_method(symbol, attr_name, column)$/;"	f	class:ActiveRecord
+define_write_method	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^  def define_write_method(attr_name)$/;"	f
+defined_route?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def defined_route?(r)$/;"	f
+defp	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/predicate_dispatch.rb	/^    def defp(name, predicate=nil, &block)$/;"	f	class:Hobo.ClassMethods
+delayed_alias_method_chain	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^            def delayed_alias_method_chain(tag, feature)$/;"	f	class:Hobo.load
+delegate	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def delegate(*methods)$/;"	f
+delegate_and_compose	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_support.rb	/^      def delegate_and_compose(*methods)$/;"	f	class:Hobo.ModelSupport.ClassMethods
+deletable_by?	/home/chris/projects/hobo/brewtools/app/models/category.rb	/^  def deletable_by?(user)$/;"	f	class:Category
+deletable_by?	/home/chris/projects/hobo/brewtools/app/models/recipe.rb	/^  def deletable_by?(user)$/;"	f	class:Recipe
+deletable_by?	/home/chris/projects/hobo/brewtools/app/models/style.rb	/^  def deletable_by?(user)$/;"	f	class:Style
+deletable_by?	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^  def deletable_by?(deleter)$/;"	f	class:User
+deletable_by?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model/templates/model.rb	/^  def deletable_by?(user)$/;"	f
+deletable_by?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/model.rb	/^  def deletable_by?(deleter)$/;"	f
+delete	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/lazy_hash.rb	/^  def delete(key)$/;"	f	class:Hobo
+deletes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def deletes(object)$/;"	f	class:Test.HoboTesting
+dependent_collections	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def dependent_collections$/;"	f	class:Hobo.ClassMethods
+dependent_on	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def dependent_on$/;"	f	class:Hobo.ClassMethods.dependent_collections
+dependent_on	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def dependent_on$/;"	f
+destination_after_create	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def destination_after_create(record)$/;"	f
+destroy	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^          def destroy; hobo_destroy end if include_action?(:destroy) $/;"	f	class:Hobo
+developer_features?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def developer_features?$/;"	f	class:Hobo
+developers	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^CREATE TABLE 'developers' ($/;"	t
+developers.created_at	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'created_at' DATETIME DEFAULT NULL,$/;"	F
+developers.id	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'id' INTEGER PRIMARY KEY NOT NULL,$/;"	F
+developers.name	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'name' TEXT DEFAULT NULL,$/;"	F
+developers.salary	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'salary' INTEGER DEFAULT 70000,$/;"	F
+developers.updated_at	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'updated_at' DATETIME DEFAULT NULL$/;"	F
+developers_projects	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^CREATE TABLE 'developers_projects' ($/;"	t
+developers_projects.access_level	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'access_level' INTEGER DEFAULT 1$/;"	F
+developers_projects.developer_id	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'developer_id' INTEGER NOT NULL,$/;"	F
+developers_projects.joined_on	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'joined_on' DATE DEFAULT NULL,$/;"	F
+developers_projects.project_id	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'project_id' INTEGER NOT NULL,$/;"	F
+different_to?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def different_to?(col_spec)$/;"	f	class:Hobo.FieldSpec
+dom_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def dom_id(obj, attr=nil)$/;"	f
+dom_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def dom_id(*args)$/;"	f
+down	/home/chris/projects/hobo/brewtools/db/migrate/001_users_recipes_categories_styles.rb	/^  def self.down$/;"	F	class:UsersRecipesCategoriesStyles
+down	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/templates/migration.rb	/^  def self.down$/;"	F
+drop	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^    var drop, affected = [];$/;"	v
+drop_prefix	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def drop_prefix; self[2..-1]; end$/;"	f	class:Hobo.Dryml.AttributeExtensionString
+droponOptions	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^    var droponOptions = Sortable.options(dropon);$/;"	v
+dryml_exception	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def dryml_exception(message, el=nil)$/;"	f
+dryml_mode?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^      def dryml_mode?$/;"	f	class:REXML.Parsers.BaseParser
+dryml_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def dryml_name$/;"	f	class:Element
+duplicate	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def duplicate$/;"	f
+each	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def each(&block)$/;"	f	class:ActionController.Pagination.Paginator
+edit	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^          def edit;    hobo_edit    end if include_action?(:edit) $/;"	f	class:Hobo
+editor_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^  def editor_class$/;"	f
+el	/home/chris/projects/hobo/brewtools/public/javascripts/lowpro.js	/^  var el, i=0;$/;"	v
+el	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/lowpro.js	/^  var el, i=0;$/;"	v
+element	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def element(name, attributes, content=nil, escape = true, &block)$/;"	f
+element_line_num	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def element_line_num(el)$/;"	f
+element_to_erb	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def element_to_erb(el)$/;"	f	class:Hobo.Template
+empty_page_renderer	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def empty_page_renderer(view)$/;"	f	class:Hobo.Dryml
+encrypt	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^      def encrypt(password, salt)$/;"	f	class:Hobo.User.ClassMethods
+encrypt	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def encrypt(password)$/;"	f	class:Hobo.User
+encrypt_password	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def encrypt_password$/;"	f	class:Hobo.User
+enum_string	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/enum_string.rb	/^      def enum_string(*values)$/;"	f	class:Hobo.EnumString.Helper
+erb_process	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def erb_process(erb_src)$/;"	f	class:Hobo.DRYMLBuilder
+eval	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/proc_binding.rb	/^    def self.eval(proc, self_, locals)$/;"	F	class:Hobo.ProcBinding
+eval_ruby_files	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^      def eval_ruby_files(base, dir)$/;"	f	class:Bundle
+every	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def every(method, *args)$/;"	f	class:Enumerable
+extract_options_from_args!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def extract_options_from_args!(args) #:nodoc:$/;"	f	class:Kernel
+feature	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^        def self.feature(name, &block)$/;"	F	class:make_class
+field	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_declaration_dsl.rb	/^    def field(name, *args)$/;"	f	class:Hobo.FieldDeclarationsDsl
+field_specs	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def field_specs$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+field_type	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def field_type(name)$/;"	f	class:Hobo.ClassMethods.dependent_collections
+field_types	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def field_types$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+fields	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def fields(&b)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+find	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^      def find(id)$/;"	f	class:Hobo.CompositeModel
+find	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def find(*args, &b)$/;"	f	class:Hobo.ClassMethods.dependent_collections
+find_ancestor	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def find_ancestor(el)$/;"	f
+find_by_id_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^          def self.find_by_id_name(id_name, options={})$/;"	F	class:Hobo.ClassMethods.dependent_collections.dependent_on
+find_by_search	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def find_by_search(query)$/;"	f
+find_collection_for_pagination	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    def find_collection_for_pagination(model, options, paginator)$/;"	f	class:ActionController.Pagination
+find_instance	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def find_instance(id, options={})$/;"	f
+find_instance	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def find_instance(*args)$/;"	f	class:search
+find_instance_or_not_found	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def find_instance_or_not_found(this=nil)$/;"	f
+find_model_template	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def find_model_template(klass, name)$/;"	f	class:hobo_template_exists?
+find_polymorphic_tag	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def find_polymorphic_tag(name, call_type=nil)$/;"	f	class:Hobo
+find_with_block	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_association.rb	/^    def find_with_block(*args, &b)$/;"	f	class:ActiveRecord.HasManyAssociation
+fireContentLoadedEvent	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^  function fireContentLoadedEvent() {$/;"	f
+first	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^        def first$/;"	f
+first?	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def first?$/;"	f	class:ActionController.Pagination.Paginator.Page
+firstByIndex	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    var firstByIndex = elements.findAll(function(element) {$/;"	v
+first_item	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def first_item$/;"	f	class:ActionController.Pagination.Paginator.Page
+first_page	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def first_page$/;"	f	class:ActionController.Pagination.Paginator
+fixture_objects	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^  def self.fixture_objects(model, *names)$/;"	F	class:Test
+fixtures	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^  def self.fixtures(*args)$/;"	F	class:ActiveRecordTestCase
+fkey	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/table_definition.rb	/^    def fkey(*args)$/;"	f	class:ActiveRecord.TableDefinition
+for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/enum_string.rb	/^      def for(*values)$/;"	f	class:Hobo.EnumString
+forget_me	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def forget_me$/;"	f	class:Hobo.User
+format_options	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def format_options(options, type)$/;"	f	class:HoboMigrationGenerator.change_table
+front_models	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def front_models$/;"	f
+full_class_path	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/hobo_front_controller_generator.rb	/^  def full_class_path$/;"	f	class:HoboFrontControllerGenerator
+function.complete	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^            function complete() {$/;"	f
+function.complete	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^            function complete() {$/;"	f
+function.iter	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^  function iter(name) {$/;"	f
+function.klass	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    function klass() {$/;"	c
+gem_version	/home/chris/projects/hobo/brewtools/config/boot.rb	/^      def gem_version$/;"	f	class:GemBoot
+generate_digest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^        def generate_digest(data, session)$/;"	f	class:Hobo.Dryml.client_side_storage
+gensym	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def gensym(name="__tmp")$/;"	f
+get	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^        def get(options)$/;"	f	class:Hobo.Dryml.Taglib
+get_auth_data	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def get_auth_data$/;"	f	class:Hobo.AuthenticationSupport
+get_field	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def get_field(object, field)$/;"	f	class:find_by_search
+get_field_path	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def get_field_path(object, path)$/;"	f	class:find_by_search
+get_param_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def get_param_name(el)$/;"	f	class:Hobo.Template.set_element
+guest?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/guest.rb	/^    def guest?$/;"	f	class:Hobo.Guest
+guest?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def guest?$/;"	f	class:Hobo.User
+h	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^      var h = Selector.handlers, results = [], indexed = [], m;$/;"	v
+handler	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^      var handler = Selector.operators[operator], results = [];$/;"	v
+hard_break	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/textile_string.rb	/^  def hard_break( text ) $/;"	f	class:RedCloth
+has_end_tag?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def has_end_tag?$/;"	f	class:Element
+has_hobo_method?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^    def has_hobo_method?(name)$/;"	f	class:Hobo
+has_many_with_defined_scopes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def has_many_with_defined_scopes(name, *args, &block)$/;"	f
+has_page_number?	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def has_page_number?(number)$/;"	f	class:ActionController.Pagination.Paginator
+has_rhs?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def has_rhs?$/;"	f	class:Attribute
+hobo_ajax_response	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def hobo_ajax_response(*args)$/;"	f	class:Hobo
+hobo_completions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_completions$/;"	f
+hobo_controller	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/init.rb	/^  def self.hobo_controller$/;"	F	class:ActionController
+hobo_create	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_create(*args, &b)$/;"	f
+hobo_destroy	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_destroy(*args, &b)$/;"	f
+hobo_edit	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_edit(*args, &b)$/;"	f
+hobo_has_many?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_association.rb	/^    def hobo_has_many?$/;"	f	class:ActiveRecord.HasManyAssociation
+hobo_index	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_index(*args, &b)$/;"	f
+hobo_login	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^    def hobo_login(options={})$/;"	f	class:Hobo
+hobo_logout	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^    def hobo_logout(options={})$/;"	f	class:Hobo
+hobo_model	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/init.rb	/^  def self.hobo_model$/;"	F	class:ActiveRecord
+hobo_model_controller	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/init.rb	/^  def self.hobo_model_controller(model=nil)$/;"	F	class:ActionController
+hobo_new	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_new(*args, &b)$/;"	f
+hobo_new_in_collection	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_new_in_collection(collection, *args, &b)$/;"	f
+hobo_render	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_render(page_kind = nil, page_model=nil)$/;"	f	class:hobo_template_exists?
+hobo_show	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_show(*args, &b)$/;"	f
+hobo_show_collection	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_show_collection(collection, options={}, &b)$/;"	f
+hobo_signup	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^    def hobo_signup(&b)$/;"	f	class:Hobo
+hobo_template_exists?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_template_exists?(dir, name)$/;"	f
+hobo_undefined?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^    def hobo_undefined?$/;"	f	class:Hobo.Undefined
+hobo_update	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def hobo_update(*args, &b)$/;"	f
+hobo_user_controller	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/init.rb	/^  def self.hobo_user_controller(model=nil)$/;"	F	class:ActionController
+hobo_user_model	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/init.rb	/^  def self.hobo_user_model$/;"	F	class:ActiveRecord
+home_page	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^  def home_page$/;"	f	class:ActionController
+id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^    def id$/;"	f	class:Hobo
+id_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^            def id_name(underscore=false)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on.id_name
+id_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def id_name(*args)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+id_name?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def id_name?$/;"	f	class:Hobo.ClassMethods.dependent_collections
+implies	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def implies(x)$/;"	f	class:FalseClass
+implies	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def implies(x)$/;"	f	class:TrueClass
+import_into	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^      def import_into(class_or_module, as)$/;"	f
+import_module	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def import_module(mod, as=nil)$/;"	f	class:Hobo.DRYMLBuilder
+import_module	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def import_module(mod, as=nil)$/;"	f	class:Hobo.Template
+import_taglib	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def import_taglib(options)$/;"	f	class:Hobo.DRYMLBuilder
+import_tags	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/hobo_rapid_generator.rb	/^  def import_tags$/;"	f	class:HoboRapidGenerator
+in?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def in?(array)$/;"	f	class:Object
+in_place_editor	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^  def in_place_editor(behaviour_class, attributes)$/;"	f
+include_action?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def include_action?(name, collection_action=false)$/;"	f
+include_bundle	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def include_bundle(*args)$/;"	f
+include_element	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def include_element(el)$/;"	f	class:Hobo.Template
+include_taglib	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^      def include_taglib(src, options={})$/;"	f	class:Hobo.ClassMethods
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    def self.included(base) #:nodoc:$/;"	F	class:ActionController.Pagination
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^      def included(base)$/;"	f	class:Hobo.Controller
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^            def included(base)$/;"	f	class:Hobo.load
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def self.included(base)$/;"	F	class:Hobo.Model
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def included(base)$/;"	f	class:Hobo.ModelController
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_support.rb	/^    def self.included(base)$/;"	F	class:Hobo.ModelSupport
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/predicate_dispatch.rb	/^  def self.included(base)$/;"	F	class:Hobo
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def self.included(base)$/;"	F	class:Hobo.User
+included	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^      def included(base)$/;"	f	class:Hobo.UserController
+included_in_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^      def included_in_class(klass)$/;"	f	class:Hobo.Controller
+includes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def includes; end$/;"	f
+index	/home/chris/projects/hobo/brewtools/app/controllers/front_controller.rb	/^  def index; end$/;"	f	class:FrontController
+index	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/templates/controller.rb	/^  def index; end$/;"	f
+index	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^          def index;   hobo_index   end if include_action?(:index) $/;"	f	class:Hobo
+index_action	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def index_action(*names, &block)$/;"	f
+index_action_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def index_action_routes$/;"	f
+index_actions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def index_actions$/;"	f	class:Hobo.ClassMethods
+inherited	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^      def inherited(base)$/;"	f	class:Bundle
+inherited	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^      def inherited(subclass)$/;"	f	class:Hobo.TemplateEnvironment
+inherited	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^        def inherited(klass)$/;"	f	class:Hobo.Model.included
+inheriting_attr_accessor	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def inheriting_attr_accessor(*names)$/;"	f	class:Module
+init	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def init;     end$/;"	f
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def initialize(page, padding=2)$/;"	f	class:ActionController.Pagination.Paginator.Window
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def initialize(paginator, number)$/;"	f	class:ActionController.Pagination.Paginator.Page
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def initialize(controller, item_count, items_per_page, current_page=1)$/;"	f	class:ActionController.Pagination.Paginator
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def initialize(runtime_args, runtime_options = {})$/;"	f	class:HoboMigrationGenerator
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model_controller/hobo_model_controller_generator.rb	/^  def initialize(args, options)$/;"	f	class:HoboModelControllerGenerator
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_controller/hobo_user_controller_generator.rb	/^  def initialize(args, options)$/;"	f	class:HoboUserControllerGenerator
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def initialize$/;"	f	class:It
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def initialize(*args)$/;"	f
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^    def initialize(*objects)$/;"	f	class:Hobo
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def initialize(message, path=nil, line_num=nil)$/;"	f	class:Hobo.Dryml.DrymlException
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def initialize(template_path)$/;"	f	class:Hobo.DRYMLBuilder
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^      def initialize(part_name, this_id, locals)$/;"	f	class:Hobo.Dryml.client_side_storage
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/scoped_variables.rb	/^    def initialize$/;"	f	class:Hobo.ScopedVariables
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/tag_parameters.rb	/^      def initialize(parameters, exclude_names=nil)$/;"	f	class:Hobo.Dryml.TagParameters
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^      def initialize(src_file, renames)$/;"	f	class:Hobo
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def initialize(src, environment, template_path, renames={})$/;"	f	class:Hobo.Template
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def initialize(view_name=nil, view=nil)$/;"	f	class:Hobo
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_handler.rb	/^    def initialize(view)$/;"	f	class:Hobo.TemplateHandler
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_declaration_dsl.rb	/^    def initialize(model)$/;"	f	class:Hobo.FieldDeclarationsDsl
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def initialize(model, name, type, options={})$/;"	f	class:Hobo.FieldSpec
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/lazy_hash.rb	/^  def initialize(hash=nil)$/;"	f	class:Hobo
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^        def initialize(klass, scope)$/;"	f	class:ScopedProxy
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def initialize(model)$/;"	f	class:Hobo.ModelQueries
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def initialize(map, model, controller, subsite)$/;"	f
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/proc_binding.rb	/^    def initialize(self_, locals)$/;"	f	class:Hobo.ProcBinding
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^    def initialize(*args)$/;"	f	class:Hobo.Undefined
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/where_fragment.rb	/^    def initialize(sql, *params)$/;"	f	class:Hobo.WhereFragment
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^      def initialize( source, build_context = Document.new )$/;"	f	class:REXML.Parsers.TreeParser
+initialize	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def initialize(src)$/;"	f	class:Hobo.RexSource
+initialize_with_dryml	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def initialize_with_dryml(first, second=nil, parent=nil)$/;"	f	class:Attribute
+input	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def input(prompt, options=nil)$/;"	f	class:HoboMigrationGenerator.change_table.format_options
+inputs	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    var inputs = form.getElementsByTagName('input');$/;"	v
+inspect	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/enum_string.rb	/^      def inspect$/;"	f	class:Hobo.EnumString
+inspect	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/lazy_hash.rb	/^  def inspect$/;"	f	class:Hobo
+inspect	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^    def inspect$/;"	f	class:Hobo.Undefined
+invalid?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def invalid?; @status == :invalid; end$/;"	f
+is_a?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def is_a?(*args)$/;"	f	class:Object
+is_a?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^    def is_a?(klass)$/;"	f	class:Hobo.Undefined
+is_code_attribute?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def is_code_attribute?(attr_value)$/;"	f
+is_in	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def is_in(association)$/;"	f	class:Hobo.ModelQueries
+is_redirected_to	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def is_redirected_to(x)$/;"	f	class:Test.HoboTesting
+is_taglib?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def is_taglib?$/;"	f	class:Hobo.Template
+it	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def it() It.new end$/;"	f	class:Kernel
+js_result_updates	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^  def js_result_updates(updates)$/;"	f	class:Hobo
+js_str	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def js_str(s)$/;"	f
+js_updates	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^  def js_updates(updates)$/;"	f	class:Hobo
+key	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    var key, value, submitted = false, submit = options.submit;$/;"	v
+klass.constructor	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    klass.prototype.constructor = klass;$/;"	m
+last?	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def last?$/;"	f	class:ActionController.Pagination.Paginator.Page
+last_item	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def last_item$/;"	f	class:ActionController.Pagination.Paginator.Page
+last_page	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def last_page$/;"	f	class:ActionController.Pagination.Paginator
+limit	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def limit$/;"	f	class:Hobo.FieldSpec
+linkable	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^      def linkable(subsite, klass, action)$/;"	f	class:Hobo.ModelRouter
+linkable?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def linkable?(*args)$/;"	f
+linkable?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^      def linkable?(subsite, klass, action)$/;"	f	class:Hobo.ModelRouter
+linkable_route	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def linkable_route(name, route, action, options)$/;"	f
+load	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^      def load$/;"	f	class:Hobo
+load_initializer	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def load_initializer$/;"	f	class:GemBoot
+load_initializer	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def load_initializer$/;"	f	class:VendorBoot
+load_rails_gem	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def load_rails_gem$/;"	f	class:GemBoot
+load_rubygems	/home/chris/projects/hobo/brewtools/config/boot.rb	/^      def load_rubygems$/;"	f	class:GemBoot
+load_schema	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^    def load_schema$/;"	f	class:ActiveRecordTestConnector
+log_debug	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def log_debug(*args)$/;"	f
+logged_in?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def logged_in?$/;"	f	class:Hobo.AuthenticationSupport
+logged_in?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def logged_in?$/;"	f	class:Hobo.HoboHelper
+logger	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def logger$/;"	f
+login	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^    def login; hobo_login; end$/;"	f	class:Hobo
+login_attribute=	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^      def login_attribute=(attr, validate=true)$/;"	f	class:Hobo.User.ClassMethods
+login_from_cookie	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def login_from_cookie$/;"	f	class:Hobo.AuthenticationSupport
+login_required	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def login_required(user_model=nil)$/;"	f	class:Hobo.AuthenticationSupport
+login_url	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def login_url(user_or_class)$/;"	f
+logout	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^    def logout; hobo_logout; end$/;"	f	class:Hobo
+logout_url	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def logout_url(user_or_class=nil)$/;"	f
+logs_in_as	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def logs_in_as(user, password)$/;"	f	class:Test.HoboTesting
+magic_option	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def magic_option(name)$/;"	f
+make_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def make_class(name, base_class, &b)$/;"	f
+make_params	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def make_params(*hashes)$/;"	f
+make_params_js	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def make_params_js(*args)$/;"	f
+make_renderer_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def make_renderer_class(template_src, template_path, locals, imports, included_taglibs=[])$/;"	f	class:Hobo.Dryml
+manifest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo/hobo_generator.rb	/^  def manifest$/;"	f	class:HoboGenerator
+manifest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/hobo_front_controller_generator.rb	/^  def manifest$/;"	f	class:HoboFrontControllerGenerator
+manifest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def manifest$/;"	f	class:HoboMigrationGenerator
+manifest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model/hobo_model_generator.rb	/^  def manifest$/;"	f	class:HoboModelGenerator
+manifest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model_controller/hobo_model_controller_generator.rb	/^  def manifest$/;"	f	class:HoboModelControllerGenerator
+manifest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/hobo_rapid_generator.rb	/^  def manifest$/;"	f	class:HoboRapidGenerator
+manifest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_controller/hobo_user_controller_generator.rb	/^  def manifest$/;"	f	class:HoboUserControllerGenerator
+manifest	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/hobo_user_model_generator.rb	/^  def manifest$/;"	f	class:HoboUserModelGenerator
+map_hash	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def map_hash$/;"	f	class:Enumerable
+map_hash	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def map_hash(&b)$/;"	f	class:Hash
+map_this	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def map_this$/;"	f
+map_with_index	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def map_with_index$/;"	f	class:Enumerable
+marshal	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^      def marshal(session)$/;"	f	class:Hobo.Dryml.client_side_storage
+masterDelay	/home/chris/projects/hobo/brewtools/public/javascripts/effects.js	/^    var masterDelay = options.delay;$/;"	v
+match	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def match(pattern, cons=false)$/;"	f	class:Hobo.RexSource
+maybe_make_part_call	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def maybe_make_part_call(el, call)$/;"	f	class:Hobo.param_proc
+member_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_association.rb	/^    def member_class$/;"	f	class:ActiveRecord.HasManyAssociation
+member_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_through_association.rb	/^    def member_class$/;"	f	class:ActiveRecord.HasManyThroughAssociation
+member_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^          def res.member_class$/;"	F	class:Hobo
+member_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^        def member_class$/;"	f
+merge_attribute	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def merge_attribute(el)$/;"	f	class:Hobo
+merge_attrs	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def merge_attrs(attrs, overriding_attrs)$/;"	f	class:Hobo
+merge_tag_parameter	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def merge_tag_parameter(general_proc, overriding_proc)$/;"	f
+meta_def	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def meta_def name, &blk$/;"	f	class:Object
+meta_eval	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def meta_eval &blk; metaclass.instance_eval &blk; end$/;"	f	class:Object
+metaclass	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def metaclass; class << self; self; end; end$/;"	f	class:Object
+method	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    var method = element.tagName.toLowerCase();$/;"	v
+method_added	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def method_added(name)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/table_definition.rb	/^    def method_missing(name, *args)$/;"	f	class:ActiveRecord.TableDefinition
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def method_missing(*args, &block)$/;"	f	class:It
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def method_missing(method, *args, &b)$/;"	f	class:SafeNil
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def method_missing(name, *args)$/;"	f
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/scoped_variables.rb	/^    def method_missing(name, *args)$/;"	f	class:Hobo.ScopedVariables
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/tag_parameters.rb	/^      def method_missing(name, default_content="")$/;"	f	class:Hobo.Dryml.TagParameters
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def method_missing(name, *args, &b)$/;"	f
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_declaration_dsl.rb	/^    def method_missing(name, *args)$/;"	f	class:Hobo.FieldDeclarationsDsl
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^        def method_missing(name, *args, &block)$/;"	f
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^        def method_missing(name, *args, &block)$/;"	f	class:DefinedScopeProxyExtender
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def method_missing(name, *args)$/;"	f	class:Hobo.ModelQueries
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/proc_binding.rb	/^    def method_missing(name, *args, &block)$/;"	f	class:Hobo.ProcBinding
+method_missing	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^    def method_missing(name, *args)$/;"	f	class:Hobo.Undefined
+model	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def model$/;"	f	class:Hobo
+model	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def model$/;"	f	class:hobo_template_exists?
+model_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def model_for(controller_name)$/;"	f
+models	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def models$/;"	f	class:Hobo
+models=	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def models=(models)$/;"	f	class:Hobo
+modified_date	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def modified_date$/;"	f
+name	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^    var name = encodeURIComponent($/;"	v
+name_attribute	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def name_attribute$/;"	f	class:Hobo.ClassMethods
+name_with_subsite	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def name_with_subsite(name)$/;"	f
+named_route	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def named_route(name, route, options={})$/;"	f
+needle	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^      var needle = ' ' + className + ' ';$/;"	v
+never_show	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def never_show(*fields)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+never_show?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def never_show?(field)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+new	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_association.rb	/^    def new(attributes = {})$/;"	f	class:ActiveRecord.HasManyAssociation
+new	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^          def new;     hobo_new     end if include_action?(:new) $/;"	f	class:Hobo
+new_context	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def new_context$/;"	f
+new_field_context	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def new_field_context(field_path, tag_this=nil)$/;"	f
+new_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^      def new_for(objects)$/;"	f	class:Hobo.CompositeModel
+new_for_current_user	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def new_for_current_user(model_or_assoc=nil)$/;"	f
+new_name_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def new_name_for(name)$/;"	f
+new_object_context	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def new_object_context(new_this)$/;"	f
+new_record?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^    def new_record?$/;"	f	class:Hobo.Undefined
+new_scope	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/scoped_variables.rb	/^    def new_scope$/;"	f	class:Hobo.ScopedVariables
+new_session	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^  def new_session$/;"	f	class:Test
+new_session_as	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^  def new_session_as(person, password)$/;"	f	class:Test
+next	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def next$/;"	f	class:ActionController.Pagination.Paginator.Page
+nl_to_br	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def nl_to_br(s)$/;"	f
+no_break	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^  def no_break(s)$/;"	f
+node_to_erb	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def node_to_erb(node)$/;"	f	class:Hobo.Template
+not_	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def not_(fragment)$/;"	f	class:Hobo.ModelQueries
+not_allowed?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def not_allowed?; @status == :not_allowed; end$/;"	f
+not_found	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def not_found$/;"	f	class:Hobo.render_tags
+not_found	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def not_found$/;"	f
+not_in	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def not_in(association)$/;"	f	class:Hobo.ModelQueries
+not_in?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def not_in?(array)$/;"	f	class:Object
+null	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def null$/;"	f	class:Hobo.FieldSpec
+object_from_dom_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def object_from_dom_id(dom_id)$/;"	f
+object_url	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def object_url(obj, action=nil, *param_hashes)$/;"	f	class:Test.HoboTesting
+object_url	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def object_url(*args)$/;"	f	class:Hobo.HoboHelper
+offset	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def offset$/;"	f	class:ActionController.Pagination.Paginator.Page
+offsets	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^    var offsets = Position.cumulativeOffset(dropon);$/;"	v
+only_changed_fields?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def only_changed_fields?(other, *changed_fields)$/;"	f
+optional_bundle	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def optional_bundle(*args)$/;"	f
+options.onFailure	/home/chris/projects/hobo/brewtools/public/javascripts/hobo-rapid.js	/^            options.onFailure = function(response) {$/;"	f
+options.onFailure	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/hobo-rapid.js	/^            options.onFailure = function(response) {$/;"	f
+options_for_hobo_ajax	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/rapid_helper.rb	/^  def options_for_hobo_ajax(options)$/;"	f	class:Hobo
+override_and_call_tag	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def override_and_call_tag(the_tag, general_attributes, general_parameters, overriding_attributes, overriding_parameters)$/;"	f
+padding=	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def padding=(padding)$/;"	f	class:ActionController.Pagination.Paginator.Window
+page_count	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def page_count$/;"	f	class:ActionController.Pagination.Paginator
+page_renderer	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def page_renderer(view, local_names=[], page=nil)$/;"	f	class:Hobo.Dryml
+pages	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def pages$/;"	f	class:ActionController.Pagination.Paginator.Window
+paginate	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^      def paginate(collection_id, options={})$/;"	f	class:ActionController.Pagination.ClassMethods
+paginate	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    def paginate(collection_id, options={})$/;"	f	class:ActionController.Pagination
+paginate_with_class_name	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_class_name$/;"	f	class:PaginationTest.PaginationController
+paginate_with_conditions	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_conditions$/;"	f	class:PaginationTest.PaginationController
+paginate_with_include_and_order	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_include_and_order$/;"	f	class:PaginationTest.PaginationController
+paginate_with_join	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_join$/;"	f	class:PaginationTest.PaginationController
+paginate_with_join_and_count	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_join_and_count$/;"	f	class:PaginationTest.PaginationController
+paginate_with_join_and_group	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_join_and_group$/;"	f	class:PaginationTest.PaginationController
+paginate_with_joins	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_joins$/;"	f	class:PaginationTest.PaginationController
+paginate_with_order	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_order$/;"	f	class:PaginationTest.PaginationController
+paginate_with_order_by	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_order_by$/;"	f	class:PaginationTest.PaginationController
+paginate_with_per_page	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_per_page$/;"	f	class:PaginationTest.PaginationController
+paginate_with_singular_name	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def paginate_with_singular_name$/;"	f	class:PaginationTest.PaginationController
+paginated_find	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def paginated_find(*args, &b)$/;"	f	class:search
+pagination_links	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination_helper.rb	/^      def pagination_links(paginator, options={}, html_options={})$/;"	f	class:ActionView.Helpers.PaginationHelper
+pagination_links_each	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination_helper.rb	/^      def pagination_links_each(paginator, options, prefix = nil, suffix = nil)$/;"	f	class:ActionView.Helpers.PaginationHelper
+paginator_and_collection_for	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    def paginator_and_collection_for(collection_id, options) #:nodoc:$/;"	f	class:ActionController.Pagination
+param_content_element	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def param_content_element(el)$/;"	f	class:Hobo.Template.set_element
+param_content_local_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def param_content_local_name(name)$/;"	f	class:Hobo.param_proc
+param_name_for	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def param_name_for(object, field_path)$/;"	f
+param_name_for_this	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def param_name_for_this(foreign_key=false)$/;"	f
+param_names_in_definition	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def param_names_in_definition(el)$/;"	f	class:Hobo.Template.set_element
+param_proc	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def param_proc(el)$/;"	f	class:Hobo
+param_restore_local_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def param_restore_local_name(name)$/;"	f	class:Hobo
+parameter_tag?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def parameter_tag?$/;"	f	class:Element
+parameter_tags_hash	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def parameter_tags_hash(el)$/;"	f	class:Hobo
+params	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    var params = options.parameters, action = form.readAttribute('action') || '';$/;"	v
+parse	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^      def parse$/;"	f	class:REXML.TreeParser
+parse_datetime	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def parse_datetime(s)$/;"	f
+parse_gem_version	/home/chris/projects/hobo/brewtools/config/boot.rb	/^      def parse_gem_version(text)$/;"	f	class:GemBoot
+parse_with_hobo_fix	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^      def parse_with_hobo_fix(s)$/;"	f	class:Chronic
+part_contexts_storage	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def part_contexts_storage$/;"	f
+part_contexts_storage_tag	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def part_contexts_storage_tag$/;"	f
+part_element	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def part_element(el, content)$/;"	f	class:Hobo.Template.set_element
+partition_hash	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def partition_hash(keys=nil)$/;"	f	class:Hash
+partition_hash	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def partition_hash(keys=nil)$/;"	f	class:HashWithIndifferentAccess
+password_required?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def password_required?$/;"	f	class:Hobo.User
+password_validations	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^      def password_validations$/;"	f	class:Hobo.User.ClassMethods
+permission_denied	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def permission_denied(options={})$/;"	f
+pick_boot	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def pick_boot$/;"	f	class:Rails
+plugin	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def plugin$/;"	f
+plural	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def plural$/;"	f
+pointer	/home/chris/projects/hobo/brewtools/public/javascripts/dragdrop.js	/^    var pointer = [Event.pointerX(event), Event.pointerY(event)];$/;"	v
+polymorphic_call_type	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def polymorphic_call_type(el)$/;"	f	class:Hobo.Template.set_element
+pre_marshal	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^      def pre_marshal(x)$/;"	f	class:Hobo.Dryml.client_side_storage
+precision	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def precision$/;"	f	class:Hobo.FieldSpec
+predicate_has_default?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/predicate_dispatch.rb	/^    def predicate_has_default?(method_name)$/;"	f	class:Hobo
+predicate_method?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/predicate_dispatch.rb	/^    def predicate_method?(method_name)$/;"	f	class:Hobo
+preinitialize	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def preinitialize$/;"	f	class:Rails
+preinitializer_path	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def preinitializer_path$/;"	f	class:Rails
+prepare_view!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def prepare_view!(view)$/;"	f	class:Hobo.Dryml
+pretty_print	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def pretty_print(q)$/;"	f	class:PP
+previous	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def previous$/;"	f	class:ActionController.Pagination.Paginator.Page
+primary_content_attribute	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def primary_content_attribute$/;"	f	class:Hobo.ClassMethods
+process_src	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def process_src$/;"	f	class:Hobo.Template
+projects	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^CREATE TABLE 'projects' ($/;"	t
+projects.id	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'id' INTEGER PRIMARY KEY NOT NULL,$/;"	F
+projects.name	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'name' TEXT DEFAULT NULL$/;"	F
+publish_collection	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def publish_collection(*names)$/;"	f
+pull	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^      def pull$/;"	f	class:REXML.Parsers.BaseParser
+query_params	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def query_params$/;"	f
+raw_js	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def raw_js(s)$/;"	f	class:Hobo
+re_render_form	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def re_render_form(default_action)$/;"	f
+read_environment_rb	/home/chris/projects/hobo/brewtools/config/boot.rb	/^        def read_environment_rb$/;"	f	class:GemBoot
+ready?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def ready?(mtime)$/;"	f	class:Hobo.DRYMLBuilder
+redirect_back_or_default	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def redirect_back_or_default(default)$/;"	f	class:Hobo.AuthenticationSupport
+redirect_to_with_object_url	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def redirect_to_with_object_url(destination, *args)$/;"	f	class:Hobo
+register_form_field	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def register_form_field(name)$/;"	f
+register_model	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def register_model(model)$/;"	f
+rejectX	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def rejectX(keys=nil, &b)$/;"	f	class:Hash
+reload	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^      def reload$/;"	f	class:Hobo
+reload	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^  def reload$/;"	f	class:ActionController
+remember_match	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def remember_match(m)$/;"	f	class:Hobo.RexSource
+remember_me	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def remember_me$/;"	f	class:Hobo.User
+remember_token?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^    def remember_token?$/;"	f	class:Hobo.User
+remove_index_html	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/hobo_front_controller_generator.rb	/^  def remove_index_html$/;"	f	class:HoboFrontControllerGenerator
+rename_class	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def rename_class(name)$/;"	f
+rename_or_drop!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def rename_or_drop!(to_create, to_drop, kind_str, name_prefix="")$/;"	f	class:HoboMigrationGenerator
+render	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_handler.rb	/^    def render(src, local_assigns)$/;"	f	class:Hobo.TemplateHandler
+render_file	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/action_view_extensions/base.rb	/^    def render_file(template_path, *args)$/;"	f	class:ActionView.Base
+render_page_source	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def render_page_source(src, local_names)$/;"	f	class:Hobo.DRYMLBuilder
+render_tag	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def render_tag(tag, options={}, render_options={})$/;"	f	class:Hobo
+render_tag	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def render_tag(view, tag, options={})$/;"	f	class:Hobo.Dryml
+render_tag	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def render_tag(tag_name, attributes)$/;"	f
+render_tags	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def render_tags(objects, tag, options={})$/;"	f	class:Hobo
+repeat_attribute	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def repeat_attribute(array, &b)$/;"	f
+replace_objects_in_params!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def replace_objects_in_params!(hash)$/;"	f	class:Test.HoboTesting
+replies	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^CREATE TABLE 'replies' ($/;"	t
+replies.content	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'content' text, $/;"	F
+replies.created_at	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'created_at' datetime, $/;"	F
+replies.id	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'id' INTEGER PRIMARY KEY NOT NULL, $/;"	F
+replies.topic_id	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'topic_id' integer$/;"	F
+replies.updated_at	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'updated_at' datetime, $/;"	F
+request_no_cache?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def request_no_cache?$/;"	f	class:Hobo.render_tags
+require_attribute	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def require_attribute(el, name, rx=nil, optional=false)$/;"	f
+require_fixture_models	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^    def require_fixture_models$/;"	f
+require_toplevel	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def require_toplevel(el, message=nil)$/;"	f
+rescue_action	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def rescue_action(e) raise end$/;"	f	class:PaginationTest.PaginationController
+rescue_errors	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def rescue_errors(e) raise e end$/;"	f	class:PaginationTest.PaginationController
+reset_linkables	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^      def reset_linkables$/;"	f	class:Hobo.ModelRouter
+resource_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def resource_routes$/;"	f
+response_block	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def response_block(&b)$/;"	f	class:search
+restore_erb_scriptlets	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def restore_erb_scriptlets(src)$/;"	f	class:Hobo.Template
+restore_locals	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^        def restore_locals(locals)$/;"	f	class:Hobo.Dryml.client_side_storage
+restore_part_this	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^        def restore_part_this(this_id, this)$/;"	f	class:Hobo.Dryml.client_side_storage
+results	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^      var results = [], h = Selector.handlers;$/;"	v
+results	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^      var results = [], n;$/;"	v
+results	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^      var results = [];$/;"	v
+results	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^    var results = [], h = Selector.handlers;$/;"	v
+return_type	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def return_type(type)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+reverse_reflection	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def reverse_reflection(association_name)$/;"	f
+revert_column	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def revert_column(table, column)$/;"	f	class:HoboMigrationGenerator.change_table.format_options
+revert_table	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def revert_table(table)$/;"	f	class:HoboMigrationGenerator.change_table.format_options
+route_with_subsite	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def route_with_subsite(route)$/;"	f
+ruby_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def ruby_name(dryml_name)$/;"	f	class:Hobo.Template.set_element.set_scoped_element
+rubygems_version	/home/chris/projects/hobo/brewtools/config/boot.rb	/^      def rubygems_version$/;"	f	class:GemBoot
+run	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def run$/;"	f	class:Boot
+run	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^  def run(*args)$/;"	f	class:ActiveRecordTestCase
+same_fields?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def same_fields?(other, *fields)$/;"	f
+save_and_set_status!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def save_and_set_status!(record, original=nil)$/;"	f
+scale	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def scale$/;"	f	class:Hobo.FieldSpec
+scan	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def scan(pattern, cons=false)$/;"	f	class:Hobo.RexSource
+scope	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def scope$/;"	f	class:Hobo
+search	/home/chris/projects/hobo/brewtools/app/controllers/front_controller.rb	/^  def search$/;"	f	class:FrontController
+search	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/templates/controller.rb	/^  def search$/;"	f
+search	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def search(not_found=nil)$/;"	f	class:Enumerable
+search	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def search(*args)$/;"	f
+search_columns	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^          def self.search_columns$/;"	F	class:Hobo.ClassMethods.dependent_collections.dependent_on.set_search_columns
+search_columns	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def search_columns$/;"	f
+select_hash	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def select_hash(new_keys=nil)$/;"	f	class:Hash
+select_viewable	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def select_viewable(collection)$/;"	f
+selector_type	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def selector_type$/;"	f
+separate_renames	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/bundle.rb	/^    def separate_renames(options)$/;"	f
+session	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def session$/;"	f
+set_admin_on_first_user	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user.rb	/^      def set_admin_on_first_user$/;"	f	class:Hobo.User.ClassMethods
+set_creator	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def set_creator(user)$/;"	f
+set_default_order	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def set_default_order(order)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+set_element	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def set_element(el)$/;"	f	class:Hobo.Template
+set_environment	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def set_environment(environment)$/;"	f	class:Hobo.DRYMLBuilder
+set_field_type	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def set_field_type(types)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+set_named_this!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def set_named_this!$/;"	f	class:search
+set_no_cache_headers	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def set_no_cache_headers$/;"	f	class:hobo_template_exists?
+set_reverse_association	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/has_many_association.rb	/^    def set_reverse_association(object)$/;"	f	class:ActiveRecord.HasManyAssociation
+set_scoped_element	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def set_scoped_element(el)$/;"	f	class:Hobo.Template.set_element
+set_search_columns	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def set_search_columns(*columns)$/;"	f	class:Hobo.ClassMethods.dependent_collections.dependent_on
+set_status	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def set_status(status)$/;"	f
+set_theme	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/dryml_builder.rb	/^    def set_theme(name)$/;"	f	class:Hobo.DRYMLBuilder
+setup	/home/chris/projects/hobo/brewtools/test/functional/front_controller_test.rb	/^  def setup$/;"	f	class:FrontControllerTest
+setup	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^    def setup$/;"	f	class:ActiveRecordTestConnector
+setup	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_helper_test.rb	/^  def setup$/;"	f	class:PaginationHelperTest
+setup	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def setup$/;"	f	class:PaginationTest
+setup	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/templates/functional_test.rb	/^  def setup$/;"	f
+setup_connection	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^    def setup_connection$/;"	f	class:ActiveRecordTestConnector
+show	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^          def show;    hobo_show    end if include_action?(:show) $/;"	f	class:Hobo
+show_action	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def show_action(*names, &block)$/;"	f
+show_action_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def show_action_routes$/;"	f
+show_actions	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def show_actions$/;"	f	class:Hobo.ClassMethods
+signup	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/user_controller.rb	/^    def signup; hobo_signup; end$/;"	f	class:Hobo
+signup_url	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def signup_url(user_or_class)$/;"	f
+simple_has_many_association?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def simple_has_many_association?(array_or_reflection)$/;"	f	class:find_by_search
+simple_paginate	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^    def simple_paginate$/;"	f	class:PaginationTest.PaginationController
+singular	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def singular$/;"	f
+site_search	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/controller.rb	/^    def site_search(query)$/;"	f	class:Hobo.render_tags
+sql	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_queries.rb	/^    def sql(s)$/;"	f	class:Hobo.ModelQueries
+sql_type	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def sql_type$/;"	f	class:Hobo.FieldSpec
+static_element_to_erb	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def static_element_to_erb(el)$/;"	f	class:Hobo.param_proc
+static_tag_to_method_call	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def static_tag_to_method_call(el)$/;"	f	class:Hobo.param_proc
+static_tags	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def static_tags$/;"	f
+store_location	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/authentication_support.rb	/^    def store_location$/;"	f	class:Hobo.AuthenticationSupport
+subclass	/home/chris/projects/hobo/brewtools/public/javascripts/lowpro.js	/^      subclass.prototype = parent.prototype;$/;"	c
+subclass	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^      subclass.prototype = parent.prototype;$/;"	c
+subclass	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/lowpro.js	/^      subclass.prototype = parent.prototype;$/;"	c
+subclass_associations	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^      def subclass_associations(association, *subclass_associations)$/;"	f
+subsite	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def subsite$/;"	f	class:Hobo.HoboHelper
+subsite_taglib	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def subsite_taglib(page)$/;"	f	class:Hobo.Dryml
+super_user?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/guest.rb	/^    def super_user?$/;"	f	class:Hobo.Guest
+symbolic_type_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def symbolic_type_name(type)$/;"	f	class:Hobo
+table_model_classes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/hobo_migration_generator.rb	/^  def table_model_classes$/;"	f	class:HoboMigrationGenerator
+tag_attributes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def tag_attributes(el)$/;"	f	class:Hobo.param_proc
+tag_attrs	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^      def tag_attrs$/;"	f	class:Hobo.TemplateEnvironment
+tag_call	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def tag_call(el)$/;"	f	class:Hobo.Template.set_element
+tag_method	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def tag_method(name, el)$/;"	f	class:Hobo.Template.set_element
+tag_method_body	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def tag_method_body(el)$/;"	f	class:Hobo.Template.set_element
+tag_newlines	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def tag_newlines(el)$/;"	f
+taglib_filename	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/taglib.rb	/^        def taglib_filename(options)$/;"	f	class:Hobo.Dryml.Taglib
+take_options!	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/active_record/table_definition.rb	/^    def take_options!(args)$/;"	f	class:ActiveRecord.TableDefinition
+test_paginate_with_class_name	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_class_name$/;"	f	class:PaginationTest
+test_paginate_with_conditions	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_conditions$/;"	f	class:PaginationTest
+test_paginate_with_include_and_order	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_include_and_order$/;"	f	class:PaginationTest
+test_paginate_with_join_and_conditions	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_join_and_conditions$/;"	f	class:PaginationTest
+test_paginate_with_join_and_count	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_join_and_count$/;"	f	class:PaginationTest
+test_paginate_with_join_and_group	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_join_and_group$/;"	f	class:PaginationTest
+test_paginate_with_joins	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_joins$/;"	f	class:PaginationTest
+test_paginate_with_order	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_order$/;"	f	class:PaginationTest
+test_paginate_with_order_by	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_order_by$/;"	f	class:PaginationTest
+test_paginate_with_per_page	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_paginate_with_per_page$/;"	f	class:PaginationTest
+test_pagination_links	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_helper_test.rb	/^  def test_pagination_links$/;"	f	class:PaginationHelperTest
+test_pagination_links_with_prefix	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_helper_test.rb	/^  def test_pagination_links_with_prefix$/;"	f	class:PaginationHelperTest
+test_pagination_links_with_suffix	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_helper_test.rb	/^  def test_pagination_links_with_suffix$/;"	f	class:PaginationHelperTest
+test_simple_paginate	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_test.rb	/^  def test_simple_paginate$/;"	f	class:PaginationTest
+test_truth	/home/chris/projects/hobo/brewtools/test/functional/categories_controller_test.rb	/^  def test_truth$/;"	f	class:CategoriesControllerTest
+test_truth	/home/chris/projects/hobo/brewtools/test/functional/front_controller_test.rb	/^  def test_truth$/;"	f	class:FrontControllerTest
+test_truth	/home/chris/projects/hobo/brewtools/test/functional/recipes_controller_test.rb	/^  def test_truth$/;"	f	class:RecipesControllerTest
+test_truth	/home/chris/projects/hobo/brewtools/test/functional/styles_controller_test.rb	/^  def test_truth$/;"	f	class:StylesControllerTest
+test_truth	/home/chris/projects/hobo/brewtools/test/functional/users_controller_test.rb	/^  def test_truth$/;"	f	class:UsersControllerTest
+test_truth	/home/chris/projects/hobo/brewtools/test/unit/category_test.rb	/^  def test_truth$/;"	f	class:CategoryTest
+test_truth	/home/chris/projects/hobo/brewtools/test/unit/recipe_test.rb	/^  def test_truth$/;"	f	class:RecipeTest
+test_truth	/home/chris/projects/hobo/brewtools/test/unit/style_test.rb	/^  def test_truth$/;"	f	class:StyleTest
+test_truth	/home/chris/projects/hobo/brewtools/test/unit/user_test.rb	/^  def test_truth$/;"	f	class:UserTest
+test_truth	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/helper.rb	/^  def test_truth$/;"	f	class:ActiveRecordTestCase
+test_truth	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_front_controller/templates/functional_test.rb	/^  def test_truth$/;"	f
+test_truth	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model/templates/unit_test.rb	/^  def test_truth$/;"	f
+test_truth	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model_controller/templates/functional_test.rb	/^  def test_truth$/;"	f
+test_truth	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_controller/templates/functional_test.rb	/^  def test_truth$/;"	f
+test_truth	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/unit_test.rb	/^  def test_truth$/;"	f
+theme_asset	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def theme_asset(path)$/;"	f
+this_field_dom_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def this_field_dom_id$/;"	f	class:Hobo
+timestamps	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_declaration_dsl.rb	/^    def timestamps$/;"	f	class:Hobo.FieldDeclarationsDsl
+to_html	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/markdown_string.rb	/^  def to_html$/;"	f	class:Hobo
+to_html	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/textile_string.rb	/^  def to_html$/;"	f	class:Hobo
+to_param	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def to_param #:nodoc:$/;"	f	class:ActionController.Pagination.Paginator.Page
+to_proc	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions.rb	/^  def to_proc$/;"	f	class:It
+to_s	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/guest.rb	/^    def to_s$/;"	f	class:Hobo.Guest
+to_s	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/lazy_hash.rb	/^  def to_s$/;"	f	class:Hobo
+to_s	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def to_s$/;"	f
+to_s	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/undefined.rb	/^    def to_s$/;"	f	class:Hobo.Undefined
+to_sql	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def to_sql$/;"	f	class:ActionController.Pagination.Paginator.Page
+to_sql	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/where_fragment.rb	/^    def to_sql$/;"	f	class:Hobo.WhereFragment
+to_string_with_dryml	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def to_string_with_dryml$/;"	f	class:Attribute
+topics	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^CREATE TABLE 'topics' ($/;"	t
+topics.content	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'content' text, $/;"	F
+topics.created_at	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'created_at' datetime, $/;"	F
+topics.id	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'id' INTEGER PRIMARY KEY NOT NULL, $/;"	F
+topics.subtitle	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'subtitle' varchar(255), $/;"	F
+topics.title	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'title' varchar(255), $/;"	F
+topics.updated_at	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/schema.sql	/^  'updated_at' datetime$/;"	F
+transpose_with_field	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def transpose_with_field(field, collection=nil)$/;"	f
+type_and_field	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def type_and_field(*args)$/;"	f
+type_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def type_id(type)$/;"	f	class:Hobo
+type_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/hobo_helper.rb	/^    def type_id(type=nil)$/;"	f
+typed_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/composite_model.rb	/^    def typed_id$/;"	f	class:Hobo
+typed_id	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model.rb	/^    def typed_id$/;"	f
+types	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/field_spec.rb	/^    def types$/;"	f	class:Hobo.FieldSpec
+unmarshal	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/part_context.rb	/^        def unmarshal(client_store, this, session)$/;"	f	class:Hobo.Dryml.client_side_storage
+unreserve	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml.rb	/^      def unreserve(word)$/;"	f	class:Hobo.Dryml
+up	/home/chris/projects/hobo/brewtools/db/migrate/001_users_recipes_categories_styles.rb	/^  def self.up$/;"	F	class:UsersRecipesCategoriesStyles
+up	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_migration/templates/migration.rb	/^  def self.up$/;"	F
+updatable_by?	/home/chris/projects/hobo/brewtools/app/models/category.rb	/^  def updatable_by?(user, new)$/;"	f	class:Category
+updatable_by?	/home/chris/projects/hobo/brewtools/app/models/recipe.rb	/^  def updatable_by?(user, new)$/;"	f	class:Recipe
+updatable_by?	/home/chris/projects/hobo/brewtools/app/models/style.rb	/^  def updatable_by?(user, new)$/;"	f	class:Style
+updatable_by?	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^  def updatable_by?(updater, new)$/;"	f	class:User
+updatable_by?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model/templates/model.rb	/^  def updatable_by?(user, new)$/;"	f
+updatable_by?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/model.rb	/^  def updatable_by?(updater, new)$/;"	f
+update	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^          def update;  hobo_update  end if include_action?(:update) $/;"	f	class:Hobo
+url_for	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/pagination_helper_test.rb	/^      def url_for(options, *parameters_for_method_reference)$/;"	f	class:PaginationHelperTest.setup
+urlb	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^      def urlb$/;"	f	class:Test.HoboTesting.HoboHelpers
+user_model	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def user_model$/;"	f	class:Hobo
+user_model=	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo.rb	/^    def user_model=(model)$/;"	f	class:Hobo
+user_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def user_routes$/;"	f
+valid?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^    def valid?; @status == :valid; end$/;"	f
+validate	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/test/fixtures/company.rb	/^  def validate$/;"	f	class:Company
+validate	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/email_address.rb	/^  def validate$/;"	f	class:Hobo
+validate	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/enum_string.rb	/^    def validate$/;"	f	class:Hobo
+validate	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/percentage.rb	/^    def validate$/;"	f	class:Hobo.Percentage
+validate_options	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^    def self.validate_options!(collection_id, options, in_action) #:nodoc:$/;"	F	class:ActionController.Pagination
+value_with_dryml	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/rexml.rb	/^    def value_with_dryml$/;"	f	class:Attribute
+var.behavior	/home/chris/projects/hobo/brewtools/public/javascripts/lowpro.js	/^      var behavior = function() { $/;"	f
+var.behavior	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/lowpro.js	/^      var behavior = function() { $/;"	f
+var.subclass	/home/chris/projects/hobo/brewtools/public/javascripts/lowpro.js	/^      var subclass = function() { };$/;"	f
+var.subclass	/home/chris/projects/hobo/brewtools/public/javascripts/prototype.js	/^      var subclass = function() { };$/;"	f
+var.subclass	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_rapid/templates/lowpro.js	/^      var subclass = function() { };$/;"	f
+vendor_rails?	/home/chris/projects/hobo/brewtools/config/boot.rb	/^    def vendor_rails?$/;"	f	class:Rails
+viewable_by?	/home/chris/projects/hobo/brewtools/app/models/category.rb	/^  def viewable_by?(user, field)$/;"	f	class:Category
+viewable_by?	/home/chris/projects/hobo/brewtools/app/models/recipe.rb	/^  def viewable_by?(user, field)$/;"	f	class:Recipe
+viewable_by?	/home/chris/projects/hobo/brewtools/app/models/style.rb	/^  def viewable_by?(user, field)$/;"	f	class:Style
+viewable_by?	/home/chris/projects/hobo/brewtools/app/models/user.rb	/^  def viewable_by?(viewer, field)$/;"	f	class:User
+viewable_by?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_model/templates/model.rb	/^  def viewable_by?(user, field)$/;"	f
+viewable_by?	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/generators/hobo_user_model/templates/model.rb	/^  def viewable_by?(viewer, field)$/;"	f
+visits	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/extensions/test_case.rb	/^    def visits(obj, action=nil, params={})$/;"	f	class:Test.HoboTesting
+web_method	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def web_method(web_name, options={}, &block)$/;"	f	class:Hobo
+web_method_routes	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_router.rb	/^    def web_method_routes$/;"	f
+web_methods	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/model_controller.rb	/^      def web_methods$/;"	f	class:Hobo.ClassMethods
+window	/home/chris/projects/hobo/brewtools/vendor/plugins/classic_pagination/lib/pagination.rb	/^        def window(padding=2)$/;"	f	class:ActionController.Pagination.Paginator.Page
+with_containing_tag_name	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template.rb	/^    def with_containing_tag_name(el)$/;"	f	class:Hobo.Template.set_element.set_scoped_element
+with_form_context	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/dryml/template_environment.rb	/^    def with_form_context$/;"	f
+with_source_in	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/generator.rb	/^  def with_source_in(path)$/;"	f	class:Hobo
+with_values	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/enum_string.rb	/^      def with_values(*values)$/;"	f	class:Hobo.EnumString
+|	/home/chris/projects/hobo/brewtools/vendor/plugins/hobo/lib/hobo/where_fragment.rb	/^    def |(rhs)$/;"	f	class:Hobo.WhereFragment
