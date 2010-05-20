@@ -11,11 +11,10 @@
     <append-head:>
       <meta name="google-site-verification" content="s2TnQD_IuRQb9bcM94HoCFDha9E-gVHPVCbs4x5-uWQ" />
     </append-head:>
-    <prepend-app-name:>
-
-      <img src="/images/beer.png" class="banner-image"/>
-
-    </prepend-app-name:>
+    <app-name:>
+      <div class="banner-image"><img src="/images/beer.png" /></div>
+      <div class="title-heading">Brewtoolz</div>
+    </app-name:>
     <content: replace>
       <section-group class="page-content">
         <aside param="aside-left"/>

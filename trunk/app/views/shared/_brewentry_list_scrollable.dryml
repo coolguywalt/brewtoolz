@@ -21,17 +21,18 @@
   <div class="ie">
 <![endif]-->
 
-<div class="scroll-list-div">
 
-  <table class="item-list scroll-table">
+<div class="scroll-table-wrap-div">
+  <div class="scroll-table-inner-div" >
+  <table class="scroll-table item-list">
 
-  <thead>
-    <th><b>Date Brewed</b></th>
-    <th><b>Recipe</b></th>
-    <th><b>Style</b></th>
-    <th><b>Status</b></th>
-    <th><b>Attenuation</b></th>
-    <th><b>Rating</b></th>
+  <thead><tr>
+    <th><b><p>Date Brewed</p></b></th>
+    <th><b><p>Recipe</p></b></th>
+    <th><b><p>Style</p></b></th>
+    <th><b><p>Status</p></b></th>
+    <th><b><p>Atten.</p></b></th>
+    <th><b><p>Rating</p></b></th></tr>
   </thead>
   <tbody class="scroll-list">
     <repeat with="&brewentry_list_scrollable">
@@ -47,6 +48,7 @@
 
   </tbody>
 </table>
+</div>
 </div>
 
 <!--[if IE]>
