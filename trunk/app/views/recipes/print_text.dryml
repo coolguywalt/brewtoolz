@@ -7,11 +7,11 @@
       </div>
    <![endif]-->
     <div class="plain" >
-      <h1>Recipe: <%= @recipe.name %></h1>
+      <h1><a object="@recipe">Recipe: <%= @recipe.name %></a></h1>
 
       <%= render :partial => 'shared/recipe_view_detailed_text', :object => @recipe %>
 
-      <p align="center"><b>www.brewtoolz.com</b> - Brewtoolz - Brewing tool calculator</p>
+      <p align="center"><b><a href="/">www.brewtoolz.com</a></b> - Brewtoolz - Brewing tool calculator</p>
     </div>
    <!--[if IE]>
       </div>

@@ -213,4 +213,8 @@ module ApplicationHelper
     number_to_percentage(value, :precision => 2)
   end
 
+  def strwrap(s, width=80)
+    s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
+  end
+
 end
