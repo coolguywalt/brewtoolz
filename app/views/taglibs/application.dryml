@@ -152,7 +152,6 @@
 
     <content: param>
       <header param="content-header">
-        <br/>www.brewtoolz.com
       </header>
 
       <section param="content-body">

@@ -328,3 +328,7 @@ table.scroll-table thead tr th p {
     top:0;
 
 }
+
+.plain {
+    font-family: monospace;
+}
