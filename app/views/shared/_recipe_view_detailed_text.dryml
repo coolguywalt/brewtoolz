@@ -23,19 +23,19 @@ Description:<br/><br/>
 <br/>
 
 <p>--------------------------------------------------------------------------------</p>
-<%= ( ("Target Volume:").ljust(40) + volume_values(recipe_view_detailed_text.volume).ljust(20) + ( '[' + volume_units() + ']').ljust(10) ).gsub(/ /,'&nbsp;') %><br/>
-<%= ( "Alcohol By Volume:".ljust(40) + (decimal(recipe_view_detailed_text.abv) + "%").ljust(30)).gsub(/ /,'&nbsp;') %><br/>
+<%= ( ("Target Volume [" + volume_units() + "]:").ljust(50) + volume_values(recipe_view_detailed_text.volume).rjust(30)  ).gsub(/ /,'&nbsp;') %><br/>
+<%= ( "Alcohol By Volume:".ljust(50) + (decimal(recipe_view_detailed_text.abv) + "%").rjust(30)).gsub(/ /,'&nbsp;') %><br/>
 <br/>
-<%=  ( ("Estimated Original Gravity:").ljust(40) + gravity_values( recipe_view_detailed_text.og ).ljust(20) + ( '[' + gravity_units() + ']').ljust(10) ).gsub(/ /,'&nbsp;') %><br/>
-<%=  ( ("Estimated Final Gravity:").ljust(40) + gravity_values( recipe_view_detailed_text.fg ).ljust(20) + ( '[' + gravity_units() + ']').ljust(10) ).gsub(/ /,'&nbsp;') %><br/>
-<%=  ( ("Estimated Attenuation:").ljust(40) + percentage(recipe_view_detailed_text.attenuation*100).ljust(20)).gsub(/ /,'&nbsp;') %><br/>
-<%=  ( ("Estimated Mash Efficiency:").ljust(40) + percentage(recipe_view_detailed_text.efficency).ljust(20)).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Estimated Original Gravity [" + gravity_units() + "]:").ljust(50) + gravity_values( recipe_view_detailed_text.og ).rjust(30)  ).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Estimated Final Gravity [" + gravity_units() + "]:" ).ljust(50) + gravity_values( recipe_view_detailed_text.fg ).rjust(30) ).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Estimated Attenuation:").ljust(50) + percentage(recipe_view_detailed_text.attenuation*100).rjust(30)).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Estimated Mash Efficiency:").ljust(50) + percentage(recipe_view_detailed_text.efficency).rjust(30)).gsub(/ /,'&nbsp;') %><br/>
 <br/>
-<%=  ( ("Bitterness:").ljust(40) + decimal( recipe_view_detailed_text.ibu).ljust(20) + "[IBU]".ljust(10) ).gsub(/ /,'&nbsp;') %><br/>
-<%=  ( ("Color:").ljust(40) + "#{decimal( recipe_view_detailed_text.srm)} (#{decimal( recipe_view_detailed_text.ebc)})".ljust(20) + "[SRM(EBC)]".ljust(10) ).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Bitterness [IBU]:").ljust(50) + decimal( recipe_view_detailed_text.ibu).rjust(30) ).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Color  [SRM(EBC)]:").ljust(50) + "#{decimal( recipe_view_detailed_text.srm)} (#{decimal( recipe_view_detailed_text.ebc)})".rjust(30)).gsub(/ /,'&nbsp;') %><br/>
 <br/>
-<%=  ( ("BU:GU ratio:").ljust(40) + decimal( recipe_view_detailed_text.bugu, 3 ).ljust(20)).gsub(/ /,'&nbsp;') %><br/>
-<%=  ( ("Balance:").ljust(40) + decimal( recipe_view_detailed_text.balance, 3 ).ljust(20)).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("BU:GU ratio:").ljust(50) + decimal( recipe_view_detailed_text.bugu, 3 ).rjust(30)).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Balance:").ljust(50) + decimal( recipe_view_detailed_text.balance, 3 ).rjust(30)).gsub(/ /,'&nbsp;') %><br/>
 <br/>
 Balance &lt;1 sweeter malty beer, &gt;1 more bitter beer, =1  balanced beer.<br/>
 <br/>
