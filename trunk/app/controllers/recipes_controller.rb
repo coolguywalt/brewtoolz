@@ -208,8 +208,8 @@ class RecipesController < ApplicationController
 		@brew_entry = @recipe.brew_entries.create(:actual_og => @recipe.og,
       :user => current_user )
 
+    @brew_entry.brew_date = Date.today + 7.days
  		@brew_entry.volume_to_ferementer = @recipe.volume
-    @brew_entry.brew_date = Date.today
     @brew_entry.save
 
 		default_brewery = Brewery.default_brewery(current_user)
