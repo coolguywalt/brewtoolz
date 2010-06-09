@@ -26,6 +26,7 @@ ActionController::Routing::Routes.draw do |map|
   #Shortcut routes for specific tools:
   map.connect '/tools/refract', :controller => :tools, :action => :index   #Default tool
   map.connect '/tools/yeast', :controller => :tools, :action => :index, :yeast => 1
+  map.connect '/tools/yeast_pitch', :controller => :tools, :action => :index, :yeast => 1
   map.connect '/tools/dilution', :controller => :tools, :dilution => 1
 
   Hobo.add_routes(map)
