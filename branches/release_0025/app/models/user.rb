@@ -81,8 +81,8 @@ class User < ActiveRecord::Base
 		return false if ((attribute ==  :administrator) && !acting_user.administrator? )
 		return false if ((attribute ==  :name) && !acting_user.administrator? )
 
-		true
-	end
+	  (acting_user == self  or acting_user.administrator?)
+  end
 
 	def get_default_brewery
 		breweries.each do |abrewery|
