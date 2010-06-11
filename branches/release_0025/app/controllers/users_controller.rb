@@ -39,6 +39,10 @@ class UsersController < ApplicationController
 
   end
 
+  def show
+     @user = User.find(params[:id])
+     this = @user
+  end
   
   private
 
