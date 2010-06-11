@@ -144,9 +144,8 @@ class RecipesController < ApplicationController
 	def search_form
 
 		unless params[:recipe_filter].blank?
-			search_filter = "( name LIKE '%#{params[:recipe_filter]}%' OR description LIKE '%#{params[:recipe_filter]}%')"
-			session[:recipeSearchFilter] = search_filter
-			logger.debug "Updated search filter: #{search_filter}"
+			session[:recipeSearchFilter] = "%" + params[:recipe_filter] + "%"
+			logger.debug "Updated search filter: #{params[:recipe_filter]}"
 		else
 			session[:recipeSearchFilter] = nil
 		end
