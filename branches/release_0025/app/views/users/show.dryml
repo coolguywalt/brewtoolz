@@ -1,5 +1,9 @@
 <show-page>
 
+  <header-buttons: replace>
+      <a action="edit" if="&can_edit?" class="button">Edit</a>
+  </header-buttons:>
+  
 	<content-body: replace>
 		<h2>Recipes:</h2>
 		<collection with="&brewers_recipes(this)"/>
