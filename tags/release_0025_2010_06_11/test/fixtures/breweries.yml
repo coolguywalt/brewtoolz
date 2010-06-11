@@ -1,0 +1,43 @@
+--- 
+brewery_2: 
+  name: Frazey's
+  updated_at: 2008-05-14 21:26:01
+  isDefault: "0"
+  efficency: "70"
+  isAllGrain: "1"
+  id: 2
+  user_id: 9
+  capacity: "23"
+  created_at: 2008-05-14 21:26:01
+basic_brewery:
+  name: Basic setup
+  updated_at: 2008-07-22 12:54:47
+  isDefault: "1"
+  efficency: "70"
+  isAllGrain: "1"
+  id: 1
+  user_id: 2
+  capacity: "21"
+  created_at: 2008-05-01 00:08:45
+  liquor_to_grist: "3.0"
+  boil_time: 60
+  mash_tun_capacity: "40.0"
+  mash_tun_deadspace: "2.0"
+  evapouration_rate: "4.0"
+  boiler_loses: "4.0"
+big_brewery:
+  name: Big brewery
+  updated_at: 2008-07-22 12:54:47
+  isDefault: "0"
+  efficency: "75"
+  isAllGrain: "1"
+  id: 3
+  user_id: 2
+  capacity: "250"
+  created_at: 2008-05-01 00:08:45
+  liquor_to_grist: "3.0"
+  boil_time: 60
+  mash_tun_capacity: "200.0"
+  mash_tun_deadspace: "8.0"
+  evapouration_rate: "8.0"
+  boiler_loses: "12.0"
