@@ -2,8 +2,8 @@
 development:
   adapter: mysql
   database: brewtools_ror
-  username: devuser
-  password: devpasswd
+  username: btadmin
+  password: multi4crane
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.
@@ -17,6 +17,6 @@ test:
 production:
   adapter: mysql
   database: brewtools_ror
-  username: produser
-  password: prodpasswd
-
+  username: btadmin
+  password: multi4crane
+  

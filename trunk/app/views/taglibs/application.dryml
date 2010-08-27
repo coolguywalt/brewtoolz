@@ -57,6 +57,8 @@
       <nav-item with="&Audit">Usage Logs</nav-item>
     </if>
 
+    <nav-item with="&FermentableType">Ingredients</nav-item>
+
     <nav-item href="/tools">Tools</nav-item>
     <nav-item href="/help">Help</nav-item>
   </navigation>
@@ -115,6 +117,15 @@
 
   </navigation>
 </def>
+
+<def tag="ingred-nav" attrs="prefix">
+  <navigation merge>
+    <nav-item href="#bdmenu" onclick="Hobo.show('#{prefix}_predefined_div'); Hobo.hide('#{prefix}_inventory_div','#{prefix}_create_div');">List</nav-item>
+    <nav-item href="#bdmenu" onclick="Hobo.show('#{prefix}_inventory_div'); Hobo.hide('#{prefix}_predefined_div','#{prefix}_create_div');">Inventory</nav-item>
+    <nav-item href="#bdmenu" onclick="Hobo.show('#{prefix}_create_div'); Hobo.hide('#{prefix}_inventory_div','#{prefix}_predefined_div');">Create</nav-item>
+  </navigation>
+</def>
+
 
 
 <def tag="print-page">
@@ -209,4 +220,16 @@
     </body:>
 
   </old-card>
+</extend>
+
+<extend tag="form" for="FermentableType">
+  <old-form merge>
+    <field-list: fields="name,description,yeild,colour,converted,mashed,fullyfermentable,validated"/>
+  </old-form>
+</extend>
+
+<extend tag="form" for="KitType">
+  <old-form merge>
+    <field-list: fields="name, description, yeild, ibus, colour, volume, designed_volume, kit_type, validated"/>
+  </old-form>
 </extend>

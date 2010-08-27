@@ -57,6 +57,7 @@ class HopType < ActiveRecord::Base
 #MYRCENE Percent Myrcene level in percent
 	myrcene :float
 
+    validated :boolean
 
 	timestamps
   end
@@ -69,14 +70,24 @@ class HopType < ActiveRecord::Base
 
   validates_numericality_of :aa, :greater_than => 0.0
 
+  belongs_to :user, :creator => true
+
+  default_scope :order => 'name'
+
+  after_create :reset_validation_to_false
+  before_update :reset_validation_to_false_if_not_admin
+
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator?
+    acting_user.signed_up?
   end
 
-  def update_permitted?
-    acting_user.administrator?
+ def update_permitted?
+    return true if acting_user.administrator?
+    #return true if (user_is? acting_user)
+    return true if (user_is? acting_user) and (none_changed? :validated)
+    return false
   end
 
   def destroy_permitted?
@@ -85,6 +96,20 @@ class HopType < ActiveRecord::Base
 
   def view_permitted?(field)
     true
+  end
+
+  protected
+
+  #Cheap hack to ensure that newly created records are marked as requiring to be validated.
+  def reset_validation_to_false
+    logger.debug "Setting validated to false"
+    self.validated = false
+    return true
+  end
+
+  def reset_validation_to_false_if_not_admin
+    return if acting_user.administrator?
+    return reset_validation_to_false
   end
 
 end

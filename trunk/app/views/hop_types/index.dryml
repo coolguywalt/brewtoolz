@@ -1,18 +1,21 @@
-<show-page>
+<index-page>
+  <count: replace/>
+  <aside-left:>
+    <%= render :partial => "shared/ingredients_menu" %>
+  </aside-left:>
 
-  <header-buttons: replace>
-      <a action="edit" if="&can_edit?" class="button">Edit</a>
-  </header-buttons:>
+
+  <collection: replace>
+    <div>
+      <table-plus fields="this, aa, hop_use_type, description, validated">
+        <controls:>
+          <a action="edit" if="&can_edit?" >Edit</a>
+        </controls:>
+      </table-plus>
+    </div>
+  </collection:>
   
-	<content-body: replace>
-		<h2>Recipes:</h2>
-		<collection with="&brewers_recipes(this)"/>
-
-	</content-body:>
-
-
-</show-page>
-
+</index-page>
 <!--
     This file is part of Brewtools.
 
@@ -31,5 +34,3 @@
 
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
-
-

@@ -565,7 +565,9 @@
           <header param="content-header">
             <h2 param="heading"><name/></h2>
 
-            <record-flags fields="converted, fullyfermentable, mashed" param/>
+            <record-flags fields="converted, fullyfermentable, mashed, validated" param/>
+
+            <a:user param="creator-link"/>
 
             <a action="edit" if="&can_edit?" param="edit-link">Edit Fermentable Type</a>
           </header>
@@ -759,7 +761,9 @@
           <header param="content-header">
             <h2 param="heading"><name/></h2>
 
-            <record-flags fields="" param/>
+            <record-flags fields="validated" param/>
+
+            <a:user param="creator-link"/>
 
             <a action="edit" if="&can_edit?" param="edit-link">Edit Hop Type</a>
           </header>
@@ -1051,7 +1055,9 @@
           <header param="content-header">
             <h2 param="heading"><name/></h2>
 
-            <record-flags fields="" param/>
+            <record-flags fields="validated" param/>
+
+            <a:user param="creator-link"/>
 
             <a action="edit" if="&can_edit?" param="edit-link">Edit Kit Type</a>
           </header>
@@ -1999,7 +2005,9 @@
           <header param="content-header">
             <h2 param="heading"><name/></h2>
 
-            <record-flags fields="" param/>
+            <record-flags fields="validated" param/>
+
+            <a:user param="creator-link"/>
 
             <a action="edit" if="&can_edit?" param="edit-link">Edit Yeast Type</a>
           </header>

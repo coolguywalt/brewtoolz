@@ -10,8 +10,13 @@
     <div class="header-buttons">
       <%= brew_day_link(@brew_entry) %> <if test="&can_edit?"><%= brew_recipe_link(@brew_entry) %></if>
 
-     <%= link_to("Brewday Print", { :action => "print", :id => @brew_entry.id },
+      <%= link_to("Brewday Print", { :action => "print", :id => @brew_entry.id },
         :class => 'button', :target => "_blank") %>
+      
+      <if test="&can_edit?" >
+        <%= del_brewentry_link(@brew_entry) %>
+      </if>
+
     </div>
 
   </content-header:>

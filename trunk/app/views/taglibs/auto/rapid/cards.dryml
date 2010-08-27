@@ -63,6 +63,9 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
   </card>
 </def>
 
@@ -79,6 +82,9 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
   </card>
 </def>
 
@@ -106,6 +112,9 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
   </card>
 </def>
 
@@ -198,6 +207,9 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
   </card>
 </def>
 
