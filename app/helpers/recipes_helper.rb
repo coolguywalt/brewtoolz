@@ -713,7 +713,7 @@ module RecipesHelper
 
   def index_search_filter()
     filter = ""
-    filter = session[:recipeSearchFilter] + " AND " if session[:recipeSearchFilter]
+    filter = "( name LIKE :filter OR description LIKE :filter) AND " if session[:recipeSearchFilter]
     filter = filter +  "(style_id in (#{session[:recipeStyleSelection].join(',')}))"  + " AND " if session[:recipeStyleSelection]
     filter = filter + "(" + $PRIMARY_RECIPE_FILTER + ")"
 
@@ -730,7 +730,7 @@ module RecipesHelper
 
   def index_search_filter_exclude_styles()
     filter = ""
-    filter = session[:recipeSearchFilter] + " AND " if session[:recipeSearchFilter]
+		filter = "( name LIKE :filter OR description LIKE :filter) AND " if session[:recipeSearchFilter]
     filter = filter + "(" + $PRIMARY_RECIPE_FILTER + ")"
 
     logger.debug "Current search filter: #{filter}"
@@ -758,7 +758,7 @@ module RecipesHelper
 
     return	  Recipe.paginate( :page => params[:page],
       :per_page   => 20,
-      :conditions => index_search_filter(),
+      :conditions => [ index_search_filter(), {:filter => session[:recipeSearchFilter]} ],
       :order => index_order_by() )
   end
 
@@ -813,7 +813,7 @@ module RecipesHelper
 
         cat.styles.each { |style|
 
-          style_count = style.recipes.count( 'id', :conditions => index_search_filter_exclude_styles() )
+          style_count = style.recipes.count( 'id', :conditions => [ index_search_filter_exclude_styles(), {:filter => session[:recipeSearchFilter]} ] )
           style_selected = nil
           style_selected = styles_array.index( style.id.to_s ) if styles_array
 

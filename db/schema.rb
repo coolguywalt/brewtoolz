@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100512134834) do
+ActiveRecord::Schema.define(:version => 20100827103217) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20100512134834) do
     t.datetime "updated_at"
     t.text     "description"
     t.boolean  "mashed"
+    t.integer  "user_id"
+    t.boolean  "validated"
   end
 
   create_table "fermentables", :force => true do |t|
@@ -146,6 +148,8 @@ ActiveRecord::Schema.define(:version => 20100512134834) do
     t.float    "caryophllene"
     t.float    "cohumulone"
     t.float    "myrcene"
+    t.boolean  "validated"
+    t.integer  "user_id"
   end
 
   create_table "hops", :force => true do |t|
@@ -196,6 +200,8 @@ ActiveRecord::Schema.define(:version => 20100512134834) do
     t.text     "description"
     t.float    "designed_volume"
     t.string   "kit_type"
+    t.boolean  "validated"
+    t.integer  "user_id"
   end
 
   create_table "kits", :force => true do |t|
@@ -330,6 +336,8 @@ ActiveRecord::Schema.define(:version => 20100512134834) do
     t.string   "flocculation"
     t.float    "attenuation"
     t.string   "alcohol_tollerance"
+    t.boolean  "validated"
+    t.integer  "user_id"
   end
 
   create_table "yeasts", :force => true do |t|

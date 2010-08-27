@@ -16,6 +16,13 @@
 #    Copyright Chris Taylor, 2008, 2009, 2010
 
 class FermentableTypeHints < Hobo::ViewHints
+  field_names :fullyfermentable => "Fully Fermentable"
 
-
+   field_help :name => "Must be unique",
+       :yeild => "% yeild of the fermentable",
+       :converted => "Is it already converted?",
+       :fullyfermentable => "Is this a simple sugar that is fullly fermentable?",
+       :mashed => "Does this need to be mashed?",
+       :colour => "What is the colour contribution (EBC)",
+       :description => "Provide a brief description"
 end

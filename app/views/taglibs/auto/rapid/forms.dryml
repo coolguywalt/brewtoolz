@@ -63,7 +63,7 @@
 <def tag="form" for="FermentableType">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, yeild, converted, fullyfermentable, mashed, colour, description" param/>
+    <field-list fields="name, yeild, converted, fullyfermentable, mashed, colour, description, validated, user" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>
@@ -87,7 +87,7 @@
 <def tag="form" for="HopType">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, aa, hop_use, hop_use_type, beta, hsi, origin, humulene, caryophllene, cohumulone, myrcene" param/>
+    <field-list fields="name, description, aa, hop_use, hop_use_type, beta, hsi, origin, humulene, caryophllene, cohumulone, myrcene, validated, user" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>
@@ -123,7 +123,7 @@
 <def tag="form" for="KitType">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, points, yeild, ibus, colour, volume, weight, description, designed_volume, kit_type" param/>
+    <field-list fields="name, points, yeild, ibus, colour, volume, weight, description, designed_volume, kit_type, validated, user" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>
@@ -252,7 +252,7 @@
 <def tag="form" for="YeastType">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, min_temp, max_temp, flocculation, attenuation, alcohol_tollerance" param/>
+    <field-list fields="name, description, min_temp, max_temp, flocculation, attenuation, alcohol_tollerance, validated, user" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>

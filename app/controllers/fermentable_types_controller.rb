@@ -21,4 +21,15 @@ class FermentableTypesController < ApplicationController
 
   auto_actions :all
 
+
+      def index
+
+     hobo_index FermentableType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name))
+
+     #@fermentable_types = FermentableType.paginate( :order => 'name', :page => params[:page], :per_page => 100 )
+
+    #this = @fermentable_types
+  end
+
+
 end

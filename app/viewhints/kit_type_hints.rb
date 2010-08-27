@@ -17,5 +17,16 @@
 
 class KitTypeHints < Hobo::ViewHints
 
+   field_names :ibus => "IBU"
+
+   field_help :name => "Must be unique",
+       :yeild => "% yeild of the fermentable in the designed volume",
+       :ibus  => "IBU of the kit",
+       :volume => "Volume of the kit (only relevant to liquid kits such as wort kits)",
+       :designed_volume => "Volume that the kit is designed for to the fermenter",
+       :weight => "Weight of the kit",
+       :colour => "What is the colour contribution (EBC)",
+       :description => "Provide a brief description"
+
 
 end
