@@ -168,17 +168,21 @@ class Recipe < ActiveRecord::Base
 
     logger.debug "++deep_clone"
     new_recipe = self.clone()
+    new_recipe.locked = false # Make sure nothing is locked for the new recipe
     new_recipe.save()
 
     #Copy owned associations
     fermentables.each { |fermentable|
       next unless fermentable
       logger.debug "Fermentable attributes: #{fermentable.attributes()}"
+      fermentable.lock_weight = false
       f = new_recipe.fermentables.create!( fermentable.attributes() )
-      if fermentable[:lock_weight].nil?
-        f[:lock_weight] = nil  # Hack to avoid nil value being traslated into a 0
-        f.save
-      end
+      f[:lock_weight] = nil   # Make sure nothing is locked for the new recipe
+      f.save
+#      if fermentable[:lock_weight].nil?
+#        f[:lock_weight] = nil  # Hack to avoid nil value being traslated into a 0
+#        f.save
+#      end
     }
 
     hops.each { |hop|
@@ -186,10 +190,13 @@ class Recipe < ActiveRecord::Base
       logger.debug "Hops attributes: #{hop.attributes()}"
       h = new_recipe.hops.create!( hop.attributes() )
 
-      if hop[:lock_weight].nil?
-        h[:lock_weight] = nil  # Hack to avoid nil value being traslated into a 0
-        h.save
-      end
+      h[:lock_weight] = false
+      h.save
+
+#      if hop[:lock_weight].nil?
+#        h[:lock_weight] = nil  # Hack to avoid nil value being traslated into a 0
+#        h.save
+#      end
 
     }
 

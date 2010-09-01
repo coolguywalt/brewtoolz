@@ -236,7 +236,7 @@
 
 <extend tag="form" for="KitType">
   <old-form merge>
-    <field-list: fields="name, description, yeild, ibus, colour, volume, designed_volume, kit_type, validated"/>
+    <field-list: fields="name, description, yeild, ibus, colour, volume, designed_volume, weight, kit_type, validated"/>
   </old-form>
 </extend>
 
