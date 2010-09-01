@@ -42,6 +42,8 @@ class KitType < ActiveRecord::Base
 
   default_scope :order => 'name'
 
+  validates_numericality_of :weight , :greater_than => 0.0, :message => "Weight must be a number > 0"
+
   after_create :reset_validation_to_false
   before_update :reset_validation_to_false_if_not_admin
   # --- Permissions --- #
