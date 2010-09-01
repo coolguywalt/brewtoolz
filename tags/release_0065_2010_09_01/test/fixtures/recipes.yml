@@ -1,0 +1,457 @@
+--- 
+morey_colour: 
+  name: Morey Colour Test
+  efficency: "75"
+  updated_at: 2008-05-07 23:39:28
+  style_id: 48
+  genealogy: ""
+  id: 207
+  description: First go at a Russian imperial stout ... yay
+  volume: "23"
+  user_id: 2
+  created_at: 2008-04-17 23:24:07
+recipe_45: 
+  name: aabb
+  efficency: "70"
+  updated_at: 2008-09-01 21:06:22
+  style_id: 37
+  id: 45
+  description: bb
+  volume: "4"
+  user_id: 2
+  created_at: 2008-09-01 21:06:09
+recipe_34: 
+  name: Thats not really a name now is it
+  efficency: "56"
+  updated_at: 2008-07-18 17:38:48
+  id: 34
+  description: sdfsdf
+  volume: "23"
+  user_id: 2
+  created_at: 2008-07-18 17:37:54
+recipe_23: 
+  name: until we get it right
+  updated_at: 2008-06-04 23:19:46
+  id: 23
+  description: ""
+  user_id: 2
+  created_at: 2008-06-04 23:19:46
+recipe_12: 
+  updated_at: 2008-04-29 21:22:44
+  id: 12
+  created_at: 2008-04-29 21:22:44
+recipe_1: 
+  name: Dry Irish Stout
+  efficency: "70"
+  updated_at: 2008-08-31 22:51:48
+  style_id: 4
+  genealogy: aa.bb.xx
+  id: 1
+  description: |+
+    Great great beer
+    
+  volume: "27"
+  user_id: 1
+  created_at: 2008-04-02 19:38:08
+recipe_35: 
+  name: new recipe passed
+  efficency: "78"
+  updated_at: 2008-07-20 21:55:12
+  style_id: 10
+  id: 35
+  description: ""
+  volume: "12"
+  user_id: 2
+  created_at: 2008-07-20 21:55:12
+recipe_24: 
+  name: more testies
+  updated_at: 2008-06-05 22:15:13
+  id: 24
+  description: ""
+  user_id: 2
+  created_at: 2008-06-05 22:15:13
+recipe_13: 
+  name: New beer - it worked
+  updated_at: 2008-04-30 00:06:57
+  style_id: 19
+  genealogy: ""
+  id: 13
+  description: |
+    it'll be great - or will it?
+    then
+
+  user_id: 2
+  created_at: 2008-04-29 21:46:48
+recipe_2: 
+  name: "pigs will drink it "
+  updated_at: 2008-04-28 22:47:39
+  style_id: 19
+  genealogy: bb.cc.vv
+  id: 2
+  description: |
+    they will, they will ..maybe
+
+  user_id: 3
+  created_at: 2008-04-02 22:54:49
+recipe_36: 
+  name: sdf
+  efficency: "-1"
+  updated_at: 2008-07-22 08:10:15
+  id: 36
+  description: sdf
+  volume: "1"
+  user_id: 2
+  created_at: 2008-07-22 08:10:15
+recipe_25: 
+  name: whoop whoop
+  updated_at: 2008-06-05 22:17:27
+  id: 25
+  description: ""
+  user_id: 2
+  created_at: 2008-06-05 22:17:27
+recipe_14: 
+  name: Milk stout
+  efficency: "64"
+  updated_at: 2008-05-05 22:51:11
+  style_id: 5
+  genealogy: Ale
+  id: 14
+  description: An English stout made with lactose for sweetness
+  volume: "25"
+  user_id: 8
+  created_at: 2008-05-05 22:51:11
+recipe_3: 
+  name: way cool .. man
+  efficency: "76"
+  updated_at: 2008-06-28 21:56:39
+  style_id: 45
+  genealogy: mm.nn.mm
+  id: 3
+  description: |+
+    This is a really big field to play in wonder how it works .. or does it? Lets keep on typing and see la la la .. there she goes ... there she goes again ... getting sleepy ... zzzzzzzzzzzZZZZZZZZZZZZZZZzzzzzzzzzzzzzzzzz
+    sfsdfs
+    sdf
+    sdf
+    sdf
+    
+    
+  volume: "23"
+  user_id: 2
+  created_at: 2008-04-04 00:00:53
+recipe_37: 
+  name: sdfs
+  efficency: "75"
+  updated_at: 2008-07-22 13:06:50
+  style_id: 10
+  id: 37
+  description: sdf
+  volume: "23"
+  user_id: 2
+  created_at: 2008-07-22 13:06:50
+recipe_26: 
+  name: kk
+  efficency: "75"
+  updated_at: 2008-06-05 22:42:06
+  style_id: 13
+  id: 26
+  description: |
+    who cares
+
+  volume: "23"
+  user_id: 2
+  created_at: 2008-06-05 22:41:34
+recipe_15: 
+  name: Brutus
+  efficency: "70"
+  updated_at: 2008-05-24 22:20:45
+  style_id: 54
+  genealogy: ""
+  id: 15
+  description: |-
+    Weizen Doppel Bock
+    
+    At bottling 1.014
+  volume: "24.5"
+  user_id: 2
+  created_at: 2008-05-07 22:04:11
+recipe_4: 
+  name: Here is another one
+  updated_at: 2008-05-07 23:42:35
+  style_id: 20
+  genealogy: aa.mm.mm
+  id: 4
+  description: There is no description for this beer ... its just beer!!
+  volume: "23"
+  user_id: 2
+  created_at: 2008-04-09 08:05:21
+recipe_38: 
+  name: Some really good recipe
+  efficency: "70"
+  updated_at: 2008-07-22 13:41:32
+  style_id: 10
+  id: 38
+  description: well here goes nothing
+  volume: "21"
+  user_id: 2
+  created_at: 2008-07-22 13:41:07
+recipe_27: 
+  name: jj
+  efficency: "75"
+  updated_at: 2008-06-05 22:45:44
+  id: 27
+  description: ""
+  volume: "12"
+  user_id: 2
+  created_at: 2008-06-05 22:45:44
+recipe_16: 
+  name: Pale Ale Manua
+  efficency: "70"
+  updated_at: 2008-05-14 21:21:32
+  style_id: 36
+  id: 16
+  description: ""
+  volume: "23"
+  user_id: 9
+  created_at: 2008-05-14 17:11:09
+recipe_5: 
+  name: great great recipe
+  updated_at: 2008-04-09 08:27:48
+  style_id: 3
+  genealogy: ss.hh..jj
+  id: 5
+  user_id: 2
+  created_at: 2008-04-09 08:27:48
+recipe_39: 
+  name: Some really great recipe .. hopes it ok.
+  efficency: "70"
+  updated_at: 2008-07-22 20:18:28
+  style_id: 2
+  id: 39
+  description: I'm sure it will be.
+  volume: "21"
+  user_id: 2
+  created_at: 2008-07-22 20:17:53
+recipe_28: 
+  name: pp
+  updated_at: 2008-06-06 00:13:34
+  id: 28
+  description: ""
+  user_id: 2
+  created_at: 2008-06-06 00:13:34
+recipe_17: 
+  name: Club Kolsch
+  efficency: "70"
+  updated_at: 2008-09-01 21:05:12
+  style_id: 23
+  id: 17
+  description: Brew done for Melb Brewers July Dinner 2008
+  volume: "17"
+  user_id: 2
+  created_at: 2008-05-14 21:17:50
+recipe_6: 
+  name: one brew beer
+  updated_at: 2008-05-02 12:03:54
+  style_id: 15
+  genealogy: ff
+  id: 6
+  description: There is nothing really to say about this one ...
+  user_id: 2
+  created_at: 2008-04-09 08:42:26
+recipe_40: 
+  name: It'll be ok
+  efficency: "75"
+  updated_at: 2008-07-22 20:19:35
+  style_id: 22
+  id: 40
+  description: |
+    yay
+
+  volume: "21"
+  user_id: 2
+  created_at: 2008-07-22 20:19:06
+recipe_29: 
+  name: lk
+  updated_at: 2008-06-06 00:14:27
+  style_id: 47
+  id: 29
+  description: ""
+  volume: "23"
+  user_id: 2
+  created_at: 2008-06-06 00:13:59
+recipe_18: 
+  name: Helles Bock
+  efficency: "70"
+  updated_at: 2008-05-15 19:47:58
+  style_id: 17
+  id: 18
+  description: JZ's Helles Bock recipe
+  volume: "26.8"
+  user_id: 15
+  created_at: 2008-05-15 19:42:47
+recipe_7: 
+  name: Frazeys Lager
+  updated_at: 2008-04-09 13:36:50
+  style_id: 2
+  genealogy: ""
+  id: 7
+  user_id: 4
+  created_at: 2008-04-09 13:36:50
+recipe_41: 
+  name: jjj
+  efficency: "70"
+  updated_at: 2008-07-22 20:49:01
+  id: 41
+  description: ""
+  volume: "21"
+  user_id: 2
+  created_at: 2008-07-22 20:49:01
+recipe_30: 
+  name: test
+  updated_at: 2008-06-12 22:43:25
+  id: 30
+  description: ""
+  volume: "23"
+  user_id: 2
+  created_at: 2008-06-12 22:43:00
+recipe_19: 
+  name: Oatmeal Stout
+  efficency: "75"
+  updated_at: 2008-06-20 13:31:23
+  style_id: 45
+  id: 19
+  description: Melb brewers oatmeal stout club brew
+  volume: "27"
+  user_id: 2
+  created_at: 2008-05-26 13:17:55
+recipe_8: 
+  name: here is yet another test one yay - again
+  updated_at: 2008-04-28 17:21:43
+  style_id: 5
+  genealogy: gg.hh.dd
+  id: 8
+  description: |+
+    This one is really really bad
+     ... don't bother with it
+    
+  user_id: 2
+  created_at: 2008-04-11 13:49:46
+recipe_42: 
+  name: new test one
+  efficency: "75"
+  updated_at: 2008-07-24 00:44:42
+  id: 42
+  description: aa
+  volume: "21"
+  user_id: 2
+  created_at: 2008-07-23 21:53:40
+recipe_31: 
+  name: testies test recipe
+  efficency: "70"
+  updated_at: 2008-06-30 14:02:43
+  style_id: 47
+  id: 31
+  description: aa
+  volume: "12"
+  user_id: 20
+  created_at: 2008-06-30 14:02:43
+recipe_20: 
+  name: no style ... non at all
+  efficency: "50"
+  updated_at: 2008-05-26 22:27:54
+  id: 20
+  description: bogon beer
+  volume: "345"
+  user_id: 2
+  created_at: 2008-05-26 22:27:54
+recipe_9: 
+  name: something rotten
+  updated_at: 2008-04-28 13:43:35
+  style_id: 21
+  genealogy: ""
+  id: 9
+  description: See this one works ok - again whoop, whoop
+  user_id: 2
+  created_at: 2008-04-12 21:12:20
+recipe_43: 
+  name: test validation
+  efficency: "70"
+  updated_at: 2008-08-10 11:46:11
+  style_id: 10
+  id: 43
+  description: sdfdsf
+  volume: "21"
+  user_id: 2
+  created_at: 2008-08-10 11:46:11
+recipe_32: 
+  name: wolf
+  efficency: "70"
+  updated_at: 2008-09-01 13:29:17
+  style_id: 41
+  id: 32
+  description: aa
+  volume: "23"
+  user_id: 2
+  created_at: 2008-07-10 00:43:17
+recipe_21: 
+  name: Test recipe
+  efficency: "70"
+  updated_at: 2008-06-04 23:12:46
+  style_id: 50
+  id: 21
+  description: aa
+  volume: "23"
+  user_id: 2
+  created_at: 2008-06-04 23:12:46
+recipe_10: 
+  name: Another boring test
+  efficency: "70"
+  updated_at: 2008-08-05 22:58:27
+  style_id: 14
+  genealogy: ""
+  id: 10
+  description: |
+    Test for the the new db 
+    with lots of test to change
+    and multiple lines.
+    
+    Hey why not
+
+  volume: "23"
+  user_id: 2
+  created_at: 2008-04-14 22:00:35
+recipe_44: 
+  name: ""
+  efficency: "70"
+  updated_at: 2008-09-01 13:58:45
+  id: 44
+  description: ""
+  volume: "21"
+  user_id: 2
+  created_at: 2008-09-01 13:58:45
+recipe_33: 
+  name: aa New beer - it worked yay or did it??
+  efficency: "78"
+  updated_at: 2008-07-25 21:59:01
+  style_id: 38
+  id: 33
+  description: sdfsdfsdfsdfsdf
+  volume: "10"
+  user_id: 2
+  created_at: 2008-07-18 16:31:36
+recipe_22: 
+  name: yet another creation test
+  updated_at: 2008-06-04 23:17:50
+  id: 22
+  description: whoop whoop whoop
+  user_id: 2
+  created_at: 2008-06-04 23:17:50
+recipe_11: 
+  name: Tzar-hazar
+  updated_at: 2008-05-07 23:39:28
+  style_id: 48
+  genealogy: ""
+  id: 11
+  description: First go at a Russian imperial stout ... yay
+  volume: "19"
+  user_id: 2
+  created_at: 2008-04-17 23:24:07

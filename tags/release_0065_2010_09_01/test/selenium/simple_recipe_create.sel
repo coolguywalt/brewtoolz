@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:3000/" />
+<title>simple_recipe_create</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">simple_recipe_create</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/recipes/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>recipe_name</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>recipe_description</td>
+	<td>a test case recipe</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>recipe[style_id]</td>
+	<td>label=American Amber Ale</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Create Recipe']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>ferm_8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForValue</td>
+	<td>fermentable[points]</td>
+	<td>1.005</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>fermentable[points]</td>
+	<td>1.045</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Hops</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>hop_6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForValue</td>
+	<td>hop[aa]</td>
+	<td>5.75</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hop[aa]</td>
+	<td>6.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[id*=&quot;ok_aa_&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>css=span[id*=&quot;aa_&quot;]</td>
+	<td>6.00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hop[ibu_l]</td>
+	<td>12</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[id*=&quot;ok_ibu_&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>css=span[id*=&quot;ibu_&quot;]</td>
+	<td>12.00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hop[weight]</td>
+	<td>20</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[id*=&quot;ok_hw_&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>css=span[id*=&quot;hw_&quot;]</td>
+	<td>20.00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hop[minutes]</td>
+	<td>17</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[id*=&quot;ok_minutes_&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>css=span[id*=&quot;minutes_&quot;]</td>
+	<td>17.00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hop[minutes]</td>
+	<td>ht</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[id*=&quot;ok_minutes_&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>css=span[id*=&quot;minutes_&quot;]</td>
+	<td>Hop Tea</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hop[minutes]</td>
+	<td>d</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[id*=&quot;ok_minutes_&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>css=span[id*=&quot;minutes_&quot;]</td>
+	<td>Dry Hopped</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hop[minutes]</td>
+	<td>dh</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[id*=&quot;ok_minutes_&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>css=span[id*=&quot;minutes_&quot;]</td>
+	<td>Dry Hopped</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='hops_div']/div[1]/ul/li[3]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>yeast_14</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='misc_div']/div[1]/ul/li[4]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add misc</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=span.misc-ingredient-amount</td>
+	<td>500</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>misc_ingredient_name</td>
+	<td>Calcium Chloride</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>misc_ingredient_misc_type</td>
+	<td>label=Water Agent</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>misc_ingredient_misc_use</td>
+	<td>label=Mash</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>misc_ingredient_amount</td>
+	<td>2.00</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>misc_ingredient_is_solid</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form[id*=&quot;edit_misc_ingredient_&quot;] &gt; input[value=&quot;Ok&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Done</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

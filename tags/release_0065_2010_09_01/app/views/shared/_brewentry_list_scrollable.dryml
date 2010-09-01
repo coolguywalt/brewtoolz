@@ -1,0 +1,56 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<!--[if IE]>
+  <div class="ie">
+<![endif]-->
+
+
+<div class="scroll-table-wrap-div">
+  <div class="scroll-table-inner-div" >
+  <table class="scroll-table item-list">
+
+  <thead><tr>
+    <th><b><p>Date Brewed</p></b></th>
+    <th><b><p>Recipe</p></b></th>
+    <th><b><p>Style</p></b></th>
+    <th><b><p>Status</p></b></th>
+    <th><b><p>Atten.</p></b></th>
+    <th><b><p>Rating</p></b></th></tr>
+  </thead>
+  <tbody class="scroll-list">
+    <repeat with="&brewentry_list_scrollable">
+      <tr class="<%= cycle('odd','even') -%>">
+        <td><%= link_to this.brew_date, { :controller => 'brew_entries', :action => 'show', :id => this.id} %></td>
+        <td><%= link_to h(this.recipe.name), { :controller => 'recipes', :action => 'show', :id => this.recipe.id} if this.recipe  %></td>
+        <td><%= this.recipe.style.name if this.recipe.style if this.recipe %></td>
+        <td><%= this.status %></td>
+        <td><%= number_to_percentage(this.attenuation*100, :precision => 2) %></td>
+        <td><%= view_rating(this.rating) %></td>
+      </tr>
+    </repeat>
+
+  </tbody>
+</table>
+</div>
+</div>
+
+<!--[if IE]>
+  </div>
+<![endif]-->
