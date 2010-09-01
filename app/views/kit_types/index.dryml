@@ -6,7 +6,7 @@
 
   <collection: replace>
     <div>
-      <table-plus fields="this, yeild, ibus, colour, volume, designed_volume, kit_type, description, validated">
+      <table-plus fields="this, yeild, ibus, colour, volume, designed_volume, weight, kit_type, description, validated">
         <controls:>
           <a action="edit" if="&can_edit?" >Edit</a>
         </controls:>
