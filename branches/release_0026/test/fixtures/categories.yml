@@ -1,0 +1,139 @@
+--- 
+category_21: 
+  name: Spice/Herb/Vegetable Beer
+  updated_at: 2008-04-02 13:13:31
+  designator: "21"
+  id: 21
+  created_at: 2008-04-02 13:13:31
+category_10: 
+  name: American Ale
+  updated_at: 2008-04-02 13:10:01
+  designator: "10"
+  id: 10
+  created_at: 2008-04-02 13:10:01
+category_7: 
+  name: Amber Hybrid Beer
+  updated_at: 2008-04-02 13:08:34
+  designator: "7"
+  id: 7
+  created_at: 2008-04-02 13:08:34
+category_22: 
+  name: Smoke-Flavored and Wood-Aged Beer
+  updated_at: 2008-04-02 13:14:06
+  designator: "22"
+  id: 22
+  created_at: 2008-04-02 13:14:06
+category_11: 
+  name: English Brown Ale
+  updated_at: 2008-04-02 13:10:20
+  designator: "11"
+  id: 11
+  created_at: 2008-04-02 13:10:20
+category_8: 
+  name: English Pale Ale
+  updated_at: 2008-04-02 13:08:54
+  designator: "8"
+  id: 8
+  created_at: 2008-04-02 13:08:54
+category_23: 
+  name: Speciality Beer
+  updated_at: 2008-04-02 13:14:30
+  designator: "23"
+  id: 23
+  created_at: 2008-04-02 13:14:30
+category_12: 
+  name: Porter
+  updated_at: 2008-04-02 13:10:35
+  designator: "12"
+  id: 12
+  created_at: 2008-04-02 13:10:35
+category_9: 
+  name: Scottish and Irish Ale
+  updated_at: 2008-04-02 13:09:39
+  designator: "8"
+  id: 9
+  created_at: 2008-04-02 13:09:39
+category_13: 
+  name: Stout
+  updated_at: 2008-04-02 13:10:46
+  designator: "13"
+  id: 13
+  created_at: 2008-04-02 13:10:46
+category_14: 
+  name: Indian Pale Ale
+  updated_at: 2008-04-02 13:11:01
+  designator: "14"
+  id: 14
+  created_at: 2008-04-02 13:11:01
+category_15: 
+  name: German Wheat and Rye Beer
+  updated_at: 2008-04-02 13:11:25
+  designator: "15"
+  id: 15
+  created_at: 2008-04-02 13:11:25
+category_1: 
+  name: Light Lager
+  updated_at: 2008-04-02 09:53:34
+  designator: "1"
+  id: 1
+  created_at: 2008-04-02 09:53:34
+category_16: 
+  name: Belgian and French Ale
+  updated_at: 2008-04-02 13:11:47
+  designator: "16"
+  id: 16
+  created_at: 2008-04-02 13:11:47
+category_2: 
+  name: Pilsner
+  updated_at: 2008-04-02 13:06:54
+  designator: "2"
+  id: 2
+  created_at: 2008-04-02 13:06:54
+category_17: 
+  name: Sour Ale
+  updated_at: 2008-04-02 13:12:02
+  designator: "17"
+  id: 17
+  created_at: 2008-04-02 13:12:02
+category_3: 
+  name: European Amber Lager
+  updated_at: 2008-04-02 13:07:25
+  designator: "3"
+  id: 3
+  created_at: 2008-04-02 13:07:25
+category_18: 
+  name: Belgian Strong Ale
+  updated_at: 2008-04-02 13:12:26
+  designator: "18"
+  id: 18
+  created_at: 2008-04-02 13:12:26
+category_4: 
+  name: Dark Lager
+  updated_at: 2008-04-02 13:07:39
+  designator: "4"
+  id: 4
+  created_at: 2008-04-02 13:07:39
+category_20: 
+  name: Fruit Beer
+  updated_at: 2008-04-02 13:12:59
+  designator: "20"
+  id: 20
+  created_at: 2008-04-02 13:12:59
+category_19: 
+  name: Strong Ale
+  updated_at: 2008-04-02 13:12:42
+  designator: "19"
+  id: 19
+  created_at: 2008-04-02 13:12:42
+category_5: 
+  name: Bock
+  updated_at: 2008-04-02 13:07:49
+  designator: "5"
+  id: 5
+  created_at: 2008-04-02 13:07:49
+category_6: 
+  name: Light Hybrid Beer
+  updated_at: 2008-04-02 13:08:13
+  designator: "6"
+  id: 6
+  created_at: 2008-04-02 13:08:13

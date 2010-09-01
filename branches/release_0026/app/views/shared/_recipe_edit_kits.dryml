@@ -1,0 +1,54 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<br/>
+<div class="scroll-table-wrap-div">
+  <div class="scroll-table-inner-div" >
+    <table id="hits_list" class="scroll-table item-list" >
+      <thead><tr>
+          <th><b><p>Type</p></b></th>
+          <th><b><p>Quantity</p></b></th>
+          <th><b><p>IBU</p></b></th>
+          <th><b><p>IBU(%)</p></b></th>
+          <th><b><p>Grty [<%= gravity_units %>]</p></b></th>
+          <th><b><p>Grty(%)</p></b></th>
+          <th><b><p>Volume [<%= volume_units %>]</p></b></th>
+          <th><b><p>Weight [<%= ferm_weight_units %>]</p></b></th>
+          <th><b><p></p> </b></th></tr>
+      </thead>
+
+      <!-- %= render :partial => 'hop', :collection => recipe_hops_list(@recipe) % -->
+      <tbody class="scroll-list">
+      <repeat  with="&recipe_kits_list(recipe_edit_kits)">
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><%= kit_type(this) %></td>
+          <td><%= ajax_quantity_editor(this) %></td>
+          <td><%= decimal( this.ibus) %></td>
+          <td><span id="hpw_#{this.id}"><%= percentage(this.percentage_ibu * 100) %></span></td>
+          <td><%= gravity_values(this.points) %></td>
+          <td><%= percentage(this.percentage_points * 100) %></td>
+          <td><%= kit_volume(this.kit_type) %></td>
+          <td><%= kit_weight(this.kit_type) %></td>
+          <td><%= del_kit_link(this) %></td>
+        </tr>
+      </repeat>
+      </tbody>
+    </table>
+  </div>
+</div>
