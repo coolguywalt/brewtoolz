@@ -17,5 +17,12 @@
 
 class YeastTypeHints < Hobo::ViewHints
 
+  field_help :name => "Must be unique",
+  :description => "Provide a brief description",
+  :min_temp => "Minimuim temperature for fermententation as recommended by the yeast manufacturer",
+  :max_temp => "Maximum temperature for fermententation as recommended by the yeast manufacturer",
+  :flocculation => "Describes how easily the yeast will drop out of suspension",
+  :attenuation => "Typical apparent attenuation on a standard wort",
+  :alcohol_tollerance => "Describes the yeasts ability to handle a high alcohol environment"
 
 end

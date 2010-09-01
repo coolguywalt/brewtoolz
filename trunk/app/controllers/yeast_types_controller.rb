@@ -22,6 +22,6 @@ class YeastTypesController < ApplicationController
   auto_actions :all
 
      def index
-    hobo_index YeastType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name))
+    hobo_index YeastType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name, :min_temp, :max_temp, :validated))
   end
 end

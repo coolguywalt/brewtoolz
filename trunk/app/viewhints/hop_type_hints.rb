@@ -16,6 +16,16 @@
 #    Copyright Chris Taylor, 2008, 2009, 2010
 
 class HopTypeHints < Hobo::ViewHints
+  field_names :aa => "AA", :hsi => "HSI"
 
+  field_help :name => "Must be unique",
+    :aa => "Hop alpha acid%, which is the main bittering component of hops",
+    :beta => "Hop beta acid%, can contribute to bittering but only when oxidized.",
+    :hsi => "Hop stability index, percentage of the alpha acids present after 6 months at 20C",
+    :humulene => "Hop humulene level%",
+    :caryophllene => "Hop caryophllene level%",
+    :cohumulone => "Hop cohumulone level%",
+    :myrcene => "Hop myrcene level%",
+    :description => "Provide a brief description"
 
 end

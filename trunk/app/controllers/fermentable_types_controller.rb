@@ -22,11 +22,11 @@ class FermentableTypesController < ApplicationController
   auto_actions :all
 
 
-      def index
+  def index
 
-     hobo_index FermentableType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name))
+    hobo_index FermentableType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name,:yeild,:colour,:validated))
 
-     #@fermentable_types = FermentableType.paginate( :order => 'name', :page => params[:page], :per_page => 100 )
+    #@fermentable_types = FermentableType.paginate( :order => 'name', :page => params[:page], :per_page => 100 )
 
     #this = @fermentable_types
   end
