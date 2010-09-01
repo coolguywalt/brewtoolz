@@ -228,8 +228,20 @@
   </old-form>
 </extend>
 
+<extend tag="form" for="HopType">
+  <old-form merge>
+    <field-list: fields="name, description, origin, hop_use_type, aa, beta, humulene, caryophllene, cohumulone, myrcene, validated"/>
+  </old-form>
+</extend>
+
 <extend tag="form" for="KitType">
   <old-form merge>
     <field-list: fields="name, description, yeild, ibus, colour, volume, designed_volume, kit_type, validated"/>
+  </old-form>
+</extend>
+
+<extend tag="form" for="YeastType">
+  <old-form merge>
+    <field-list: fields="name, description, max_temp, min_temp, flocculation, attenuation, alcohol_tollerance, validated"/>
   </old-form>
 </extend>

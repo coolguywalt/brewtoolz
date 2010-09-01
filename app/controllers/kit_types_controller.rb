@@ -22,7 +22,7 @@ class KitTypesController < ApplicationController
   auto_actions :all
 
   def index
-    hobo_index KitType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name))
+    hobo_index KitType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name,:points,:yeild,:ibus,:designed_volume,:kit_type))
   end
 
 end

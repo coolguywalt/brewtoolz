@@ -23,6 +23,6 @@ class HopTypesController < ApplicationController
 
 
    def index
-    hobo_index HopType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name))
+    hobo_index HopType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name,:aa,:hop_use_type,:validated))
   end
 end
