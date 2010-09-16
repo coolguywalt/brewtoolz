@@ -19,7 +19,7 @@
 <div id="yeasts_content_div" class="tab">
 <br/>
 
-    <div>
+    <div id="yeast_items_div">
       <%= render :partial => 'shared/recipe_edit_yeast_items', :object => recipe_edit_yeasts %>
     </div>
 
