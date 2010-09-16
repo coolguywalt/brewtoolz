@@ -1,3 +1,11 @@
+<edit-page>
+  <aside-left:>
+    <%= render :partial => "shared/inventory_menu" %>
+  </aside-left:>
+</edit-page>
+
+
+
 <!--
     This file is part of Brewtools.
 
@@ -16,19 +24,3 @@
 
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
-
-<div id="kits_content_div" class="tab">
-
-  <br/>
-  
-  <div id="kit_items_div">
-    <%= render :partial => 'shared/recipe_edit_kit_items', :object => recipe_edit_kits %> 
-  </div>
-
-  <br/>
-
-  <div id="kit_list_div" class="item-list">
-    <%= render :partial => 'shared/recipe_edit_kits_list', :object => recipe_edit_kits %>
-  </div>
-
-</div>

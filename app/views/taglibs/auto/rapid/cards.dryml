@@ -58,6 +58,29 @@
   </card>
 </def>
 
+<def tag="card" for="FermentableInventory">
+  <card class="fermentable-inventory" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+      <count:fermentable_inventory_log_entries param/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="FermentableInventoryLogEntry">
+  <card class="fermentable-inventory-log-entry" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
+  </card>
+</def>
+
 <def tag="card" for="FermentableType">
   <card class="fermentable-type" param="default" merge>
     <header: param>
@@ -88,6 +111,17 @@
   </card>
 </def>
 
+<def tag="card" for="HopsInventory">
+  <card class="hops-inventory" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
+  </card>
+</def>
+
 <def tag="card" for="IngredientUnitPreference">
   <card class="ingredient-unit-preference" param="default" merge>
     <header: param>
@@ -104,6 +138,17 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+  </card>
+</def>
+
+<def tag="card" for="KitInventory">
+  <card class="kit-inventory" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
   </card>
 </def>
 
@@ -199,6 +244,17 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+  </card>
+</def>
+
+<def tag="card" for="YeastInventory">
+  <card class="yeast-inventory" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <a:user param="creator-link"/>
+    </body:>
   </card>
 </def>
 

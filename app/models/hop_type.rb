@@ -39,7 +39,7 @@ class HopType < ActiveRecord::Base
 #TYPE List May be "Bittering", "Aroma" or "Both"
     hop_use_type enum_string(:bittering, :aroma, :both)
 #FORM List May be "Pellet", "Plug" or "Leaf"
-
+   #form(:pellet, :plugs, :leaf)
 #BETA Percentage Hop beta percentage - for example "4.4" denotes 4.4 % beta
 	beta :float
 #HSI Percentage Hop Stability Index - defined as the percentage of hop alpha lost in 6 months of storage

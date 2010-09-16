@@ -22,9 +22,28 @@ document.observe("dom:loaded", function() {
             var el = e.element()
             if (el.match('.pagination a')) {
                 Hobo.showSpinner('Updating list ...')
-                new Ajax.Request(el.href, { method: 'get', onComplete: function() {Hobo.hideSpinner()} })
+                new Ajax.Request(el.href, {method: 'get', onComplete: function() {Hobo.hideSpinner()}})
                 e.stop()  
             }
         })
     }
 })
+
+var Brewtoolz = {
+
+    loadtab: function(el,content_div) {
+        // el - element to load as tab div
+        // sig - signature to to search for, signifies that the tab has not been loaded.
+         
+        // show the div for the tab.
+        //Element.removeClassName(el, 'hidden')
+        
+        sig= 'no_' + content_div
+        url= $('url_' + content_div).innerText
+
+
+        if( $(sig) )  { // signature exists, load the partial
+            new Hobo.ajaxRequest(url, Hobo.updatesForElement(content_div), {method:'put', message:false} );
+        }
+    }
+}

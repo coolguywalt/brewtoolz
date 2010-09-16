@@ -439,6 +439,40 @@ class RecipesController < ApplicationController
 		update_details_and_yeast( @recipe )
 	end
 
+  def loadhopstab
+
+    @recipe = Recipe.find(params[:id])
+
+
+    render(:update) { |page|
+    			page.replace_html 'hops_content_div', :partial => 'shared/recipe_edit_hops', :object => @recipe
+    }
+
+  end
+
+  def loadkitstab
+
+    @recipe = Recipe.find(params[:id])
+
+
+    render(:update) { |page|
+    			page.replace_html 'kits_content_div', :partial => 'shared/recipe_edit_kits', :object => @recipe
+    }
+
+  end
+
+  def loadyeaststab
+
+    @recipe = Recipe.find(params[:id])
+
+
+    render(:update) { |page|
+    			page.replace_html 'yeasts_content_div', :partial => 'shared/recipe_edit_yeasts', :object => @recipe
+    }
+
+  end
+
+
 
 	#	def update_fermentable_points
 	#		@recipe =  Recipe.find(params[:id])

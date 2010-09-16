@@ -45,8 +45,11 @@ module RecipesHelper
       update_common( recipe, page )
 
 			page.replace_html 'fermentables_items_div', :partial => 'shared/recipe_edit_fermentables', :object => recipe
-			page.replace_html 'hops_items_div', :partial => 'shared/recipe_edit_hops', :object => recipe
+			#page.replace_html 'hops_items_div', :partial => 'shared/recipe_edit_hops', :object => recipe
 
+      page["hops_content_div"].replace_html(
+        "<div id='no_hops_content_div'>Loading hops content ...</div>
+         <div id='url_hops_content_div' class='hidden'>/recipes/loadhopstab/#{@recipe.id}></div> " )
 		}
 
 	end
@@ -75,7 +78,7 @@ module RecipesHelper
 
 			page.replace_html 'fermentables_items_div', :partial => 'shared/recipe_edit_fermentables', :object => recipe
 			page.replace_html 'hops_items_div', :partial => 'shared/recipe_edit_hops', :object => recipe
-      page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kits', :object => recipe
+      page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kit_items', :object => recipe
       page.replace_html 'kit_list_div', :partial => 'shared/recipe_edit_kits_list', :object => recipe
       page.replace_html 'log_list_div', :partial => 'log', :object => recipe
 		}
@@ -90,10 +93,10 @@ module RecipesHelper
 
 			page.replace_html 'fermentables_items_div', :partial => 'shared/recipe_edit_fermentables', :object => recipe
 			page.replace_html 'hops_items_div', :partial => 'shared/recipe_edit_hops', :object => recipe
-      page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kits', :object => recipe
+      page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kit_items', :object => recipe
       page.replace_html 'mashprofile_items_div', :partial => 'shared/recipe_edit_mashprofile', :object => recipe
       page.replace_html 'misc_items_div', :partial => 'shared/recipe_edit_misc', :object => recipe
-      page.replace_html 'yeast_items_div', :partial => 'shared/recipe_edit_yeasts', :object => recipe
+      page.replace_html 'yeast_items_div', :partial => 'shared/recipe_edit_yeast_items', :object => recipe
       page.replace_html 'lock_all_div', :partial => 'shared/recipe_lock_all', :object => recipe
       page.replace_html 'log_list_div', :partial => 'log', :object => recipe
 		}
@@ -114,7 +117,13 @@ module RecipesHelper
 		render(:update) { |page|
       update_common( recipe, page )
 
-			page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kits', :object => recipe
+			page.replace_html 'kit_items_div', :partial => 'shared/recipe_edit_kit_items', :object => recipe
+
+      #Mark hop tab to be reloaded
+      page["hops_content_div"].replace_html(
+        "<div id='no_hops_content_div'>Loading hops content ...</div>
+         <div id='url_hops_content_div' class='hidden'>/recipes/loadhopstab/#{recipe.id}></div> " )
+
  
 		}
 
@@ -167,14 +176,21 @@ module RecipesHelper
 			end
 
 			#Update percentage hop weight values
-			fermentable.recipe.hops.each do |hop|
-				values_str = BrewingUnits::values_for_display( current_user.units.hops, hop.weight , 2 )
-				value_str = BrewingUnits::value_for_display( current_user.units.hops, hop.weight , 2 )
-				id_prefix = "hw_#{hop.id}"
 
-				page["#{id_prefix}_s"].update( values_str  )
-				page["#{id_prefix}_e"].value = value_str
-			end
+      #Indicate that hop page needs to be reloaded to refresh hop weight values.
+
+      page["hops_content_div"].replace_html(
+        "<div id='no_hops_content_div'>Loading hops content ...</div>
+         <div id='url_hops_content_div' class='hidden'>/recipes/loadhopstab/#{@recipe.id}></div> " )
+
+      #			fermentable.recipe.hops.each do |hop|
+      #				values_str = BrewingUnits::values_for_display( current_user.units.hops, hop.weight , 2 )
+      #				value_str = BrewingUnits::value_for_display( current_user.units.hops, hop.weight , 2 )
+      #				id_prefix = "hw_#{hop.id}"
+      #
+      #				page["#{id_prefix}_s"].update( values_str  )
+      #				page["#{id_prefix}_e"].value = value_str
+      #			end
 
      	#Update associated partials
 			# page.replace_html 'hops_div', :partial => 'shared/recipe_edit_hops', :object => fermentable.recipe
@@ -306,7 +322,7 @@ module RecipesHelper
   def update_details_and_yeast( recipe )
     render(:update) { |page|
       update_common( recipe, page )
-      page.replace_html 'yeast_items_div', :partial => 'shared/recipe_edit_yeasts', :object => recipe
+      page.replace_html 'yeast_items_div', :partial => 'shared/recipe_edit_yeast_items', :object => recipe
     }
   end
 

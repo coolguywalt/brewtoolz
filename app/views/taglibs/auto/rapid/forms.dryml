@@ -60,6 +60,30 @@
 
 
 
+<def tag="form" for="FermentableInventory">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, comment, location, label, source_date, fermentable_type, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="FermentableInventoryLogEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, note, usagetime, fermentable_inventory, recipe, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
 <def tag="form" for="FermentableType">
   <form merge param="default">
     <error-messages param/>
@@ -108,10 +132,34 @@
 
 
 
+<def tag="form" for="HopsInventory">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, comment, location, label, source_date, aa, hop_form, hop_type, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
 <def tag="form" for="IngredientUnitPreference">
   <form merge param="default">
     <error-messages param/>
     <field-list fields="hops, fermentable, volume, wateradditions, temperature, gravity, liquor_to_grist, hop_utilisation_method, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="KitInventory">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, comment, location, label, source_date, kit_type, user" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>
@@ -248,6 +296,18 @@
     </div>
   </form>
 </def>
+
+<def tag="form" for="YeastInventory">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, comment, location, label, source_date, storage_type, user, yeast_type" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
 
 <def tag="form" for="YeastType">
   <form merge param="default">
