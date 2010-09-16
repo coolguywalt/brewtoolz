@@ -39,44 +39,41 @@
   </div>
 
   <div id="hops_div" class="hidden">
+
     <div class="navigation-div">
       <recipeedit-nav current="hops" show-shared="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)"/><br/>
     </div>
-    <br/>
-    <div id="hops_items_div" class="item-list-unlimited">
-      <%= render :partial => 'shared/recipe_edit_hops', :object => recipe_edit %>
+
+    <div id="hops_content_div" class="tab">
+      <div id="no_hops_content_div">Loading hops content ...</div>
+      <div id="url_hops_content_div" class="hidden">/recipes/loadhopstab/<%=recipe_edit.id%></div>
     </div>
-    <br/>
-    <div id="hops_list_div" class="item-list">
-      <%= render :partial => 'shared/recipe_edit_hops_list', :object => recipe_edit %>
-    </div>
+
   </div>
 
   <div id="kits_div" class="hidden">
     <div class="navigation-div">
       <recipeedit-nav current="kits" show-shared="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)"/><br/>
     </div>
-    <br/>
-    <div id="kit_items_div" class="item-list-unlimited">
-      <%= render :partial => 'shared/recipe_edit_kits', :object => recipe_edit %>
+
+    <div id="kits_content_div" class="tab">
+      <div id="no_kits_content_div">Loading kits content ...</div>
+      <div id="url_kits_content_div" class="hidden">/recipes/loadkitstab/<%=recipe_edit.id%></div>
     </div>
-    <br/>
-    <div id="kit_list_div" class="item-list">
-      <%= render :partial => 'shared/recipe_edit_kits_list', :object => recipe_edit %>
-    </div>
+
   </div>
 
   <div id="yeast_div" class="hidden">
+    
     <div class="navigation-div">
       <recipeedit-nav current="yeast" show-shared="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)"/><br/>
     </div>
-    <br/>
-    <div id="yeast_items_div">
-      <%= render :partial => 'shared/recipe_edit_yeasts', :object => recipe_edit %>
+
+    <div id="yeasts_content_div" class="tab">
+      <div id="no_yeasts_content_div">Loading yeasts content ...</div>
+      <div id="url_yeasts_content_div" class="hidden">/recipes/loadyeaststab/<%=recipe_edit.id%></div>
     </div>
-    <div>
-      <%= render :partial => 'shared/recipe_edit_yeasts_list', :object => recipe_edit %>
-    </div>
+
   </div>
 
   <div id="misc_div" class="hidden">
@@ -111,7 +108,7 @@
 
   <div id="sharededit_div" class="hidden">
     <if test="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)">
-      
+
       <div class="navigation-div">
         <recipeedit-nav current="multiuser" show-shared="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)"/><br/>
       </div>

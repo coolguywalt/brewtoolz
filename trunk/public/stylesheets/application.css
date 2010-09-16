@@ -346,3 +346,7 @@ table.scroll-table thead tr th p {
 .aside-left-menu {
     padding: 20px 0px 20px 0px;
 }
+
+.tab {
+    min-height: 400px
+}

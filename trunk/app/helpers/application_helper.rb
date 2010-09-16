@@ -18,6 +18,8 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+  include UnitsHelper
+
   $PRIMARY_RECIPE_FILTER = "(brew_entry_id IS NULL) AND (name IS NOT NULL) AND (name <> \"\")"
 
 	def stored_location

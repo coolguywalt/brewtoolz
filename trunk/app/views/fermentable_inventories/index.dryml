@@ -1,3 +1,30 @@
+<index-page>
+  <count: replace/>
+
+  <aside-left:>
+    <%= render :partial => "shared/inventory_menu" %>
+  </aside-left:>
+
+  <collection: replace>
+    <div>
+      <% ferm_units = ferm_weight_units  %>
+      <table-plus fields="this,amount,location,label,source_date,age">
+        
+        <amount-heading:>
+          Amount&nbsp;[<%= ferm_units %>]
+        </amount-heading:>
+
+        <age-view:> <%= distance_of_time_in_words(this, Time.zone.now) if this %> </age-view:>
+        
+        <controls:>
+          <a action="edit">Edit</a>
+        </controls:>
+      </table-plus>
+    </div>
+  </collection:>
+
+</index-page>
+
 <!--
     This file is part of Brewtools.
 
@@ -16,19 +43,3 @@
 
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
-
-<div id="kits_content_div" class="tab">
-
-  <br/>
-  
-  <div id="kit_items_div">
-    <%= render :partial => 'shared/recipe_edit_kit_items', :object => recipe_edit_kits %> 
-  </div>
-
-  <br/>
-
-  <div id="kit_list_div" class="item-list">
-    <%= render :partial => 'shared/recipe_edit_kits_list', :object => recipe_edit_kits %>
-  </div>
-
-</div>

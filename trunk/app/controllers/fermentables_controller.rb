@@ -45,7 +45,7 @@ class FermentablesController < ApplicationController
 
 		#Do unit conversions if required.
     params[:fermentable][:points] = BrewingUnits::input_gravity( params[:fermentable][:points], current_user.units.gravity ) if  params[:fermentable][:points]
-    params[:fermentable][:weight] = input_fermentable_weight( params[:fermentable][:weight] ) if  params[:fermentable][:weight]
+    params[:fermentable][:weight] = UnitsHelper::input_fermentable_weight( params[:fermentable][:weight], current_user ) if  params[:fermentable][:weight]
 
 		if @fermentable.update_attributes(params[:fermentable])
 

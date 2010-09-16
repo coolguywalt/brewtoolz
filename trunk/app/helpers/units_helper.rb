@@ -58,8 +58,14 @@ module UnitsHelper
     
 	end
   
-	def ferm_weight_values(weight)
-		BrewingUnits::values_for_display( current_user.units.fermentable, weight, 2 )
+	def ferm_weight_values(weight, auser=nil)
+    auser = current_user if auser.nil?
+		BrewingUnits::values_for_display( auser.units.fermentable, weight, 2 )
+	end
+
+  def self.ferm_weight_value(weight, auser = nil)
+    auser = current_user if auser.nil?
+		BrewingUnits::value_for_display( auser.units.fermentable, weight, 2 )
 	end
  
 	def ferm_weight_units
@@ -125,13 +131,13 @@ module UnitsHelper
 		BrewingUnits::unit_for_display( current_user.units.temperature )
 	end
   
-#	def decimal( value )
-#		number_with_precision( value, :precision => 2 )
-#	end
-#
-#	def percentage( value )
-#		number_to_percentage(value, :precision => 2)
-#	end
+  #	def decimal( value )
+  #		number_with_precision( value, :precision => 2 )
+  #	end
+  #
+  #	def percentage( value )
+  #		number_to_percentage(value, :precision => 2)
+  #	end
     
 
 	def gms_to_lbs( wght_gms )
@@ -145,8 +151,9 @@ module UnitsHelper
 	end
   
   
-	def input_fermentable_weight( weight )
-		result= BrewingUnits::value_for_storage( current_user.units.fermentable, weight)
+	def self.input_fermentable_weight( weight, auser=nil )
+    auser = current_user unless auser
+		result= BrewingUnits::value_for_storage( auser.units.fermentable, weight)
 		return result
 	end
   
@@ -171,4 +178,4 @@ module UnitsHelper
 		return display_value
 	end
 
-  end
+end

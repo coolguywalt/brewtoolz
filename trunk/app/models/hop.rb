@@ -26,7 +26,7 @@ class Hop < ActiveRecord::Base
 		aa :float
 
 		ibu_l :float # IBU per liter
-		dry_hop_amount_l :float # Only used for dry hopping or flame out addtions (amount per litre)
+		dry_hop_amount_l :float # Only used for dry hopping or flame out additions (amount per liter)
 		notes :text
 
     lock_weight :boolean
@@ -39,7 +39,7 @@ class Hop < ActiveRecord::Base
 		#ALPHA Percentage Percent alpha of hops - for example "5.5" represents 5.5% alpha
 		#AMOUNT Weight (kg) Weight in Kilograms of the hops used in the recipe.
 		#USE List May be "Boil", "Dry Hop", "Mash", "First Wort" or "Aroma".  Note that "Aroma" and "Dry Hop" do not contribute to the bitterness of the beer while the others do.  Aroma hops are added after the boil and do not contribute substantially to beer bitterness.
-    # Note added a hop_tea entry in for french press hopping.
+    # Note added a hop_tea entry in for French press hopping.
 
 		hop_use enum_string(:boil, :dry_hop, :mash, :first_wort, :aroma, :hop_tea)
 		#TIME Time (min) The time as measured in minutes.  Meaning is dependent on the “USE” field.  For “Boil” this is the boil time.  For “Mash” this is the mash time.  For “First Wort” this is the boil time.  For “Aroma” this is the steep time.  For “Dry Hop” this is the amount of time to dry hop.
@@ -48,6 +48,7 @@ class Hop < ActiveRecord::Base
 		#TYPE List May be "Bittering", "Aroma" or "Both"
 		hop_use_type enum_string(:bittering, :aroma, :both)
 		#FORM List May be "Pellet", "Plug" or "Leaf"
+
 		hop_form enum_string(:pellet, :plug, :leaf)
 		#BETA Percentage Hop beta percentage - for example "4.4" denotes 4.4 % beta
 		beta :float

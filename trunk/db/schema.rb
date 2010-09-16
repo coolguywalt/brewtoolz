@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100827103217) do
+ActiveRecord::Schema.define(:version => 20100904123717) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -110,6 +110,29 @@ ActiveRecord::Schema.define(:version => 20100827103217) do
     t.datetime "updated_at"
   end
 
+  create_table "fermentable_inventories", :force => true do |t|
+    t.float    "amount"
+    t.text     "comment"
+    t.string   "location"
+    t.string   "label"
+    t.datetime "source_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "fermentable_type_id"
+    t.integer  "user_id"
+  end
+
+  create_table "fermentable_inventory_log_entries", :force => true do |t|
+    t.float    "amount"
+    t.text     "note"
+    t.datetime "usagetime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "recipe_id"
+    t.integer  "fermentable_inventory_id"
+    t.integer  "user_id"
+  end
+
   create_table "fermentable_types", :force => true do |t|
     t.string   "name"
     t.float    "yeild"
@@ -173,6 +196,20 @@ ActiveRecord::Schema.define(:version => 20100827103217) do
     t.boolean  "lock_weight"
   end
 
+  create_table "hops_inventories", :force => true do |t|
+    t.float    "amount"
+    t.text     "comment"
+    t.string   "location"
+    t.string   "label"
+    t.datetime "source_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hop_type_id"
+    t.integer  "user_id"
+    t.float    "aa"
+    t.string   "hop_form"
+  end
+
   create_table "ingredient_unit_preferences", :force => true do |t|
     t.string   "hops"
     t.string   "fermentable"
@@ -185,6 +222,18 @@ ActiveRecord::Schema.define(:version => 20100827103217) do
     t.string   "gravity"
     t.string   "hop_utilisation_method"
     t.string   "liquor_to_grist"
+  end
+
+  create_table "kit_inventories", :force => true do |t|
+    t.float    "amount"
+    t.text     "comment"
+    t.string   "location"
+    t.string   "label"
+    t.datetime "source_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "kit_type_id"
+    t.integer  "user_id"
   end
 
   create_table "kit_types", :force => true do |t|
@@ -324,6 +373,19 @@ ActiveRecord::Schema.define(:version => 20100827103217) do
     t.datetime "key_timestamp"
     t.boolean  "default_locked_recipes",                  :default => false
     t.integer  "last_activity"
+  end
+
+  create_table "yeast_inventories", :force => true do |t|
+    t.float    "amount"
+    t.text     "comment"
+    t.string   "location"
+    t.string   "label"
+    t.datetime "source_date"
+    t.string   "storage_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "yeast_type_id"
+    t.integer  "user_id"
   end
 
   create_table "yeast_types", :force => true do |t|
