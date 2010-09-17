@@ -1,0 +1,40 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+
+	<repeat with="&ordered_category_list" >
+		<% cat_data, style_data = process_category_and_styles( this ) %>
+		<span id="cat#{this.id}_name">
+			<button class="small-button button" onclick="Element.show('<%="cat#{this.id}_styles"%>');Element.hide('<%="cat#{this.id}_name"%>');return false;">+</button>
+			<span id="ccl1#{this.id}" class="<%= cat_data[:class]%>"><b><view:designator/>.<view:name/>(<span id="cco1#{this.id}"><%= cat_data[:count]%></span>)</b></span><br/>
+		</span>
+
+		<span id="cat#{this.id}_styles" style="display: none;">
+			<button class="small-button button" onclick="Element.hide('<%="cat#{this.id}_styles"%>');Element.show('<%="cat#{this.id}_name"%>');return false;">-</button>
+			<span id="ccl2#{this.id}" class="<%= cat_data[:class]%>"><b><view:designator/>.<view:name/>(<span id="cco2#{this.id}"><%= cat_data[:count]%></span>)</b></span><br/>
+			<ul>
+				<repeat with="&style_data">
+					<li>
+						<%=  check_box_tag "style#{this[:id]}", this[:id], this[:selected] %>
+						<span id="scl#{this[:id]}" class="<%= this[:class]%>"><%= this[:text] %>(<b><span id="sco#{this[:id]}"><%=this[:count]%></span></b>)</span>
+					</li>
+				</repeat>
+			</ul>
+		</span>
+	</repeat>
