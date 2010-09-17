@@ -1,0 +1,7 @@
+<div id="recipe_errors_div">
+  <flash-message type="error"/>
+  <%=  error_messages_for :recipe %>
+  <%=  error_messages_for :fermentable %>
+  <%=  error_messages_for :hop %>
+  <%=  error_messages_for :yeast %>
+</div>
