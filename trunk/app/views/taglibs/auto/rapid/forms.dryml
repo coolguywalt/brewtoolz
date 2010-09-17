@@ -144,6 +144,18 @@
 
 
 
+<def tag="form" for="HopsInventoryLogEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, note, usagetime, hops_inventory, recipe, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
 <def tag="form" for="IngredientUnitPreference">
   <form merge param="default">
     <error-messages param/>
@@ -160,6 +172,18 @@
   <form merge param="default">
     <error-messages param/>
     <field-list fields="amount, comment, location, label, source_date, kit_type, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="KitInventoryLogEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, note, usagetime, kit_inventory, recipe, user" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>
@@ -301,6 +325,18 @@
   <form merge param="default">
     <error-messages param/>
     <field-list fields="amount, comment, location, label, source_date, storage_type, user, yeast_type" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="YeastInventoryLogEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, note, usagetime, recipe, user, yeast_inventory" param/>
     <div param="actions">
       <submit label="Save" param/><or-cancel param="cancel"/>
     </div>

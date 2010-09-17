@@ -1,6 +1,6 @@
 <index-page>
   <count: replace/>
-  
+
   <aside-left:>
     <%= render :partial => "shared/inventory_menu" %>
   </aside-left:>
@@ -11,7 +11,7 @@
         <age-view:> <%= distance_of_time_in_words(this, Time.zone.now) if this %> </age-view:>
         <controls:>
           <a action="edit" if="&can_edit?" >Edit</a>
-         
+
         </controls:>
       </table-plus>
     </div>

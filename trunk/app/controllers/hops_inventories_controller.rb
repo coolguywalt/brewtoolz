@@ -31,5 +31,15 @@ class HopsInventoriesController < ApplicationController
     #this = @fermentable_types
   end
 
+  def show
+
+    hobo_show
+
+    if @log_entry.nil? or @log_entry.errors.count == 0 then
+      @log_entry = HopsInventoryLogEntry.new
+      @log_entry.hops_inventory = this
+    end
+
+  end
 
 end

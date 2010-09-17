@@ -9,7 +9,7 @@
     <div>
       <% ferm_units = ferm_weight_units  %>
       <table-plus fields="this,amount,location,label,source_date,age">
-        
+
         <amount-heading:>
           Amount&nbsp;[<%= ferm_units %>]
         </amount-heading:>

@@ -25,7 +25,7 @@ class FermentableInventory < ActiveRecord::Base
   named_scope :viewable, lambda {|acting_user| {:conditions => {:user_id => "#{acting_user.id}" } } }
 
   validates_presence_of :fermentable_type
-  validates_numericality_of :amount, :greater_than => 0.0
+  validates_numericality_of :amount, :greater_than_or_equal_to => 0.0
   
   # --- Permissions --- #
 

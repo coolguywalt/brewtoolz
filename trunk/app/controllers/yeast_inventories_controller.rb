@@ -26,9 +26,17 @@ class YeastInventoriesController < ApplicationController
     hobo_index YeastInventory.viewable(current_user).apply_scopes(:search => [params[:search],:name,:comment,:location],
       :order_by => parse_sort_param(:name,:location,:source_date) )
 
-    #@fermentable_types = FermentableType.paginate( :order => 'name', :page => params[:page], :per_page => 100 )
+  end
 
-    #this = @fermentable_types
+  def show
+
+    hobo_show
+
+    if @log_entry.nil? or @log_entry.errors.count == 0 then
+      @log_entry = YeastInventoryLogEntry.new
+      @log_entry.yeast_inventory = this
+    end
+
   end
 
 end

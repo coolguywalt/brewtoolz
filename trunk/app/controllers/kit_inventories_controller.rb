@@ -32,5 +32,15 @@ class KitInventoriesController < ApplicationController
     #this = @fermentable_types
   end
 
+  def show
+
+    hobo_show
+
+    if @log_entry.nil? or @log_entry.errors.count == 0 then
+      @log_entry = KitInventoryLogEntry.new
+      @log_entry.kit_inventory = this
+    end
+
+  end
 
 end

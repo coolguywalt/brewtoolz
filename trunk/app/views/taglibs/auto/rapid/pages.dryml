@@ -1171,6 +1171,11 @@
     
           <section param="content-body">
             <field-list fields="amount, comment, location, label, source_date, aa, hop_form, hop_type" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">Hops Inventory Log Entries</h3>
+              
+              <collection:hops_inventory_log_entries param/>
+            </section>
           </section>
     </content:>
     
@@ -1187,6 +1192,105 @@
       <section param="content-header">
         <h2 param="heading">Edit <type-name/></h2>
         <delete-button label="Remove This Hops Inventory" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== HopsInventoryLogEntry Pages ====== -->
+
+
+<def tag="index-page" for="HopsInventoryLogEntry">
+  <page merge title="Hops Inventory Log Entries">
+    <body: class="index-page hops-inventory-log-entry" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Hops Inventory Log Entries</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="HopsInventoryLogEntry">
+  <page merge title="New Hops Inventory Log Entry">
+    <body: class="new-page hops-inventory-log-entry" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Hops Inventory Log Entry</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Hops Inventory Log Entry"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="HopsInventoryLogEntry">
+  <page merge title="Hops Inventory Log Entry">
+
+    <body: class="show-page hops-inventory-log-entry" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:hops_inventory param="parent-link">&laquo; <name/></a:hops_inventory>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Hops Inventory Log Entry</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="amount, note, usagetime, recipe" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="HopsInventoryLogEntry">
+  <page merge title="Edit Hops Inventory Log Entry">
+
+    <body: class="edit-page hops-inventory-log-entry" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Hops Inventory Log Entry" param/>
       </section>
 
       <section param="content-body">
@@ -1367,6 +1471,11 @@
     
           <section param="content-body">
             <field-list fields="amount, comment, location, label, source_date, kit_type" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">Kit Inventory Log Entries</h3>
+              
+              <collection:kit_inventory_log_entries param/>
+            </section>
           </section>
     </content:>
     
@@ -1383,6 +1492,105 @@
       <section param="content-header">
         <h2 param="heading">Edit <type-name/></h2>
         <delete-button label="Remove This Kit Inventory" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== KitInventoryLogEntry Pages ====== -->
+
+
+<def tag="index-page" for="KitInventoryLogEntry">
+  <page merge title="Kit Inventory Log Entries">
+    <body: class="index-page kit-inventory-log-entry" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Kit Inventory Log Entries</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="KitInventoryLogEntry">
+  <page merge title="New Kit Inventory Log Entry">
+    <body: class="new-page kit-inventory-log-entry" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Kit Inventory Log Entry</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Kit Inventory Log Entry"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="KitInventoryLogEntry">
+  <page merge title="Kit Inventory Log Entry">
+
+    <body: class="show-page kit-inventory-log-entry" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:kit_inventory param="parent-link">&laquo; <name/></a:kit_inventory>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Kit Inventory Log Entry</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="amount, note, usagetime, recipe" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="KitInventoryLogEntry">
+  <page merge title="Edit Kit Inventory Log Entry">
+
+    <body: class="edit-page kit-inventory-log-entry" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Kit Inventory Log Entry" param/>
       </section>
 
       <section param="content-body">
@@ -2415,6 +2623,11 @@
     
           <section param="content-body">
             <field-list fields="amount, comment, location, label, source_date, storage_type, yeast_type" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">Yeast Inventory Log Entries</h3>
+              
+              <collection:yeast_inventory_log_entries param/>
+            </section>
           </section>
     </content:>
     
@@ -2431,6 +2644,105 @@
       <section param="content-header">
         <h2 param="heading">Edit <type-name/></h2>
         <delete-button label="Remove This Yeast Inventory" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== YeastInventoryLogEntry Pages ====== -->
+
+
+<def tag="index-page" for="YeastInventoryLogEntry">
+  <page merge title="Yeast Inventory Log Entries">
+    <body: class="index-page yeast-inventory-log-entry" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Yeast Inventory Log Entries</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="YeastInventoryLogEntry">
+  <page merge title="New Yeast Inventory Log Entry">
+    <body: class="new-page yeast-inventory-log-entry" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Yeast Inventory Log Entry</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Yeast Inventory Log Entry"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="YeastInventoryLogEntry">
+  <page merge title="Yeast Inventory Log Entry">
+
+    <body: class="show-page yeast-inventory-log-entry" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:yeast_inventory param="parent-link">&laquo; <name/></a:yeast_inventory>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Yeast Inventory Log Entry</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="amount, note, usagetime, recipe" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="YeastInventoryLogEntry">
+  <page merge title="Edit Yeast Inventory Log Entry">
+
+    <body: class="edit-page yeast-inventory-log-entry" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Yeast Inventory Log Entry" param/>
       </section>
 
       <section param="content-body">

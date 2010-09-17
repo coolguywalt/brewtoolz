@@ -249,7 +249,12 @@
 
 <extend tag="form" for="HopsInventory">
   <old-form merge>
-    <field-list: fields="hop_type,amount,aa,hop_form,source_date,location,label,comment"/>
+    <field-list: fields="hop_type,amount,aa,hop_form,source_date,location,label,comment,hops_inventory_log_entries">
+      <amount-label:>
+        Amount&nbsp;[<%=hop_weight_units%>]
+      </amount-label:>
+      <aa-label:>AA%</aa-label:>
+    </field-list:>
    </old-form>
 </extend>
 
@@ -261,7 +266,7 @@
 
 <extend tag="form" for="KitInventory">
   <old-form merge>
-    <field-list: fields="kit_type,amount,source_date,location,label,comment"/>
+    <field-list: fields="kit_type,amount,source_date,location,label,comment,kit_inventory_log_entries"/>
    </old-form>
 </extend>
 
@@ -274,7 +279,7 @@
 
 <extend tag="form" for="YeastInventory">
   <old-form merge>
-    <field-list: fields="yeast_type,amount,storage_type,source_date,location,label,comment"/>
+    <field-list: fields="yeast_type,amount,storage_type,source_date,location,label,comment,yeast_inventory_log_entries"/>
    </old-form>
 </extend>
 
@@ -285,6 +290,28 @@
         Amount&nbsp;[<%=ferm_weight_units%>]
       </amount-label:>
     </field-list:>
+   </old-form>
+</extend>
+
+<extend tag="form" for="HopsInventoryLogEntry">
+  <old-form merge>
+    <field-list: fields="amount,note,usagetime">
+      <amount-label:>
+        Amount&nbsp;[<%=hop_weight_units%>]
+      </amount-label:>
+    </field-list:>
+   </old-form>
+</extend>
+
+<extend tag="form" for="KitInventoryLogEntry">
+  <old-form merge>
+    <field-list: fields="amount,note,usagetime"></field-list:>
+   </old-form>
+</extend>
+
+<extend tag="form" for="YeastInventoryLogEntry">
+  <old-form merge>
+    <field-list: fields="amount,note,usagetime"></field-list:>
    </old-form>
 </extend>
 

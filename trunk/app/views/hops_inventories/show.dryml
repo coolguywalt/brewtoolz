@@ -3,6 +3,32 @@
   <aside-left:>
     <%= render :partial => "shared/inventory_menu" %>
   </aside-left:>
+
+  <collection: replace>
+    <div id="collection_div">
+      <% hop_units = hop_weight_units  %>
+      <table-plus with="&this.hops_inventory_log_entries.by_most_recent" fields="usagetime,amount,note">
+        <amount-heading:>
+          Amount&nbsp;[<%= hop_units %>]
+        </amount-heading:>
+        <usagetime-heading:>When used</usagetime-heading:>
+
+        <controls:>
+          <%= link_to "Undo", { :controller => 'hops_inventory_log_entries', :action => 'undo', :id => this.id} %>
+        </controls:>
+      </table-plus>
+    </div>
+  </collection:>
+
+  <append-content-body:>
+    <%= error_messages_for('log_entry') %>
+    <flash-message type="error"/>
+
+    <div id="add_log_entry_div">
+      <form with="&@log_entry"/>
+    </div>
+  </append-content-body:>
+
 </show-page>
 
 
