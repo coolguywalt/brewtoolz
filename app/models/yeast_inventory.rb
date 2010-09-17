@@ -20,10 +20,13 @@ class YeastInventory < ActiveRecord::Base
   belongs_to :yeast_type
   belongs_to :user, :creator => true
 
+  has_many :yeast_inventory_log_entries, :dependent => :destroy
+
+
   named_scope :viewable, lambda {|acting_user| {:conditions => {:user_id => "#{acting_user.id}" } } }
 
   validates_presence_of :yeast_type
-  validates_numericality_of :amount, :greater_than => 0.0
+  validates_numericality_of :amount, :greater_than_or_equal_to => 0.0
 
   # --- Permissions --- #
 

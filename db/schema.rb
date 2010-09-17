@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904123717) do
+ActiveRecord::Schema.define(:version => 20100916105117) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -210,6 +210,17 @@ ActiveRecord::Schema.define(:version => 20100904123717) do
     t.string   "hop_form"
   end
 
+  create_table "hops_inventory_log_entries", :force => true do |t|
+    t.float    "amount"
+    t.text     "note"
+    t.datetime "usagetime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "recipe_id"
+    t.integer  "hops_inventory_id"
+    t.integer  "user_id"
+  end
+
   create_table "ingredient_unit_preferences", :force => true do |t|
     t.string   "hops"
     t.string   "fermentable"
@@ -233,6 +244,17 @@ ActiveRecord::Schema.define(:version => 20100904123717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "kit_type_id"
+    t.integer  "user_id"
+  end
+
+  create_table "kit_inventory_log_entries", :force => true do |t|
+    t.float    "amount"
+    t.text     "note"
+    t.datetime "usagetime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "recipe_id"
+    t.integer  "kit_inventory_id"
     t.integer  "user_id"
   end
 
@@ -385,6 +407,17 @@ ActiveRecord::Schema.define(:version => 20100904123717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "yeast_type_id"
+    t.integer  "user_id"
+  end
+
+  create_table "yeast_inventory_log_entries", :force => true do |t|
+    t.float    "amount"
+    t.text     "note"
+    t.datetime "usagetime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "recipe_id"
+    t.integer  "yeast_inventory_id"
     t.integer  "user_id"
   end
 

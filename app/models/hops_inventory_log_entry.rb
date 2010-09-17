@@ -1,4 +1,4 @@
-class FermentableInventoryLogEntry < ActiveRecord::Base
+class HopsInventoryLogEntry < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
@@ -10,8 +10,9 @@ class FermentableInventoryLogEntry < ActiveRecord::Base
     timestamps
   end
 
+
   belongs_to :recipe
-  belongs_to :fermentable_inventory
+  belongs_to :hops_inventory
   belongs_to :user, :creator => true
 
   validate :inventory_capacity?
@@ -39,8 +40,7 @@ class FermentableInventoryLogEntry < ActiveRecord::Base
   end
 
   def inventory_capacity?
-    if fermentable_inventory.amount.to_f < amount.to_f
-      logger.debug "++inventory_capacity? - amount exceeded"
+    if hops_inventory.amount.to_f < amount.to_f
 
       #fermentable_inventory.errors.add(:amount, "must not be greater than stored amount." )
       errors.add(:amount, "must not be greater than the inventory amount stored." )

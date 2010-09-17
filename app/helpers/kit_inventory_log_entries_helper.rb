@@ -1,0 +1,2 @@
+module KitInventoryLogEntriesHelper
+end
