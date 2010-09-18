@@ -67,27 +67,18 @@
 
 <def tag="recipeedit-nav" attrs="show-shared">
   <navigation merge>
+    <nav-item href="#menu" onclick="Hobo.show('fermentables_div'); Hobo.hide('hops_div','kits_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Fermentables</nav-item>
+    <nav-item href="#menu" onmouseover="Brewtoolz.loadtab('hops_div','hops_content_div');"
+              onclick="Hobo.show('hops_div'); Hobo.hide('fermentables_div','kits_div','yeast_div','mashprofile_div','misc_div','sharededit_div'); Brewtoolz.loadtab('hops_div','hops_content_div');">Hops</nav-item>
+    <nav-item href="#menu" onmouseover="Brewtoolz.loadtab('kits_div','kits_content_div');"
+              onclick="Hobo.show('kits_div'); Hobo.hide('fermentables_div','hops_div','yeast_div','mashprofile_div','misc_div','sharededit_div'); Brewtoolz.loadtab('kits_div','kits_content_div');">Kits</nav-item>
+    <nav-item href="#menu" onmouseover="Brewtoolz.loadtab('yeasts_div','yeasts_content_div');"
+              onclick="Hobo.show('yeast_div'); Hobo.hide('fermentables_div','hops_div','kits_div','mashprofile_div','misc_div','sharededit_div'); Brewtoolz.loadtab('yeasts_div','yeasts_content_div');">Yeast</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('misc_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','mashprofile_div','sharededit_div');">Misc</nav-item>
+    <nav-item href="#menu" onclick="Hobo.show('mashprofile_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','misc_div','sharededit_div');">Mash Profile</nav-item>
     <if test="&show_shared">
-      <nav-item href="#menu" onclick="Hobo.show('fermentables_div'); Hobo.hide('hops_div','kits_div','yeast_div','mashprofile_div','misc_div','sharededit_div');">Fermentables</nav-item>
-      <nav-item href="#menu" onmouseover="Brewtoolz.loadtab('hops_div','hops_content_div');" 
-                onclick="Hobo.show('hops_div'); Hobo.hide('fermentables_div','kits_div','yeast_div','mashprofile_div','misc_div','sharededit_div'); Brewtoolz.loadtab('hops_div','hops_content_div');">Hops</nav-item>
-      <nav-item href="#menu" onmouseover="Brewtoolz.loadtab('kits_div','kits_content_div');"
-                onclick="Hobo.show('kits_div'); Hobo.hide('fermentables_div','hops_div','yeast_div','mashprofile_div','misc_div','sharededit_div'); Brewtoolz.loadtab('kits_div','kits_content_div');">Kits</nav-item>
-      <nav-item href="#menu" onmouseover="Brewtoolz.loadtab('yeasts_div','yeasts_content_div');"
-                onclick="Hobo.show('yeast_div'); Hobo.hide('fermentables_div','hops_div','kits_div','mashprofile_div','misc_div','sharededit_div'); Brewtoolz.loadtab('yeasts_div','yeasts_content_div');">Yeast</nav-item>
-      <nav-item href="#menu" onclick="Hobo.show('misc_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','mashprofile_div','sharededit_div');">Misc</nav-item>
-      <nav-item href="#menu" onclick="Hobo.show('mashprofile_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','misc_div','sharededit_div');">Mash Profile</nav-item>
       <nav-item href="#menu" onclick="Hobo.show('sharededit_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','misc_div','mashprofile_div');">Share</nav-item>
     </if>
-    <else>
-      <!--nav-item href="#menu">Kits</nav-item-->
-      <nav-item href="#menu" onclick="Hobo.show('fermentables_div'); Hobo.hide('hops_div','kits_div','yeast_div','mashprofile_div','misc_div');">Fermentables</nav-item>
-      <nav-item href="#menu" onclick="Hobo.show('hops_div'); Hobo.hide('fermentables_div','kits_div','yeast_div','mashprofile_div','misc_div');">Hops</nav-item>
-      <nav-item href="#menu" onclick="Hobo.show('kits_div'); Hobo.hide('fermentables_div','hops_div','yeast_div','mashprofile_div','misc_div');">Kits</nav-item>
-      <nav-item href="#menu" onclick="Hobo.show('yeast_div'); Hobo.hide('fermentables_div','hops_div','kits_div','mashprofile_div','misc_div');">Yeast</nav-item>
-      <nav-item href="#menu" onclick="Hobo.show('misc_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','mashprofile_div');">Misc</nav-item>
-      <nav-item href="#menu" onclick="Hobo.show('mashprofile_div');Hobo.hide('fermentables_div','hops_div','kits_div','yeast_div','misc_div');">Mash Profile</nav-item>
-    </else>
   </navigation>
 </def>
 
@@ -238,7 +229,7 @@
         Amount&nbsp;[<%=ferm_weight_units%>]
       </amount-label:>
     </field-list:>
-   </old-form>
+  </old-form>
 </extend>
 
 <extend tag="form" for="HopType">
@@ -255,7 +246,7 @@
       </amount-label:>
       <aa-label:>AA%</aa-label:>
     </field-list:>
-   </old-form>
+  </old-form>
 </extend>
 
 <extend tag="form" for="KitType">
@@ -267,7 +258,7 @@
 <extend tag="form" for="KitInventory">
   <old-form merge>
     <field-list: fields="kit_type,amount,source_date,location,label,comment,kit_inventory_log_entries"/>
-   </old-form>
+  </old-form>
 </extend>
 
 
@@ -280,7 +271,7 @@
 <extend tag="form" for="YeastInventory">
   <old-form merge>
     <field-list: fields="yeast_type,amount,storage_type,source_date,location,label,comment,yeast_inventory_log_entries"/>
-   </old-form>
+  </old-form>
 </extend>
 
 <extend tag="form" for="FermentableInventoryLogEntry">
@@ -290,7 +281,7 @@
         Amount&nbsp;[<%=ferm_weight_units%>]
       </amount-label:>
     </field-list:>
-   </old-form>
+  </old-form>
 </extend>
 
 <extend tag="form" for="HopsInventoryLogEntry">
@@ -300,19 +291,19 @@
         Amount&nbsp;[<%=hop_weight_units%>]
       </amount-label:>
     </field-list:>
-   </old-form>
+  </old-form>
 </extend>
 
 <extend tag="form" for="KitInventoryLogEntry">
   <old-form merge>
     <field-list: fields="amount,note,usagetime"></field-list:>
-   </old-form>
+  </old-form>
 </extend>
 
 <extend tag="form" for="YeastInventoryLogEntry">
   <old-form merge>
     <field-list: fields="amount,note,usagetime"></field-list:>
-   </old-form>
+  </old-form>
 </extend>
 
 <def tag="input" for="FermentableType">
