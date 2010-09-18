@@ -1,0 +1,172 @@
+--- 
+fermentable_type_8: 
+  ingredient_supplier_id: 1
+  name: Wheat Malt
+  updated_at: 2008-04-28 18:52:31
+  fullyfermentable: "0"
+  yeild: "82"
+  colour: "40"
+  id: 8
+  description: "Typical analysis\r\n\
+    Moisture Content Extract Colour Kolbach Index D.P.\r\n\
+    <6% >82% 1.5 \xE2\x80\x93 2.5 38 \xE2\x80\x93 42 300 \xE2\x80\x93 400\r\n\
+    \r\n\
+    Beer styles\r\n\
+    Wheat Malt is principally used for Weizenbier and Weissbier. It is also used in smaller percentages for Kolsch Beers and Altbier.\r\n\
+    \r\n\
+    Flavour and colour contributions\r\n\
+    \r\n\
+    Wheat Malt produces beers with a creamy, spicy flavour, fuller mouth feel and enhanced head retention."
+  converted: "0"
+  created_at: 2008-04-28 18:52:31
+ale_malt: 
+  ingredient_supplier_id: 3
+  name: Ale malt US 2 row
+  updated_at: 2008-04-28 18:50:31
+  fullyfermentable: "0"
+  yeild: "78.26"
+  colour: "3.94"
+  id: 21
+  description: ""
+  converted: "0"
+  created_at: 2008-04-28 18:49:05
+fermentable_type_9: 
+  name: Light DME (Dried Malt Extract)
+  updated_at: 2008-04-28 18:58:58
+  fullyfermentable: "0"
+  yeild: "98"
+  colour: "3.8"
+  id: 9
+  description: Dried Malt Extract
+  converted: "1"
+  created_at: 2008-04-28 18:55:55
+wheat_malt: 
+  ingredient_supplier_id: 3
+  name: Wheat Malt
+  updated_at: 2008-04-28 18:50:31
+  fullyfermentable: "0"
+  yeild: "80.2"
+  colour: "3.6"
+  id: 7
+  description: ""
+  converted: "0"
+  created_at: 2008-04-28 18:49:05
+sugar: 
+  name: Cane Sugar
+  updated_at: 2008-04-28 19:00:32
+  fullyfermentable: "1"
+  yeild: "100"
+  colour: "1"
+  id: 11
+  description: Cane sugar
+  converted: "1"
+  created_at: 2008-04-28 19:00:32
+fermentable_type_10: 
+  name: Dried Wheat Extract
+  updated_at: 2008-04-28 18:58:32
+  fullyfermentable: "0"
+  yeild: "98"
+  colour: "3.8"
+  id: 10
+  description: ""
+  converted: "1"
+  created_at: 2008-04-28 18:58:32
+fermentable_type_2: 
+  name: Ale Malt
+  updated_at: 2008-04-28 22:47:16
+  fullyfermentable: "0"
+  yeild: "82"
+  colour: "5"
+  id: 2
+  description: Generic Ale Malt
+  converted: "0"
+  created_at: 2008-04-23 22:25:47
+roast_barely: 
+  ingredient_supplier_id: 3
+  name: Ale malt US 2 row
+  updated_at: 2008-04-28 18:50:31
+  fullyfermentable: "0"
+  yeild: "55"
+  colour: "591"
+  id: 22
+  description: ""
+  converted: "0"
+  created_at: 2008-04-28 18:49:05
+fermentable_type_12: 
+  ingredient_supplier_id: 4
+  name: Dark Crystal
+  updated_at: 2008-04-28 19:05:52
+  fullyfermentable: "0"
+  yeild: "77"
+  colour: "135"
+  id: 12
+  description: ""
+  converted: "1"
+  created_at: 2008-04-28 19:05:52
+fermentable_type_4: 
+  ingredient_supplier_id: 1
+  name: Vienna Malt
+  updated_at: 2008-04-28 18:41:16
+  fullyfermentable: "0"
+  yeild: "80.5"
+  colour: "8"
+  id: 4
+  description: "Typical analysis\r\n\
+    Moisture Content Extract Colour Kolbach Index D.P.\r\n\
+    4.5% >80.5% 6.0 \xE2\x80\x93 10.0 40 - 44 160 \xE2\x80\x93 200\r\n\
+    \r\n\
+    Beer styles\r\n\
+    Vienna Malt is most frequently used in the production of European style golden brown lagers and also in Marzen and Oktoberfest beers.\r\n\
+    Flavour and colour contributions\r\n\
+    Vienna Malt is produced in a similar manner to Ale Malt, but with higher kilning temperatures. This gives a darker product with strong nutty and toffee flavours. Beers made from Vienna Malt are golden to amber in colour."
+  converted: "0"
+  created_at: 2008-04-28 18:41:16
+fermentable_type_13: 
+  name: Chocolate Malt
+  updated_at: 2008-04-28 19:06:31
+  fullyfermentable: "0"
+  yeild: "70"
+  colour: "475"
+  id: 13
+  description: ""
+  converted: "1"
+  created_at: 2008-04-28 19:06:31
+fermentable_type_5: 
+  ingredient_supplier_id: 2
+  name: Pilsner Malt
+  updated_at: 2008-04-28 18:46:05
+  fullyfermentable: "0"
+  yeild: "80.5"
+  colour: "3.5"
+  id: 5
+  description: ""
+  converted: "0"
+  created_at: 2008-04-28 18:46:05
+fermentable_type_6: 
+  ingredient_supplier_id: 1
+  name: Munich Malt
+  updated_at: 2008-04-28 18:48:05
+  fullyfermentable: "0"
+  yeild: "80"
+  colour: "20"
+  id: 6
+  description: "Moisture Content Extract Colour Kolbach Index D.P.\r\n\
+    <4.5% >80% 15 \xE2\x80\x93 25 44 \xE2\x80\x93 48 160 - 200\r\n\
+    Beer Styles\r\n\
+    Munich Malt is used in production of dark, aromatic and full-bodied lagers, Marzen, Oktoberfest, Bock and Double Bock styles.\r\n\
+    \r\n\
+    Flavour and colour contributions\r\n\
+    \r\n\
+    Munich Malt is produced by \xE2\x80\x98stewing' green malt, then kilning at temperatures up to 100 \xE2\x80\x93 110 degrees. The curing regime is designed to preserve some of the enzyme activity necessary for mash conversion, while providing the colour necessary for darker, fuller beers. The pyrazines produced from this process give rise to a distinctive nutty flavour and aroma."
+  converted: "0"
+  created_at: 2008-04-28 18:47:24
+pils_malt: 
+  name: Pilsner Malt
+  updated_at: 2008-04-28 18:42:47
+  fullyfermentable: "0"
+  yeild: "80.5"
+  colour: "3.5"
+  id: 3
+  description: Generic Pilsner Malt
+  converted: "1"
+  created_at: 2008-04-23 22:26:28

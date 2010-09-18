@@ -1,0 +1,24 @@
+
+  <h3><b>Hops:</b></h3>
+  <div id="hop_items" class="item-list"> 
+     <%= render :partial => 'hop_items' %>
+  </div>
+  
+  <!-- Hop selection list. -->
+  <h3><b>Select hops:</b></h3>
+  <div class="item-list" >
+    <table id="hop_list" class="item-list" >
+      <th>Type</th><th>AA%</th><th> </th>
+      <repeat with="&HopType.find(:all, :order => 'name')" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><view:name/></td>
+          <td><view:aa/></td>
+          <td><%= link_to_remote "Add", 
+              :loading => "Element.show('spinner');",
+              :complete => "Element.hide('spinner');", 
+              :url => { :action => "add_hop", :id => @recipe.id, :hop_type_id => this.id  },
+              :html => { :class => 'button' } %></td>
+        </tr>
+      </repeat>
+    </table>
+  </div>
