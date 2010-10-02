@@ -873,7 +873,7 @@ class RecipesController < ApplicationController
 	def add_misc
 		@recipe = Recipe.find(params[:id])
 
-    if !(@recipe.misc_ingredients.size() < 10)
+    if !(@recipe.misc_ingredients.size() < 20)
       flash[:error] = "Add misc - too many misc ingredients."
       render_misc( @recipe )
       return
