@@ -53,6 +53,8 @@ class RecipeUserShared < ActiveRecord::Base
     #locate user.
     return false unless last_viewed
 
+    return false unless recipe_shared.last_updated
+
     return (last_viewed < recipe_shared.last_updated)
   end
 

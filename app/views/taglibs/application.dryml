@@ -8,6 +8,16 @@
 
 <extend tag="page">
   <old-page merge >
+    <before-scripts:>
+      <link type="text/css" href="/stylesheets/ui-lightness/jquery-ui-1.8.5.custom.css" rel="Stylesheet" />
+      <javascript name="jquery-1.4.2.js"/>
+      <javascript name="jquery-ui-1.8.5.custom.min.js"/>
+
+      <script  language="javascript" type="text/javascript">
+        $j = jQuery.noConflict();
+      </script>
+    </before-scripts:>
+
     <append-head:>
       <meta name="google-site-verification" content="s2TnQD_IuRQb9bcM94HoCFDha9E-gVHPVCbs4x5-uWQ" />
     </append-head:>
@@ -174,7 +184,7 @@
     <prepend-body:>
       <if test="&this.is_draft?"><span class="draft">&nbsp;Draft</span><br/></if>
       <label><b>Style:</b></label>&nbsp;&nbsp;<a:style/>&nbsp;&nbsp;<br/>
-      <label><b>Description:</b></label>&nbsp;&nbsp;<%= truncate( this.description, 100 ) %><br/>
+      <label><b>Description:</b></label>&nbsp;&nbsp;<%= truncate( this.description, :length => 100 ) %><br/>
       <label><b>ABV:</b></label>&nbsp;&nbsp;<view:abv/>%&nbsp;&nbsp;
       <label><b>Balance:</b></label>&nbsp;&nbsp;<view:balance format="%2.2f"/>&nbsp;&nbsp;
       <label><b>Color [SRM]:</b></label>&nbsp;&nbsp;<view:srm format="%2.2f"/>&nbsp;&nbsp;

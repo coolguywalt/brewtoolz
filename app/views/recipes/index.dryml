@@ -1,50 +1,50 @@
 <index-page>
 
 	<append-content-header:>
-	<div class="header-buttons">
-	   <if test="&logged_in?"><%= link_to("Add recipe", { :action => "new" }, :class => 'button') %></if>
-	</div>
+		<div class="header-buttons">
+			<if test="&logged_in?"><%= link_to("Add recipe", { :action => "new" }, :class => 'button') %></if>
+		</div>
 	</append-content-header:>
 
 	<count: replace/>
 
 	<aside-left:>
 		<div>
-			<% form_remote_tag( :url => {:action => 'search_form' }, 
-				  :id => :search_form,
-				  :before    =>"Hobo.showSpinner('Updating list ...')" ,
-			      :complete  =>"Hobo.hideSpinner()" ) do %>
+			<% form_remote_tag( :url => {:controller => :recipes, :action => 'search_form' },
+				:id => :search_form,
+				:before    =>"Hobo.showSpinner('Updating list ...')" ,
+				:complete  =>"Hobo.hideSpinner()" ) do %>
 				<b>Recipe filter:</b><br/>
 				<%= text_field_tag 'recipe_filter', @search, :size => 12%> 	<%= submit_tag "Search" %><br/>
-			<b>Sort Order:</b><br/>
+				<b>Sort Order:</b><br/>
 
-			<%=  radio_button_tag 'sort_order', 'Name', true, :id => 'order_name_id' %>
-			<label for="order_name_id">Name</label>
+				<%=  radio_button_tag 'sort_order', 'Name', true, :id => 'order_name_id' %>
+				<label for="order_name_id">Name</label>
 
-			<%=  radio_button_tag 'sort_order', 'Date' , false, :id => 'order_date_id'%>
-			<label for="order_date_id">Date</label>
+				<%=  radio_button_tag 'sort_order', 'Date' , false, :id => 'order_date_id'%>
+				<label for="order_date_id">Date</label>
 
-			<%=  radio_button_tag 'sort_order', 'Rating', false, :id => 'order_rating_id' %>
-			<label for="order_rating_id">Rating</label>
+				<%=  radio_button_tag 'sort_order', 'Rating', false, :id => 'order_rating_id' %>
+				<label for="order_rating_id">Rating</label>
 
 
-		<br/>
-		<b>Styles:</b>   <%= submit_tag "Apply filter" %><br/>
-		<% reset_search_filters %>
-		<div id="recipe_styles">
-			<%= render :partial => 'shared/recipe_styles' %>
-		</div>
+				<br/>
+				<b>Styles:</b>   <%= submit_tag "Apply filter" %><br/>
+				<% reset_search_filters %>
+				<div id="recipe_styles">
+					<%= render :partial => 'shared/recipe_styles' %>
+				</div>
 
-		<% end  %>
+			<% end  %>
 		</div>
 	</aside-left:>
 
 	<content-body:>
-	<% reset_search_filters %>
+		<% reset_search_filters %>
 
 
 		<div id="recipe_collecion_div">
-		<%= render :partial => 'shared/recipe_collection', :object => primary_recipes() %>
+			<%= render :partial => 'shared/recipe_collection', :object => primary_recipes() %>
 		</div>
 
 	</content-body:>

@@ -12,6 +12,7 @@
       :condition => "document.getElementById('shared_user_list')"
   %>
 
+    <%= render :partial => 'shared/recipe_errors' %>
 
     <div id="misc_recipe_div">
       <div id="recipe_misc_show" onclick="Element.show('recipe_misc_edit');Element.hide('recipe_misc_show');" >

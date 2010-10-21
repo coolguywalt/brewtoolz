@@ -21,6 +21,8 @@
 	<![endif]-->
     <if test="&@brew_entry.actual_recipe" >
 
+    <%= render :partial => 'shared/recipe_errors' %>
+	
       <div id="details_div" >
         <%= render :partial => 'shared/recipe_edit_summary', :object => @brew_entry.actual_recipe %>
       </div>

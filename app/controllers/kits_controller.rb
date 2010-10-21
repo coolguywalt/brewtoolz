@@ -62,7 +62,7 @@ class KitsController < ApplicationController
 			end
 
 		else
-			render :action => 'edit'
+			update_errors
 		end
 
   end

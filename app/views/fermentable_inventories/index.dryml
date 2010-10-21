@@ -8,7 +8,7 @@
   <collection: replace>
     <div>
       <% ferm_units = ferm_weight_units  %>
-      <table-plus fields="this,amount,location,label,source_date,age">
+      <table-plus fields="this,amount,location,label,source_date,age" without-search-form>
 
         <amount-heading:>
           Amount&nbsp;[<%= ferm_units %>]

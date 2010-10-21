@@ -20,11 +20,11 @@ class RecipesController < ApplicationController
 	hobo_model_controller
 	include RecipesHelper
 	include ApplicationHelper
-  include AppSecurity
+	include AppSecurity
 
 	auto_actions :all
 
-  after_filter :last_viewed_status  #Used to updated status for last viewing of a shared recipe
+	after_filter :last_viewed_status  #Used to updated status for last viewing of a shared recipe
 
 
 	def print
@@ -32,10 +32,10 @@ class RecipesController < ApplicationController
 	end
 
 
-  def print_text
+	def print_text
 		@recipe = Recipe.find(params[:id])
 
-    render :content_type => 'text/html'
+		render :content_type => 'text/html'
       
 	end
 
@@ -63,76 +63,85 @@ class RecipesController < ApplicationController
 	end
 
 
-  def edit
-    logger.debug "Recipe.edit called"
+	def edit
+		logger.debug "Recipe.edit called"
 
-    @recipe = Recipe.find(params[:id])
-    @new_fermtype = FermentableType.new
-  end
+		@recipe = Recipe.find(params[:id])
 
-  def update
+		if !@recipe.updatable_by?(current_user)
+			#      flash[:error] = "Add yeast - permission denied."
+			#      update_details_and_yeast( @recipe )
+			notifyattempt(request, "RecipesController.edit not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
+
+		@new_fermtype = FermentableType.new
+	end
+
+	def update
 		params[:recipe][:existing_fermentable_attributes] ||= {}
 
 		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user)
-      #      flash[:error] = "Update fermentable - permission denied."
-      #      update_details_and_fermentables( @recipe )
-      notifyattempt(request, "RecipesController.update_og not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)
+			#      flash[:error] = "Update fermentable - permission denied."
+			#      update_details_and_fermentables( @recipe )
+			notifyattempt(request, "RecipesController.update_og not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    # Create log message before conversions applied.
-    msg=""
-    params[:recipe].each_pair{ |key, value|
-      next if (key == "existing_fermentable_attributes" )
-      msg += "#{key.capitalize} => #{value} "
-    }
+		# Create log message before conversions applied.
+		msg=""
+		params[:recipe].each_pair{ |key, value|
+			next if (key == "existing_fermentable_attributes" )
+			msg += "#{key.capitalize} => #{value} "
+		}
 
 
 		#Do unit conversions if required.
 		params[:recipe][:volume] = BrewingUnits::input_recipe_vol( params[:recipe][:volume], current_user.units.volume ) if params[:recipe][:volume]
-    params[:recipe][:og] = BrewingUnits::input_gravity( params[:recipe][:og], current_user.units.gravity ) if  params[:recipe][:og]
+		params[:recipe][:og] = BrewingUnits::input_gravity( params[:recipe][:og], current_user.units.gravity ) if  params[:recipe][:og]
 
 		if @recipe.update_attributes(params[:recipe])
 			if request.xhr?
-        @recipe.save
-        @recipe.reload
+				@recipe.save
+				@recipe.reload
 
-        #Determine log messages.
-        msg = "Details (Name, Type, Description)" if params[:recipe][:name]
+				#Determine log messages.
+				msg = "Details (Name, Type, Description)" if params[:recipe][:name]
 
-        @recipe.mark_update(  "Recipe update: #{msg}", current_user)
+				@recipe.mark_update(  "Recipe update: #{msg}", current_user)
 				# Route to correct update as specified or the whole screen if not.
 				case params[:render]
-        when "details_and_fermentables_and_kits"
+				when "details_and_fermentables_and_kits"
 					update_details_and_fermentables_and_kits( @recipe )
 				when "details_and_fermentables"
 					update_details_and_fermentables( @recipe )
-        when "details_and_hops"
-          update_details_and_hops(@recipe)
+				when "details_and_hops"
+					update_details_and_hops(@recipe)
 				else
-          render :partial => "recipe_misc"
+					render :partial => "recipe_misc"
 				end
 			else # Updated for a regualar post method.
 				flash[:notice] = "Successfully updated recipe and fermentables."
 				redirect unless @recipe.update_permitted?
 			end
 		else
-			render :action => 'edit'
+			update_errors
 		end
 	end
 
-  def scale_recipe
-    @recipe = Recipe.find(params[:id])
+	def scale_recipe
+		@recipe = Recipe.find(params[:id])
 		params[:new_volume] = BrewingUnits::input_recipe_vol( params[:new_volume], current_user.units.volume ) if params[:new_volume]
 
-    #Check units
-    @recipe.scale(params[:new_volume],params[:new_eff])
-    update_details_and_fermentables( @recipe )
+		#Check units
+		@recipe.scale(params[:new_volume],params[:new_eff])
+		update_details_and_fermentables( @recipe )
     
-  end
+	end
 
 	def index
 		@recipes = index_recipes_list()
@@ -202,21 +211,21 @@ class RecipesController < ApplicationController
 
 		@recipe = Recipe.find(params[:id])
 
-    if current_user.guest?
-      flash[:error] = "Guest user cannot create brew entry"
-      #render :partial => "recipe_misc"
-      redirect_to :action => "show"
-      return
-    end
+		if current_user.guest?
+			flash[:error] = "Guest user cannot create brew entry"
+			#render :partial => "recipe_misc"
+			redirect_to :action => "show"
+			return
+		end
 
 
-    # Need to do in two steps to avoid race condition
+		# Need to do in two steps to avoid race condition
 		@brew_entry = @recipe.brew_entries.create(:actual_og => @recipe.og,
-      :user => current_user )
-    @brew_entry.brew_date = Date.today + 7.days
-    @brew_entry.brew_date = Date.today + 7.days
+			:user => current_user )
+		@brew_entry.brew_date = Date.today + 7.days
+		@brew_entry.brew_date = Date.today + 7.days
  		@brew_entry.volume_to_ferementer = @recipe.volume
-    @brew_entry.save
+		@brew_entry.save
 
 		default_brewery = Brewery.default_brewery(current_user)
 		logger.debug "Default brewery: #{default_brewery}"
@@ -234,27 +243,27 @@ class RecipesController < ApplicationController
 	def remove_fermentable
 		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user) || !request.xhr?
-      #      flash[:error] = "Delete fermentable - permission denied."
-      #      update_details_and_fermentables( @recipe )
+		if !@recipe.updatable_by?(current_user) || !request.xhr?
+			#      flash[:error] = "Delete fermentable - permission denied."
+			#      update_details_and_fermentables( @recipe )
 
-      notifyattempt(request, "RecipesController.remove_fermentable not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+			notifyattempt(request, "RecipesController.remove_fermentable not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    old_og = @recipe.og
+		old_og = @recipe.og
 
-    fermentable = Fermentable.find(params[:comment])
-    fermname = fermentable.fermentable_type.name
+		fermentable = Fermentable.find(params[:comment])
+		fermname = fermentable.fermentable_type.name
     
 		Fermentable.delete(params[:comment])
     
 		@recipe = Recipe.find(params[:id])
-    new_og = @recipe.og
-    @recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
+		new_og = @recipe.og
+		@recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
-    @recipe.mark_update(  "Fermentable [#{fermname}] removed", current_user)
+		@recipe.mark_update(  "Fermentable [#{fermname}] removed", current_user)
 
 		update_details_and_fermentables( @recipe )
 
@@ -264,20 +273,20 @@ class RecipesController < ApplicationController
 	def remove_hop
 		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user) || !request.xhr?
-      #      flash[:error] = "Delete hop - permission denied."
-      #      update_details_and_hops( @recipe )
-      notifyattempt(request, "RecipesController.remove_hop not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user) || !request.xhr?
+			#      flash[:error] = "Delete hop - permission denied."
+			#      update_details_and_hops( @recipe )
+			notifyattempt(request, "RecipesController.remove_hop not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    hop = Hop.find(params[:hop_id])
-    hopname = hop.hop_type.name
+		hop = Hop.find(params[:hop_id])
+		hopname = hop.hop_type.name
 
 		Hop.delete(params[:hop_id])
 
-    @recipe.mark_update( "Hop [#{hopname}] removed", current_user)
+		@recipe.mark_update( "Hop [#{hopname}] removed", current_user)
 
 		update_details_and_hops( @recipe )
 	end
@@ -286,95 +295,95 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.find(params[:id])
 
 		if !@recipe.updatable_by?(current_user)  || !request.xhr?
-      #      flash[:error] = "Delete yeast - permission denied."
-      #      update_details_and_yeast( @recipe )
-      notifyattempt(request, "RecipesController.remove_yeast not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
+			#      flash[:error] = "Delete yeast - permission denied."
+			#      update_details_and_yeast( @recipe )
+			notifyattempt(request, "RecipesController.remove_yeast not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
 		end
 
-    yeast = Yeast.find(params[:yeast_id])
-    yeastname = yeast.yeast_type.name
+		yeast = Yeast.find(params[:yeast_id])
+		yeastname = yeast.yeast_type.name
 		Yeast.delete(params[:yeast_id])
 
-    @recipe.mark_update( "Yeast [#{yeastname}] removed", current_user)
+		@recipe.mark_update( "Yeast [#{yeastname}] removed", current_user)
 
 		update_details_and_yeast( @recipe )
 	end
 
-  def remove_shared_user
-    @recipe = Recipe.find(params[:id])
-    @shared_user = RecipeUserShared.find(params[:shared_user_id])
+	def remove_shared_user
+		@recipe = Recipe.find(params[:id])
+		@shared_user = RecipeUserShared.find(params[:shared_user_id])
 
-    if !@shared_user.can_remove(current_user) 
-      #      flash[:error] = "Delete yeast - permission denied."
-      #      update_details_and_yeast( @recipe )
-      notifyattempt(request, "RecipesController.remove_shared_user not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
+		if !@shared_user.can_remove(current_user)
+			#      flash[:error] = "Delete yeast - permission denied."
+			#      update_details_and_yeast( @recipe )
+			notifyattempt(request, "RecipesController.remove_shared_user not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
 		end
 
-    RecipeUserShared.delete(params[:shared_user_id])
+		RecipeUserShared.delete(params[:shared_user_id])
 
-    if( @shared_user.user == current_user ) then
-      redirect_to( url_for( :controller => 'recipes', :action => 'show', :id => @recipe.id ) )
-    else
-      update_shared_users( @recipe )
-    end
+		if( @shared_user.user == current_user ) then
+			redirect_to( url_for( :controller => 'recipes', :action => 'show', :id => @recipe.id ) )
+		else
+			update_shared_users( @recipe )
+		end
 
-  end
+	end
 
 
 	def add_fermentable
 		@recipe = Recipe.find(params[:id])
 
 
-    if !(@recipe.fermentables.size() < 15)
-      flash[:error] = "Add fermentable - too many fermentables."
-      update_details_and_fermentables( @recipe )
-      return
+		if !(@recipe.fermentables.size() < 15)
+			flash[:error] = "Add fermentable - too many fermentables."
+			update_details_and_fermentables( @recipe )
+			return
 		end
 
 
 		if !@recipe.updatable_by?(current_user) || !request.xhr?
-      #      flash[:error] = "Add fermentable - permission denied."
-      #      update_details_and_fermentables( @recipe )
-      notifyattempt(request, "RecipesController.add_fermentable not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
+			#      flash[:error] = "Add fermentable - permission denied."
+			#      update_details_and_fermentables( @recipe )
+			notifyattempt(request, "RecipesController.add_fermentable not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
 		end
 
 		@fermentable_type = FermentableType.find(params[:ferementable_type_id])
 
-    old_og = @recipe.og
+		old_og = @recipe.og
 
 		# Create new fermentable
 		@fermentable = @recipe.fermentables.create( :fermentable_type => @fermentable_type, :points => 5.0 )
 
-    new_og = @recipe.og
-    @recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
+		new_og = @recipe.og
+		@recipe.adjust_fixed_hops_for_change(1.0, new_og, old_og)
 
-    @recipe.mark_update(  "Added fermentable: #{@fermentable_type.name}", current_user)
+		@recipe.mark_update(  "Added fermentable: #{@fermentable_type.name}", current_user)
 
 		update_details_and_fermentables( @recipe )
 	end
 
-  def add_kit
+	def add_kit
 		@recipe = Recipe.find(params[:id])
 
-    unless (@recipe.kits.size() < 15)
-      flash[:error] = "Add kit - too many kits."
-      update_details_and_kits( @recipe )
-      return
+		unless (@recipe.kits.size() < 15)
+			flash[:error] = "Add kit - too many kits."
+			update_details_and_kits( @recipe )
+			return
 		end
 
 
 		if !@recipe.updatable_by?(current_user) || !request.xhr?
-      #      flash[:error] = "Add fermentable - permission denied."
-      #      update_details_and_fermentables( @recipe )
-      notifyattempt(request, "RecipesController.add_kits not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
+			#      flash[:error] = "Add fermentable - permission denied."
+			#      update_details_and_fermentables( @recipe )
+			notifyattempt(request, "RecipesController.add_kits not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
 		end
 
 		@kit_type = KitType.find(params[:kit_type_id])
@@ -383,7 +392,7 @@ class RecipesController < ApplicationController
 		@kit = @recipe.kits.create( :kit_type => @kit_type, :quantity => 1.0 )
 
 
-    @recipe.mark_update(  "Kit added: #{@kit_type.name}", current_user)
+		@recipe.mark_update(  "Kit added: #{@kit_type.name}", current_user)
 
 		update_details_and_kits( @recipe )
 	end
@@ -391,25 +400,25 @@ class RecipesController < ApplicationController
 	def add_hop
 		@recipe = Recipe.find(params[:id])
 
-    if !(@recipe.hops.size() < 15 )
-      flash[:error] = "Add hop - too many hop additions."
-      update_details_and_hops( @recipe )
-      return
-    end
+		if !(@recipe.hops.size() < 15 )
+			flash[:error] = "Add hop - too many hop additions."
+			update_details_and_hops( @recipe )
+			return
+		end
 
-    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-      #      flash[:error] = "Add hop - permission denied."
-      #      update_details_and_hops( @recipe )
-      notifyattempt(request, "RecipesController.add_hop not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)  || !request.xhr?
+			#      flash[:error] = "Add hop - permission denied."
+			#      update_details_and_hops( @recipe )
+			notifyattempt(request, "RecipesController.add_hop not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
 		@hop_type = HopType.find(params[:hop_type_id])
 
 		# Create new hop
 		@hop = @recipe.hops.create(:hop_type => @hop_type, :ibu_l => 10.0, :minutes => 60, :aa => @hop_type.aa)
-    @recipe.mark_update(  "Added hop: #{@hop_type.name}", current_user)
+		@recipe.mark_update(  "Added hop: #{@hop_type.name}", current_user)
 
 		update_details_and_hops( @recipe )
 	end
@@ -417,60 +426,42 @@ class RecipesController < ApplicationController
 	def add_yeast
 		@recipe = Recipe.find(params[:id])
 
-    if !(@recipe.yeasts.size() < 5)
-      flash[:error] = "Add yeast - too many yeasts."
-      update_details_and_yeast( @recipe )
-      return
-    end
+		if !(@recipe.yeasts.size() < 5)
+			flash[:error] = "Add yeast - too many yeasts."
+			update_details_and_yeast( @recipe )
+			return
+		end
 
-    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-      #      flash[:error] = "Add yeast - permission denied."
-      #      update_details_and_yeast( @recipe )
-      notifyattempt(request, "RecipesController.add_yeast not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)  || !request.xhr?
+			#      flash[:error] = "Add yeast - permission denied."
+			#      update_details_and_yeast( @recipe )
+			notifyattempt(request, "RecipesController.add_yeast not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
 		@yeast_type = YeastType.find(params[:yeast_type_id])
 
 		# Create new yeast
 		@yeast = @recipe.yeasts.create(:yeast_type => @yeast_type, :amount_to_pitch => 1.0)
-    @recipe.mark_update(  "Added yeast: #{@yeast_type.name}", current_user)
+		@recipe.mark_update(  "Added yeast: #{@yeast_type.name}", current_user)
 		update_details_and_yeast( @recipe )
 	end
 
-  def loadhopstab
+	def loadhopstab
+		@recipe = Recipe.find(params[:id])
+		render :partial => 'shared/recipe_edit_hops', :object => @recipe
+	end
 
-    @recipe = Recipe.find(params[:id])
+	def loadkitstab
+		@recipe = Recipe.find(params[:id])
+		render :partial => 'shared/recipe_edit_kits', :object => @recipe
+	end
 
-
-    render(:update) { |page|
-    			page.replace_html 'hops_content_div', :partial => 'shared/recipe_edit_hops', :object => @recipe
-    }
-
-  end
-
-  def loadkitstab
-
-    @recipe = Recipe.find(params[:id])
-
-
-    render(:update) { |page|
-    			page.replace_html 'kits_content_div', :partial => 'shared/recipe_edit_kits', :object => @recipe
-    }
-
-  end
-
-  def loadyeaststab
-
-    @recipe = Recipe.find(params[:id])
-
-
-    render(:update) { |page|
-    			page.replace_html 'yeasts_content_div', :partial => 'shared/recipe_edit_yeasts', :object => @recipe
-    }
-
-  end
+	def loadyeaststab
+		@recipe = Recipe.find(params[:id])
+		render  :partial => 'shared/recipe_edit_yeasts', :object => @recipe
+	end
 
 
 
@@ -616,157 +607,157 @@ class RecipesController < ApplicationController
 	#		update_simple
 	#	end
 
-  #	def update_hop_aa
-  #		@recipe =  Recipe.find(params[:id])
-  #
-  #    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-  #      #      flash[:error] = "Update - permission denied."
-  #      #      update_details_and_hops( @recipe )
-  #      notifyattempt(request, "RecipesController.update_hop_aa not from authorized user: #{current_user}")
-  #      render( :nothing => true )
-  #      return
-  #    end
-  #		@hop = Hop.find(params[:hop_id])
-  #
-  #		@hop.aa = params[:aa]
-  #		@hop.save
-  #
-  #		update_details_and_hops( @recipe )
-  #	end
-  #
-  def update_hop_utilisation
-    @recipe =  Recipe.find(params[:id])
+	#	def update_hop_aa
+	#		@recipe =  Recipe.find(params[:id])
+	#
+	#    if !@recipe.updatable_by?(current_user)  || !request.xhr?
+	#      #      flash[:error] = "Update - permission denied."
+	#      #      update_details_and_hops( @recipe )
+	#      notifyattempt(request, "RecipesController.update_hop_aa not from authorized user: #{current_user}")
+	#      render( :nothing => true )
+	#      return
+	#    end
+	#		@hop = Hop.find(params[:hop_id])
+	#
+	#		@hop.aa = params[:aa]
+	#		@hop.save
+	#
+	#		update_details_and_hops( @recipe )
+	#	end
+	#
+	def update_hop_utilisation
+		@recipe =  Recipe.find(params[:id])
   
-    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-      #      flash[:error] = "Update - permission denied."
-      #      update_details_and_hops( @recipe )
-      notifyattempt(request, "RecipesController.update_hop_utilisation not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)  || !request.xhr?
+			#      flash[:error] = "Update - permission denied."
+			#      update_details_and_hops( @recipe )
+			notifyattempt(request, "RecipesController.update_hop_utilisation not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    #Need to record hop weights prior to the update for case where hops are locked.
-    hop_weights = Hash.new
-    @recipe.hops.each { |ahop|
-      hop_weights[ahop.id] = ahop.weight if ahop.is_weight_locked?
-    }
+		#Need to record hop weights prior to the update for case where hops are locked.
+		hop_weights = Hash.new
+		@recipe.hops.each { |ahop|
+			hop_weights[ahop.id] = ahop.weight if ahop.is_weight_locked?
+		}
 
-    #logger.debug "++update_hop_utilisation: number of locked hops: #{hop_weights.count()}"
+		#logger.debug "++update_hop_utilisation: number of locked hops: #{hop_weights.count()}"
 
-    @recipe.hop_utilisation_method = params[:util_method]
-    @recipe.save
-    @recipe.reload
+		@recipe.hop_utilisation_method = params[:util_method]
+		@recipe.save
+		@recipe.reload
 
-    @recipe.hops.each { |ahop|
-      ahop.weight= hop_weights[ahop.id] if ahop.is_weight_locked?
-    }
-    @recipe.reload
+		@recipe.hops.each { |ahop|
+			ahop.weight= hop_weights[ahop.id] if ahop.is_weight_locked?
+		}
+		@recipe.reload
 
 
 
-    @recipe.mark_update( "Updated hop utilsation method to #{params[:util_method].capitalize}", current_user)
+		@recipe.mark_update( "Updated hop utilsation method to #{params[:util_method].capitalize}", current_user)
 
-    update_details_and_hops( @recipe )
-  end
+		update_details_and_hops( @recipe )
+	end
 
-  def update_no_chill
-    return unless params[:recipe][:hop_cubed]
+	def update_no_chill
+		return unless params[:recipe][:hop_cubed]
 
-    @recipe =  Recipe.find(params[:id])
+		@recipe =  Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-      #      flash[:error] = "Update - permission denied."
-      #      update_details_and_hops( @recipe )
-      notifyattempt(request, "RecipesController.update_hop_utilisation not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)  || !request.xhr?
+			#      flash[:error] = "Update - permission denied."
+			#      update_details_and_hops( @recipe )
+			notifyattempt(request, "RecipesController.update_hop_utilisation not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    #Need to record hop weights prior to the update for case where hops are locked.
-    hop_weights = Hash.new
-    @recipe.hops.each { |ahop|
-      hop_weights[ahop.id] = ahop.weight if (ahop.is_weight_locked?) or (ahop.minutes == 0)
-    }
+		#Need to record hop weights prior to the update for case where hops are locked.
+		hop_weights = Hash.new
+		@recipe.hops.each { |ahop|
+			hop_weights[ahop.id] = ahop.weight if (ahop.is_weight_locked?) or (ahop.minutes == 0)
+		}
 
-    @recipe.hop_cubed = params[:recipe][:hop_cubed]
-    @recipe.save
-    @recipe.reload
+		@recipe.hop_cubed = params[:recipe][:hop_cubed]
+		@recipe.save
+		@recipe.reload
    
-    #We assert original hop weights for items that where locked.
-    @recipe.hops.each { |ahop|
-      ahop.weight= hop_weights[ahop.id] if (ahop.is_weight_locked?) or (ahop.minutes == 0)
-    }
-    @recipe.reload
+		#We assert original hop weights for items that where locked.
+		@recipe.hops.each { |ahop|
+			ahop.weight= hop_weights[ahop.id] if (ahop.is_weight_locked?) or (ahop.minutes == 0)
+		}
+		@recipe.reload
     
 
-    @recipe.mark_update( "Changed no chill status to #{params[:recipe][:hop_cubed].capitalize}", current_user)
+		@recipe.mark_update( "Changed no chill status to #{params[:recipe][:hop_cubed].capitalize}", current_user)
 
-    update_details_and_hops( @recipe )
-  end
-  #
-  #
-  #	def update_hop_ibu
-  #		@recipe =  Recipe.find(params[:id])
-  #
-  #    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-  #      #      flash[:error] = "Update - permission denied."
-  #      #      update_details_and_hops( @recipe )
-  #      notifyattempt(request, "RecipesController.update_hop_ibu not from authorized user: #{current_user}")
-  #      render( :nothing => true )
-  #      return
-  #    end
-  #
-  #		@hop = Hop.find(params[:hop_id])
-  #
-  #		@hop.ibu_l = params[:ibu]
-  #		@hop.save
-  #
-  #		update_details_and_hops( @recipe )
-  #	end
-  #
-  #	def update_hop_weight
-  #		@recipe =  Recipe.find(params[:id])
-  #
-  #    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-  #      #      flash[:error] = "Update - permission denied."
-  #      #      update_details_and_hops( @recipe )
-  #      notifyattempt(request, "RecipesController.update_hop_weight not from authorized user: #{current_user}")
-  #      render( :nothing => true )
-  #      return
-  #    end
-  #
-  #		@hop = Hop.find(params[:hop_id])
-  #
-  #		new_weight = params[:weight]
-  #		new_weight = input_hops_weight( new_weight )
-  #
-  #		@hop.weight = new_weight
-  #		@hop.save
-  #
-  #		update_details_and_hops( @recipe )
-  #	end
-  #
-  #	def update_hop_minutes
-  #		@recipe =  Recipe.find(params[:id])
-  #
-  #    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-  #      #      flash[:error] = "Update - permission denied."
-  #      #      update_details_and_hops( @recipe )
-  #      notifyattempt(request, "RecipesController.update_hop_minutes not from authorized user: #{current_user}")
-  #      render( :nothing => true )
-  #      return
-  #    end
-  #
-  #		@hop = Hop.find(params[:hop_id])
-  #
-  #		new_minutes = params[:minutes]
-  #		new_minutes = -1.0 if new_minutes.upcase.first == "D"  # Convert from dried hop value
-  #
-  #		@hop.minutes = new_minutes
-  #		@hop.save
-  #
-  #		update_details_and_hops( @recipe )
-  #	end
+		update_details_and_hops( @recipe )
+	end
+	#
+	#
+	#	def update_hop_ibu
+	#		@recipe =  Recipe.find(params[:id])
+	#
+	#    if !@recipe.updatable_by?(current_user)  || !request.xhr?
+	#      #      flash[:error] = "Update - permission denied."
+	#      #      update_details_and_hops( @recipe )
+	#      notifyattempt(request, "RecipesController.update_hop_ibu not from authorized user: #{current_user}")
+	#      render( :nothing => true )
+	#      return
+	#    end
+	#
+	#		@hop = Hop.find(params[:hop_id])
+	#
+	#		@hop.ibu_l = params[:ibu]
+	#		@hop.save
+	#
+	#		update_details_and_hops( @recipe )
+	#	end
+	#
+	#	def update_hop_weight
+	#		@recipe =  Recipe.find(params[:id])
+	#
+	#    if !@recipe.updatable_by?(current_user)  || !request.xhr?
+	#      #      flash[:error] = "Update - permission denied."
+	#      #      update_details_and_hops( @recipe )
+	#      notifyattempt(request, "RecipesController.update_hop_weight not from authorized user: #{current_user}")
+	#      render( :nothing => true )
+	#      return
+	#    end
+	#
+	#		@hop = Hop.find(params[:hop_id])
+	#
+	#		new_weight = params[:weight]
+	#		new_weight = input_hops_weight( new_weight )
+	#
+	#		@hop.weight = new_weight
+	#		@hop.save
+	#
+	#		update_details_and_hops( @recipe )
+	#	end
+	#
+	#	def update_hop_minutes
+	#		@recipe =  Recipe.find(params[:id])
+	#
+	#    if !@recipe.updatable_by?(current_user)  || !request.xhr?
+	#      #      flash[:error] = "Update - permission denied."
+	#      #      update_details_and_hops( @recipe )
+	#      notifyattempt(request, "RecipesController.update_hop_minutes not from authorized user: #{current_user}")
+	#      render( :nothing => true )
+	#      return
+	#    end
+	#
+	#		@hop = Hop.find(params[:hop_id])
+	#
+	#		new_minutes = params[:minutes]
+	#		new_minutes = -1.0 if new_minutes.upcase.first == "D"  # Convert from dried hop value
+	#
+	#		@hop.minutes = new_minutes
+	#		@hop.save
+	#
+	#		update_details_and_hops( @recipe )
+	#	end
 
 	#	def change_recipe_type
 	#
@@ -794,24 +785,24 @@ class RecipesController < ApplicationController
 	def add_mash_step
 		@recipe = Recipe.find(params[:id])
 
-    if !(@recipe.mash_steps.size() < 10)
-      flash[:error] = "Add mash step - too many mash steps."
-      render_mashsteps( @recipe )
-      return
-    end
+		if !(@recipe.mash_steps.size() < 10)
+			flash[:error] = "Add mash step - too many mash steps."
+			render_mashsteps( @recipe )
+			return
+		end
 
-    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-      #      flash[:error] = "Add mash step - permission denied."
-      #      render_mashsteps( @recipe )
-      notifyattempt(request, "RecipesController.add_mash_step not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)  || !request.xhr?
+			#      flash[:error] = "Add mash step - permission denied."
+			#      render_mashsteps( @recipe )
+			notifyattempt(request, "RecipesController.add_mash_step not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
 		# Create new hop
 		@mashstep = @recipe.mash_steps.create(:name => 'Sacchrification', :steptype => 'infusion', :time => 60, :temperature => 67.0)
 
-    @recipe.mark_update(  "Mash step added: #{@mashstep.name}", current_user)
+		@recipe.mark_update(  "Mash step added: #{@mashstep.name}", current_user)
 
 		render_mashsteps( @recipe )
 	end
@@ -821,20 +812,20 @@ class RecipesController < ApplicationController
 
 		@mash_step = MashStep.find(params[:mashstep_id])
 
-    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-      #      flash[:error] = "Edit mash step - permission denied."
-      #      render_mashsteps( @recipe )
-      notifyattempt(request, "RecipesController.update_mashstep not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)  || !request.xhr?
+			#      flash[:error] = "Edit mash step - permission denied."
+			#      render_mashsteps( @recipe )
+			notifyattempt(request, "RecipesController.update_mashstep not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
 		@mash_step.attributes = params[:mash_step]
-    # Create log message before conversions applied.
-    msg=""
-    params[:mash_step].each_pair{ |key, value|
-      msg += "#{key.capitalize} => #{value} "
-    }
+		# Create log message before conversions applied.
+		msg=""
+		params[:mash_step].each_pair{ |key, value|
+			msg += "#{key.capitalize} => #{value} "
+		}
 
 
 		#Convert temperature in regards to proper unit.
@@ -843,7 +834,7 @@ class RecipesController < ApplicationController
 
 		@mash_step.save
 
-    @mash_step.recipe.mark_update( "Update mash step: #{msg}", current_user)
+		@mash_step.recipe.mark_update( "Update mash step: #{msg}", current_user)
 
 		render_mashsteps( @recipe)
 
@@ -852,19 +843,19 @@ class RecipesController < ApplicationController
 	def  remove_mashstep
 		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user)  || !request.xhr?
-      #      flash[:error] = "Delete yeast - permission denied."
-      #      render_mashsteps( @recipe )
-      notifyattempt(request, "RecipesController.remove_mashstep not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)  || !request.xhr?
+			#      flash[:error] = "Delete yeast - permission denied."
+			#      render_mashsteps( @recipe )
+			notifyattempt(request, "RecipesController.remove_mashstep not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    mashstep = MashStep.find(params[:mashstep_id])
-    mashstepname = mashstep.name
+		mashstep = MashStep.find(params[:mashstep_id])
+		mashstepname = mashstep.name
 		MashStep.delete(params[:mashstep_id])
 
-    @recipe.mark_update( "Mashstep [#{mashstepname}] removed", current_user)
+		@recipe.mark_update( "Mashstep [#{mashstepname}] removed", current_user)
 
 		render_mashsteps( @recipe)
 	end
@@ -873,25 +864,25 @@ class RecipesController < ApplicationController
 	def add_misc
 		@recipe = Recipe.find(params[:id])
 
-    if !(@recipe.misc_ingredients.size() < 20)
-      flash[:error] = "Add misc - too many misc ingredients."
-      render_misc( @recipe )
-      return
-    end
+		if !(@recipe.misc_ingredients.size() < 20)
+			flash[:error] = "Add misc - too many misc ingredients."
+			render_misc( @recipe )
+			return
+		end
 
 
-    if !@recipe.updatable_by?(current_user) || !request.xhr?
-      #      flash[:error] = "Add misc - permission denied."
-      #      render_misc( @recipe )
-      notifyattempt(request, "RecipesController.add_misc not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user) || !request.xhr?
+			#      flash[:error] = "Add misc - permission denied."
+			#      render_misc( @recipe )
+			notifyattempt(request, "RecipesController.add_misc not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
 		# Create new hop
 		@misc = @recipe.misc_ingredients.create()
 
-    @recipe.mark_update("Misc. ingredient added", current_user)
+		@recipe.mark_update("Misc. ingredient added", current_user)
 
 		render_misc( @recipe )
 	end
@@ -923,40 +914,40 @@ class RecipesController < ApplicationController
 
 		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user) || !request.xhr?
-      #      flash[:error] = "Delete misc - permission denied."
-      #      render_misc( @recipe )
-      notifyattempt(request, "RecipesController.remove_misc not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user) || !request.xhr?
+			#      flash[:error] = "Delete misc - permission denied."
+			#      render_misc( @recipe )
+			notifyattempt(request, "RecipesController.remove_misc not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    ingred = MiscIngredient.find(params[:misc_id])
-    ingredname = ingred.name
+		ingred = MiscIngredient.find(params[:misc_id])
+		ingredname = ingred.name
 		MiscIngredient.delete(params[:misc_id])
 
-    @recipe.mark_update("Misc. ingredient [#{ingredname}] removed", current_user)
+		@recipe.mark_update("Misc. ingredient [#{ingredname}] removed", current_user)
 
 		render_misc( @recipe)
 	end
 
-  def  remove_kit
+	def  remove_kit
 
 		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user) || !request.xhr?
-      #      flash[:error] = "Delete misc - permission denied."
-      #      render_misc( @recipe )
-      notifyattempt(request, "RecipesController.remove_kit not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user) || !request.xhr?
+			#      flash[:error] = "Delete misc - permission denied."
+			#      render_misc( @recipe )
+			notifyattempt(request, "RecipesController.remove_kit not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    kit = Kit.find(params[:kit_id])
-    kitname = kit.kit_type.name
+		kit = Kit.find(params[:kit_id])
+		kitname = kit.kit_type.name
 		Kit.delete(params[:kit_id])
 
-    @recipe.mark_update("Kit [#{kitname}] removed", current_user)
+		@recipe.mark_update("Kit [#{kitname}] removed", current_user)
 
 		update_details_and_kits( @recipe )
 	end
@@ -966,13 +957,13 @@ class RecipesController < ApplicationController
 	def clone
 		logger.debug( current_user )
 
-    if current_user.guest?
-      #      flash[:error] = "Delete misc - permission denied."
-      #      render_misc( @recipe )
-      notifyattempt(request, "RecipesController.clone as guest user")
-      render( :nothing => true )
-      return
-    end
+		if current_user.guest?
+			#      flash[:error] = "Delete misc - permission denied."
+			#      render_misc( @recipe )
+			notifyattempt(request, "RecipesController.clone as guest user")
+			render( :nothing => true )
+			return
+		end
 
 		@recipe = Recipe.find(params[:id])
 		logger.debug( @recipe.user )
@@ -1001,135 +992,135 @@ class RecipesController < ApplicationController
 
 	end
 
-  def del_recipe
-    @recipe = Recipe.find(params[:id])
+	def del_recipe
+		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user)
-      #      flash[:error] = "Edit mash step - permission denied."
-      #      render_mashsteps( @recipe )
-      notifyattempt(request, "RecipesController.update_mashstep not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user)
+			#      flash[:error] = "Edit mash step - permission denied."
+			#      render_mashsteps( @recipe )
+			notifyattempt(request, "RecipesController.update_mashstep not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    @recipe.destroy
+		@recipe.destroy
 
-    @recipe = nil  #Ensure that "after" processing is not attempted.
+		@recipe = nil  #Ensure that "after" processing is not attempted.
 
-    redirect_to "/"
+		redirect_to "/"
 
-  end
+	end
 
-  def add_shared_user
+	def add_shared_user
 
 		@recipe = Recipe.find(params[:id])
 
-    if !@recipe.updatable_by?(current_user) or !request.xhr? or !@recipe.is_owner?(current_user)
-      #      flash[:error] = "Delete misc - permission denied."
-      #      render_misc( @recipe )
-      notifyattempt(request, "RecipesController.validate_shared_user not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user) or !request.xhr? or !@recipe.is_owner?(current_user)
+			#      flash[:error] = "Delete misc - permission denied."
+			#      render_misc( @recipe )
+			notifyattempt(request, "RecipesController.validate_shared_user not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-    #Check that names have been added.
-    unless params[:users_to_add]
-      render( :nothing => true )
-      return
-    end
+		#Check that names have been added.
+		unless params[:users_to_add]
+			render( :nothing => true )
+			return
+		end
     
-    #Parse user string
-    names = params[:users_to_add].split(",")
+		#Parse user string
+		names = params[:users_to_add].split(",")
 
-    error_list = ""
+		error_list = ""
 
-    #Process user string
-    names.each { |name|
-      #Find user if they exist.
-      user = User.find_by_name( name.strip )
-      if( user )
-        # Add to shared list.
-        @recipe.add_to_shared( user )
-      else
-        # Unknown username
-        error_list = error_list + "Unknown user: <b>#{name}</b>\n"
-      end
-    }
+		#Process user string
+		names.each { |name|
+			#Find user if they exist.
+			user = User.find_by_name( name.strip )
+			if( user )
+				# Add to shared list.
+				@recipe.add_to_shared( user )
+			else
+				# Unknown username
+				error_list = error_list + "Unknown user: <b>#{name}</b>\n"
+			end
+		}
   
-    update_shared_users( @recipe, error_list )
-  end
+		update_shared_users( @recipe, error_list )
+	end
 
-  #Refresh the recipe if it has been edited
-  def check_shared_updates
-    @recipe = Recipe.find(params[:id])
-    @last_refreshed = Time.at( params[:last_refreshed].to_i )
-    #last_time = session["last_refeshed_#{@recipe.id}"]
-    #last_time = Time.now unless last_time
-    #@last_refreshed = Time.at( last_time.to_i )
+	#Refresh the recipe if it has been edited
+	def check_shared_updates
+		@recipe = Recipe.find(params[:id])
+		@last_refreshed = Time.at( params[:last_refreshed].to_i )
+		#last_time = session["last_refeshed_#{@recipe.id}"]
+		#last_time = Time.now unless last_time
+		#@last_refreshed = Time.at( last_time.to_i )
 
-    logger.debug "++check_shared_updates: last refeshed: #{@last_refreshed}"
+		logger.debug "++check_shared_updates: last refeshed: #{@last_refreshed}"
 
-    if @recipe.is_dirty?( @last_refreshed ) then
-      #Refresh all the recipe data.
+		if @recipe.is_dirty?( @last_refreshed ) then
+			#Refresh all the recipe data.
 
-      logger.debug "++check_shared_updates: Page dirty, refreshing for user: #{current_user} recipe: #{@recipe}"
+			logger.debug "++check_shared_updates: Page dirty, refreshing for user: #{current_user} recipe: #{@recipe}"
 
-      #session["last_refeshed_#{@recipe.id}"] = Time.now.to_i
+			#session["last_refeshed_#{@recipe.id}"] = Time.now.to_i
 
-      update_all( @recipe )
+			update_all( @recipe )
 
 
-    else
+		else
       
-      if (@last_refreshed < 10.minutes.ago) then
-        update_shared_users( @recipe )  #Updated the online status of the shared users
-      else
-        render( :nothing => true )
-      end
+			if (@last_refreshed < 10.minutes.ago) then
+				update_shared_users( @recipe )  #Updated the online status of the shared users
+			else
+				render( :nothing => true )
+			end
       
       
-    end
+		end
 
-    @recipe = nil #Ensures that last_viewed callback does not updated the last viewed date.
-  end
+		@recipe = nil #Ensures that last_viewed callback does not updated the last viewed date.
+	end
 
-  def add_shared_log_message
-    @recipe = Recipe.find(params[:id])
+	def add_shared_log_message
+		@recipe = Recipe.find(params[:id])
 
-    #return unless @recipe
-    #return unless @recipe.is_shared?
+		#return unless @recipe
+		#return unless @recipe.is_shared?
 
-    if !@recipe.updatable_by?(current_user) or !@recipe.is_shared?
-      notifyattempt(request, "RecipesController.add_shared_log_mesage not from authorized user: #{current_user}")
-      render( :nothing => true )
-      return
-    end
+		if !@recipe.updatable_by?(current_user) or !@recipe.is_shared?
+			notifyattempt(request, "RecipesController.add_shared_log_mesage not from authorized user: #{current_user}")
+			render( :nothing => true )
+			return
+		end
 
-     @recipe.mark_update(params[:message], current_user, "User comment")
+		@recipe.mark_update(params[:message], current_user, "User comment")
 
-    update_shared_log( @recipe )
+		update_shared_log( @recipe )
     
-  end
+	end
 
-  private
+	private
 
-  def last_viewed_status
-    logger.debug "++last_view_status filter called"
+	def last_viewed_status
+		logger.debug "++last_view_status filter called"
 
-    return unless @recipe
-    return if @recipe.frozen?   # Check for a record that has just been deleted.
+		return unless @recipe
+		return if @recipe.frozen?   # Check for a record that has just been deleted.
 
-    if @recipe.is_owner?(current_user) then
-      logger.debug "++last_view_status owner viewed"
-      @recipe.last_viewed = Time.now()
-      @recipe.save
-    end
+		if @recipe.is_owner?(current_user) then
+			logger.debug "++last_view_status owner viewed"
+			@recipe.last_viewed = Time.now()
+			@recipe.save
+		end
 
-    if @recipe.is_sharer?(current_user) then
-      @recipe.sharer_viewed( current_user )
-    end
+		if @recipe.is_sharer?(current_user) then
+			@recipe.sharer_viewed( current_user )
+		end
     
-  end
+	end
 
 
 
