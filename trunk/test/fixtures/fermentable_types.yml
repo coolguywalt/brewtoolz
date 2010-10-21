@@ -1,6 +1,5 @@
 --- 
 fermentable_type_8: 
-  ingredient_supplier_id: 1
   name: Wheat Malt
   updated_at: 2008-04-28 18:52:31
   fullyfermentable: "0"
@@ -20,7 +19,6 @@ fermentable_type_8:
   converted: "0"
   created_at: 2008-04-28 18:52:31
 ale_malt: 
-  ingredient_supplier_id: 3
   name: Ale malt US 2 row
   updated_at: 2008-04-28 18:50:31
   fullyfermentable: "0"
@@ -41,7 +39,6 @@ fermentable_type_9:
   converted: "1"
   created_at: 2008-04-28 18:55:55
 wheat_malt: 
-  ingredient_supplier_id: 3
   name: Wheat Malt
   updated_at: 2008-04-28 18:50:31
   fullyfermentable: "0"
@@ -82,7 +79,6 @@ fermentable_type_2:
   converted: "0"
   created_at: 2008-04-23 22:25:47
 roast_barely: 
-  ingredient_supplier_id: 3
   name: Ale malt US 2 row
   updated_at: 2008-04-28 18:50:31
   fullyfermentable: "0"
@@ -93,7 +89,6 @@ roast_barely:
   converted: "0"
   created_at: 2008-04-28 18:49:05
 fermentable_type_12: 
-  ingredient_supplier_id: 4
   name: Dark Crystal
   updated_at: 2008-04-28 19:05:52
   fullyfermentable: "0"
@@ -104,7 +99,6 @@ fermentable_type_12:
   converted: "1"
   created_at: 2008-04-28 19:05:52
 fermentable_type_4: 
-  ingredient_supplier_id: 1
   name: Vienna Malt
   updated_at: 2008-04-28 18:41:16
   fullyfermentable: "0"
@@ -132,7 +126,6 @@ fermentable_type_13:
   converted: "1"
   created_at: 2008-04-28 19:06:31
 fermentable_type_5: 
-  ingredient_supplier_id: 2
   name: Pilsner Malt
   updated_at: 2008-04-28 18:46:05
   fullyfermentable: "0"
@@ -143,7 +136,6 @@ fermentable_type_5:
   converted: "0"
   created_at: 2008-04-28 18:46:05
 fermentable_type_6: 
-  ingredient_supplier_id: 1
   name: Munich Malt
   updated_at: 2008-04-28 18:48:05
   fullyfermentable: "0"

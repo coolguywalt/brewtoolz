@@ -42,6 +42,7 @@ recipe_12:
   created_at: 2008-04-29 21:22:44
 recipe_1: 
   name: Dry Irish Stout
+  hop_utilisation_method: tinseth
   efficency: "70"
   updated_at: 2008-08-31 22:51:48
   style_id: 4
@@ -451,6 +452,17 @@ recipe_11:
   style_id: 48
   genealogy: ""
   id: 11
+  description: First go at a Russian imperial stout ... yay
+  volume: "19"
+  user_id: 2
+  created_at: 2008-04-17 23:24:07
+nochill_recipe:
+  name: Tzar-hazar
+  updated_at: 2008-05-07 23:39:28
+  style_id: 48
+  genealogy: ""
+  id: 1011
+  hop_cubed: true
   description: First go at a Russian imperial stout ... yay
   volume: "19"
   user_id: 2

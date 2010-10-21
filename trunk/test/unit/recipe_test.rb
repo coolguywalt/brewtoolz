@@ -17,7 +17,7 @@ class RecipeTest < ActiveSupport::TestCase
      recipe = recipes(:nochill_recipe)
      hop_type = hop_types(:fuggles)
      #add hop
-     @hop = recipe.hops.create(:hop_type => @hop_type, :ibu_l => 10.0, :minutes => 60, :aa => @hop_type.aa)
+     @hop = recipe.hops.create(:hop_type => hop_type, :ibu_l => 10.0, :minutes => 60, :aa => hop_type.aa)
 
     assert_equal 10.0, @hop.ibu_l
   end

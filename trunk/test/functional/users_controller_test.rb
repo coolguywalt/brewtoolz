@@ -13,7 +13,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_nil @request.session[:user]
     get :login
     user = users(:slarti)
-    post :login, :login => user.username, :password => 'slarti'
+    post :login, :login => user.name, :password => 'slarti'
     assert_not_nil @request.session[:user]
   end
   
@@ -21,7 +21,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_nil @request.session[:user] # = 1 # users(username).id
     get :login
     user = users(:slarti)
-    post :login, :login => user.username, :password => 'wrong'
+    post :login, :login => user.name, :password => 'wrong'
     assert_nil @request.session[:user]
   end
 end
