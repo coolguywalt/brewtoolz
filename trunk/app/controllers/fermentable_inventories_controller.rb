@@ -24,8 +24,7 @@ class FermentableInventoriesController < ApplicationController
 
 
   def index
-    hobo_index FermentableInventory.viewable(current_user).apply_scopes(:search => [params[:search],:name,:comment,:location],
-      :order_by => parse_sort_param(:name,:location,:source_date) )
+    hobo_index FermentableInventory.viewable_search(current_user, params[:search]).apply_scopes(:order_by => parse_sort_param(:name,:location,:source_date) )
 
     #@fermentable_types = FermentableType.paginate( :order => 'name', :page => params[:page], :per_page => 100 )
 

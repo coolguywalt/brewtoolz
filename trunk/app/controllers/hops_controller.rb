@@ -92,7 +92,7 @@ class HopsController < ApplicationController
 				redirect unless @hop.update_permitted?
 			end
 		else
-			render :action => 'edit'
+			update_errors
 		end
 	end
 

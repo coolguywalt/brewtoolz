@@ -7,7 +7,7 @@
 
   <collection: replace>
     <div>
-      <table-plus fields="this,amount,storage_type,location,label,source_date,age">
+      <table-plus fields="this,amount,storage_type,location,label,source_date,age"  without-search-form>
         <age-view:> <%= distance_of_time_in_words(this, Time.zone.now) if this %> </age-view:>
         <controls:>
           <a action="edit">Edit</a>

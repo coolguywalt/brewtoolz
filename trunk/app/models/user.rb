@@ -23,14 +23,20 @@ class User < ActiveRecord::Base
 		name :string, :unique, :login => true, :name => true
 		email_address :email_address
 		administrator :boolean, :default => false
-    default_locked_recipes :boolean, :default => false
-    last_activity :integer
+		default_locked_recipes :boolean, :default => false
+		last_activity :integer
 		timestamps
 	end
 
 	has_many :recipes
 	has_many :breweries  # a user can have more that one brewery setup.
 	has_one :ingredient_unit_preference
+
+	has_many :fermentable_inventories
+	has_many :hops_inventories
+	has_many :kit_inventories
+	has_many :yeast_inventories
+	has_many :fermentable_inventory_items, :through => :fermentable_inventories, :source => :fermentable_type
 
 	# This gives admin rights to the first sign-up.
 	# Just remove it if you don't want that
@@ -81,8 +87,8 @@ class User < ActiveRecord::Base
 		return false if ((attribute ==  :administrator) && !acting_user.administrator? )
 		return false if ((attribute ==  :name) && !acting_user.administrator? )
 
-	  (acting_user == self  or acting_user.administrator?)
-  end
+		(acting_user == self  or acting_user.administrator?)
+	end
 
 	def get_default_brewery
 		breweries.each do |abrewery|
@@ -113,9 +119,9 @@ class User < ActiveRecord::Base
 	end
 
 
-  def is_online?
-    return false unless last_activity
-    return (10.minutes.ago.to_i < last_activity)
-  end
+	def is_online?
+		return false unless last_activity
+		return (10.minutes.ago.to_i < last_activity)
+	end
 
 end

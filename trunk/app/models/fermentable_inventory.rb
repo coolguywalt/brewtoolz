@@ -20,10 +20,12 @@ class FermentableInventory < ActiveRecord::Base
 
   has_many :fermentable_inventory_log_entries, :dependent => :destroy
 
+  named_scope :viewable, lambda {|acting_user| {:include => :fermentable_type, :conditions => {:user_id => "#{acting_user.id}"} } }
 
-
-  named_scope :viewable, lambda {|acting_user| {:conditions => {:user_id => "#{acting_user.id}" } } }
-
+  # The following scope is required to support search on the associated fermentable_type.name attribute and the limitations of the
+  # hobonet table-plus search capabilities.
+   named_scope :viewable_search, lambda {|acting_user, search| {:include => :fermentable_type,
+      :conditions => "(fermentable_inventories.user_id = #{acting_user.id}) AND ((fermentable_types.name LIKE \'%#{search}%\') OR (comment LIKE \'%#{search}%\'))" } }
   validates_presence_of :fermentable_type
   validates_numericality_of :amount, :greater_than_or_equal_to => 0.0
   
@@ -79,4 +81,12 @@ class FermentableInventory < ActiveRecord::Base
     write_attribute( :amount, adjusted_amount )
 
   end
+
+  def fermentable_selections( user )
+
+
+
+  end
+
+
 end

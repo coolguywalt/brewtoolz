@@ -8,7 +8,7 @@
   <collection: replace>
     <div>
       <% hop_units = hop_weight_units %>
-      <table-plus fields="this,amount,location,label,aa,hop_form,source_date,age">
+      <table-plus fields="this,amount,location,label,aa,hop_form,source_date,age" without-search-form>
         <amount-heading:>Amount[<%= hop_units %>]</amount-heading:>
         <aa-heading:>AA%</aa-heading:>
         <age-view:> <%= distance_of_time_in_words(this, Time.zone.now) if this %> </age-view:>

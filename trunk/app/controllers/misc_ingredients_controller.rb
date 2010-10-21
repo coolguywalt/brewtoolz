@@ -69,7 +69,7 @@ class MiscIngredientsController < ApplicationController
 				redirect unless @fermentable.update_permitted?
 			end
 		else
-			render :action => 'edit'
+			update_errors
 		end
 	end
 end
