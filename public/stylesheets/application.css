@@ -315,7 +315,7 @@ body {
 .scroll-table-wrap-div {
     margin-top: 5px;
     margin-bottom: 10px;
-    float: left;
+    /* float: left; */
     height: 200px;
     overflow: hidden;
     padding: 18px 0px 0px;
@@ -347,6 +347,7 @@ table.scroll-table thead tr th p {
     padding: 20px 0px 20px 0px;
 }
 
-.tab {
-    min-height: 400px
+.recipetabs .ui-tabs-panel
+{
+    min-height: 520px
 }
