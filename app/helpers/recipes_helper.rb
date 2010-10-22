@@ -617,8 +617,8 @@ module RecipesHelper
 
 		render( :inline => %{
     <% form_remote_for( item,
-          :url => action_url, :html => {:id => "lock_#{item.id}"}  #{show_ajax_indicator ? ', :loading => "Hobo.showSpinner(\"Processing ...\");", :complete => "Hobo.hideSpinner();"': ''}  ) do |f|%>
-          <%= f.check_box field_name, :onclick => "$('lock_#{item.id}').onsubmit();" #{is_disabled ? ', :disabled => "disabled"' : ''}  %>
+          :url => action_url, :html => {:id => "#{field_name}_#{item.id}"}  #{show_ajax_indicator ? ', :loading => "Hobo.showSpinner(\"Processing ...\");", :complete => "Hobo.hideSpinner();"': ''}  ) do |f|%>
+          <%= f.check_box field_name, :onclick => "$('#{field_name}_#{item.id}').onsubmit();" #{is_disabled ? ', :disabled => "disabled"' : ''}  %>
     <% end %>
 			}, :locals => {:action_url => action_url, :item => item, :field_name => field_name } )
    
