@@ -21,8 +21,9 @@
   <%= render :partial => 'shared/recipe_lock_all', :object => recipe_edit %>
 </div>
 
-<div id="menu">
   <br/>
+  
+<div id="menu">
 
   <script type="text/javascript">
     jQuery(function() {
