@@ -821,7 +821,7 @@ module RecipesHelper
 
 	def update_search_results( recipes )
 
-		logger.debug "++update_search_results: recipes #{recipes.count()}"
+		logger.debug "++update_search_results: recipes #{recipes.size()}"
 		styles_array = session[:recipeStyleSelection]
 		cats = ordered_category_list()
 
