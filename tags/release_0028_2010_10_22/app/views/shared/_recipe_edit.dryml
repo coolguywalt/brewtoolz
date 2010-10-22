@@ -1,0 +1,90 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<div class="block" id="lock_all_div">
+  <%= render :partial => 'shared/recipe_lock_all', :object => recipe_edit %>
+</div>
+
+<div id="menu">
+  <br/>
+
+  <script type="text/javascript">
+    jQuery(function() {
+      jQuery("#recipetabsdiv").tabs( { cache: true } );
+    });
+  </script>
+
+
+  <div id="recipetabsdiv" class="recipetabs" >
+    <ul>
+      <li><a href="#fermentables_div"><span>Fermentables</span></a></li>
+      <li><a href="loadkitstab"><span>Kits</span></a></li>
+      <li><a href="loadhopstab"><span>Hops</span></a></li>
+      <li><a href="loadyeaststab"><span>Yeast</span></a></li>
+      <li><a href="#misc_div"><span>Misc</span></a></li>
+      <li><a href="#mashprofile_div"><span>Mash Profile</span></a></li>
+      <li><a href="#sharededit_div"><span>Shared</span></a></li>
+    </ul>
+
+
+    <div id="fermentables_div">
+      <br/>
+      <div id="fermentables_items_div">
+        <%= render :partial => 'shared/recipe_edit_fermentables', :object => recipe_edit %>
+      </div>
+      <div id="fermentables_list_div">
+        <%= render :partial => 'shared/recipe_edit_fermentables_list', :object => recipe_edit %>
+      </div>
+    </div>
+
+    <div id="misc_div">
+      <div id="misc_items_div"  class="tab">
+        <br/>
+        <%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
+      </div>
+      <%= link_to_remote "Add misc",
+        :loading => "Hobo.showSpinner('Adding Misc Item');",
+        :complete => "Hobo.hideSpinner();",
+        :url => { :controller => "recipes", :action => "add_misc", :id => recipe_edit.id  },
+        :html => { :class => 'button small-button' } %>
+      <br/><br/>
+    </div>
+
+    <div id="mashprofile_div">
+      <div class="tab">
+        <br/>
+        <div id="mashprofile_items_div">
+          <%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
+        </div>
+        <div>
+          <%= render :partial => 'shared/recipe_edit_mashprofile_list', :object => recipe_edit %>
+        </div>
+      </div>
+    </div>
+
+    <div id="sharededit_div">
+      <if test="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)">
+        <div class="tab">
+          <%= render :partial => 'shared/recipe_edit_multiuser', :object => recipe_edit %>
+        </div>
+      </if>
+    </div>
+
+  </div>
+</div>

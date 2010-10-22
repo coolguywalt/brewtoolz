@@ -1,0 +1,54 @@
+<page title="Tools">
+
+  <body: class="front-page"/>
+
+  <content:>
+
+    <div id="tools_errors_div" ></div>
+
+    <div id="refract_tool_div" class="<%= (params.has_key?('yeast') or params.has_key?('dilution')) ? 'hidden' : '' %>">
+      <%= render :partial => 'refract_alc' %>
+    </div>
+
+    <div id="yeast_pitch_tool_div" class="<%= params.has_key?('yeast') ? '' : 'hidden' %>">
+      <%= render :partial => 'yeast_pitch'%>
+    </div>
+
+        <div id="dilution_tool_div" class="<%= params.has_key?('dilution') ? '' : 'hidden' %>">
+      <%= render :partial => 'dilution_tool'%>
+    </div>
+  </content:>
+
+
+  <aside-left:>
+    <h2>Tools</h2>
+    <a href="javascript:void(0);" onclick="Hobo.show('refract_tool_div');Hobo.hide('yeast_pitch_tool_div');Hobo.hide('dilution_tool_div');return false;">Refractometer Tool</a><br/>
+    <a href="javascript:void(0);" onclick="Hobo.hide('refract_tool_div');Hobo.show('yeast_pitch_tool_div');Hobo.hide('dilution_tool_div');return false;">Yeast Pitch Tool</a><br/>
+    <a href="javascript:void(0);" onclick="Hobo.hide('refract_tool_div');Hobo.hide('yeast_pitch_tool_div');Hobo.show('dilution_tool_div');return false;">Dilution Tool</a><br/>
+  </aside-left:>
+
+
+</page>
+
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+
+
+
