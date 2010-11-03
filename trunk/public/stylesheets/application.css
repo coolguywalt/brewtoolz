@@ -47,12 +47,13 @@ div h1.app-name a {
 }
 
 .title-heading {
-    position:absolute;
+    /* position:absolute; */
 
     /* top:-52px; */
-    left:100px;
-    top:24px;
+    /* left:100px; */
+    padding-top:18px;
     line-height: 50px;
+	text-align: center;
 }
 
 div.banner_img {
@@ -61,7 +62,7 @@ div.banner_img {
 }
 
 .main-nav {
-    padding: 0 0 0 92px;
+    padding: 0 0 0 250px;
 }
 
 .page-header {
@@ -107,7 +108,7 @@ pre {
 
 
 table.item-list {
-    width: 100%;
+    width: 99%;
     border-spacing: 1px;
     /* overflow: auto; */
 }
@@ -253,7 +254,7 @@ body {
     list-style-position:outside;
     list-style-type:none;
     margin-left:0;
-    margin-right: 10px;
+    margin-right: 1px;
 
 }
 
