@@ -1,6 +1,7 @@
 <page title="Home">
 
   <body: class="front-page"/>
+  <title:>Brewtoolz</title:>
 
   <content:>
     <h1><i>The online brewing manager, logger and recipe designer.</i></h1><br/>
@@ -11,7 +12,6 @@
       </div>
     </if>
     <else>
-      <img src="/images/beer_equation_s.png" />
       <%= render :partial => 'guest' %>
     </else>
 

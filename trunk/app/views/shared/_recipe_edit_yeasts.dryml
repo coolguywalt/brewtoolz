@@ -17,16 +17,16 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 <div id="yeasts_content_div">
-<br/>
+	<br/>
 
     <div id="yeast_items_div">
-      <%= render :partial => 'shared/recipe_edit_yeast_items', :object => recipe_edit_yeasts %>
+		<%= render :partial => 'shared/recipe_edit_yeast_items', :object => recipe_edit_yeasts %>
     </div>
 
-<br/>
+	<br/>
 
     <div>
-      <%= render :partial => 'shared/recipe_edit_yeasts_list', :object => recipe_edit_yeasts %>
+		<%= render :partial => 'shared/recipe_edit_yeasts_list', :object => recipe_edit_yeasts %>
     </div>
 
 </div>

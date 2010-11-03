@@ -24,7 +24,7 @@
 
 <span id="<%=id_prefix%>_show" onclick="Element.show('<%=id_prefix%>_edit');Element.hide('<%=id_prefix%>_show');">
   <span class="input-hl" id="<%=id_prefix%>_s"><%= value_display_str %></span>
-  <a onlcick="Element.show('<%=id_prefix%>_edit');Element.hide('<%=id_prefix%>_show');" class="small-button button">+</a>
+  <a onlcick="Element.show('<%=id_prefix%>_edit');Element.hide('<%=id_prefix%>_show');" class="ui-state-default ui-corner-all small-button">+</a>
 </span>
 
 <span id="<%=id_prefix%>_edit" style="display:none;" >
@@ -39,8 +39,8 @@
 					<%= f.text_field field_name, :value => value_str, :size => 3, :id =>"#{id_prefix}_e" %>
 
 
-					<%= submit_tag "Ok", :class => "button small-button", :id => "ok_#{id_prefix}" %>
-					<button class="button small-button" onclick="Element.hide('<%=id_prefix%>_edit');Element.show('<%=id_prefix%>_show');return false">X</button>
+					<%= submit_tag "Ok", :class => "ui-state-default ui-corner-all small-button", :id => "ok_#{id_prefix}" %>
+					<button class="ui-state-default ui-corner-all small-button" onclick="Element.hide('<%=id_prefix%>_edit');Element.show('<%=id_prefix%>_show');return false">X</button>
 
 
 			    <% end %>

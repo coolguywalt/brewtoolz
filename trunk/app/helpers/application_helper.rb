@@ -130,7 +130,6 @@ module ApplicationHelper
 	end
 
 	def brewers_recipes_paginated( user, filter=nil )
-
 		conditions = "(user_id = #{user.id}) AND (#{$PRIMARY_RECIPE_FILTER})"
 		filter_param = nil
 		
