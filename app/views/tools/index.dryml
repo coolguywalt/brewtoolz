@@ -1,31 +1,31 @@
 <page title="Tools">
 
-  <body: class="front-page"/>
+	<body: class="front-page"/>
 
-  <content:>
+	<content:>
 
-    <div id="tools_errors_div" ></div>
+		<div id="tools_errors_div" ></div>
 
-    <div id="refract_tool_div" class="<%= (params.has_key?('yeast') or params.has_key?('dilution')) ? 'hidden' : '' %>">
-      <%= render :partial => 'refract_alc' %>
-    </div>
+		<div id="refract_tool_div" class="<%= (params.has_key?('yeast') or params.has_key?('dilution')) ? 'hidden' : '' %>">
+			<%= render :partial => 'refract_alc' %>
+		</div>
 
-    <div id="yeast_pitch_tool_div" class="<%= params.has_key?('yeast') ? '' : 'hidden' %>">
-      <%= render :partial => 'yeast_pitch'%>
-    </div>
+		<div id="yeast_pitch_tool_div" class="<%= params.has_key?('yeast') ? '' : 'hidden' %>">
+			<%= render :partial => 'yeast_pitch'%>
+		</div>
 
         <div id="dilution_tool_div" class="<%= params.has_key?('dilution') ? '' : 'hidden' %>">
-      <%= render :partial => 'dilution_tool'%>
-    </div>
-  </content:>
+			<%= render :partial => 'dilution_tool'%>
+		</div>
+	</content:>
 
 
-  <aside-left:>
-    <h2>Tools</h2>
-    <a href="javascript:void(0);" onclick="Hobo.show('refract_tool_div');Hobo.hide('yeast_pitch_tool_div');Hobo.hide('dilution_tool_div');return false;">Refractometer Tool</a><br/>
-    <a href="javascript:void(0);" onclick="Hobo.hide('refract_tool_div');Hobo.show('yeast_pitch_tool_div');Hobo.hide('dilution_tool_div');return false;">Yeast Pitch Tool</a><br/>
-    <a href="javascript:void(0);" onclick="Hobo.hide('refract_tool_div');Hobo.hide('yeast_pitch_tool_div');Hobo.show('dilution_tool_div');return false;">Dilution Tool</a><br/>
-  </aside-left:>
+	<aside-left:>
+		<h2>Tools</h2>
+		<a href="javascript:void(0);" onclick="Hobo.show('refract_tool_div');Hobo.hide('yeast_pitch_tool_div');Hobo.hide('dilution_tool_div');return false;">Refractometer Tool</a><br/>
+		<a href="javascript:void(0);" onclick="Hobo.hide('refract_tool_div');Hobo.show('yeast_pitch_tool_div');Hobo.hide('dilution_tool_div');return false;">Yeast Pitch Tool</a><br/>
+		<a href="javascript:void(0);" onclick="Hobo.hide('refract_tool_div');Hobo.hide('yeast_pitch_tool_div');Hobo.show('dilution_tool_div');return false;">Dilution Tool</a><br/>
+	</aside-left:>
 
 
 </page>

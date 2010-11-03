@@ -18,9 +18,7 @@
 -->
 
 <div id="fermentable_items" >
-  <div class="scroll-table-wrap-div">
-    <div class="scroll-table-inner-div" >
-      <table id="fermentables_list" class="scroll-table item-list">
+      <table id="fermentables_list" class="item-list">
         <thead><tr>
         <th><b><p>Locked</p></b></th>
         <th><b><p>Type</p></b></th>
@@ -39,12 +37,10 @@
             <td id="fp_per_#{this.id}"><%= percentage(this.percentage_points * 100) %></td>
             <td><%= ajax_weight_editor(this) %></td>
             <td id="fw_per_#{this.id}"><%= percentage(this.percentage_weight * 100) %></td>
-            <td><%= del_fermentable_link(this) %></td>
+            <td><div ><%= del_fermentable_link(this) %></div></td>
           </tr>
         </repeat>
         </tbody>
         <!-- %= render :partial => 'fermentable', :collection => recipe_fermentable_list(@recipe) % -->
       </table>
     </div>
-  </div>
-</div>

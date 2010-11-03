@@ -535,11 +535,11 @@ module RecipesHelper
 	end
 
 	def del_fermentable_link(fermentable)
-		link_to_remote( "Delete",
+		link_to_remote( "Del",
 			:loading => "Hobo.showSpinner('Delete Fermentable');",
 			:complete => "Hobo.hideSpinner();",
 			:url => { :controller => "recipes", :action => "remove_fermentable", :id => fermentable.recipe.id, :comment => fermentable.id  },
-			:html => { :class => 'button small-button' }  )
+		    :html => { :class => "del_button" } )
 	end
 
 	def ajax_aa_editor( hop )
@@ -643,19 +643,19 @@ module RecipesHelper
 
 
 	def del_hop_link(hop)
-		link_to_remote( "Delete",
+		link_to_remote( "Del",
 			:loading => "Hobo.showSpinner('Delete Hops');",
 			:complete => "Hobo.hideSpinner();",
 			:url => {  :controller => "recipes", :action => :remove_hop, :id => hop.recipe.id, :hop_id => hop.id  },
-			:html => { :class => 'button small-button' }     )
+			:html => { :class => 'del_button' }     )
 	end
 
 	def del_kit_link(kit)
-		link_to_remote( "Delete",
+		link_to_remote( "Del",
 			:loading => "Hobo.showSpinner('Delete Kit');",
 			:complete => "Hobo.hideSpinner();",
 			:url => {  :controller => "recipes", :action => :remove_kit, :id => kit.recipe.id, :kit_id => kit.id  },
-			:html => { :class => 'button small-button' }     )
+			:html => { :class => 'del_button' }     )
 	end
 
 	def del_shared_user_link(recipe, shared_user)
@@ -676,11 +676,11 @@ module RecipesHelper
 	end
 
 	def del_yeast_link(yeast)
-		link_to_remote( "Delete",
+		link_to_remote( "Del",
 			:loading => "Hobo.showSpinner('Delete Yeast');",
 			:complete => "Hobo.hideSpinner();",
 			:url => {  :controller => "recipes", :action => "remove_yeast", :id => yeast.recipe.id, :yeast_id => yeast.id  },
-			:html => { :class => 'button small-button' }   )
+			:html => { :class => 'del_button' }   )
 	end
 
 	def del_mashstep_link(mashstep)

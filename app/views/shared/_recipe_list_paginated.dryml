@@ -21,21 +21,17 @@
   <div class="ie">
 <![endif]-->
 
-<table><tr>
-		<td>
-			<%= will_paginate recipe_list_paginated, :params => {:controller => "front", :action => "paginate_brewers_recipe_list"}%>
-		</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>
-			<% form_remote_tag( :url => {:controller => :front, :action => 'search_brewers_recipes' },
-				:before    =>"Hobo.showSpinner('Updating list ...')" ,
-				:complete  =>"Hobo.hideSpinner()" ) do %>
-				<b>Search:&nbsp;</b>
-				<%= text_field_tag 'brewers_recipe_filter', session[:brewersRecipeFilter], :size => 12%> 	<%= submit_tag "Search" %><br/>
-			<% end  %>
-		</td>
-	</tr></table>
-<table class="item-list" >
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('#recipesListTable').dataTable( {
+			"sPaginationType": "full_numbers"
+		} );
+	} );
+</script>
+
+<table class="item-list" id="recipesListTable" >
 	<thead>
         <tr><th><p>Name</p></th><th><p>Style</p></th><th><p>Rating</p></th><th><p>Actions</p></th></tr>
 	</thead>

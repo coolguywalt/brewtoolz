@@ -18,74 +18,80 @@
 -->
 
 <div class="block" id="lock_all_div">
-  <%= render :partial => 'shared/recipe_lock_all', :object => recipe_edit %>
+	<%= render :partial => 'shared/recipe_lock_all', :object => recipe_edit %>
 </div>
 
-  <br/>
-  
+<br/>
+
 <div id="menu">
 
-  <script type="text/javascript">
-    jQuery(function() {
-      jQuery("#recipetabsdiv").tabs( { cache: true } );
-    });
-  </script>
+	<script type="text/javascript">
+		jQuery(function() {
+			jQuery("#recipetabsdiv").tabs( { cache: true } );
+			jQuery( "button, a", ".buttons" ).button();
+			jQuery( ".del_button" ).button( );
+			jQuery( ".plus_button" ).button( { icons: {primary: "ui-icon-circle-plus"} });
+		});
+	</script>
 
 
-  <div id="recipetabsdiv" class="recipetabs" >
-    <ul>
-      <li><a href="#fermentables_div"><span>Fermentables</span></a></li>
-      <li><a href="loadkitstab"><span>Kits</span></a></li>
-      <li><a href="loadhopstab"><span>Hops</span></a></li>
-      <li><a href="loadyeaststab"><span>Yeast</span></a></li>
-      <li><a href="#misc_div"><span>Misc</span></a></li>
-      <li><a href="#mashprofile_div"><span>Mash Profile</span></a></li>
-      <li><a href="#sharededit_div"><span>Shared</span></a></li>
-    </ul>
+	<div id="recipetabsdiv" class="recipetabs" >
+		<ul>
+			<li><a href="#fermentables_div"><span>Fermentables</span></a></li>
+			<li><a href="loadkitstab"><span>Kits</span></a></li>
+			<li><a href="loadhopstab"><span>Hops</span></a></li>
+			<li><a href="loadyeaststab"><span>Yeast</span></a></li>
+			<li><a href="#misc_div"><span>Misc</span></a></li>
+			<li><a href="#mashprofile_div"><span>Mash Profile</span></a></li>
+			<li><a href="#sharededit_div"><span>Shared</span></a></li>
+		</ul>
 
 
-    <div id="fermentables_div">
-      <br/>
-      <div id="fermentables_items_div">
-        <%= render :partial => 'shared/recipe_edit_fermentables', :object => recipe_edit %>
-      </div>
-      <div id="fermentables_list_div">
-        <%= render :partial => 'shared/recipe_edit_fermentables_list', :object => recipe_edit %>
-      </div>
-    </div>
+		<div id="fermentables_div">
+			<br/>
+			<div id="fermentables_items_div">
+				<%= render :partial => 'shared/recipe_edit_fermentables', :object => recipe_edit %>
+			</div>
+			<br/>
+			<div id="fermentables_list_div">
+				<%= render :partial => 'shared/recipe_edit_fermentables_list', :object => recipe_edit %>
+			</div>
+		</div>
 
-    <div id="misc_div">
-      <div id="misc_items_div"  class="tab">
-        <br/>
-        <%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
-      </div>
-      <%= link_to_remote "Add misc",
-        :loading => "Hobo.showSpinner('Adding Misc Item');",
-        :complete => "Hobo.hideSpinner();",
-        :url => { :controller => "recipes", :action => "add_misc", :id => recipe_edit.id  },
-        :html => { :class => 'button small-button' } %>
-      <br/><br/>
-    </div>
+		<div id="misc_div">
+			<div id="misc_items_div"  class="tab">
+				<br/>
+				<%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
+			</div>
+			<div class="buttons">
+			<%= link_to_remote "Add misc",
+			  :loading => "Hobo.showSpinner('Adding Misc Item');",
+			  :complete => "Hobo.hideSpinner();",
+			  :url => { :controller => "recipes", :action => "add_misc", :id => recipe_edit.id  },
+			  :html => { :class => 'buttons' } %>
+			</div>
+			<br/><br/>
+		</div>
 
-    <div id="mashprofile_div">
-      <div class="tab">
-        <br/>
-        <div id="mashprofile_items_div">
-          <%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
-        </div>
-        <div>
-          <%= render :partial => 'shared/recipe_edit_mashprofile_list', :object => recipe_edit %>
-        </div>
-      </div>
-    </div>
+		<div id="mashprofile_div">
+			<div class="tab">
+				<br/>
+				<div id="mashprofile_items_div">
+					<%= render :partial => 'shared/recipe_edit_mashprofile', :object => recipe_edit %>
+				</div>
+				<div>
+					<%= render :partial => 'shared/recipe_edit_mashprofile_list', :object => recipe_edit %>
+				</div>
+			</div>
+		</div>
 
-    <div id="sharededit_div">
-      <if test="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)">
-        <div class="tab">
-          <%= render :partial => 'shared/recipe_edit_multiuser', :object => recipe_edit %>
-        </div>
-      </if>
-    </div>
+		<div id="sharededit_div">
+			<if test="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)">
+				<div class="tab">
+					<%= render :partial => 'shared/recipe_edit_multiuser', :object => recipe_edit %>
+				</div>
+			</if>
+		</div>
 
-  </div>
+	</div>
 </div>
