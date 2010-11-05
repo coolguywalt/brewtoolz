@@ -15,54 +15,16 @@
 #
 #    Copyright Chris Taylor, 2008, 2009, 2010 
 
-
 class FrontController < ApplicationController
 
+  hobo_controller
 
-	include ApplicationHelper
+  def index; end
 
-	hobo_controller
-
-	def index; end
-
-	def search
-		if params[:query]
-			site_search(params[:query])
-		end
-	end
-
-	def loadsharedrecipes
-		shared_recipes = brewers_shared_recipes(current_user)
-		if shared_recipes.size > 0
-			render :partial => 'shared/recipe_list_shared', :object => shared_recipes
-
-		else
-			render :inline => %{<p>No shared recipes to display</p>}
-		end
-	end
-
-	def loadbrewlogs
-		render :partial => 'shared/brewentry_list_scrollable', :object => brewers_logs(current_user)
-	end
-
-	def paginate_brewers_recipe_list
-        recipe_list = brewers_recipes_paginated(current_user, session[:brewersRecipeFilter])
-
-		render :update do |page|
-			page.replace_html 'paginated_recipe_list_div', :partial => 'shared/recipe_list_paginated', :object => recipe_list
-		end
-	end
-
-	def search_brewers_recipes
-		filter = nil
-		filter =  params[:brewers_recipe_filter] unless params[:brewers_recipe_filter].blank?
-		session[:brewersRecipeFilter] = filter
-
-	    recipe_list = brewers_recipes_paginated(current_user, filter)
-
-		render :update do |page|
-			page.replace_html 'paginated_recipe_list_div', :partial => 'shared/recipe_list_paginated', :object => recipe_list
-		end
-	end
+  def search
+    if params[:query]
+      site_search(params[:query])
+    end
+  end
 
 end

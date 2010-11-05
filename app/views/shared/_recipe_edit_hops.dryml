@@ -17,20 +17,13 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 <div id="hops_content_div">
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-			jQuery( ".button" ).button();
-			jQuery( ".del_button" ).button( );
-			jQuery( "button, a", ".buttons" ).button();
-		} );
-	</script>
 
-	<%= render :partial => 'shared/recipe_edit_hops_items', :object => recipe_edit_hops %>
+    <%= render :partial => 'shared/recipe_edit_hops_items', :object => recipe_edit_hops %>
 
-	<br/>
+   <br/>
 
-	<div id="hops_list_div" class="item-list">
-		<%= render :partial => 'shared/recipe_edit_hops_list', :object => recipe_edit_hops %>
-	</div>
+  <div id="hops_list_div" class="item-list">
+    <%= render :partial => 'shared/recipe_edit_hops_list', :object => recipe_edit_hops %>
+  </div>
 </div>
 

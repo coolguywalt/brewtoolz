@@ -18,67 +18,75 @@
 -->
 
 <!-- Fermentable selection list. -->
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-		jQuery('#fermentablesListTable').dataTable( {
-			"sPaginationType": "full_numbers",
-			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
-		} );
-		jQuery('#fermentablesInventoryTable').dataTable( {
-			"sPaginationType": "full_numbers",
-			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
-		} );
-		jQuery("#fermentableaccordiandiv").accordion( );
-	} );
-</script>
+<div id="main_fermentable_list_div">
+  <div>
+    <table>
+      <tr>
+        <td><h3><b>Select fermentable: &nbsp;&nbsp;</b></h3></td>
+        <td><button class="button" onclick="Element.hide('main_fermentable_list_div');Element.show('fermentable_inventory_list_div');return false;">Inventory List</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class="scroll-table-wrap-div">
+    <div class="scroll-table-inner-div" >
+      <table id="fermentable_list" class="scroll-table item-list" >
+        <thead><tr>
+            <th><p>Type</p></th><th><p>Yield</p></th><th><p>Color</p></th><th><p>Converted?</p></th><th><p> </p></th>
+          </tr></thead>
+        <tbody class="scroll-list">
+        <repeat with="&FermentableType.find(:all, :order => 'name')" >
+          <tr class="<%= cycle('odd','even') -%>">
+            <td><view:name/></td>
+          <td><view:yeild/></td>
+          <td><view:colour/></td>
+          <td><view:converted/></td>
+          <td><%= link_to_remote "Add",
+              :loading => "Hobo.showSpinner('Adding fermentable');",
+              :complete => "Hobo.hideSpinner();",
+              :url => { :controller => "recipes", :action => "add_fermentable", :id => recipe_edit_fermentables_list.id, :ferementable_type_id => this.id  },
+              :html => { :class => 'button small-button', :id =>"ferm_#{this.id}" } %></td>
+          </tr>
+        </repeat>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<div id="fermentableaccordiandiv">
-	<h3><a href="#">Main</a></h3>
-	<div>
-		<table  id="fermentablesListTable" class="item-list" >
-			<thead><tr>
-					<th><p>Type</p></th><th><p>Yield</p></th><th><p>Color</p></th><th><p>Converted?</p></th><th><p> </p></th>
-				</tr></thead>
-			<tbody class="scroll-list">
-			<repeat with="&FermentableType.find(:all, :order => 'name')" >
-				<tr class="<%= cycle('odd','even') -%>">
-					<td><view:name/></td>
-				<td><view:yeild/></td>
-				<td><view:colour/></td>
-				<td><view:converted/></td>
-				<td><div class="buttons"><%= link_to_remote "Add",
-						  :loading => "Hobo.showSpinner('Adding fermentable');",
-						  :complete => "Hobo.hideSpinner();",
-						  :url => { :controller => "recipes", :action => "add_fermentable", :id => recipe_edit_fermentables_list.id, :ferementable_type_id => this.id  },
-						  :html => { :id =>"ferm_#{this.id}" } %></div></td>
-				</tr>
-			</repeat>
-			</tbody>
-		</table>
-	</div>
+<div id="fermentable_inventory_list_div"  style="display:none;">
 
-	<h3><a href="#">Inventory</a></h3>
-	<div>
-		<table id="fermenatbleInventorytable" class="item-list" >
-			<thead><tr>
-					<th><p>Type</p></th><th><p>Yield</p></th><th><p>Color</p></th><th><p>Converted?</p></th><th><p>Amount [<%= ferm_weight_units %>]</p></th><th><p> </p></th>
-				</tr></thead>
-			<tbody class="scroll-list">
-			<repeat with="&current_user.fermentable_inventories.find(:all, :conditions => 'amount > 0')" >
-				<tr class="<%= cycle('odd','even') -%>">
-					<td><view:fermentable_type.name/></td>
-				<td><view:fermentable_type.yeild/></td>
-				<td><view:fermentable_type.colour/></td>
-				<td><view:fermentable_type.converted/></td>
-				<td><view:amount/></td>
-				<td><div class="buttons"><%= link_to_remote "Add",
-						  :loading => "Hobo.showSpinner('Adding fermentable');",
-						  :complete => "Hobo.hideSpinner();",
-						  :url => { :controller => "recipes", :action => "add_fermentable", :id => recipe_edit_fermentables_list.id, :ferementable_type_id => this.fermentable_type.id  },
-						  :html => { :id =>"ferm_inv_#{this.id}" } %></div></td>
-				</tr>
-			</repeat>
-			</tbody>
-		</table>
-	</div>
+  <table>
+    <tr>
+      <td><h3><b>Select fermentable: &nbsp;&nbsp;</b></h3></td>
+      <td><button class="button" onclick="Element.show('main_fermentable_list_div');Element.hide('fermentable_inventory_list_div');return false;">Main List</button></td>
+    </tr>
+  </table>
+
+  <div class="scroll-table-wrap-div">
+    <div class="scroll-table-inner-div" >
+
+      <table id="inventory_list" class="scroll-table item-list" >
+        <thead><tr>
+            <th><p>Type</p></th><th><p>Yield</p></th><th><p>Color</p></th><th><p>Converted?</p></th><th><p>Amount [<%= ferm_weight_units %>]</p></th><th><p> </p></th>
+          </tr></thead>
+        <tbody class="scroll-list">
+        <repeat with="&current_user.fermentable_inventories.find(:all, :conditions => 'amount > 0')" >
+          <tr class="<%= cycle('odd','even') -%>">
+            <td><view:fermentable_type.name/></td>
+          <td><view:fermentable_type.yeild/></td>
+          <td><view:fermentable_type.colour/></td>
+          <td><view:fermentable_type.converted/></td>
+          <td><view:amount/></td>
+          <td><%= link_to_remote "Add",
+              :loading => "Hobo.showSpinner('Adding fermentable');",
+              :complete => "Hobo.hideSpinner();",
+              :url => { :controller => "recipes", :action => "add_fermentable", :id => recipe_edit_fermentables_list.id, :ferementable_type_id => this.fermentable_type.id  },
+              :html => { :class => 'button small-button', :id =>"ferm_inv_#{this.id}" } %></td>
+          </tr>
+        </repeat>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>

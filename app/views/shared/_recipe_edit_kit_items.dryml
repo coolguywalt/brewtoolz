@@ -44,7 +44,7 @@
           <td><%= percentage(this.percentage_points * 100) %></td>
           <td><%= kit_volume(this.kit_type) %></td>
           <td><%= kit_weight(this.kit_type) %></td>
-          <td><div class="buttons"><%= del_kit_link(this) %></div></td>
+          <td><%= del_kit_link(this) %></td>
         </tr>
       </repeat>
       </tbody>

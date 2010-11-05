@@ -18,30 +18,30 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-	include UnitsHelper
+  include UnitsHelper
 
-	$PRIMARY_RECIPE_FILTER = "(brew_entry_id IS NULL) AND (name IS NOT NULL) AND (name <> \"\")"
+  $PRIMARY_RECIPE_FILTER = "(brew_entry_id IS NULL) AND (name IS NOT NULL) AND (name <> \"\")"
 
 	def stored_location
 		session[:return_to] || "/"
-	end
+  end
 
 	# We can return to this location by calling #redirect_back_or_default.
-	def store_location( uri = nil )
+  def store_location( uri = nil )
 
 		logger.debug "uri: #{uri}, request_uri: #{request.request_uri}"
 
 		uri = request.request_uri unless uri
 		session[:return_to] = request.request_uri
-	end
+  end
 
 	def link_away(name, options = {}, html_options = nil)
 		link_to(name, { :return_uri => url_for(:only_path => true) }.update(options.symbolize_keys), html_options)
-	end
+  end
 
 	def hop_minutes_format( hop )
 		return "Dry Hopped" if hop.hop_use == :dry_hop
-		return "Hop Tea" if hop.hop_use == :hop_tea
+  	return "Hop Tea" if hop.hop_use == :hop_tea
 		return  decimal(hop.minutes)
 	end
 
@@ -62,7 +62,7 @@ module ApplicationHelper
 		id_prefix = field_name unless id_prefix
 		tag_field = field_name unless tag_field
 		spinner_message = "Updating #{field_name}" unless spinner_message
-		url_for_edit = { :action => :update, :id => object.id } unless url_for_edit
+    url_for_edit = { :action => :update, :id => object.id } unless url_for_edit
 
 		value1=""
 		display_value_str = ""
@@ -109,39 +109,24 @@ module ApplicationHelper
 
 	def recent_recipes()
 		Recipe.find(:all, :order => 'created_at DESC', :limit => 5,  :conditions => $PRIMARY_RECIPE_FILTER + " AND (draft IS NULL OR draft <> 1)")
-	end
+  end
 
 	def last_15_members_recipes(user)
 		Recipe.find_all_by_user_id(user.id, :order => 'created_at ASC', :limit => 15,  :conditions => $PRIMARY_RECIPE_FILTER)
 	end
 
 	def brewers_shared_recipes(user)
-		list = RecipeUserShared.find_all_by_user_id( user.id )
+    list = RecipeUserShared.find_all_by_user_id( user.id )
 
-		return list.sort { |a,b|
-			a.recipe_shared.recipe.name <=> b.recipe_shared.recipe.name
-		}
+    return list.sort { |a,b|
+      a.recipe_shared.recipe.name <=> b.recipe_shared.recipe.name
+    }
 
 	end
 
 
-	def brewers_recipes(user)
+  def brewers_recipes(user)
 		Recipe.find_all_by_user_id(user.id, :order => 'name', :conditions => $PRIMARY_RECIPE_FILTER)
-	end
-
-	def brewers_recipes_paginated( user, filter=nil )
-		conditions = "(user_id = #{user.id}) AND (#{$PRIMARY_RECIPE_FILTER})"
-		filter_param = nil
-		
-		if filter
-			conditions += " AND ( name LIKE :filter OR description LIKE :filter)"
-			filter_param = "%#{filter}%"
-		end
-
-		Recipe.paginate( :page => params[:page],
-			:per_page   => 15,
-			:conditions => [ conditions, {:filter=>filter_param} ],
-			:order => 'name')
 	end
 
 	def brewers_logs(user)
@@ -195,43 +180,43 @@ module ApplicationHelper
 		javascript_tag(javascript)
 	end
 
-	# Copied here as it is used in may different views
-	def brew_day_link(log_entry)
+  # Copied here as it is used in may different views
+  def brew_day_link(log_entry)
 		link_to( "Brewday", { :controller => :brew_entries, :action => 'brewday', :id => log_entry.id }, :class => 'button small_button')
 	end
 
-	def brew_recipe_link(log_entry)
+  def brew_recipe_link(log_entry)
 		link_to( "Recipe", { :controller => :brew_entries, :action => 'brewdayrecipe', :id => log_entry.id }, :class => 'button small_button')
 	end
-	def brew_log_link(log_entry)
+  def brew_log_link(log_entry)
 		link_to( "Brewlog", { :controller => :brew_entries, :action => 'show', :id => log_entry.id }, :class => 'button small_button')
 	end
 	def del_brewlogitem_link(brewlog_item)
 		link_to( "Del", { :controller => :brew_entries, :action => 'remove_brewlog_item', :id => brewlog_item.id }, :class => 'small-button')
 	end
 
-	def del_recipe_link_nf(recipe)
+  def del_recipe_link_nf(recipe)
 		link_to( "Del", { :controller => :recipes, :action => 'del_recipe', :id => recipe.id } ) #, :class => 'button small_button')
 	end
 
-	def del_recipe_link(recipe)
+  def del_recipe_link(recipe)
 		link_to( "Del", { :controller => :recipes, :action => 'del_recipe', :id => recipe.id , :class => 'button small_button'} )
 	end
 
-	def style_recipes( style )
+  def style_recipes( style )
 		style.recipes.paginate(:all, :per_page =>30, :order => 'name', :conditions => 'brew_entry_id IS NULL', :page => params[:page])
 	end
 
-	def decimal( value, places=2 )
-		number_with_precision( value, :precision => places )
-	end
+  def decimal( value, places=2 )
+    number_with_precision( value, :precision => places )
+  end
 
-	def percentage( value )
-		number_to_percentage(value, :precision => 2)
-	end
+  def percentage( value )
+    number_to_percentage(value, :precision => 2)
+  end
 
-	def strwrap(s, width=80)
-		s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
-	end
+  def strwrap(s, width=80)
+    s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
+  end
 
 end

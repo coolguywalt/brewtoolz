@@ -78,6 +78,4 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:id/:action'
   map.connect ':controller/:id.:format/:action'
 
-  map.connect ':action', :controller => :front
-
 end

@@ -417,9 +417,7 @@ class RecipesController < ApplicationController
 		@hop_type = HopType.find(params[:hop_type_id])
 
 		# Create new hop
-
-		aa = params[:aa] || @hop_type.aa
-		@hop = @recipe.hops.create(:hop_type => @hop_type, :ibu_l => 10.0, :minutes => 60, :aa => aa)
+		@hop = @recipe.hops.create(:hop_type => @hop_type, :ibu_l => 10.0, :minutes => 60, :aa => @hop_type.aa)
 		@recipe.mark_update(  "Added hop: #{@hop_type.name}", current_user)
 
 		update_details_and_hops( @recipe )

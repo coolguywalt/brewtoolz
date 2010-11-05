@@ -18,20 +18,36 @@
 -->
 
 <div id="aside-news" class="aside-news largerfont">
-  <h2>Features:</h2>
+  <h2>News:</h2>
 
     <div class="block">
     <h3>Support for Kits</h3>
+    Added support for kits as ingredients.<br/>
+
   </div>
 
   <div class="block">
     <h3>Shared (multi-user) recipe editing</h3>
+    Multi user editing has arrived!<br/>
+    <ul>
+      <li>Got a joint brewday coming up</li>
+      <li>Club trying to collaborate on a recipe</li>
+      <li>Or just want to get others to help perfect your recipe.</li>
+    </ul>
     Shared recipe editing is what you have been looking for.<br/><br/>
     See the <a href="/help/multiuseredit">online help</a> for more details.<br/>
   </div>
 
   <div class="block">
     <h3>No chill hops calculations</h3>
-    Added ability for no chill hops calculation adjustments, and post boil hop additions.
+    Added ability for no chill hops calculation adjustments, and post boil hop additions (allowing negative minutes times).
   </div>
+
+
+    <div class="block">
+    <h3>Mark recipes as draft versions</h3>
+    Ability to mark a recipe as a draft version.  This allows other users to know it is incomplete, and also makes sure it won't
+    appear in the recently added list until you are ready for other's to see it.
+  </div>
+
 </div>

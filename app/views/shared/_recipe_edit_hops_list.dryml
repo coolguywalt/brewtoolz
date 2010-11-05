@@ -18,57 +18,67 @@
 -->
 
 <!-- Hop selection list. -->
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-		jQuery('#hopsListTable').dataTable( {
-			"sPaginationType": "full_numbers",
-			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
-		} );
-		jQuery('#hopsInventoryTable').dataTable( {
-			"sPaginationType": "full_numbers",
-			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
-		} );
-		jQuery("#hopsaccordiandiv").accordion( );
-	} );
-</script>
-<div id="hopsaccordiandiv">
-	<h3><a href="#">Main</a></h3>
+<div id="main_hops_list_div">
 	<div>
-		<table id="hopsListTable" class="item-list" >
-			<thead><tr><th><p>Type</p></th><th><p>AA%</p></th><th><p> </p></th></tr></thead>
-			<tbody class="scroll-list">
-			<repeat with="&HopType.find(:all, :order => 'name')" >
-				<tr class="<%= cycle('odd','even') -%>">
-					<td><view:name/></td>
-				<td><view:aa/></td>
-				<td><div class="buttons"><%= link_to_remote "Add",
-					  :loading => "Hobo.showSpinner('Adding Hop');",
-					  :complete => "Hobo.hideSpinner();",
-					  :url => { :controller => "recipes", :action => "add_hop", :id => recipe_edit_hops_list.id, :hop_type_id => this.id  },
-					  :html => { :id => "hop_#{this.id}" } %></div></td>
-				</tr>
-			</repeat>
-			</tbody>
+		<table>
+			<tr>
+				<td><h3><b>Select hops: &nbsp;&nbsp;</b></h3></td>
+				<td><button class="button" onclick="Element.hide('main_hops_list_div');Element.show('hops_inventory_list_div');return false;">Inventory List</button></td>
+			</tr>
 		</table>
 	</div>
 
-	<h3><a href="#">Inventory</a></h3>
+	<div class="scroll-table-wrap-div">
+		<div class="scroll-table-inner-div" >
+			<table id="hop_list" class="scroll-table item-list" >
+				<thead><tr><th><p>Type</p></th><th><p>AA%</p></th><th><p> </p></th></tr></thead>
+				<tbody class="scroll-list">
+				<repeat with="&HopType.find(:all, :order => 'name')" >
+					<tr class="<%= cycle('odd','even') -%>">
+						<td><view:name/></td>
+					<td><view:aa/></td>
+					<td><%= link_to_remote "Add",
+						  :loading => "Hobo.showSpinner('Adding Hop');",
+						  :complete => "Hobo.hideSpinner();",
+						  :url => { :controller => "recipes", :action => "add_hop", :id => recipe_edit_hops_list.id, :hop_type_id => this.id  },
+						  :html => { :class => 'button small-button',  :id => "hop_#{this.id}" } %></td>
+					</tr>
+				</repeat>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+<div id="hops_inventory_list_div" style="display:none;">
 	<div>
-		<table id="hopsInventoryTable" class="item-list" >
-			<thead><tr><th><p>Type</p></th><th><p>AA%</p></th><th><p> </p></th></tr></thead>
-			<tbody class="scroll-list">
-			<repeat with="&current_user.hops_inventories.find(:all, :conditions => 'amount > 0')" >
-				<tr class="<%= cycle('odd','even') -%>">
-					<td><view:name/></td>
-				<td><view:aa/></td>
-				<td><div class="buttons"><%= link_to_remote "Add",
-					  :loading => "Hobo.showSpinner('Adding Hop');",
-					  :complete => "Hobo.hideSpinner();",
-					  :url => { :controller => "recipes", :action => "add_hop", :id => recipe_edit_hops_list.id, :hop_type_id => this.hop_type.id, :aa => this.aa  },
-					  :html => { :id => "hop_#{this.id}" } %></div></td>
-				</tr>
-			</repeat>
-			</tbody>
+		<table>
+			<tr>
+				<td><h3><b>Select hops: &nbsp;&nbsp;</b></h3></td>
+				<td><button class="button" onclick="Element.show('main_hops_list_div');Element.hide('hops_inventory_list_div');return false;">Main List</button></td>
+			</tr>
 		</table>
+	</div>
+
+	<div class="scroll-table-wrap-div">
+		<div class="scroll-table-inner-div" >
+			<table id="hop_list" class="scroll-table item-list" >
+				<thead><tr><th><p>Type</p></th><th><p>AA%</p></th><th><p> </p></th></tr></thead>
+				<tbody class="scroll-list">
+				<repeat with="&current_user.hops_inventories.find(:all, :conditions => 'amount > 0')" >
+					<tr class="<%= cycle('odd','even') -%>">
+						<td><view:name/></td>
+					<td><view:aa/></td>
+					<td><%= link_to_remote "Add",
+						  :loading => "Hobo.showSpinner('Adding Hop');",
+						  :complete => "Hobo.hideSpinner();",
+						  :url => { :controller => "recipes", :action => "add_hop", :id => recipe_edit_hops_list.id, :hop_type_id => this.id  },
+						  :html => { :class => 'button small-button',  :id => "hop_#{this.id}" } %></td>
+					</tr>
+				</repeat>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
