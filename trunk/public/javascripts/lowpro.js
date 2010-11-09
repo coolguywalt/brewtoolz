@@ -91,7 +91,7 @@ Object.extend(Event, {
 // Event.addBehavior.autoTrigger can be adjusted to needs.
 Event.addBehavior = function(rules) {
   var ab = this.addBehavior;
-  Object.extend(ab.rules, rules);
+  /* Object.extend(ab.rules, rules);
   
   if (!ab.responderApplied) {
     Ajax.Responders.register({
@@ -105,7 +105,7 @@ Event.addBehavior = function(rules) {
   
   if (ab.autoTrigger) {
     this.onReady(ab.load.bind(ab, rules));
-  }
+  } */
   
 };
 
@@ -115,7 +115,7 @@ Object.extend(Event.addBehavior, {
   autoTrigger : true,
   
   load : function(rules) {
-    for (var selector in rules) {
+    /* for (var selector in rules) {
       var observer = rules[selector];
       var sels = selector.split(',');
       sels.each(function(sel) {
@@ -136,7 +136,7 @@ Object.extend(Event.addBehavior, {
           }
         });
       });
-    }
+    } */
   },
   
   unload : function() {
@@ -204,7 +204,7 @@ var Behavior = {
 
           return function() {
             var initArgs = [this].concat(args);
-            behavior.attach.apply(behavior, initArgs);
+            /* behavior.attach.apply(behavior, initArgs); */
           };
         } else {
           var args = (arguments.length == 2 && arguments[1] instanceof Array) ? 
@@ -212,12 +212,12 @@ var Behavior = {
 
           this.element = $(arguments[0]);
           this.initialize.apply(this, args);
-          behavior._bindEvents(this);
-          behavior.instances.push(this);
+          /* behavior._bindEvents(this);
+          behavior.instances.push(this); */
         }
       };
 
-    Object.extend(behavior, Class.Methods);
+    /* Object.extend(behavior, Class.Methods);
     Object.extend(behavior, Behavior.Methods);
     behavior.superclass = parent;
     behavior.subclasses = [];
@@ -236,7 +236,7 @@ var Behavior = {
     if (!behavior.prototype.initialize)
       behavior.prototype.initialize = Prototype.emptyFunction;
 
-    behavior.prototype.constructor = behavior;
+    behavior.prototype.constructor = behavior; */
 
     return behavior;
   },
@@ -245,9 +245,9 @@ var Behavior = {
       return new this(element, Array.prototype.slice.call(arguments, 1));
     },
     _bindEvents : function(bound) {
-      for (var member in bound)
+      /* for (var member in bound)
         if (member.match(/^on(.+)/) && typeof bound[member] == 'function')
-          bound.element.observe(RegExp.$1, Event.addBehavior._wrapObserver(bound[member].bindAsEventListener(bound)));
+          bound.element.observe(RegExp.$1, Event.addBehavior._wrapObserver(bound[member].bindAsEventListener(bound))); */
     }
   }
 };
