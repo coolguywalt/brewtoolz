@@ -551,7 +551,7 @@ HoboBehavior = Class.create({
             self.features.element = this.up(self.mainSelector)
             handler.call(self.features, ev, this)
         }
-        Event.addBehavior(behavior)
+        /* Event.addBehavior(behavior) */
     }
     
 })
