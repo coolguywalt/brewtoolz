@@ -1,21 +1,21 @@
 <page title="Home">
 
-  <body: class="front-page"/>
-  <title:>Brewtoolz</title:>
+	<body: class="front-page"/>
+	<title:>Brewtoolz</title:>
 
-  <content:>
+	<content:>
     <h1><i>The online brewing manager, logger and recipe designer.</i></h1><br/>
 
     <if test="&logged_in?">
       <div id="member_div"  >
         <%= render :partial => 'member' %>
-      </div>
+		</div>
     </if>
     <else>
       <%= render :partial => 'guest' %>
     </else>
 
-  </content:>
+	</content:>
 
 
   <aside-left:>

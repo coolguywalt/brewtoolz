@@ -13,13 +13,12 @@
 			<link type="text/css" href="/stylesheets/custom-theme/jquery-ui-1.8.5.custom.css" rel="Stylesheet" />
 			<javascript name="jquery-1.4.2.js"/>
 			<javascript name="jquery-ui-1.8.5.custom.min.js"/>
-
+			<script>
+				jQuery.noConflict()
+			</script>
 			<link type="text/css" href="/stylesheets/demo_table.css" rel="Stylesheet" />
 			<javascript name="jquery.dataTables.js"/>
 
-			<script  language="javascript" type="text/javascript">
-				$j = jQuery.noConflict();
-			</script>
 		</before-scripts:>
 
 		<append-head:>

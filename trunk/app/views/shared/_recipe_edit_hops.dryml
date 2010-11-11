@@ -29,7 +29,7 @@
 
 	<br/>
 
-	<div id="hops_list_div" class="item-list">
+	<div id="hops_list_div" >
 		<%= render :partial => 'shared/recipe_edit_hops_list', :object => recipe_edit_hops %>
 	</div>
 </div>

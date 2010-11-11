@@ -38,9 +38,9 @@
 	<div id="recipetabsdiv" class="recipetabs" >
 		<ul>
 			<li><a href="#fermentables_div"><span>Fermentables</span></a></li>
-			<li><a href="loadkitstab"><span>Kits</span></a></li>
-			<li><a href="loadhopstab"><span>Hops</span></a></li>
-			<li><a href="loadyeaststab"><span>Yeast</span></a></li>
+			<li><%= link_to "<span>Kits</span>", :controller => :recipes, :action => :loadkitstab, :id => recipe_edit.id %></li>
+			<li><%= link_to "<span>Hops</span>", :controller => :recipes, :action => :loadhopstab, :id => recipe_edit.id %></li>
+			<li><%= link_to "<span>Yeast</span>", :controller => :recipes, :action => :loadyeaststab, :id => recipe_edit.id %></li>
 			<li><a href="#misc_div"><span>Misc</span></a></li>
 			<li><a href="#mashprofile_div"><span>Mash Profile</span></a></li>
 			<li><a href="#sharededit_div"><span>Shared</span></a></li>
@@ -64,11 +64,11 @@
 				<%= render :partial => 'shared/recipe_edit_misc', :object => recipe_edit %>
 			</div>
 			<div class="buttons">
-			<%= link_to_remote "Add misc",
-			  :loading => "Hobo.showSpinner('Adding Misc Item');",
-			  :complete => "Hobo.hideSpinner();",
-			  :url => { :controller => "recipes", :action => "add_misc", :id => recipe_edit.id  },
-			  :html => { :class => 'buttons' } %>
+				<%= link_to_remote "Add misc",
+				  :loading => "Hobo.showSpinner('Adding Misc Item');",
+				  :complete => "Hobo.hideSpinner();",
+				  :url => { :controller => "recipes", :action => "add_misc", :id => recipe_edit.id  },
+				  :html => { :class => 'buttons' } %>
 			</div>
 			<br/><br/>
 		</div>

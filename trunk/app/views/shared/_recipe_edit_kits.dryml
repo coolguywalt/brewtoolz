@@ -18,16 +18,19 @@
 -->
 
 <div id="kits_content_div">
-
-  <br/>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			jQuery( ".button" ).button();
+			jQuery( ".del_button" ).button( );
+			jQuery( "button, a", ".buttons" ).button();
+		} );
+	</script>
   
-  <div id="kit_items_div">
     <%= render :partial => 'shared/recipe_edit_kit_items', :object => recipe_edit_kits %> 
-  </div>
 
   <br/>
 
-  <div id="kit_list_div" class="item-list">
+  <div id="kit_list_div" >
     <%= render :partial => 'shared/recipe_edit_kits_list', :object => recipe_edit_kits %>
   </div>
 
