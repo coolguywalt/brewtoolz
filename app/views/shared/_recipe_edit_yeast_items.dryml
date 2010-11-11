@@ -17,35 +17,37 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 
-<div class="scroll-table-wrap-div">
-  <div class="scroll-table-inner-div" >
-    <table id="yeasts_list" class="scroll-table item-list" >
-      <thead>
-        <tr>
-          <th><b><p>Type</p></b></th>
-          <th><b><p>Flocc.</p></b></th>
-          <th><b><p>Atten.</p></b></th>
-          <th><b><p>Min Temp[<%= temp_units %>]</p></b></th>
-          <th><b><p>Max Temp[<%= temp_units %>]</p></b></th>
-          <th><b><p>Alc. Tol.</p></b></th>
-          <th><b><p> </p></b></th>
-        </tr>
-      </thead>
-      <!-- %= render :partial => 'yeast', :collection => recipe_yeast_list(@recipe) % -->
-      <tbody class="scroll-list">
-      <repeat with="&recipe_yeast_list(recipe_edit_yeast_items)">
-        <tr class="<%= cycle('odd','even') -%>">
-          <td><%= this.yeast_type.name %></td>
-          <td><%= this.yeast_type.flocculation %></td>
-          <td><%= this.yeast_type.attenuation %></td>
-          <td><%= temp_values( this.yeast_type.min_temp ) %></td>
-          <td><%= temp_values( this.yeast_type.max_temp ) %></td>
-          <td><%= this.yeast_type.alcohol_tollerance %></td>
-          <td><%= del_yeast_link(this) %></td>
-        </tr>
-      </repeat>
-      </tbody>
-    </table>
+<div id="yeast_items_div" class="item-list-unlimited">
+	<div class="scroll-table-wrap-div">
+		<div class="scroll-table-inner-div" >
+			<table id="yeasts_list" class="scroll-table item-list" >
+				<thead>
+					<tr>
+						<th><b><p>Type</p></b></th>
+						<th><b><p>Flocc.</p></b></th>
+						<th><b><p>Atten.</p></b></th>
+						<th><b><p>Min Temp[<%= temp_units %>]</p></b></th>
+						<th><b><p>Max Temp[<%= temp_units %>]</p></b></th>
+						<th><b><p>Alc. Tol.</p></b></th>
+						<th><b><p> </p></b></th>
+					</tr>
+				</thead>
+				<!-- %= render :partial => 'yeast', :collection => recipe_yeast_list(@recipe) % -->
+				<tbody class="scroll-list">
+				<repeat with="&recipe_yeast_list(recipe_edit_yeast_items)">
+					<tr class="<%= cycle('odd','even') -%>">
+						<td><%= this.yeast_type.name %></td>
+						<td><%= this.yeast_type.flocculation %></td>
+						<td><%= this.yeast_type.attenuation %></td>
+						<td><%= temp_values( this.yeast_type.min_temp ) %></td>
+						<td><%= temp_values( this.yeast_type.max_temp ) %></td>
+						<td><%= this.yeast_type.alcohol_tollerance %></td>
+						<td><%= del_yeast_link(this) %></td>
+					</tr>
+				</repeat>
+				</tbody>
+			</table>
 
-  </div>
+		</div>
+	</div>
 </div>
