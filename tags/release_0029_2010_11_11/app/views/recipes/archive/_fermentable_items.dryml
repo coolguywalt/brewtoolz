@@ -1,0 +1,10 @@
+    <table id="fermentables_list" class="item-list">
+      <tr>
+        <th><b>Type</b></th>
+        <th><b>Gravity [<%= gravity_units %>]</b></th>
+        <th><b>Gravity(%)</b></th>
+        <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+        <th><b>Weight(%)</b></th><th><b> </b></th>
+      </tr>
+      <%= render :partial => 'fermentable', :collection => recipe_fermentable_list(@recipe) %>
+    </table>

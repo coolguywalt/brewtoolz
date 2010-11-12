@@ -1,0 +1,371 @@
+<!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
+
+<def tag="form" for="Audit">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="url, ipaddress, log, ajax, username, params, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="BrewEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="brew_date, comment, actual_fg, bottled_kegged, actual_og, volume_to_ferementer, pitching_temp, actual_colour, rating, absorbtion_rate, mash_conversion, volume_from_mash, volume_to_boil, mash_dead_space, ambient_temp, actual_extract_volume, actual_extract_sg, liquor_to_grist, boiler_loses, evaporation_rate, boil_time, sparge_method, no_batches, batch1_volume, batch1_gravity_actual, batch1_volume_actual, batch2_volume, batch2_gravity_actual, batch2_volume_actual, batch3_volume, batch3_gravity_actual, batch3_volume_actual, batch4_volume, batch4_gravity_actual, batch4_volume_actual, preboil_gravity_actual, preboil_volume_actual, postboil_gravity_actual, postboil_volume_actual, brewery, recipe, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="BrewEntryLog">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="log_date, comment, log_type, specific_gravity, temperature, rating, brew_entry, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Brewery">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, description, capacity, efficency, isDefault, isAllGrain, liquor_to_grist, boil_time, mash_tun_capacity, mash_tun_deadspace, evapouration_rate, boiler_loses, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Category">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, designator" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="FermentableInventory">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, comment, location, label, source_date, fermentable_type, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="FermentableInventoryLogEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, note, usagetime, fermentable_inventory, recipe, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="FermentableType">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, yeild, converted, fullyfermentable, mashed, colour, description, validated, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Fermentable">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="points, lock_weight, fermentable_type, recipe" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="HopType">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, description, aa, hop_use, hop_use_type, beta, hsi, origin, humulene, caryophllene, cohumulone, myrcene, validated, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Hop">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="minutes, aa, ibu_l, dry_hop_amount_l, notes, lock_weight, hop_use, hop_use_type, hop_form, beta, humulene, caryophllene, cohumulone, myrcene, hop_type, recipe" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="HopsInventory">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, comment, location, label, source_date, aa, hop_form, hop_type, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="HopsInventoryLogEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, note, usagetime, hops_inventory, recipe, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="IngredientUnitPreference">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="hops, fermentable, volume, wateradditions, temperature, gravity, liquor_to_grist, hop_utilisation_method, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="KitInventory">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, comment, location, label, source_date, kit_type, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="KitInventoryLogEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, note, usagetime, kit_inventory, recipe, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="KitType">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, points, yeild, ibus, colour, volume, weight, description, designed_volume, kit_type, validated, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Kit">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="quantity, kit_type, recipe" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="MashStep">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, temperature, time, liquor_to_grist, steptype, addition_amount, addition_temp, recipe" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="MashStep">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, temperature, time, liquor_to_grist, steptype, addition_amount, addition_temp, recipe" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="MiscIngredientType">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="MiscIngredient">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, misc_type, misc_use, time, amount_l, is_solid, use_for, notes, recipe" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Recipe">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, description, genealogy, volume, efficency, rating, hop_utilisation_method, hop_cubed, locked, draft, recipe_type, last_viewed, brew_entry, style, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Style">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, designator, category" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="User">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, email_address, administrator, default_locked_recipes, last_activity" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+<def tag="signup-form" polymorphic/>
+<def tag="signup-form" for="User">
+  <form lifecycle="signup" merge param="default">
+    <error-messages param/>
+    <field-list fields="name, email_address, password, password_confirmation" param/>
+    <div param="actions">
+      <submit label="Signup" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+<def tag="reset-password-form" polymorphic/>
+<def tag="reset-password-form" for="User">
+  <form lifecycle="reset_password" merge param="default">
+    <error-messages param/>
+    <input type="hidden" name="key" value="&this.lifecycle.provided_key" if="&this.lifecycle.provided_key"/>
+    <field-list fields="password, password_confirmation" param/>
+    <div param="actions">
+      <submit label="Reset Password" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+<def tag="form" for="YeastInventory">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, comment, location, label, source_date, storage_type, user, yeast_type" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="YeastInventoryLogEntry">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount, note, usagetime, recipe, user, yeast_inventory" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="YeastType">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, description, min_temp, max_temp, flocculation, attenuation, alcohol_tollerance, validated, user" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Yeast">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="amount_to_pitch, amount_to_pitch_min, amount_to_pitch_max, notes, recipe, yeast_type" param/>
+    <div param="actions">
+      <submit label="Save" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
