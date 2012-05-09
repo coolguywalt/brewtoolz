@@ -6,10 +6,15 @@ In order to make it easier to get an operational development environment.  A !Vi
 * Install prerequisites
   * [https://www.virtualbox.org/ VirtualBox]
   * Mysql (note mysql can be installed in the virtual environment)
+
 * Download Virtualised Ubuntu server
+
 * Configure mysql database
+
 * Checkout code
+
 * Run server  
+
 And your off :)
 
 = Details =
