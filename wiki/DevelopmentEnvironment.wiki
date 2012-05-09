@@ -9,7 +9,7 @@ Requires installation of ruby 1.8.7, have not yet migrated to 1.9 (any volunteer
 Packages required
 
     * mysql
-    * ruby (>= 1.8.7)
+    * ruby 1.8
     * ruby-libs
     * ruby-rdoc
     * ruby-devel 
@@ -25,9 +25,5 @@ Gems required
     * mislav-will_paginate
 
           + need to do this first "gem sources -a http://gems.github.com" 
-
-    * hobofields 
-
-Recommended IDE - Netbeans 
 
 If you are keen to get an environment setup, email me (chris@brewtoolz.com) and I will work through with you setting up a development database etc. 
