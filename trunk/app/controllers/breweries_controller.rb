@@ -26,6 +26,28 @@ class BreweriesController < ApplicationController
 		@brewery = Brewery.find(params[:id])
 		@brewery.update_attributes(params[:brewery])
 
+                # unit conversions
+                brewery_params = params[:brewery]
+                volume = current_user.units.volume
+		@brewery.boiler_loses = BrewingUnits::value_for_storage( volume,
+                    @brewery.boiler_loses ) if brewery_params[:boiler_loses]
+		@brewery.capacity = BrewingUnits::value_for_storage( volume,
+                    @brewery.capacity ) if brewery_params[:capacity]
+		@brewery.evapouration_rate = BrewingUnits::value_for_storage(
+                    volume, @brewery.evapouration_rate ) if
+                        brewery_params[:boiler_loses]
+		@brewery.mash_tun_capacity = BrewingUnits::value_for_storage(
+                    volume, @brewery.mash_tun_capacity ) if
+                        brewery_params[:mash_tun_capacity]
+		@brewery.mash_tun_deadspace = BrewingUnits::value_for_storage(
+                    volume, @brewery.mash_tun_deadspace ) if
+                        brewery_params[:mash_tun_deadspace]
+		@brewery.liquor_to_grist = BrewingUnits::value_for_storage(
+                    current_user.units.liquor_to_grist,
+                    @brewery.liquor_to_grist ) if
+                        brewery_params[:liquor_to_grist]
+                @brewery.save
+
 		if @brewery.isDefault
 			# Set all other breweries to non default
 			Brewery.update_all("isDefault = 0", "id != #{@brewery.id}" )
