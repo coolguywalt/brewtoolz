@@ -424,7 +424,7 @@ class Recipe < ActiveRecord::Base
 		total_points = 0.0
 		fermentables.each do |fermentable|
 			next unless fermentable
-			total_points += fermentable.points if fermentable.fermentable_type.mashed
+			total_points += fermentable.points if fermentable.fermentable_type and fermentable.fermentable_type.mashed
 		end
 		return total_points
 	end
