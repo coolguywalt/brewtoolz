@@ -32,7 +32,6 @@ class BrewEntryLogsController < ApplicationController
 
 		@brew_entry_log = BrewEntryLog.find(params[:id])
 		@brew_entry_log.specific_gravity = BrewingUnits::value_for_display( current_user.units.gravity, @brew_entry_log.specific_gravity, 3) if @brew_entry_log.specific_gravity
-		@brew_entry_log.temperature = BrewingUnits::value_for_display( current_user.units.temperature, @brew_entry_log.temperature) if @brew_entry_log.temperature
 
 		@this = @brew_entry_log
 	end
