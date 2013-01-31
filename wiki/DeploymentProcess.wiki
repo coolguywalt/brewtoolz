@@ -19,6 +19,14 @@ svn copy  https://brewtoolz.googlecode.com/svn/trunk  https://brewtoolz.googleco
 
 Note deployment needs to take place from the directory where the source code has been checked out to.
 
+You also need to copy the "deploy.rb" file into the config directory.
+
+You will also need the password for btadmin
+
 {{{
 cap deploy
 }}}
+
+After doing this the mongrel process need to be restarted on the server for changes to take affect.
+
+These instructions don't cover schema changes and db migrations as yet.
