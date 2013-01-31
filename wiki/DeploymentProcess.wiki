@@ -21,6 +21,8 @@ Note deployment needs to take place from the directory where the source code has
 
 You also need to copy the "deploy.rb" file into the config directory.
 
+The config/mongrel_cluster.yml also needs to have the user and group changed back to btadmin
+
 You will also need the password for btadmin
 
 {{{
