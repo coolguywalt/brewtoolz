@@ -1,0 +1,54 @@
+<page title="Recipe Help">
+
+  <body: class="front-page"/>
+  <aside-left:>
+    <%= render :partial => 'menu' %>
+  </aside-left:>
+  <content:>
+
+    <h2>Recipe calculator</h2>
+
+    <br/>
+
+    The recipe calculator is the place where you start when you want to make a beer.&nbsp; Either create a new recipe, or brew one that someone has already made available from the <a href="/recipes">recipe list</a>.&nbsp; You have to be a registered user to create or clone a recipe.<br/>
+    <br/>
+    <div style="display: block; text-align: left;"><img src="/images/help_recipe.png" border="0" usemap="#recipe_help_map"/>
+      <map name="recipe_help_map">
+        <area shape="rect" coords="724,239,933,348" alt="Recipe" href="/help/brewery"/>
+        <area shape="rect" coords="447,447,898,599" alt="Recipe" href="/help/brewlog"/>
+      </map>
+
+    </div><br/>
+    The recipe calculator is similar to most other recipe calculators with the following exceptions:<br/>
+    <ol><li>All fermentable values are stored as the gravity contribution, not the weight.&nbsp; If you change the recipe volume or expected efficiency values, the weight will automatically adjust to give you the same gravity contribution.</li>
+      <li>Hops are stored as IBU contribution per liter.&nbsp; Again this means the weight will change if you update the recipe batch volume and/or change the IBU calculation method to/from either Tinseth or Ragger.</li>
+    </ol>
+    <br/>
+    Once the recipe has been selected that you wish to brew, the next step is to press the Brew button and create a brewlog.<br/>
+    <br/>
+
+
+  </content:>
+
+
+</page>
+
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
