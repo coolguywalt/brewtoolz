@@ -108,7 +108,9 @@ module ApplicationHelper
 	end
 
 	def recent_recipes()
-		Recipe.find(:all, :order => 'created_at DESC', :limit => 5,  :conditions => $PRIMARY_RECIPE_FILTER + " AND (draft IS NULL OR draft <> 1)")
+		Recipe.find(:all, :order => 'created_at DESC', :limit => 5,  
+			:conditions => $PRIMARY_RECIPE_FILTER + " AND (draft IS NULL OR draft <> 1)" +
+				 " AND not (name like 'TEST%') AND (genealogy is null)" )
 	end
 
 	def last_15_members_recipes(user)
