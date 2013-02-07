@@ -1,0 +1,4 @@
+<a with="&FermentableInventory" class="side-navigation">Fermentables</a><br/>
+<a with="&KitInventory" class="side-navigation">Kits</a><br/>
+<a with="&HopsInventory" class="side-navigation">Hops</a><br/>
+<a with="&YeastInventory" class="side-navigation">Yeast</a><br/>

@@ -1,0 +1,74 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<page title="Recipe Help">
+
+  <body: class="front-page"/>
+  	<aside-left:>
+                  <%= render :partial => 'menu' %>
+	</aside-left:>
+  <content:>
+
+     <h2>Multi-user editing</h2>
+
+    Multi-user editing is designed to give users the ability to collaboratively design and create recipes.<br/>
+<br/>
+    Note you all have to be signed up users to be able to do the multi-user editing.<br/>
+<br/>
+
+    To enable multi-user editing go to the edit recipe screen, and click on the "Share" tab.<br/>
+<br/>
+
+    An add user window is displayed that allows entry of comma delimited user name list.<br/>
+<br/>
+
+    After entering the usernames, clicking on the Add User button will process the list of usernames.<br/>
+<br/>
+
+    Errors are displayed beside the entry box.<br/>
+<br/>
+
+    If successful the right hand window will show a list of the users that have been added, with a "Del" button next to them
+    so that they can be removed from the shared list.<br/>
+<br/>
+
+    Once a user is added on the share list they can:
+
+    <ul>
+      <li>Modify a recipe the same way as the recipe owner can.</li>
+      <li>Remove themselves from the shared list.</li>
+      <li>Add other users to the shared list.</li>
+    </ul>
+<br/>
+<br/>
+    After adding to the shared list, a new area is displayed on the users home page.  Listing all the recipes that they have
+    shared access to.<br/>
+<br/>
+
+    Any recipe that an owner has as shared will be marked with the word [shared] against it in their Brewer's Recipes list on the bottom of the home page.<br/>
+<br/>
+
+    There are no email notifications at this stage.  That will be coming in subsequent releases.
+
+
+
+  </content:>
+
+
+</page>
