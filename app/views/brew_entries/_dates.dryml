@@ -33,8 +33,23 @@
             <%= calendar_date_select :dates, :brew_date, :hidden => true,
               :onchange => "#{f1}" %>
             </if>
+          </td>
 
-        </td>
+          <th>Yeast Pitched:</th><td class="big"><view:yeast_pitched_date with="&dates"/>
+          <if test="&dates.updatable_by?(current_user)">
+            <% f2 = ajax_updater(
+              url_for(  :controller => :brew_entries, :action => :update_date_entry),
+              "Update yeast pitched date", 
+              :method => "post",
+              :params => { :id => dates.id, :brew_entry =>
+                  { :yeast_pitched_date=> Hobo.raw_js('this.value')  }
+              } ) %>
+
+            <%= calendar_date_select :dates, :yeast_pitched_date, :hidden => true,
+              :onchange => "#{f2}" %>
+              </if>
+          </td>
+
           <th>Bottled/Kegged:</th><td class="big"><view:bottled_kegged with="&dates"/>
           <if test="&dates.updatable_by?(current_user)">
             <% f2 = ajax_updater(
@@ -49,7 +64,6 @@
               :onchange => "#{f2}" %>
               </if>
           </td>
-
           <th>Status:</th><td class="big"><%= dates.status %></td>
           <if test="&!dates.isReady">
             <th>Estimated ready:</th><td class="big"><view:est_ready with="&dates"/></td>

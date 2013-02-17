@@ -30,10 +30,27 @@
 
 
     <div id="bdmenu">
-      <div id="recipe_div">
-        <br/><div class="navigation-div"><brewday-nav current="Recipe"/><br/></div>
 
-        <br/>
+	<script type="text/javascript">
+		jQuery(function() {
+			jQuery("#brewdaytabsdiv").tabs( { cache: true } );
+			jQuery( "button, a", ".buttons" ).button();
+			jQuery( ".del_button" ).button( );
+			jQuery( ".plus_button" ).button( { icons: {primary: "ui-icon-circle-plus"} });
+		});
+	</script>
+
+	<div id="brewdaytabsdiv" class="recipetabs" >
+		<ul>
+			<li><a href="#recipe_div"><span>Recipe</span></a></li>
+			<li><%= link_to "<span>Yeast</span>", :controller => :brew_entries, :action => :loadyeasttab, :id => @brew_entry.id %></li>
+			<li><%= link_to "<span>Mash</span>", :controller => :brew_entries, :action => :loadmashtab, :id => @brew_entry.id %></li>
+			<li><%= link_to "<span>Sparge</span>", :controller => :brew_entries, :action => :loadspargetab, :id => @brew_entry.id %></li>
+		</ul>
+
+
+      <div id="recipe_div">
+
 
         <if test="&this.user == current_user">
           <%= link_to "Update from recipe", { :controller => 'brew_entries', :action => 'update_from_recipe', :id => @brew_entry.id }, :class => 'button' %>
@@ -45,51 +62,14 @@
           <br/>
         </if>
 
-<%#*<div id="details_div" >%>
-<%#= render :partial => 'shared/recipe_edit_summary', :object => @brew_entry.actual_recipe %>
-<%#*</div>%>
-
         <div id="brewday_recipe_details_div">
           <%= render :partial => 'shared/recipe_view_brewday', :object => @brew_entry.actual_recipe %>
         </div>
 
-<%#= render :partial => 'shared/recipe_edit', :object => @brew_entry.actual_recipe %>
       </div>
 
-      <div id="bdyeast_div" class="hidden">
-        <br/><div class="navigation-div"><brewday-nav current="Yeast"/><br/></div>
-        <br/>
-        <div id="brewday_yeast_details_div">
-        <%= render :partial => 'yeastcalc'%>
-        </div>
-      </div>
 
-      <div id="mash_div" class="hidden">
-        <br/><div class="navigation-div"><brewday-nav current="Mash"/><br/></div>
-        <br/>
-        <%= render :partial => 'mash_edit'%>
-
-        <div id="mash_details_div">
-          <%= render :partial => 'mash_details'%>
-        </div>
-
-      </div>
-
-      <div id="sparge_div" class="hidden">
-        <br/><div class="navigation-div"><brewday-nav current="Sparge"/><br/></div>
-
-        <br/>
-        <%= render :partial => 'spargewater_edit'%>
-        <div id="sparge_details_div">
-          <br/>
-          <%= render :partial => 'spargewater', :object => @brew_entry %>
-        </div>
-      </div>
-
-<%#*<div id="biab_div" class="hidden">%>
-<%#*<br/><div class="navigation-div"><brewday-nav current="BIAB"/><br/></div>%>
-<%#= render :partial => 'biab_edit'%>
-<%#*</div>%>
+	</div>
     </div>
 
   </content-body:>

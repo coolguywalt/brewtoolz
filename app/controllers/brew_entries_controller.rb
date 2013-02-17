@@ -493,7 +493,9 @@ class BrewEntriesController < ApplicationController
     when "mash"
       render(:update) { |page|
         page.replace_html 'mash_details_div', :partial => 'mash_details', :object => @brew_entry
+	page << "if( $('sparge_details_div') ) {"
         page.replace_html 'sparge_details_div', :partial => 'spargewater', :object => @brew_entry
+    	page << "}"
       }
     else
       render(:update) { |page|
@@ -631,36 +633,62 @@ class BrewEntriesController < ApplicationController
 
 	end
 
+	def loadyeasttab
+		@brew_entry = BrewEntry.find(params[:id])
+		render :partial => 'yeastcalc', :object => @brew_entry
+	end
+
+	def loadmashtab
+		@brew_entry = BrewEntry.find(params[:id])
+		render :partial => 'mash', :object => @brew_entry
+	end
+
+	def loadspargetab
+		@brew_entry = BrewEntry.find(params[:id])
+		render :partial => 'sparge', :object => @brew_entry
+	end
+
 	private
 
 	def updated_values_and_recipe_div
 		render(:update) { |page|
-			page.replace_html 'values_div', :partial => 'values'
+      			page.replace_html 'recipevalues_div', :partial => 'recipe_values'
+      			page.replace_html 'preboilvalues_div', :partial => 'preboil_values'
+      			page.replace_html 'postboilvalues_div', :partial => 'postboil_values'
 			if @brew_entry.actual_recipe then
-				page.replace_html 'actual_recipe_div', :partial => 'shared/recipe_show',
-				:object => @brew_entry.actual_recipe
+      				page.replace_html 'brewday_recipe_details_div', :partial => 'shared/recipe_view_detailed', :object => @brew_entry.actual_recipe
 			end
 		}
 	end
 
   def update_all_brewday
     render(:update) { |page|
-      page.replace_html 'values_div', :partial => 'brewday_values'
+      page.replace_html 'recipevalues_div', :partial => 'recipe_values'
+      page.replace_html 'preboilvalues_div', :partial => 'preboil_values'
+      page.replace_html 'postboilvalues_div', :partial => 'postboil_values'
       page.replace_html 'brewday_recipe_details_div', :partial => 'shared/recipe_view_detailed', :object => @brew_entry.actual_recipe
-      page.replace_html 'brewday_yeast_details_div', :partial => 'yeastcalc'
+      page << "if( $('brewday_yeast_details_div') ) {"
+      page.replace_html 'brewday_yeast_details_div', :partial => 'yeastdetails'
+      page << "}"
+      page << "if( $('mash_details_div') ) {"
       page.replace_html 'mash_details_div', :partial => 'mash_details'
+      page << "}"
+      page << "if( $('sparge_details_div') ) {"
       page.replace_html 'sparge_details_div', :partial => 'spargewater', :object => @brew_entry
+      page << "}"
     }
 
   end
 
 	def update_values_div
 		render(:update) { |page|
-			page.replace_html 'values_div', :partial => 'values'
+      			page.replace_html 'recipevalues_div', :partial => 'recipe_values'
+      			page.replace_html 'preboilvalues_div', :partial => 'preboil_values'
+      			page.replace_html 'postboilvalues_div', :partial => 'postboil_values'
 		}
 
 	end
-
+	
 
 
 end

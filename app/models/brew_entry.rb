@@ -26,6 +26,7 @@ class BrewEntry < ActiveRecord::Base
     comment :text
     actual_fg :float
     bottled_kegged :date
+    yeast_pitched_date :date
     actual_og :float
     volume_to_ferementer :float
     pitching_temp :float
@@ -213,6 +214,7 @@ class BrewEntry < ActiveRecord::Base
     # Will eventually add in time to consider longer ferment for lagers etc
     return nil unless brew_date
     return bottled_kegged.advance(:weeks => 2) if bottled_kegged
+    return yeast_pitched_date.advance(:weeks => 2) if yeast_pitched_date
     return brew_date.advance(:weeks => 4)
   end
 
@@ -599,7 +601,8 @@ class BrewEntry < ActiveRecord::Base
   end
 
   def total_spargewater
-    sparge1_water_addition + sparge2_water_addition + sparge3_water_addition + sparge4_water_addition
+    totspargewater = sparge1_water_addition + sparge2_water_addition + sparge3_water_addition + sparge4_water_addition
+    return totspargewater.to_f
   end
 
   def the_no_batches
@@ -642,6 +645,9 @@ class BrewEntry < ActiveRecord::Base
     ymax = actual_og
     xmax = 0
 
+    ferment_start = brew_date
+    ferment_start = yeast_pitched_date if yeast_pitched_date
+
     brew_entry_logs.find(:all,
       :order => "log_date",
       :conditions => "(specific_gravity > 0) and (log_type ='observation')").each do |entry|
@@ -651,7 +657,7 @@ class BrewEntry < ActiveRecord::Base
       next unless entry.specific_gravity and entry.log_date
 
       log_date = entry.log_date.to_date
-      date_distance = (log_date - brew_date).to_i
+      date_distance = (log_date - ferment_start ).to_i
       xmax = date_distance
       xdata_str += "," + date_distance.to_s
       ydata_str += "," + entry.specific_gravity.to_s

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100916105117) do
+ActiveRecord::Schema.define(:version => 20130216081447) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20100916105117) do
     t.float    "ambient_temp"
     t.float    "actual_extract_volume"
     t.float    "actual_extract_sg"
+    t.date     "yeast_pitched_date"
   end
 
   add_index "brew_entries", ["brew_date"], :name => "brew_date"
