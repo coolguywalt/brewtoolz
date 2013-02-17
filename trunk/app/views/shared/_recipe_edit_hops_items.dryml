@@ -45,6 +45,9 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= label("recipe_hop_cubed", :hop_cubed, "No chill (cubed) cooling method") %><%= check_box("recipe", "hop_cubed", :onclick => "#{f3}")%>
 
+<br/><br/>
+Enter dh for Dry Hopped and ht for Hop Tea additions in the Time column.<br/> 
+
     </h3><br/>
 
     <div class="scroll-table-wrap-div">

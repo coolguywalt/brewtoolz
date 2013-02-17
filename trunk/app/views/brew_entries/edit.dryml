@@ -20,6 +20,7 @@
         <table>
           <tr><td><b><label>Brew date:</label></b></td><td><%= f.calendar_date_select :brew_date %></td></tr>
           <tr><td><b><label>Bottled/kegged:</label></b></td><td><%= f.calendar_date_select :bottled_kegged %></td></tr>
+          <tr><td><b><label>Bottled/kegged:</label></b></td><td><%= f.calendar_date_select :yeast_pitched_date %></td></tr>
         </table><br/>
         <table>
           <tr><td><b><label>Actual OG[<%= gravity_unit %>]:</label></b></td><td><%= f.text_field :actual_og, :size => "5" %></td></tr>

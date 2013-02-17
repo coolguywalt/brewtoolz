@@ -5,7 +5,7 @@
     <error-messages param/>
     <field-list fields="url, ipaddress, log, ajax, username, params, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'audits.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -15,9 +15,9 @@
 <def tag="form" for="BrewEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="brew_date, comment, actual_fg, bottled_kegged, actual_og, volume_to_ferementer, pitching_temp, actual_colour, rating, absorbtion_rate, mash_conversion, volume_from_mash, volume_to_boil, mash_dead_space, ambient_temp, actual_extract_volume, actual_extract_sg, liquor_to_grist, boiler_loses, evaporation_rate, boil_time, sparge_method, no_batches, batch1_volume, batch1_gravity_actual, batch1_volume_actual, batch2_volume, batch2_gravity_actual, batch2_volume_actual, batch3_volume, batch3_gravity_actual, batch3_volume_actual, batch4_volume, batch4_gravity_actual, batch4_volume_actual, preboil_gravity_actual, preboil_volume_actual, postboil_gravity_actual, postboil_volume_actual, brewery, recipe, user" param/>
+    <field-list fields="brew_date, comment, actual_fg, bottled_kegged, yeast_pitched_date, actual_og, volume_to_ferementer, pitching_temp, actual_colour, rating, absorbtion_rate, mash_conversion, volume_from_mash, volume_to_boil, mash_dead_space, ambient_temp, actual_extract_volume, actual_extract_sg, liquor_to_grist, boiler_loses, evaporation_rate, boil_time, sparge_method, no_batches, batch1_volume, batch1_gravity_actual, batch1_volume_actual, batch2_volume, batch2_gravity_actual, batch2_volume_actual, batch3_volume, batch3_gravity_actual, batch3_volume_actual, batch4_volume, batch4_gravity_actual, batch4_volume_actual, preboil_gravity_actual, preboil_volume_actual, postboil_gravity_actual, postboil_volume_actual, brewery, recipe, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'brew_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -29,7 +29,7 @@
     <error-messages param/>
     <field-list fields="log_date, comment, log_type, specific_gravity, temperature, rating, brew_entry, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'brew_entry_logs.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -41,7 +41,7 @@
     <error-messages param/>
     <field-list fields="name, description, capacity, efficency, isDefault, isAllGrain, liquor_to_grist, boil_time, mash_tun_capacity, mash_tun_deadspace, evapouration_rate, boiler_loses, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'breweries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -53,7 +53,7 @@
     <error-messages param/>
     <field-list fields="name, designator" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'categories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -65,7 +65,7 @@
     <error-messages param/>
     <field-list fields="amount, comment, location, label, source_date, fermentable_type, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'fermentable_inventories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -77,7 +77,7 @@
     <error-messages param/>
     <field-list fields="amount, note, usagetime, fermentable_inventory, recipe, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'fermentable_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -89,7 +89,7 @@
     <error-messages param/>
     <field-list fields="name, yeild, converted, fullyfermentable, mashed, colour, description, validated, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'fermentable_types.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -101,7 +101,7 @@
     <error-messages param/>
     <field-list fields="points, lock_weight, fermentable_type, recipe" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'fermentables.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -113,7 +113,7 @@
     <error-messages param/>
     <field-list fields="name, description, aa, hop_use, hop_use_type, beta, hsi, origin, humulene, caryophllene, cohumulone, myrcene, validated, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'hop_types.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -125,7 +125,7 @@
     <error-messages param/>
     <field-list fields="minutes, aa, ibu_l, dry_hop_amount_l, notes, lock_weight, hop_use, hop_use_type, hop_form, beta, humulene, caryophllene, cohumulone, myrcene, hop_type, recipe" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'hops.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -137,7 +137,7 @@
     <error-messages param/>
     <field-list fields="amount, comment, location, label, source_date, aa, hop_form, hop_type, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'hops_inventories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -149,7 +149,7 @@
     <error-messages param/>
     <field-list fields="amount, note, usagetime, hops_inventory, recipe, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'hops_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -161,7 +161,7 @@
     <error-messages param/>
     <field-list fields="hops, fermentable, volume, wateradditions, temperature, gravity, liquor_to_grist, hop_utilisation_method, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'ingredient_unit_preferences.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -173,7 +173,7 @@
     <error-messages param/>
     <field-list fields="amount, comment, location, label, source_date, kit_type, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'kit_inventories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -185,7 +185,7 @@
     <error-messages param/>
     <field-list fields="amount, note, usagetime, kit_inventory, recipe, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'kit_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -197,7 +197,7 @@
     <error-messages param/>
     <field-list fields="name, points, yeild, ibus, colour, volume, weight, description, designed_volume, kit_type, validated, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'kit_types.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -209,7 +209,7 @@
     <error-messages param/>
     <field-list fields="quantity, kit_type, recipe" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'kits.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -221,7 +221,7 @@
     <error-messages param/>
     <field-list fields="name, temperature, time, liquor_to_grist, steptype, addition_amount, addition_temp, recipe" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'mash_steps.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -233,7 +233,7 @@
     <error-messages param/>
     <field-list fields="name, temperature, time, liquor_to_grist, steptype, addition_amount, addition_temp, recipe" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'mash_steps.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -245,7 +245,7 @@
     <error-messages param/>
     <field-list fields="" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'misc_ingredient_types.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -257,7 +257,7 @@
     <error-messages param/>
     <field-list fields="name, misc_type, misc_use, time, amount_l, is_solid, use_for, notes, recipe" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'misc_ingredients.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -269,7 +269,7 @@
     <error-messages param/>
     <field-list fields="name, description, genealogy, volume, efficency, rating, hop_utilisation_method, hop_cubed, locked, draft, recipe_type, last_viewed, brew_entry, style, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'recipes.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -281,7 +281,7 @@
     <error-messages param/>
     <field-list fields="name, designator, category" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'styles.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -291,9 +291,9 @@
 <def tag="form" for="User">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, email_address, administrator, default_locked_recipes, last_activity" param/>
+    <field-list fields="name, email_address, administrator, default_locked_recipes, last_activity, state" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'users.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -304,7 +304,7 @@
     <error-messages param/>
     <field-list fields="name, email_address, password, password_confirmation" param/>
     <div param="actions">
-      <submit label="Signup" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'users.actions.signup', :default=>['Signup']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -316,7 +316,7 @@
     <input type="hidden" name="key" value="&this.lifecycle.provided_key" if="&this.lifecycle.provided_key"/>
     <field-list fields="password, password_confirmation" param/>
     <div param="actions">
-      <submit label="Reset Password" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'users.actions.reset_password', :default=>['Reset Password']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -326,7 +326,7 @@
     <error-messages param/>
     <field-list fields="amount, comment, location, label, source_date, storage_type, user, yeast_type" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'yeast_inventories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -338,7 +338,7 @@
     <error-messages param/>
     <field-list fields="amount, note, usagetime, recipe, user, yeast_inventory" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'yeast_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -350,7 +350,7 @@
     <error-messages param/>
     <field-list fields="name, description, min_temp, max_temp, flocculation, attenuation, alcohol_tollerance, validated, user" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'yeast_types.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -362,7 +362,7 @@
     <error-messages param/>
     <field-list fields="amount_to_pitch, amount_to_pitch_min, amount_to_pitch_max, notes, recipe, yeast_type" param/>
     <div param="actions">
-      <submit label="Save" param/><or-cancel param="cancel"/>
+      <submit label="#{ht 'yeasts.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>

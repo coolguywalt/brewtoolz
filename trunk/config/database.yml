@@ -1,8 +1,9 @@
 development:
   adapter: mysql
-  database: brewtools_ror
-  username: devuser
-  password: devpasswd
+  database: brewtoolz
+  username: brewtoolz 
+  password: brewtoolz
+  host: 192.168.56.1
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.
