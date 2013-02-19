@@ -1,0 +1,87 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+  <div id="hops_items_div" class="item-list-unlimited">
+    <h3>&nbsp;&nbsp;<b>Hop utilisation method:</b>&nbsp;
+      <!-- input:hop_utilisation_method/ -->
+      <%
+      # Required for proper function of the radio buttons and boxes
+      @recipe = recipe_edit_hops_items
+    %>
+
+      <% f1 = ajax_updater(  url_for(  :controller => "recipes", :action => :update_hop_utilisation),
+        "Change hop utilisation method.",
+        :method => "post",
+        :params => {:id => recipe_edit_hops_items.id, :util_method => :tinseth })
+      f2 = ajax_updater( url_for(  :controller => "recipes", :action => :update_hop_utilisation),
+        "Change hop utilisation method.",
+        :method => "post",
+        :params => {:id => recipe_edit_hops_items.id, :util_method => :rager })
+
+      f3 = ajax_updater( url_for(:controller => :recipes, :action => :update_no_chill, :id => recipe_edit_hops_items.id),
+        "Change hop no chill method.",
+        :method => "put",
+        :params => {"recipe[hop_cubed]" => Hobo.raw_js('this.checked'), :render => "details_and_hops"} )
+    %>
+
+      <%= radio_button("recipe","hop_utilisation_method",:tinseth, :onclick => "#{f1}" ) %><%= label("recipe_hop_utilisation_method", :tinseth,"Tinseth") %>
+      <%= radio_button("recipe","hop_utilisation_method",:rager, :onclick => "#{f2}") %><%= label("recipe_hop_utilisation_method", :rager,"Rager") %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= label("recipe_hop_cubed", :hop_cubed, "No chill (cubed) cooling method") %><%= check_box("recipe", "hop_cubed", :onclick => "#{f3}")%>
+
+<br/><br/>
+Enter dh for Dry Hopped and ht for Hop Tea additions in the Time column.<br/> 
+
+    </h3><br/>
+
+    <div class="scroll-table-wrap-div">
+      <div class="scroll-table-inner-div">
+        <table id="hops_list" class="scroll-table item-list">
+          <thead><tr>
+              <th><b><p>Locked</p></b></th>
+              <th><b><p>Type</p></b></th>
+              <th><b><p>AA(%)</p></b></th>
+              <th><b><p>IBU</p></b></th>
+              <th><b><p>IBU(%)</p></b></th>
+              <th><b><p>Weight [<%= hop_weight_units %>]</p></b></th>
+              <th><b><p>Time(minutes)</p></b></th>
+              <th><b><p> </p></b></th></tr>
+          </thead>
+
+          <!-- %= render :partial => 'hop', :collection => recipe_hops_list(@recipe) % -->
+          <tbody class="scroll-list">
+          <repeat  with="&recipe_hops_list(recipe_edit_hops_items)">
+            <tr class="<%= cycle('odd','even') -%>">
+              <td><%=  ajax_lock_edit(this, "lock_weight", "hops", "update", "none", this.recipe.locked  )%></td>
+              <td><%= hop_type(this) %></td>
+              <td><%= ajax_aa_editor(this) %></td>
+              <td><%= ajax_ibu_editor(this) %></td>
+              <td><span id="hpw_#{this.id}"><%= percentage(this.percentage_ibu * 100) %></span></td>
+              <td><%= ajax_hop_weight_editor(this) %></td>
+              <td><%= ajax_minutes_editor(this) %></td>
+              <td><%= del_hop_link(this) %></td>
+            </tr>
+          </repeat>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+

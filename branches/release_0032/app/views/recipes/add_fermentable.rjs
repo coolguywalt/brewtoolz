@@ -1,0 +1,2 @@
+page.replace_html 'details_div', :partial => 'details' 
+page.replace_html 'fermentables', :partial => 'fermentables'

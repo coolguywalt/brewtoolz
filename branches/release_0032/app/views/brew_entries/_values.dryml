@@ -1,0 +1,115 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<div id="expected_recipe_div" class="block">
+  <table class="list">
+    <tr><th>Expected Mash Efficiency:</th><td class="big"><%= percentage(@brew_entry.therecipe.efficency) %></td>
+      <th>Expected Bitterness[IBU]:</th><td class="big"><%= decimal(@brew_entry.therecipe.ibu) %></td>
+      <th>Actual Mash Efficiency:</th><td class="big"><%= percentage(@brew_entry.brewhouse_efficency * 100) || "n/a" %></td></tr>
+  </table>
+</div>
+
+
+<br/>
+
+<div id="valuesmenu">
+    <script type="text/javascript">
+		jQuery(function() {
+			jQuery("#brewentriesvaluestabsdiv").tabs( { cache: true } );
+			jQuery( "button, a", ".buttons" ).button();
+			jQuery( ".del_button" ).button( );
+			jQuery( ".plus_button" ).button( { icons: {primary: "ui-icon-circle-plus"} });
+		});
+    </script>
+
+    <div id="brewentriesvaluestabsdiv" >
+	<ul>
+	    <li><a href="#actuals_div"><span>Values</span></a></li>
+	    <li><a href="#expected_div"><span>Expected Values</span></a></li>
+	</ul>
+
+
+<div id="actuals_div">
+    <table class="list">
+      <tr>
+      <th>Alcohol by volume:</th><td class="big"><%=decimal(@brew_entry.actual_abv) %>%</td>
+      <th>Apparent Attenuation:</th><td class="big"><%= percentage(@brew_entry.actual_attenuation*100) %></td>
+      </tr>
+      <tr>
+        <th>Original Gravity[<%= gravity_units %>]:</th>
+        <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)">
+        <%= ajax_log_og_editor(@brew_entry) %>
+      </if><else>
+        <%= gravity_values( @brew_entry.og ) %>
+      </else>
+      </td>
+      <th>Final Gravity[<%= gravity_units %>]:</th>
+      <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)">
+        <%= ajax_log_fg_editor(@brew_entry) %>
+      </if><else>
+        <%= gravity_values( @brew_entry.fg ) %>
+      </else>
+      </td>
+
+      <th>Colour [SRM(EBC)]:</th>
+      <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)">
+        <%= ajax_log_colour_editor(@brew_entry) %>
+      </if>
+      <else>
+        <if test="&@brew_entry.actual_colour">(<%= decimal( @brew_entry.actual_colour) %>)</if>
+      </else>
+      <if test="&@brew_entry.actual_colour">(<%= decimal( @brew_entry.actual_colour*1.97) %>)</if></td>
+      </tr>
+      <tr>
+        <th>BU/GU ratio:</th><td class="big"><%=decimal(@brew_entry.actual_bugu_ratio) %></td>
+        <th>Balance:</th><td class="big"><%=decimal(@brew_entry.actual_balance) %></td>
+      </tr>
+
+    </table>
+</div>
+
+
+<div id="expected_div" >
+    <table class="list">
+      <tr>
+        <th>Alcohol by volume:</th>
+        <td class="big"><%=decimal(@brew_entry.therecipe.abv) %>%</td>
+        <th>Apparent Attenuation:</th>
+        <td class="big"><%= percentage(@brew_entry.therecipe.attenuation*100) %></td>
+      </tr>
+      <tr>
+        <th>Original Gravity[<%= gravity_unit %>]:</th><td class="big"><%=gravity_value(@brew_entry.therecipe.og) %></td>
+        <th>Final Gravity[<%= gravity_unit %>]:</th><td class="big"><%=gravity_value(@brew_entry.therecipe.fg) %></td>
+        <th>Colour [SRM]:</th><td class="big"><%= decimal( @brew_entry.therecipe.srm) %>
+        </td>
+      </tr>
+      <tr>
+        <th>BU/GU ratio:</th><td class="big"><%=decimal(@brew_entry.therecipe.bugu,3) %></td>
+        <th>Balance:</th><td class="big"><%=decimal(@brew_entry.therecipe.balance,3) %></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+</div>
+
+
