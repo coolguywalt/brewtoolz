@@ -352,3 +352,9 @@ table.scroll-table thead tr th p {
 {
     min-height: 520px
 }
+
+.comments 
+{
+    min-height: 80px
+}
+

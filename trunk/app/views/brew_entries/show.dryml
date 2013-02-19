@@ -24,10 +24,13 @@
 
   <content-body:>
     <%= error_messages_for :brew_entry %>
-    <if test="&@brew_entry.updatable_by?(current_user)">
       <div class="block">
-        <b>Brewery: </b>
 
+        <table class="list">
+	  <tr>
+        <if test="&@brew_entry.updatable_by?(current_user)">
+        <th>Brewery:</th>
+	<td>
         <% f_b = ajax_updater(
           url_for(  :controller => :brew_entries, :action => :update_brewery),
           "Update brewery",
@@ -36,18 +39,30 @@
 
         <%= collection_select(:brew_entry, :brewery_id,
           users_breweries(@brew_entry.user), :id, :name, {:prompt => true}, {:onchange =>"#{f_b}"} ) %>
-      </div><br/></if>
+      </td></if>
+
+      <th>Volume to fermenter[<%= volume_units %>]:</th>
+        <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)">
+        <%= ajax_ferment_volume_editor(@brew_entry) %>
+      </if>
+      <else>
+        <%= decimal(@brew_entry.volume_to_ferementer) %>
+      </else>
+      </td></tr></table>
+     </div>
+	<br/>
 
     <div id="dates_div" class="block">
       <%= render :partial => 'dates', :object => @brew_entry %>
     </div>
     <br/>
 
-    <div id="values_div">
+    <div id="values_div">	
       <%= render :partial => 'values' %>
     </div>
 
-    <div class="block">
+    <div class="block comments">
 
       <if test="&@brew_entry.updatable_by?(current_user)">
 
@@ -57,7 +72,7 @@
 
         <h2 onclick="Element.show('comment_edit');Element.hide('comment_show');" class="input-hl">Comments:</h2>
 
-        <div id="comment_show" class="textdisplay">
+        <div id="comment_show" class="textdisplay comments">
           <%= simple_format(h(@brew_entry.comment)) %>
         </div>
 
@@ -76,22 +91,38 @@
       </if>
       <else>
         <h2>Comments:</h2>
-        <div class="textdisplay"><%= simple_format(h(@brew_entry.comment)) %></div>
+        <div class="textdisplay comments"><%= simple_format(h(@brew_entry.comment)) %></div>
       </else>
 
     </div>
 
     <br/>
-    <!-- removed from first release -->
-    <!-- %= link_to "Brewday Calculations", { :controller => 'brew_entries', :action => 'brewday', :id => @brew_entry.id}, :class => 'button' % -->
-    <br/>
 
-    <div id="menu">
-      <div id="log_obs_div" class="<%= @brew_entry.is_fermenting? ? '' : 'hidden'%>">
-        <div class="navigation-div">
-          <brewlogshow-nav current="Observations"/><br/>
-        </div><br/>
+   <div id="logmenu">
+    <script type="text/javascript">
+		jQuery(function() {
+			jQuery("#brewentrieslogtabsdiv").tabs( { cache: true } );
+			jQuery( "button, a", ".buttons" ).button();
+			jQuery( ".del_button" ).button( );
+			jQuery( ".plus_button" ).button( { icons: {primary: "ui-icon-circle-plus"} });
+		});
+    </script>
 
+    <div id="brewentrieslogtabsdiv" >
+
+        <if test="&this.is_fermenting?">
+	<ul>
+	    <li><a href="#log_obs_div"><span>Observations</span></a></li>
+	    <li><a href="#log_taste_div"><span>Tastings</span></a></li>
+	</ul>
+	</if>
+	<else>
+	    <li><a href="#expected_div"><span>Tastings</span></a></li>
+	    <li><a href="#log_obs_div"><span>Observations</span></a></li>
+	</else>
+
+
+      <div id="log_obs_div">
         <div id="add_log_entry_div" >
           <if test="&this.user == current_user">
             <%= link_to "Add Entry", { :controller => 'brew_entries', :action => 'add_entry', :id => @brew_entry.id , :type => 'observation'}, :class => 'button' %>
@@ -99,7 +130,6 @@
           </if>
         </div>
         <br/>
-
 
         <b>Log entries:</b><br/>
 
@@ -116,13 +146,7 @@
       </div>
 
 
-      <div id="log_taste_div" class="<%= @brew_entry.is_fermenting? ? 'hidden' : ''%>">
-        <div class="navigation-div">
-          <brewlogshow-nav current="Tastings"/><br/>
-        </div>
-
-        <br/>
-
+      <div id="log_taste_div" >
         <div id="add_log_entry_div" >
           <if test="&this.user == current_user">
             <%= link_to "Add Entry", { :controller => 'brew_entries', :action => 'add_entry', :id => @brew_entry.id ,  :type => 'tasting'}, :class => 'button'%>
@@ -136,6 +160,7 @@
         </table>
 
       </div>
+</div>
 
 
 <%#*<div id="recipe_div" class="hidden" >%>
