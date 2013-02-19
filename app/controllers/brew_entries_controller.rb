@@ -651,10 +651,16 @@ class BrewEntriesController < ApplicationController
 	private
 
 	def updated_values_and_recipe_div
+
+		#Format the volume field
+                str = "%01.#{2}f" % @brew_entry.volume_to_ferementer
+		
 		render(:update) { |page|
-      			page.replace_html 'recipevalues_div', :partial => 'recipe_values'
-      			page.replace_html 'preboilvalues_div', :partial => 'preboil_values'
-      			page.replace_html 'postboilvalues_div', :partial => 'postboil_values'
+      			page.replace_html 'values_div', :partial => 'values'
+
+			#Update the span the holds the volume to ferementer
+			page[:volume_to_ferementer_s].innerHTML = str
+
 			if @brew_entry.actual_recipe then
       				page.replace_html 'brewday_recipe_details_div', :partial => 'shared/recipe_view_detailed', :object => @brew_entry.actual_recipe
 			end
@@ -681,14 +687,17 @@ class BrewEntriesController < ApplicationController
   end
 
 	def update_values_div
+		# Updating the brewlog page after updates
+
+		#Format the volume field
+                str = "%01.#{2}f" % @brew_entry.volume_to_ferementer
+
 		render(:update) { |page|
-      			page.replace_html 'recipevalues_div', :partial => 'recipe_values'
-      			page.replace_html 'preboilvalues_div', :partial => 'preboil_values'
-      			page.replace_html 'postboilvalues_div', :partial => 'postboil_values'
+      			page.replace_html 'values_div', :partial => 'values'
+
+			#Update the span the holds the volume to ferementer
+			page[:volume_to_ferementer_s].innerHTML = str
 		}
 
 	end
-	
-
-
 end
