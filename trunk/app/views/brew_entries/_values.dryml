@@ -51,8 +51,6 @@
       <th>Alcohol by volume:</th><td class="big"><%=decimal(@brew_entry.actual_abv) %>%</td>
       <th>Apparent Attenuation:</th><td class="big"><%= percentage(@brew_entry.actual_attenuation*100) %></td>
       </tr>
-
-      <tr><td><br/></td></tr>
       <tr>
         <th>Original Gravity[<%= gravity_units %>]:</th>
         <td class="big">
@@ -81,11 +79,9 @@
       </else>
       <if test="&@brew_entry.actual_colour">(<%= decimal( @brew_entry.actual_colour*1.97) %>)</if></td>
       </tr>
-      <tr><td><br/></td></tr>
       <tr>
         <th>BU/GU ratio:</th><td class="big"><%=decimal(@brew_entry.actual_bugu_ratio) %></td>
         <th>Balance:</th><td class="big"><%=decimal(@brew_entry.actual_balance) %></td>
-
       </tr>
 
     </table>
@@ -100,14 +96,12 @@
         <th>Apparent Attenuation:</th>
         <td class="big"><%= percentage(@brew_entry.therecipe.attenuation*100) %></td>
       </tr>
-      <tr><td><br/></td></tr>
       <tr>
         <th>Original Gravity[<%= gravity_unit %>]:</th><td class="big"><%=gravity_value(@brew_entry.therecipe.og) %></td>
         <th>Final Gravity[<%= gravity_unit %>]:</th><td class="big"><%=gravity_value(@brew_entry.therecipe.fg) %></td>
         <th>Colour [SRM]:</th><td class="big"><%= decimal( @brew_entry.therecipe.srm) %>
         </td>
       </tr>
-      <tr><td><br/></td></tr>
       <tr>
         <th>BU/GU ratio:</th><td class="big"><%=decimal(@brew_entry.therecipe.bugu,3) %></td>
         <th>Balance:</th><td class="big"><%=decimal(@brew_entry.therecipe.balance,3) %></td>
