@@ -40,10 +40,11 @@
     <h3>Sparges:</h3>
 
     <table  class="item-list" >
-      <tr><th>Sparge No</th><th><b> Water addition [l]</b></th><th><b>Expected recovered volume [l]</b></th><th><b>Required gravity</b></th><th><b>Max expected gravity</b></th></tr>
+      <tr><th>Sparge No</th><th><b>Tap addition [l]</b></th><th><b>RO addition [l]</b></th><th><b>Expected recovered volume [l]</b></th><th><b>Required gravity</b></th><th><b>Max expected gravity</b></th></tr>
       <tr class="<%= cycle('odd','even') -%>">
         <td>1</td>
-        <td><%= decimal(spargewater.sparge1_water_addition) %></td>
+        <td><%= decimal(spargewater.tap_water(spargewater.sparge1_water_addition, :sparge)) %></td>
+        <td><%= decimal(spargewater.ro_water(spargewater.sparge1_water_addition, :sparge)) %></td>
         <td><%= decimal(spargewater.sparge1_volume) %></td>
         <td><%= decimal(spargewater.sparge1_required_gravity) %></td>
         <td><%= decimal(spargewater.sparge1_gravity) %></td>
@@ -52,7 +53,8 @@
         <tr class="<%= cycle('odd','even') -%>">
 
           <td>2</td>
-          <td><%= decimal(spargewater.sparge2_water_addition) %></td>
+          <td><%= decimal(spargewater.tap_water(spargewater.sparge2_water_addition, :sparge)) %></td>
+          <td><%= decimal(spargewater.ro_water(spargewater.sparge2_water_addition, :sparge)) %></td>
           <td><%= decimal(spargewater.sparge2_volume) %></td>
           <td><%= decimal(spargewater.sparge2_required_gravity) %></td>
           <td><%= decimal(spargewater.sparge2_gravity) %></td>
@@ -62,7 +64,8 @@
         <tr class="<%= cycle('odd','even') -%>">
 
           <td>3</td>
-          <td><%= decimal(spargewater.sparge3_water_addition) %></td>
+          <td><%= decimal(spargewater.tap_water(spargewater.sparge3_water_addition, :sparge)) %></td>
+          <td><%= decimal(spargewater.ro_water(spargewater.sparge3_water_addition, :sparge)) %></td>
           <td><%= decimal(spargewater.sparge3_volume) %></td>
           <td><%= decimal(spargewater.sparge3_required_gravity) %></td>
           <td><%= decimal(spargewater.sparge3_gravity) %></td>
@@ -72,7 +75,8 @@
         <tr class="<%= cycle('odd','even') -%>">
 
           <td>3</td>
-          <td><%= decimal(spargewater.sparge4_water_addition) %></td>
+          <td><%= decimal(spargewater.tap_water(spargewater.sparge4_water_addition, :sparge)) %></td>
+          <td><%= decimal(spargewater.ro_water(spargewater.sparge4_water_addition, :sparge)) %></td>
           <td><%= decimal(spargewater.sparge4_volume) %></td>
           <td><%= decimal(spargewater.sparge4_required_gravity) %></td>
           <td><%= decimal(spargewater.sparge4_gravity) %></td>
@@ -80,7 +84,8 @@
       </if>
       <tr>
         <td><b>Combined</b></td>
-        <td><b><%= decimal(spargewater.total_spargewater)%></b></td>
+        <td><b><%= decimal(spargewater.tap_water(spargewater.total_spargewater, :sparge))%></b></td>
+        <td><b><%= decimal(spargewater.ro_water(spargewater.total_spargewater, :sparge))%></b></td>
         <td><b><%= decimal(spargewater.preboilvolume) %></b></td>
         <td><b><%= decimal(spargewater.preboilrequiredgravity) %></b></td>
         <td><b><%= decimal(spargewater.preboilgravity) %></b></td>

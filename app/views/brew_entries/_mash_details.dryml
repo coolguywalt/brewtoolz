@@ -28,7 +28,8 @@
         <th>Method</th>
         <th>Step temp<br/>[<%= temp_units() %>]</th>
         <th>Step time<br/>[minutes]</th>
-        <th>Addition amount<br/>[<%= volume_units() %>]</th>
+        <th>Tap addition amount<br/>[<%= volume_units() %>]</th>
+        <th>RO addition amount<br/>[<%= volume_units() %>]</th>
         <th>Addition temp<br/>[<%= temp_units() %>]</th>
         <th>Liquor/grist ratio<br/>[<%= liquor_to_grist_units() %>]</th>
       </tr>
@@ -41,7 +42,11 @@
           <td><%= temp_values(this.temperature) %></td>
           <td><view:time/></td>
           <td>
-              <%= volume_values(this.addition_amount) %>
+              <%= volume_values(brew_entry.tap_water(this.addition_amount, :mash)) %>
+              <%# mash_step_addition_txt( this ) %>
+          </td>
+          <td>
+              <%= volume_values(brew_entry.ro_water(this.addition_amount, :mash)) %>
               <%# mash_step_addition_txt( this ) %>
           </td>
           <td><%= temp_values(this.addition_temp) %></td>
@@ -56,12 +61,15 @@
     <h3>Mash Details</h3>
     <table class="list">
       <tr>
-        <th>Mash water required [<%= volume_units() %>]:</th><td><%= volume_values(this.mash_water) %></td>
+        <th>Mash tap water required [<%= volume_units() %>]:</th><td><%= volume_values(this.tap_water(this.mash_water, :mash)) %></td>
         <th>Mash tun volume required [<%= volume_units() %>]:</th><td><%= volume_values(this.mash_tun_volume) %></td>
       </tr>
       <tr>
-        <th>Grain Weight [<%= ferm_weight_units %>]:</th><td><%= ferm_weight_values(this.mash_grain_weight)%></td>
+        <th>Mash RO water required [<%= volume_units() %>]:</th><td><%= volume_values(this.ro_water(this.mash_water, :mash)) %></td>
         <th>Mash gravity @ 100% conversion [<%= gravity_units %>]:</th><td><%= gravity_values(this.mash_gravity) %></td>
+      </tr>
+      <tr>
+        <th>Grain Weight [<%= ferm_weight_units %>]:</th><td><%= ferm_weight_values(this.mash_grain_weight)%></td>
       </tr>
     </table>
   </div>

@@ -1,0 +1,208 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<if test="&this.therecipe">
+  <div class="block">
+    <table>
+      <tr>
+        <td>
+         <%= ajax_lock_edit( this, :same_water, :brew_entries, :update_mashsparge, :mash ) %>
+        </td>
+        <td><b>Use Same Water for Both Mash and Sparge</b></td>
+      </tr>
+    </table>
+  </div>
+  <% [:mash, :sparge].each do |phase| %>
+  <div id="edit_mash" class="block" >
+    <h2><u><%= phase.to_s.capitalize %> Water</u></h2>
+    <h3>Dilution</h3>
+    <table>
+      <tr>
+        <th><b>Percentage of RO water [%]:</b>&nbsp;</th>
+        <td>
+          <if test="&@brew_entry.updatable_by?(current_user) && (phase == :mash || !@brew_entry.same_water )">
+            <%= ajax_brewday_dilution_editor( @brew_entry,
+                "dilution_rate_#{phase}".to_sym ) %>
+          </if>
+          <else><%= this.send("dilution_rate_#{phase}") %></else>
+        </td>
+      </tr>
+    </table>
+    <h3>Mineral Additions</h3>
+    <table class="item-list">
+      <tr>
+        <th>Mineral</th>
+        <th>Addition [<%= wateradditions_weight_unit %>]</th>
+        <th>
+          Concentration [<%= this.concentration_units(current_user) %>]
+        </th>
+      </tr>
+      <% BrewEntry.salts.keys.sort_by {|sym| sym.to_s }.each do |salt| %>
+      <tr class="<%= cycle('odd','even') -%>">
+        <td>
+          <%= salt.to_s.titleize %>
+          (<%= BrewEntry.salts[salt][:formula] %>)&nbsp;
+        </td>
+        <td>
+          <if test="&@brew_entry.updatable_by?(current_user) && (phase == :mash || !@brew_entry.same_water )">
+            <%= ajax_brewday_wateraddition_editor( @brew_entry,
+                "#{salt}_#{phase}".to_sym ) %>
+          </if>
+          <else><%= decimal( this.send("#{salt}_#{phase}") ) %></else>
+        </td>
+        <td>
+          <%= decimal( this.send("#{salt}_#{phase}") /
+                       this.send( phase == :mash ? "mash_water" :
+                                                   "total_spargewater" ) ) %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <h3>Acid Additions</h3>
+    <table class="item-list">
+      <tr>
+        <th>Acid</th>
+        <th>Strength [%]</th>
+        <th>Addition [ml]</th>
+        <th>Concentration [ml/L]</th>
+      </tr>
+      <% BrewEntry.acids.keys.sort_by {|sym| sym.to_s }.each do |acid| %>
+      <tr class="<%= cycle('odd','even') -%>">
+        <td><%= acid.to_s.titleize %></td>
+        <td>
+          <if test="&@brew_entry.updatable_by?(current_user) && (phase == :mash || !@brew_entry.same_water )">
+            <%= ajax_brewday_dilution_editor( @brew_entry,
+                "#{acid}_strength_#{phase}".to_sym ) %>
+          </if>
+          <else><%= this.send("#{acid}_strength_#{phase}") %></else>
+        </td>
+        <td>
+          <if test="&@brew_entry.updatable_by?(current_user) && (phase == :mash || !@brew_entry.same_water )">
+            <%= ajax_brewday_wateraddition_editor( @brew_entry,
+                "#{acid}_volume_#{phase}".to_sym ) %>
+          </if>
+          <else><%= decimal( this.send("#{acid}_volume_#{phase}") ) %></else>
+        </td>
+        <td>
+          <%= decimal( this.send("#{acid}_volume_#{phase}") /
+                       this.send( phase == :mash ? "mash_water" :
+                                                   "total_spargewater" ) ) %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <h3>Resulting <%= phase.to_s.capitalize %> Water Profile</h3>
+    <table class="list">
+      <tr>
+        <th>Calcium (Ca&#178;&#8314;) [mg/L]:</th>
+        <td class="big numeric">
+          <%= decimal( this.adjusted( :calcium, phase ) ) %>
+        </td>
+        <th>Magnesium (Mg&#178;&#8314;) [mg/L]:</th>
+        <td class="big numeric">
+          <%= decimal( this.adjusted( :magnesium, phase ) ) %>
+        </td>
+      </tr>
+      <tr>
+        <th>Chloride (Cl&#8315;) [mg/L]:</th>
+        <td class="big numeric">
+          <%= decimal( this.adjusted( :chloride, phase ) ) %>
+        </td>
+        <th>Sulfate (SO&#8324;&#178;&#8315;) [mg/L]:</th>
+        <td class="big numeric">
+          <%= decimal( this.adjusted( :sulfate, phase ) ) %>
+        </td>
+        <th>SO&#8324;&#178;&#8315;:Cl&#8315;:</th>
+        <td class="big numeric">
+          <%= decimal( this.adjusted( :sulfate, phase ) /
+                       this.adjusted( :chloride, phase ) ) %></td>
+      </tr>
+      <tr>
+        <th>Sodium (Na&#8314;) [mg/L]:</th>
+        <td class="big numeric">
+          <%= decimal( this.adjusted( :sodium, phase ) ) %>
+        </td>
+        <th>Bicarbonate (HCO&#8323;&#8315;) [mg/L]:</th>
+        <td class="big numeric">
+          <%= decimal( this.adjusted( :bicarbonate, phase ) ) %>
+        </td>
+      </tr>
+    </table>
+    <h3><%= phase.to_s.capitalize %> Water Acidity</h3>
+    <table class="list">
+      <tr>
+        <th>Residual Alkalinity:</th>
+        <td class="big numeric">
+          <%= decimal( this.residual_alkalinity(phase) ) %>
+        </td>
+      </tr>
+      <% if phase == :mash %>
+      <tr>
+        <th>Estimated DI Mash pH:</th>
+        <td class="big numeric">
+          <%= decimal( this.therecipe.total_grist_pH(this.actual_og) ) %>
+        </td>
+      </tr>
+      <tr>
+        <th>pH Change from Residual Alkalinity:</th>
+        <td class="big numeric">
+          <%= decimal(this.pH_change_from_residual_alkalinity) %>
+        </td>
+      </tr>
+      <tr>
+        <th>pH Change from Acid Additions:</th>
+        <td class="big numeric">
+          <%= decimal(this.pH_change_from_acids) %>
+        </td>
+      </tr>
+      <tr>
+        <th>Estimated Room-Temperature Mash pH:&nbsp;</th>
+        <td class="big numeric"><%= decimal(this.estimated_mash_pH) %></td>
+      </tr>
+      <% else %>
+      <tr>
+        <th>Alkalinity Change from Acid Additions:&nbsp;</th>
+        <td class="big numeric">
+          <%= decimal( -this.alkalinity_change_from_acids(phase) ) %>
+        </td>
+      </tr>
+      <tr>
+        <th>Net Alkalinity:&nbsp;</th>
+        <td class="big numeric">
+          <%= decimal( this.residual_alkalinity(phase) -
+              this.alkalinity_change_from_acids(phase) ) %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <% end %>
+  <div class="block">
+    <p>
+      Formulae for estimating mash pH and other water calculations are
+      provided by Kai Troester.  See
+      Kai's <a href="http://braukaiser.com/">web site</a> for a wealth
+      of information on water and other brewing topics.  Kai also
+      offers a spreadsheet (in the
+      <a href="http://braukaiser.com/wiki/index.php?title=Main_Page#Ingedients">Ingredients
+      section of his web site</a>) that performs more detailed water
+      calculations.
+    </p>
+  </div>
+</if>

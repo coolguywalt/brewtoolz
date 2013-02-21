@@ -713,4 +713,42 @@ class Recipe < ActiveRecord::Base
 		return recipe_shared.stale_view?( user )
 	end
 
+  def percent_roast
+    total_roast = fermentables.inject(0) do |roast, fermentable|
+      fermentable.fermentable_type.acidity_type.to_sym == :roast ?
+        roast + fermentable.weight : 0.0
+    end
+    return total_roast / total_mash_weight
+  end
+
+  # TODO: figure in grain buffer capacity
+  def pH_contribution(fermentable)
+    type = fermentable.fermentable_type or return 0.0
+    base_pH = 5.6
+    acidity = 0
+    case type.acidity_type.to_sym
+    when :base
+      base_pH = 5.82 - 0.02 * type.colour # TODO: allow di mash pH override
+    when :crystal
+      acidity = 14.0 + 0.13 * type.colour
+    when :roast
+      acidity = 40.0
+    when :acid
+      acidity = 336.0
+    end
+    di_pH = base_pH - 0.14 * acidity / brew_entry.the_liquor_to_grist_ratio
+    logger.debug "#{type.name} color: #{type.colour}, base_pH: #{base_pH}, acidity: #{acidity}, weight: #{fermentable.weight}"
+    logger.debug "#{type.name} di pH: #{di_pH}"
+    return fermentable.weight * di_pH
+  end
+
+  ZERO_SRM_PH = 5.6
+  CRYSTAL_SLOPE = 0.21
+  ROAST_SLOPE = 0.06
+
+  def total_grist_pH(og)
+    return ZERO_SRM_PH - srm * ( CRYSTAL_SLOPE * ( 1 - percent_roast ) +
+                                 ROAST_SLOPE   *       percent_roast ) / og
+  end
+
 end

@@ -425,4 +425,8 @@ module BrewingUnits
     return result
   end
 
+  def self.ebc_to_lovibond(ebc)
+    return 0.375 * ebc + 0.56
+  end
+
 end

@@ -36,12 +36,43 @@ class Brewery < ActiveRecord::Base
 		evapouration_rate :float
 		boiler_loses :float
 
+                bicarbonate :float
+                calcium :float
+                carbonate :float
+                chloride :float
+                fluoride :float
+                iron :float
+                magnesium :float
+                nitrate :float
+                nitrite :float
+                pH :float
+                potassium :float
+                sodium :float
+                sulfate :float
+                total_alkalinity :float
 
 		timestamps
 	end
 
 	validates_numericality_of :capacity, :greater_than => 0.0
 	validates_numericality_of :efficency, :greater_than => 0.0, :less_than => 120.0
+        validates_numericality_of :bicarbonate,
+                                  :greater_than_or_equal_to => 0.0
+        validates_numericality_of :calcium, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :carbonate, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :chloride, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :fluoride, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :iron, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :magnesium, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :nitrate, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :nitrite, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :pH, :greater_than_or_equal_to => 0.0,
+                                  :less_than_or_equal_to => 7.0
+        validates_numericality_of :potassium, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :sodium, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :sulfate, :greater_than_or_equal_to => 0.0
+        validates_numericality_of :total_alkalinity,
+                                  :greater_than_or_equal_to => 0.0
 
 	belongs_to :user, :creator => true
 	# --- Permissions --- #
@@ -87,10 +118,53 @@ class Brewery < ActiveRecord::Base
 			:mash_tun_deadspace => 2.0,
 
 			:evapouration_rate => 4.0,
-			:boiler_loses => 2.0
+
+                        :bicarbonate => 292.0,
+                	:calcium => 80.0,
+                	:carbonate => 0.0,
+                	:chloride => 118.0,
+                	:fluoride => 0.0,
+                	:iron => 0.0,
+                	:magnesium => 31.0,
+                	:nitrate => 16.4,
+                	:nitrite => 0.0,
+                	:pH => 7.1,
+                	:potassium => 6.0,
+                	:sodium => 86.0,
+                	:sulfate => 96.0,
+                	:total_alkalinity => 239.0
 		)
 
 		return def_brewery
 	end
 
+    def self.ro_brewery()
+		return Brewery.new(
+			:capacity => 23.0,
+			:efficency => 75.0,
+			:liquor_to_grist => 3.0,
+			:boil_time => 60,
+			:mash_tun_capacity => 44.0,
+			:mash_tun_deadspace => 2.0,
+
+			:evapouration_rate => 4.0,
+			:boiler_loses => 2.0,
+
+                	:bicarbonate => 16.0,
+                	:calcium => 1.0,
+                	:carbonate => 0.0,
+                	:chloride => 4.0,
+                	:fluoride => 0.0,
+                	:iron => 0.0,
+                	:magnesium => 0.0,
+                	:nitrate => 0.0,
+                	:nitrite => 0.0,
+                	:pH => 7.0,
+                	:potassium => 0.0,
+                	:sodium => 8.0,
+                	:sulfate => 1.0,
+                	:total_alkalinity => 13.1
+
+		)
+    end
 end
