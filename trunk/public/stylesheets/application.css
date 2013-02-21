@@ -191,6 +191,10 @@ body {
     font-size: 11pt;
 }
 
+.numeric {
+    text-align: right;
+}
+
 .scroll-list {
     /*overflow: auto;
     height: 180px;*/

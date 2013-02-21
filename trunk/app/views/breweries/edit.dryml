@@ -70,6 +70,86 @@
         </table>
       </div>
       <br/>
+    <div class="block" >
+
+      <table class="field-list">
+        <tr>
+          <th class="name-label">Calcium (Ca&#178;&#8314;) [mg/L]</th>
+          <td class="name-view"><input:calcium/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Bicarbonate (HCO&#8323;&#8315;) [mg/L]</th>
+          <td class="name-view"><input:bicarbonate/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Magnesium (Mg&#178;&#8314;) [mg/L]</th>
+          <td class="name-view"><input:magnesium/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Carbonate (CO&#8323;&#178;&#8315;) [mg/L]</th>
+          <td class="name-view"><input:carbonate/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Sodium (Na&#8314;) [mg/L]</th>
+          <td class="name-view"><input:sodium/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Sulfate (SO&#8324;&#178;&#8315;) [mg/L]</th>
+          <td class="name-view">
+            <input:sulfate/>
+            <div class="input-help">
+              &#8220;SO&#8324;-S&#8221; from lab report
+              multiplied by 3.0
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th class="name-label">Potassium (K&#8314;) [mg/L]</th>
+          <td class="name-view"><input:potassium/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Chloride (Cl&#8315;) [mg/L]</th>
+          <td class="name-view"><input:chloride/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Iron (Fe&#178;&#8314;) [mg/L]</th>
+          <td class="name-view"><input:iron/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Nitrate (NO&#8323;&#8315;) [mg/L]</th>
+          <td class="name-view">
+            <input:nitrate/>
+            <div class="input-help">
+              &#8220;NO&#8323;-N&#8221; from lab report
+              multiplied by 4.4
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th class="name-label">Nitrite (NO&#8322;&#178;&#8315;) [mg/L]</th>
+          <td class="name-view"><input:nitrite/></td>
+        </tr>
+        <tr>
+          <th class="name-label">Fluoride (F&#8315;) [mg/L]</th>
+          <td class="name-view"><input:fluoride/></td>
+        </tr>
+        <tr>
+          <th class="name-label">
+            Total Alkalinity (as CaCO&#8323;) [mg/L]
+          </th>
+          <td class="name-view">
+            <input:total_alkalinity/>
+            <div class="input-help">
+              Calculated from Bicarbonate if unspecified
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th class="name-label">pH</th>
+          <td class="name-view"><input:pH/></td>
+        </tr>
+      </table>
+    </div>
       <submit value="Ok"/><a class="button">Cancel</a>
       <%= link_to( "Delete", { :action => 'remove_brewery', :id => this.id }, :class => 'button') %>
 

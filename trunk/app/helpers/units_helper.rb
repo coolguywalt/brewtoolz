@@ -103,6 +103,16 @@ module UnitsHelper
 		BrewingUnits::unit_for_display( current_user.units.hops )
 	end
 
+	def wateradditions_weight_units( auser=nil )
+          auser = current_user if auser.nil?
+          BrewingUnits::units_for_display( auser.units.wateradditions )
+	end
+
+	def wateradditions_weight_unit( auser=nil )
+          auser = current_user if auser.nil?
+          BrewingUnits::unit_for_display( auser.units.wateradditions )
+	end
+
 	def temp_values(temp)
 		BrewingUnits::values_for_display( current_user.units.temperature, temp, 2 )
 	end

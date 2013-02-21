@@ -487,13 +487,46 @@ class BrewEntriesController < ApplicationController
     end
 
 		@brew_entry.update_attributes(params[:brew_entry])
+
+          if @brew_entry.same_water # sparge additions should reflect mash
+            if params[:brew_entry][:same_water] # just checked; do reflection
+              @brew_entry.dilution_rate_sparge = @brew_entry.dilution_rate_mash
+              BrewEntry.salts.keys.each do |salt|
+                @brew_entry.send( "#{salt}_sparge=",
+                                  @brew_entry.send("#{salt}_mash") /
+                                  @brew_entry.mash_water *
+                                  @brew_entry.total_spargewater )
+              end
+              BrewEntry.acids.keys.each do |acid|
+                @brew_entry.send( "#{acid}_volume_sparge=",
+                                  @brew_entry.send("#{acid}_volume_mash") /
+                                  @brew_entry.mash_water *
+                                  @brew_entry.total_spargewater )
+                @brew_entry.send( "#{acid}_strength_sparge=",
+                                  @brew_entry.send("#{acid}_strength_mash") )
+              end
+            else                # not just checked; only mirror changed fields
+              params[:brew_entry].keys.each do |mash_field|
+                match_data = /(.*)_mash$/.match mash_field
+                if !match_data.nil?
+                  @brew_entry.send( "#{match_data[1]}_sparge=",
+                                    @brew_entry.send(mash_field) /
+                                    @brew_entry.mash_water *
+                                    @brew_entry.total_spargewater )
+                end
+              end
+            end
+          end
+
 		@brew_entry.save
 
     case params[:render]
     when "mash"
       render(:update) { |page|
+        page.replace_html 'water_details_div', :partial => 'water_details', :object => @brew_entry
         page.replace_html 'mash_details_div', :partial => 'mash_details', :object => @brew_entry
 	page << "if( $('sparge_details_div') ) {"
+        page.replace_html 'water_details_div', :partial => 'water_details', :object => @brew_entry
         page.replace_html 'sparge_details_div', :partial => 'spargewater', :object => @brew_entry
     	page << "}"
       }
@@ -502,7 +535,6 @@ class BrewEntriesController < ApplicationController
         page.replace_html 'sparge_details_div', :partial => 'spargewater', :object => @brew_entry
       }
     end
-
 
 	end
 
@@ -636,6 +668,11 @@ class BrewEntriesController < ApplicationController
 	def loadyeasttab
 		@brew_entry = BrewEntry.find(params[:id])
 		render :partial => 'yeastcalc', :object => @brew_entry
+	end
+
+	def loadwatertab
+		@brew_entry = BrewEntry.find(params[:id])
+		render :partial => 'water', :object => @brew_entry
 	end
 
 	def loadmashtab

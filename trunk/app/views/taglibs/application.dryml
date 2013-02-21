@@ -125,10 +125,11 @@
 
 <def tag="brewday-nav">
 	<navigation merge>
-		<nav-item href="#bdmenu" onclick="Hobo.show('recipe_div'); Hobo.hide('sparge_div','mash_div','bdyeast_div');">Recipe</nav-item>
-		<nav-item href="#bdmenu" onclick="Hobo.show('bdyeast_div'); Hobo.hide('sparge_div','recipe_div','mash_div');">Yeast</nav-item>
-		<nav-item href="#bdmenu" onclick="Hobo.show('mash_div'); Hobo.hide('sparge_div','recipe_div','bdyeast_div');">Mash</nav-item>
-		<nav-item href="#bdmenu" onclick="Hobo.show('sparge_div'); Hobo.hide('mash_div','recipe_div','bdyeast_div');">Sparge</nav-item>
+		<nav-item href="#bdmenu" onclick="Hobo.show('recipe_div'); Hobo.hide('sparge_div','mash_div','bdyeast_div','water_div');">Recipe</nav-item>
+		<nav-item href="#bdmenu" onclick="Hobo.show('bdyeast_div'); Hobo.hide('sparge_div','recipe_div','mash_div','water_div');">Yeast</nav-item>
+		<nav-item href="#bdmenu" onclick="Hobo.show('water_div'); Hobo.hide('sparge_div','recipe_div','bdyeast_div','mash_div');">Water</nav-item>
+		<nav-item href="#bdmenu" onclick="Hobo.show('mash_div'); Hobo.hide('sparge_div','recipe_div','bdyeast_div','water_div');">Mash</nav-item>
+		<nav-item href="#bdmenu" onclick="Hobo.show('sparge_div'); Hobo.hide('mash_div','recipe_div','bdyeast_div','water_div');">Sparge</nav-item>
 
 	</navigation>
 </def>
@@ -239,7 +240,7 @@
 
 <extend tag="form" for="FermentableType">
 	<old-form merge>
-		<field-list: fields="name,description,yeild,colour,converted,mashed,fullyfermentable,validated"/>
+		<field-list: fields="name,description,yeild,colour,converted,mashed,fullyfermentable,acidity_type,validated"/>
 	</old-form>
 </extend>
 

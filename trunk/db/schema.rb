@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "user_id"
   end
 
+  add_index "audits", ["user_id"], :name => "index_audits_on_user_id"
+
   create_table "brew_entries", :force => true do |t|
     t.date     "brew_date"
     t.text     "comment"
@@ -68,6 +70,33 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.float    "ambient_temp"
     t.float    "actual_extract_volume"
     t.float    "actual_extract_sg"
+    t.integer  "dilution_rate_mash"
+    t.float    "calcium_chloride_mash"
+    t.float    "gypsum_mash"
+    t.float    "epsom_salt_mash"
+    t.float    "table_salt_mash"
+    t.float    "baking_soda_mash"
+    t.float    "chalk_mash"
+    t.integer  "citric_strength_mash"
+    t.integer  "lactic_strength_mash"
+    t.integer  "phosphoric_strength_mash"
+    t.boolean  "same_water"
+    t.integer  "dilution_rate_sparge"
+    t.float    "calcium_chloride_sparge"
+    t.float    "gypsum_sparge"
+    t.float    "epsom_salt_sparge"
+    t.float    "table_salt_sparge"
+    t.float    "baking_soda_sparge"
+    t.float    "chalk_sparge"
+    t.float    "citric_volume_mash"
+    t.float    "lactic_volume_mash"
+    t.float    "phosphoric_volume_mash"
+    t.float    "citric_volume_sparge"
+    t.integer  "citric_strength_sparge"
+    t.float    "lactic_volume_sparge"
+    t.integer  "lactic_strength_sparge"
+    t.float    "phosphoric_volume_sparge"
+    t.integer  "phosphoric_strength_sparge"
     t.date     "yeast_pitched_date"
   end
 
@@ -102,6 +131,20 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.float    "evapouration_rate"
     t.float    "boiler_loses"
     t.text     "description"
+    t.float    "bicarbonate"
+    t.float    "calcium"
+    t.float    "carbonate"
+    t.float    "chloride"
+    t.float    "fluoride"
+    t.float    "iron"
+    t.float    "magnesium"
+    t.float    "nitrate"
+    t.float    "nitrite"
+    t.float    "pH"
+    t.float    "potassium"
+    t.float    "sodium"
+    t.float    "sulfate"
+    t.float    "total_alkalinity"
   end
 
   create_table "categories", :force => true do |t|
@@ -123,6 +166,9 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "user_id"
   end
 
+  add_index "fermentable_inventories", ["fermentable_type_id"], :name => "index_fermentable_inventories_on_fermentable_type_id"
+  add_index "fermentable_inventories", ["user_id"], :name => "index_fermentable_inventories_on_user_id"
+
   create_table "fermentable_inventory_log_entries", :force => true do |t|
     t.float    "amount"
     t.text     "note"
@@ -133,6 +179,8 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "fermentable_inventory_id"
     t.integer  "user_id"
   end
+
+  add_index "fermentable_inventory_log_entries", ["recipe_id"], :name => "index_fermentable_inventory_log_entries_on_recipe_id"
 
   create_table "fermentable_types", :force => true do |t|
     t.string   "name"
@@ -146,6 +194,7 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.boolean  "mashed"
     t.integer  "user_id"
     t.boolean  "validated"
+    t.string   "acidity_type",     :default => "--- :base\n"
   end
 
   create_table "fermentables", :force => true do |t|
@@ -176,6 +225,8 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "user_id"
   end
 
+  add_index "hop_types", ["user_id"], :name => "index_hop_types_on_user_id"
+
   create_table "hops", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -197,6 +248,9 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.boolean  "lock_weight"
   end
 
+  add_index "hops", ["hop_type_id"], :name => "index_hops_on_hop_type_id"
+  add_index "hops", ["recipe_id"], :name => "index_hops_on_recipe_id"
+
   create_table "hops_inventories", :force => true do |t|
     t.float    "amount"
     t.text     "comment"
@@ -211,6 +265,9 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.string   "hop_form"
   end
 
+  add_index "hops_inventories", ["hop_type_id"], :name => "index_hops_inventories_on_hop_type_id"
+  add_index "hops_inventories", ["user_id"], :name => "index_hops_inventories_on_user_id"
+
   create_table "hops_inventory_log_entries", :force => true do |t|
     t.float    "amount"
     t.text     "note"
@@ -221,6 +278,10 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "hops_inventory_id"
     t.integer  "user_id"
   end
+
+  add_index "hops_inventory_log_entries", ["hops_inventory_id"], :name => "index_hops_inventory_log_entries_on_hops_inventory_id"
+  add_index "hops_inventory_log_entries", ["recipe_id"], :name => "index_hops_inventory_log_entries_on_recipe_id"
+  add_index "hops_inventory_log_entries", ["user_id"], :name => "index_hops_inventory_log_entries_on_user_id"
 
   create_table "ingredient_unit_preferences", :force => true do |t|
     t.string   "hops"
@@ -235,6 +296,8 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.string   "hop_utilisation_method"
     t.string   "liquor_to_grist"
   end
+
+  add_index "ingredient_unit_preferences", ["user_id"], :name => "index_ingredient_unit_preferences_on_user_id"
 
   create_table "kit_inventories", :force => true do |t|
     t.float    "amount"
@@ -259,6 +322,10 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "user_id"
   end
 
+  add_index "kit_inventory_log_entries", ["kit_inventory_id"], :name => "index_kit_inventory_log_entries_on_kit_inventory_id"
+  add_index "kit_inventory_log_entries", ["recipe_id"], :name => "index_kit_inventory_log_entries_on_recipe_id"
+  add_index "kit_inventory_log_entries", ["user_id"], :name => "index_kit_inventory_log_entries_on_user_id"
+
   create_table "kit_types", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -275,6 +342,8 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.boolean  "validated"
     t.integer  "user_id"
   end
+
+  add_index "kit_types", ["user_id"], :name => "index_kit_types_on_user_id"
 
   create_table "kits", :force => true do |t|
     t.datetime "created_at"
@@ -326,6 +395,8 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "recipe_id"
   end
 
+  add_index "misc_ingredients", ["recipe_id"], :name => "index_misc_ingredients_on_recipe_id"
+
   create_table "recipe_shareds", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -348,6 +419,9 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.datetime "last_viewed"
   end
 
+  add_index "recipe_user_shareds", ["recipe_shared_id"], :name => "index_recipe_user_shareds_on_recipe_shared_id"
+  add_index "recipe_user_shareds", ["user_id"], :name => "index_recipe_user_shareds_on_user_id"
+
   create_table "recipes", :force => true do |t|
     t.string   "name"
     t.string   "genealogy"
@@ -368,7 +442,9 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.boolean  "draft"
   end
 
-  add_index "recipes", ["name"], :name => "name"
+  add_index "recipes", ["brew_entry_id"], :name => "index_recipes_on_brew_entry_id"
+  add_index "recipes", ["style_id"], :name => "index_recipes_on_style_id"
+  add_index "recipes", ["user_id"], :name => "index_recipes_on_user_id"
 
   create_table "schema_info", :id => false, :force => true do |t|
     t.integer "version"
@@ -398,6 +474,8 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "last_activity"
   end
 
+  add_index "users", ["state"], :name => "index_users_on_state"
+
   create_table "yeast_inventories", :force => true do |t|
     t.float    "amount"
     t.text     "comment"
@@ -410,6 +488,9 @@ ActiveRecord::Schema.define(:version => 20130216081447) do
     t.integer  "yeast_type_id"
     t.integer  "user_id"
   end
+
+  add_index "yeast_inventories", ["user_id"], :name => "index_yeast_inventories_on_user_id"
+  add_index "yeast_inventories", ["yeast_type_id"], :name => "index_yeast_inventories_on_yeast_type_id"
 
   create_table "yeast_inventory_log_entries", :force => true do |t|
     t.float    "amount"

@@ -28,6 +28,7 @@ class FermentableType < ActiveRecord::Base
     colour :float   # note colour is in EBC units
     description :text
     validated :boolean  #Used to mark if a moderator has done a quality check of the information.
+    acidity_type enum_string(:base, :crystal, :roast, :acid), :default => :base
 
     timestamps
   end
@@ -80,7 +81,6 @@ class FermentableType < ActiveRecord::Base
     return true if m == nil
     return m
   end
-
 
   protected
 

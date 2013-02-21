@@ -162,6 +162,25 @@ module BrewEntriesHelper
 		BrewEntry.find_all_by_user_id( user.id, :order => 'brew_date DESC' )
 	end
 
+  def ajax_brewday_wateraddition_editor( entry, field )
+    ajax_edit_field2( entry, field,
+                      { :action => :update_mashsparge,
+                        :controller => :brew_entries,
+                        :id => entry.id,
+                        :render => "mash" },
+                      BrewingUnits::values_array_for_display( current_user.units.volume, entry.send(field), 2 ),
+                      "Update #{field.to_s.titleize}" )
+  end
+
+  def ajax_brewday_dilution_editor( entry, field )
+    ajax_edit_field2( entry, field,
+                      { :action => :update_mashsparge,
+                        :controller => :brew_entries, :id => entry.id,
+                        :render => "mash" },
+                      [ entry.send(field) ],
+                      "Update #{field.to_s.titleize}" )
+  end
+
   def whatsbrewing_search_filter()
 	   
     now = Date.current

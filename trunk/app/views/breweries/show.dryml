@@ -66,7 +66,44 @@
 
 			</table>
 		</div>
+                <br/>
+		<div class="block" >
 
+			<table class="item-list">
+				<tr>
+					<td><b>Calcium (Ca&#178;&#8314;) [mg/L]</b>: <view:calcium class="big"/></td>
+					<td><b>Bicarbonate (HCO&#8323;&#8315;) [mg/L]</b>: <view:bicarbonate class="big"/></td>
+				</tr>
+				<tr>
+					<td><b>Magnesium (Mg&#178;&#8314;) [mg/L]</b>: <view:magnesium class="big"/></td>
+					<td><b>Carbonate (CO&#8323;&#178;&#8315;) [mg/L]</b>: <view:carbonate class="big"/></td>
+				</tr>
+				<tr>
+					<td><b>Sodium (Na&#8314;) [mg/L]</b>: <view:sodium class="big"/></td>
+					<td><b>Sulfate (SO&#8324;&#178;&#8315;) [mg/L]</b>: <view:sulfate class="big"/></td>
+				</tr>
+				<tr>
+					<td><b>Potassium (K&#8314;) [mg/L]</b>: <view:potassium class="big"/></td>
+					<td><b>Chloride (Cl&#8315;) [mg/L]</b>: <view:chloride class="big"/></td>
+				</tr>
+				<tr>
+					<td><b>Iron (Fe&#178;&#8314;) [mg/L]</b>: <view:iron class="big"/></td>
+					<td><b>Nitrate (NO&#8323;&#8315;) [mg/L]</b>: <view:nitrate class="big"/></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><b>Nitrite (NO&#8322;&#178;&#8315;) [mg/L]</b>: <view:nitrite class="big"/></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><b>Fluoride (F&#8315;) [mg/L]</b>: <view:fluoride class="big"/></td>
+				</tr>
+				<tr>
+					<td><b>Total Alkalinity (as CaCO&#8323;) [mg/L]</b>: <view:total_alkalinity class="big"/></td>
+					<td><b>pH</b>: <view:pH class="big"/></td>
+				</tr>
+			</table>
+		</div>
 
 	</content-body:>
 

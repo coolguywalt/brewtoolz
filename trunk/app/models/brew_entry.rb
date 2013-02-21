@@ -20,6 +20,7 @@ class BrewEntry < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   include RecipeCalcs
+  include UnitsHelper
 
   fields do
     brew_date :date
@@ -76,8 +77,82 @@ class BrewEntry < ActiveRecord::Base
     postboil_gravity_actual :float
     postboil_volume_actual :float
 
+    same_water :boolean
+    dilution_rate_mash :integer
+    dilution_rate_sparge :integer
+    calcium_chloride_mash :float
+    gypsum_mash :float
+    epsom_salt_mash :float
+    table_salt_mash :float
+    baking_soda_mash :float
+    chalk_mash :float
+    calcium_chloride_sparge :float
+    gypsum_sparge :float
+    epsom_salt_sparge :float
+    table_salt_sparge :float
+    baking_soda_sparge :float
+    chalk_sparge :float
+
+    citric_volume_mash :float
+    citric_strength_mash :integer
+    lactic_volume_mash :float
+    lactic_strength_mash :integer
+    phosphoric_volume_mash :float
+    phosphoric_strength_mash :integer
+    citric_volume_sparge :float
+    citric_strength_sparge :integer
+    lactic_volume_sparge :float
+    lactic_strength_sparge :integer
+    phosphoric_volume_sparge :float
+    phosphoric_strength_sparge :integer
+
     timestamps
   end
+
+  validates_numericality_of :dilution_rate_mash, :greater_than_or_equal_to => 0,
+                            :less_than_or_equal_to => 100
+  validates_numericality_of :dilution_rate_sparge,
+                            :greater_than_or_equal_to => 0,
+                            :less_than_or_equal_to => 100
+  validates_numericality_of :calcium_chloride_mash,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :gypsum_mash, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :epsom_salt_mash, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :table_salt_mash, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :baking_soda_mash, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :chalk_mash, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :calcium_chloride_sparge,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :gypsum_sparge, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :epsom_salt_sparge, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :table_salt_sparge, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :baking_soda_sparge,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :chalk_sparge, :greater_than_or_equal_to => 0.0
+  validates_numericality_of :citric_volume_mash,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :citric_strength_mash, :greater_than => 0,
+                            :less_than_or_equal_to => 100
+  validates_numericality_of :lactic_volume_mash,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :lactic_strength_mash, :greater_than => 0,
+                            :less_than_or_equal_to => 100
+  validates_numericality_of :phosphoric_volume_mash,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :phosphoric_strength_mash, :greater_than => 0,
+                            :less_than_or_equal_to => 100
+  validates_numericality_of :citric_volume_sparge,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :citric_strength_sparge, :greater_than => 0,
+                            :less_than_or_equal_to => 100
+  validates_numericality_of :lactic_volume_sparge,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :lactic_strength_sparge, :greater_than => 0,
+                            :less_than_or_equal_to => 100
+  validates_numericality_of :phosphoric_volume_sparge,
+                            :greater_than_or_equal_to => 0.0
+  validates_numericality_of :phosphoric_strength_sparge, :greater_than => 0,
+                            :less_than_or_equal_to => 100
 
   belongs_to :recipe
   belongs_to :user, :creator => true
@@ -86,6 +161,38 @@ class BrewEntry < ActiveRecord::Base
   has_many :brew_entry_logs, :dependent => :destroy
   has_one :actual_recipe, :class_name => 'Recipe', :dependent => :destroy #used to cache copy of actual recipe brewed.
 
+  @@acids = {
+    :citric => {
+      :molar_mass         => 210.14 ,
+      :reference_density  =>   1.50 ,
+      :reference_strength => 100
+    },
+    :lactic => {
+      :molar_mass         =>  90.0  ,
+      :reference_density  =>   1.20 ,
+      :reference_strength =>  88
+    },
+    :phosphoric => {
+      :molar_mass         =>  98.0  ,
+      :reference_density  =>   1.08 ,
+      :reference_strength =>  10
+    }
+  }
+  def self.acids
+    @@acids
+  end
+
+  @@salts = {
+    :gypsum           => { :formula => 'CaSO&#8324;' },
+    :epsom_salt       => { :formula => 'MgSO&#8324;' },
+    :calcium_chloride => { :formula => 'CaCl&#8322;' },
+    :table_salt       => { :formula => 'NaCl' },
+    :baking_soda      => { :formula => 'NaHCO&#8323;' },
+    :chalk            => { :formula => 'CaCO&#8323;' }
+  }
+  def self.salts
+    @@salts
+  end
 
    # before_destroy :pre_destroy
 
@@ -111,6 +218,29 @@ class BrewEntry < ActiveRecord::Base
 
   def before_destroy
     self.actual_recipe.destroy if self.actual_recipe  #Ensure brew entry recipe is also destroyed.
+  end
+
+  def after_initialize
+    self.same_water = true if self.same_water.nil?
+    [:mash, :sparge].each do |phase|
+      if self.send("dilution_rate_#{phase}").nil?
+        self.send( "dilution_rate_#{phase}=", 0 )
+      end
+      @@salts.keys.each do |salt|
+        if self.send("#{salt}_#{phase}").nil?
+          self.send( "#{salt}_#{phase}=", 0.0 )
+        end
+      end
+      @@acids.keys.each do |acid|
+        if self.send("#{acid}_volume_#{phase}").nil?
+          self.send( "#{acid}_volume_#{phase}=", 0.0 )
+        end
+        if self.send("#{acid}_strength_#{phase}").nil?
+          self.send( "#{acid}_strength_#{phase}=",
+                     @@acids[acid][:reference_strength] )
+        end
+      end
+    end
   end
   
   def max_rating
@@ -845,6 +975,108 @@ class BrewEntry < ActiveRecord::Base
     arecipe = therecipe
     arecipe.adjust_weights( change_factor ) if arecipe
 
+  end
+
+  def ro_water( volume, phase )
+    return volume * send("dilution_rate_#{phase}") / 100.0
+  end
+
+  def tap_water( volume, phase )
+    return volume * (1.0 - send("dilution_rate_#{phase}") / 100.0)
+  end
+
+  def diluted(ion, phase)
+    factor = send("dilution_rate_#{phase}") / 100.0
+    ro_brewery = Brewery.ro_brewery
+    return factor * ro_brewery.send(ion) +
+      ( 1.0 - factor ) * ( thebrewery.send(ion) || ro_brewery.send(ion) )
+  end
+
+  def alkalinity(phase)
+    return adjusted(:total_alkalinity, phase) ||
+           adjusted(:bicarbonate, phase) * 50.0 / 61.0 +
+             adjusted(:carbonate, phase) * 100.0 / 60.0
+  end
+
+  def residual_alkalinity(phase)
+    return alkalinity(phase) - adjusted(:calcium, phase) / 1.4 -
+           adjusted(:magnesium, phase) / 1.7
+  end
+
+  def buffer_capacity
+    return 50.0                 # mEq / ( pH * kg )
+  end
+
+  def acid_density(acid, strength)
+    return strength / @@acids[acid][:reference_strength] *
+           ( @@acids[acid][:reference_density] - 1.0 ) + 1.0 # kg/l
+  end
+
+  def acid_solution_mass(acid, volume, strength)
+    volume * acid_density(acid, strength) # g
+  end
+
+  def acid_mass(acid, volume, strength)
+    return ( strength / 100.0 ) *
+           acid_solution_mass(acid, volume, strength) # g
+  end
+
+  def acid_power(acid, volume, strength)
+    return 1000.0 * acid_mass(acid, volume, strength) /
+           @@acids[acid][:molar_mass] # mEq
+  end
+
+  def alkalinity_change_from_acids(phase)
+    return @@acids.keys.inject(0) do |total_alkalinity_change, acid|
+      total_alkalinity_change +
+        acid_power( acid, send( "#{acid}_volume_#{phase}" ) *
+                          ( phase == :mash ? mash_water : total_spargewater ),
+                    send( "#{acid}_strength_#{phase}" ) )
+    end
+  end
+
+  def estimated_mash_pH
+    return therecipe.total_grist_pH(actual_og) +
+           pH_change_from_residual_alkalinity + pH_change_from_acids
+
+  end
+
+  def pH_change_from_residual_alkalinity
+    return residual_alkalinity(:mash) * the_liquor_to_grist_ratio /
+           buffer_capacity / 50.0
+  end
+
+  def pH_change_from_acids
+    return - alkalinity_change_from_acids(:mash) / buffer_capacity /
+             ( mash_grain_weight / 1000.0 )
+  end
+
+  @@concentrations = {
+    :bicarbonate => { :baking_soda => 191.0 },
+    :calcium => { :calcium_chloride => 72.0, :chalk => 105.0, :gypsum => 61.5 },
+    :carbonate => { :chalk => 158.0 },
+    :chloride => { :calcium_chloride => 127.0, :table_salt => 160.3 },
+    :magnesium => { :epsom_salt => 26.0 },
+    :sodium => { :baking_soda => 75.0, :table_salt => 103.9 },
+    :sulfate => { :epsom_salt => 103.0, :gypsum => 147.4 },
+    :total_alkalinity => { :baking_soda => 156.6 }
+  }
+
+  def salt_contributions(ion, phase)
+    return 0.0 unless @@concentrations[ion]
+    return @@concentrations[ion].keys.inject(0) do |total_mass, salt|
+      total_mass + send("#{salt}_#{phase}") /
+                   ( phase == :mash ? mash_water : total_spargewater ) *
+                   @@concentrations[ion][salt] * 3.785
+    end
+  end
+
+  def adjusted(ion, phase)
+    return diluted(ion, phase) + salt_contributions(ion, phase)
+  end
+
+  def concentration_units(user)
+    return wateradditions_weight_units(user) + "/" + volume_units(user)
   end
 
 #  protected

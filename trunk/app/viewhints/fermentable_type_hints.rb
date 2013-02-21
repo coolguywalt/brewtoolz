@@ -24,5 +24,6 @@ class FermentableTypeHints < Hobo::ViewHints
        :fullyfermentable => "Is this a simple sugar that is fullly fermentable?",
        :mashed => "Does this need to be mashed?",
        :colour => "What is the colour contribution (EBC)",
-       :description => "Provide a brief description"
+       :description => "Provide a brief description",
+       :acidity_type => "Type of grain (base, crystal, roast, acid) for determining acidity contribution"
 end

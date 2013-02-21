@@ -24,7 +24,7 @@ class FermentableTypesController < ApplicationController
 
   def index
 
-    hobo_index FermentableType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name,:yeild,:colour,:validated))
+    hobo_index FermentableType.apply_scopes(:search => [params[:search],:name,:description],:order_by => parse_sort_param(:name,:acidity_type,:yeild,:colour,:validated))
 
     #@fermentable_types = FermentableType.paginate( :order => 'name', :page => params[:page], :per_page => 100 )
 
