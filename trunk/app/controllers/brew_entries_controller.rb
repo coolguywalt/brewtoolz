@@ -509,10 +509,15 @@ class BrewEntriesController < ApplicationController
               params[:brew_entry].keys.each do |mash_field|
                 match_data = /(.*)_mash$/.match mash_field
                 if !match_data.nil?
-                  @brew_entry.send( "#{match_data[1]}_sparge=",
-                                    @brew_entry.send(mash_field) /
-                                    @brew_entry.mash_water *
-                                    @brew_entry.total_spargewater )
+                  if match_data[1] == 'dilution_rate'
+                    @brew_entry.dilution_rate_sparge =
+                      @brew_entry.dilution_rate_mash
+                  else
+                    @brew_entry.send( "#{match_data[1]}_sparge=",
+                                      @brew_entry.send(mash_field) /
+                                      @brew_entry.mash_water *
+                                      @brew_entry.total_spargewater )
+                  end
                 end
               end
             end
