@@ -22,6 +22,7 @@ class Style < ActiveRecord::Base
   fields do
     name :string
     designator :string
+    bjcp_url :string
     timestamps
   end
 

@@ -62,6 +62,8 @@
       <%= render :partial => 'values' %>
     </div>
 
+    <br/>
+
     <div class="block comments">
 
       <if test="&@brew_entry.updatable_by?(current_user)">
@@ -102,9 +104,6 @@
     <script type="text/javascript">
 		jQuery(function() {
 			jQuery("#brewentrieslogtabsdiv").tabs( { cache: true } );
-			jQuery( "button, a", ".buttons" ).button();
-			jQuery( ".del_button" ).button( );
-			jQuery( ".plus_button" ).button( { icons: {primary: "ui-icon-circle-plus"} });
 		});
     </script>
 
@@ -117,8 +116,10 @@
 	</ul>
 	</if>
 	<else>
-	    <li><a href="#expected_div"><span>Tastings</span></a></li>
+	<ul>
+	    <li><a href="#log_taste_div"><span>Tastings</span></a></li>
 	    <li><a href="#log_obs_div"><span>Observations</span></a></li>
+	</ul>
 	</else>
 
 

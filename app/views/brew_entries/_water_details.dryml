@@ -22,15 +22,30 @@
     <table>
       <tr>
         <td>
-         <%= ajax_lock_edit( this, :same_water, :brew_entries, :update_mashsparge, :mash ) %>
+         <%= ajax_lock_edit( this, :same_water, :brew_entries, :update_mashsparge, :water ) %>
         </td>
         <td><b>Use Same Water for Both Mash and Sparge</b></td>
       </tr>
     </table>
   </div>
+
+
+  <div id="watermenu">
+
+	<script type="text/javascript">
+		jQuery(function() {
+			jQuery("#watertabsdiv").tabs( { cache: true }, { selected: 0 } );
+		});
+	</script>
+
+	<div id="watertabsdiv" >
+		<ul>
+			<li><a href="#edit_mash"><span>Mash Water</span></a></li>
+			<li><a href="#edit_sparge"><span>Sparge Water</span></a></li>
+		</ul>
+
   <% [:mash, :sparge].each do |phase| %>
-  <div id="edit_mash" class="block" >
-    <h2><u><%= phase.to_s.capitalize %> Water</u></h2>
+  <div id="edit_#{phase}" >
     <h3>Dilution</h3>
     <table>
       <tr>
@@ -193,6 +208,12 @@
     </table>
   </div>
   <% end %>
+
+</div>
+</div>
+
+<br/>
+
   <div class="block">
     <p>
       Formulae for estimating mash pH and other water calculations are

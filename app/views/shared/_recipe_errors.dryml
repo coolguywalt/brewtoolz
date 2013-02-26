@@ -4,5 +4,4 @@
   <%=  error_messages_for :fermentable %>
   <%=  error_messages_for :hop %>
   <%=  error_messages_for :yeast %>
-  <br/>
 </div>

@@ -21,13 +21,10 @@
 <div class="block">
   <b>Style: </b><span class="big"><%= if( recipe_view_detailed.style ) then recipe_view_detailed.style.name_with_designator end %></span>
 </div>
-<br/>
+
 <div class="block">    <b>Description:</b><br/>
   <%= simple_format(recipe_view_detailed.description) %>
 </div>
-<br/>
-
-
 
 <div class="block">
   <table class="item-list">
@@ -37,7 +34,7 @@
     </tr>
   </table>
 </div>
-<br/>
+
 <div class="block">
   <table class="item-list">
     <tr>
@@ -50,7 +47,7 @@
     </tr>
   </table>
 </div>
-<br/>
+
 <div class="block">
   <table class="item-list">
     <tr>

@@ -11,7 +11,7 @@ class YeastInventoryLogEntry < ActiveRecord::Base
   end
 
 
-  belongs_to :recipe
+  belongs_to :brew_entry
   belongs_to :yeast_inventory
   belongs_to :user, :creator => true
 

@@ -202,7 +202,7 @@
               </ht>
             </h2>
 
-            <record-flags fields="" param/>
+            <record-flags fields="same_water" param/>
 
             <a:user param="creator-link"/>
 
@@ -214,7 +214,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="brew_date, comment, actual_fg, bottled_kegged, yeast_pitched_date, actual_og, volume_to_ferementer, pitching_temp, actual_colour, rating, absorbtion_rate, mash_conversion, volume_from_mash, volume_to_boil, mash_dead_space, ambient_temp, actual_extract_volume, actual_extract_sg, liquor_to_grist, boiler_loses, evaporation_rate, boil_time, sparge_method, no_batches, batch1_volume, batch1_gravity_actual, batch1_volume_actual, batch2_volume, batch2_gravity_actual, batch2_volume_actual, batch3_volume, batch3_gravity_actual, batch3_volume_actual, batch4_volume, batch4_gravity_actual, batch4_volume_actual, preboil_gravity_actual, preboil_volume_actual, postboil_gravity_actual, postboil_volume_actual, brewery, recipe" param/>
+            <field-list fields="brew_date, comment, actual_fg, bottled_kegged, yeast_pitched_date, actual_og, volume_to_ferementer, pitching_temp, actual_colour, rating, absorbtion_rate, mash_conversion, volume_from_mash, volume_to_boil, mash_dead_space, ambient_temp, actual_extract_volume, actual_extract_sg, liquor_to_grist, boiler_loses, evaporation_rate, boil_time, sparge_method, no_batches, batch1_volume, batch1_gravity_actual, batch1_volume_actual, batch2_volume, batch2_gravity_actual, batch2_volume_actual, batch3_volume, batch3_gravity_actual, batch3_volume_actual, batch4_volume, batch4_gravity_actual, batch4_volume_actual, preboil_gravity_actual, preboil_volume_actual, postboil_gravity_actual, postboil_volume_actual, dilution_rate_mash, dilution_rate_sparge, calcium_chloride_mash, gypsum_mash, epsom_salt_mash, table_salt_mash, baking_soda_mash, chalk_mash, calcium_chloride_sparge, gypsum_sparge, epsom_salt_sparge, table_salt_sparge, baking_soda_sparge, chalk_sparge, citric_volume_mash, citric_strength_mash, lactic_volume_mash, lactic_strength_mash, phosphoric_volume_mash, phosphoric_strength_mash, citric_volume_sparge, citric_strength_sparge, lactic_volume_sparge, lactic_strength_sparge, phosphoric_volume_sparge, phosphoric_strength_sparge, brewery, recipe" param/>
           </section>
     </content:>
 
@@ -459,7 +459,7 @@
 
           <section param="content-body">
             <view:description param="description"/>
-            <field-list fields="capacity, efficency, liquor_to_grist, boil_time, mash_tun_capacity, mash_tun_deadspace, evapouration_rate, boiler_loses" param/>
+            <field-list fields="capacity, efficency, liquor_to_grist, boil_time, mash_tun_capacity, mash_tun_deadspace, evapouration_rate, boiler_loses, bicarbonate, calcium, carbonate, chloride, fluoride, iron, magnesium, nitrate, nitrite, pH, potassium, sodium, sulfate, total_alkalinity" param/>
           </section>
     </content:>
 
@@ -579,7 +579,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="designator" param/>
+            <field-list fields="designator, bjcp_url" param/>
           </section>
     </content:>
 
@@ -826,7 +826,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, note, usagetime, fermentable_inventory, recipe" param/>
+            <field-list fields="amount, note, usagetime, brew_entry, fermentable_inventory" param/>
           </section>
     </content:>
 
@@ -949,7 +949,7 @@
 
           <section param="content-body">
             <view:description param="description"/>
-            <field-list fields="yeild, colour" param/>
+            <field-list fields="yeild, colour, acidity_type" param/>
           </section>
     </content:>
 
@@ -1556,7 +1556,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, note, usagetime, hops_inventory, recipe" param/>
+            <field-list fields="amount, note, usagetime, brew_entry, hops_inventory" param/>
           </section>
     </content:>
 
@@ -1922,7 +1922,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, note, usagetime, kit_inventory, recipe" param/>
+            <field-list fields="amount, note, usagetime, brew_entry, kit_inventory" param/>
           </section>
     </content:>
 
@@ -2887,7 +2887,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="designator, category" param/>
+            <field-list fields="designator, bjcp_url, category" param/>
           </section>
     </content:>
 
@@ -3294,7 +3294,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, note, usagetime, recipe, yeast_inventory" param/>
+            <field-list fields="amount, note, usagetime, brew_entry, yeast_inventory" param/>
           </section>
     </content:>
 

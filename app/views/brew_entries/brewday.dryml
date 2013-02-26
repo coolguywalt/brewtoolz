@@ -27,16 +27,14 @@
         <%= render :partial => 'brewday_values' %>
       </div>
     </div>
-
+   
+    <br/>
 
     <div id="bdmenu">
 
 	<script type="text/javascript">
 		jQuery(function() {
 			jQuery("#brewdaytabsdiv").tabs( { cache: true } );
-			jQuery( "button, a", ".buttons" ).button();
-			jQuery( ".del_button" ).button( );
-			jQuery( ".plus_button" ).button( { icons: {primary: "ui-icon-circle-plus"} });
 		});
 	</script>
 

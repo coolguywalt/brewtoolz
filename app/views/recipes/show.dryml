@@ -71,12 +71,14 @@
 		</if>
 
 		<if test="&@recipe.is_contributor?(current_user)">
-			<br/><br/>
+		<if test="&@recipe.is_shared?">
+			<div class="block">
 			<h2>Shared Updates Log</h2>
 			<div id="log_list_div" >
 				<%= render :partial => 'log', :object => @recipe %>
 			</div>
-
+			</div>
+		</if>
 		</if>
 		<!--[if IE]>
 		  </div>

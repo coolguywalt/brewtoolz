@@ -15,7 +15,7 @@
 <def tag="form" for="BrewEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="brew_date, comment, actual_fg, bottled_kegged, yeast_pitched_date, actual_og, volume_to_ferementer, pitching_temp, actual_colour, rating, absorbtion_rate, mash_conversion, volume_from_mash, volume_to_boil, mash_dead_space, ambient_temp, actual_extract_volume, actual_extract_sg, liquor_to_grist, boiler_loses, evaporation_rate, boil_time, sparge_method, no_batches, batch1_volume, batch1_gravity_actual, batch1_volume_actual, batch2_volume, batch2_gravity_actual, batch2_volume_actual, batch3_volume, batch3_gravity_actual, batch3_volume_actual, batch4_volume, batch4_gravity_actual, batch4_volume_actual, preboil_gravity_actual, preboil_volume_actual, postboil_gravity_actual, postboil_volume_actual, brewery, recipe, user" param/>
+    <field-list fields="brew_date, comment, actual_fg, bottled_kegged, yeast_pitched_date, actual_og, volume_to_ferementer, pitching_temp, actual_colour, rating, absorbtion_rate, mash_conversion, volume_from_mash, volume_to_boil, mash_dead_space, ambient_temp, actual_extract_volume, actual_extract_sg, liquor_to_grist, boiler_loses, evaporation_rate, boil_time, sparge_method, no_batches, batch1_volume, batch1_gravity_actual, batch1_volume_actual, batch2_volume, batch2_gravity_actual, batch2_volume_actual, batch3_volume, batch3_gravity_actual, batch3_volume_actual, batch4_volume, batch4_gravity_actual, batch4_volume_actual, preboil_gravity_actual, preboil_volume_actual, postboil_gravity_actual, postboil_volume_actual, same_water, dilution_rate_mash, dilution_rate_sparge, calcium_chloride_mash, gypsum_mash, epsom_salt_mash, table_salt_mash, baking_soda_mash, chalk_mash, calcium_chloride_sparge, gypsum_sparge, epsom_salt_sparge, table_salt_sparge, baking_soda_sparge, chalk_sparge, citric_volume_mash, citric_strength_mash, lactic_volume_mash, lactic_strength_mash, phosphoric_volume_mash, phosphoric_strength_mash, citric_volume_sparge, citric_strength_sparge, lactic_volume_sparge, lactic_strength_sparge, phosphoric_volume_sparge, phosphoric_strength_sparge, brewery, recipe, user" param/>
     <div param="actions">
       <submit label="#{ht 'brew_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -39,7 +39,7 @@
 <def tag="form" for="Brewery">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, capacity, efficency, isDefault, isAllGrain, liquor_to_grist, boil_time, mash_tun_capacity, mash_tun_deadspace, evapouration_rate, boiler_loses, user" param/>
+    <field-list fields="name, description, capacity, efficency, isDefault, isAllGrain, liquor_to_grist, boil_time, mash_tun_capacity, mash_tun_deadspace, evapouration_rate, boiler_loses, bicarbonate, calcium, carbonate, chloride, fluoride, iron, magnesium, nitrate, nitrite, pH, potassium, sodium, sulfate, total_alkalinity, user" param/>
     <div param="actions">
       <submit label="#{ht 'breweries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -51,7 +51,7 @@
 <def tag="form" for="Category">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, designator" param/>
+    <field-list fields="name, designator, bjcp_url" param/>
     <div param="actions">
       <submit label="#{ht 'categories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -75,7 +75,7 @@
 <def tag="form" for="FermentableInventoryLogEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, note, usagetime, fermentable_inventory, recipe, user" param/>
+    <field-list fields="amount, note, usagetime, brew_entry, fermentable_inventory, user" param/>
     <div param="actions">
       <submit label="#{ht 'fermentable_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -87,7 +87,7 @@
 <def tag="form" for="FermentableType">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, yeild, converted, fullyfermentable, mashed, colour, description, validated, user" param/>
+    <field-list fields="name, yeild, converted, fullyfermentable, mashed, colour, description, validated, acidity_type, user" param/>
     <div param="actions">
       <submit label="#{ht 'fermentable_types.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -147,7 +147,7 @@
 <def tag="form" for="HopsInventoryLogEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, note, usagetime, hops_inventory, recipe, user" param/>
+    <field-list fields="amount, note, usagetime, brew_entry, hops_inventory, user" param/>
     <div param="actions">
       <submit label="#{ht 'hops_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -183,7 +183,7 @@
 <def tag="form" for="KitInventoryLogEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, note, usagetime, kit_inventory, recipe, user" param/>
+    <field-list fields="amount, note, usagetime, brew_entry, kit_inventory, user" param/>
     <div param="actions">
       <submit label="#{ht 'kit_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -279,7 +279,7 @@
 <def tag="form" for="Style">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, designator, category" param/>
+    <field-list fields="name, designator, bjcp_url, category" param/>
     <div param="actions">
       <submit label="#{ht 'styles.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -336,7 +336,7 @@
 <def tag="form" for="YeastInventoryLogEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, note, usagetime, recipe, user, yeast_inventory" param/>
+    <field-list fields="amount, note, usagetime, brew_entry, user, yeast_inventory" param/>
     <div param="actions">
       <submit label="#{ht 'yeast_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>

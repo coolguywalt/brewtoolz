@@ -523,13 +523,16 @@ class BrewEntriesController < ApplicationController
     case params[:render]
     when "mash"
       render(:update) { |page|
-        page.replace_html 'water_details_div', :partial => 'water_details', :object => @brew_entry
         page.replace_html 'mash_details_div', :partial => 'mash_details', :object => @brew_entry
 	page << "if( $('sparge_details_div') ) {"
-        page.replace_html 'water_details_div', :partial => 'water_details', :object => @brew_entry
         page.replace_html 'sparge_details_div', :partial => 'spargewater', :object => @brew_entry
     	page << "}"
       }
+    when "water"
+      render(:update) { |page|
+        page.replace_html 'water_details_div', :partial => 'water_details', :object => @brew_entry
+      }
+
     else
       render(:update) { |page|
         page.replace_html 'sparge_details_div', :partial => 'spargewater', :object => @brew_entry

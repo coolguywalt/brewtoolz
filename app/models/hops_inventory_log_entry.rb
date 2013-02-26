@@ -11,7 +11,7 @@ class HopsInventoryLogEntry < ActiveRecord::Base
   end
 
 
-  belongs_to :recipe
+  belongs_to :brew_entry
   belongs_to :hops_inventory
   belongs_to :user, :creator => true
 

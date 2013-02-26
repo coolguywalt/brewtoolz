@@ -23,9 +23,6 @@
 	<script type="text/javascript">
 		jQuery(function() {
 			jQuery("#brewdayvaluestabsdiv").tabs( { cache: true } );
-			jQuery( "button, a", ".buttons" ).button();
-			jQuery( ".del_button" ).button( );
-			jQuery( ".plus_button" ).button( { icons: {primary: "ui-icon-circle-plus"} });
 		});
 	</script>
 
