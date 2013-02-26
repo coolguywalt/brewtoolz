@@ -10,7 +10,7 @@ class FermentableInventoryLogEntry < ActiveRecord::Base
     timestamps
   end
 
-  belongs_to :recipe
+  belongs_to :brew_entry
   belongs_to :fermentable_inventory
   belongs_to :user, :creator => true
 

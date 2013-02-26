@@ -63,24 +63,24 @@ class FermentableInventory < ActiveRecord::Base
     #return Time.zone.now.to_date - source_date.to_date
   end
 
-  def amount
-    db_amount = read_attribute(:amount)
+ # def amount
+ #   db_amount = read_attribute(:amount)
     #    logger.debug "FermentableInventory.amount: acting_user #{acting_user}"
     #
     #    return db_amount if acting_user.guest?
 
     #Adjust according to users unit preferences.
-    return UnitsHelper::ferm_weight_value( db_amount, user )
-  end
+  #  return UnitsHelper::ferm_weight_value( db_amount, user )
+  #end
 
-  def amount=(new_amount)
-    adjusted_amount = new_amount
+  #def amount=(new_amount)
+  #  logger.debug "FermentableInventory.amount=: user #{user}"
+  #  logger.debug "FermentableInventory.amount=: acting_user #{acting_user}"
+  #  adjusted_amount = new_amount
+  #  adjusted_amount = UnitsHelper::input_fermentable_weight( new_amount, user )
+  #  write_attribute( :amount, adjusted_amount )
 
-    adjusted_amount = UnitsHelper::input_fermentable_weight( new_amount, user )
-    
-    write_attribute( :amount, adjusted_amount )
-
-  end
+  #end
 
   def fermentable_selections( user )
 

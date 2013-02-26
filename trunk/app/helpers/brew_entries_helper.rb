@@ -167,7 +167,7 @@ module BrewEntriesHelper
                       { :action => :update_mashsparge,
                         :controller => :brew_entries,
                         :id => entry.id,
-                        :render => "mash" },
+                        :render => "water" },
                       BrewingUnits::values_array_for_display( current_user.units.volume, entry.send(field), 2 ),
                       "Update #{field.to_s.titleize}" )
   end
@@ -176,7 +176,7 @@ module BrewEntriesHelper
     ajax_edit_field2( entry, field,
                       { :action => :update_mashsparge,
                         :controller => :brew_entries, :id => entry.id,
-                        :render => "mash" },
+                        :render => "water" },
                       [ entry.send(field) ],
                       "Update #{field.to_s.titleize}" )
   end

@@ -22,6 +22,30 @@ class FermentableInventoriesController < ApplicationController
   auto_actions :all
   auto_actions_for :fermentable_inventory_log_entries,  :create
 
+   def create
+	@fermentable_inventory = FermentableInventory.new(params[:fermentable_inventory]) 
+		if @fermentable_inventory.save
+			flash[:notice] = "Successfully created fermentable inventory item."
+			redirect_to( :action => 'edit', :id => @fermentable_inventory.id)
+		else
+			flash[:error] =  @fermentable_inventory.errors.full_messages {|u| u}.join(', ')
+			redirect_to( :action => 'new' )
+		end
+
+   end
+
+   def update
+		@fermentable_inventory = FermentableInventory.find(params[:id])
+		@fermentable_inventory.update_attributes(params[:fermentable_inventory])
+
+                # unit conversions
+                ferm = params[:fermentable_inventory]
+		@fermentable_inventory.amount = UnitsHelper::input_fermentable_weight( ferm[:amount], current_user )
+                @fermentable_inventory.save
+
+		redirect_to :action => "show"
+   end   
+
 
   def index
     hobo_index FermentableInventory.viewable_search(current_user, params[:search]).apply_scopes(:order_by => parse_sort_param(:name,:location,:source_date) )
