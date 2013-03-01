@@ -1,0 +1,100 @@
+--- 
+hop_4: 
+  aa: "2.5"
+  updated_at: 2008-05-09 20:42:33
+  ibu_l: "8.46037"
+  minutes: "60"
+  recipe_id: 15
+  id: 4
+  hop_type_id: 8
+  created_at: 2008-05-07 22:11:00
+hop_5: 
+  aa: "9"
+  updated_at: 2008-05-09 20:42:43
+  ibu_l: "8.12195"
+  minutes: "60"
+  recipe_id: 15
+  id: 5
+  hop_type_id: 9
+  created_at: 2008-05-07 22:59:51
+hop_10: 
+  aa: "2.5"
+  updated_at: 2008-05-14 21:30:14
+  ibu_l: "13.7645"
+  minutes: "60"
+  recipe_id: 17
+  id: 10
+  hop_type_id: 4
+  created_at: 2008-05-14 21:29:47
+hop_11: 
+  aa: "2.2"
+  updated_at: 2008-05-15 19:45:57
+  ibu_l: "26.9719"
+  minutes: "60"
+  recipe_id: 18
+  id: 11
+  hop_type_id: 4
+  created_at: 2008-05-15 19:45:01
+hop_6: 
+  aa: "5"
+  updated_at: 2008-05-07 23:14:59
+  ibu_l: "23"
+  minutes: "60"
+  recipe_id: 3
+  id: 6
+  hop_type_id: 6
+  created_at: 2008-05-07 23:12:45
+hop_12: 
+  aa: "4"
+  updated_at: 2008-09-01 08:53:23
+  ibu_l: "9.05785"
+  minutes: "60"
+  recipe_id: 32
+  id: 12
+  hop_type_id: 3
+  created_at: 2008-07-10 00:44:05
+hop_7: 
+  aa: "5"
+  updated_at: 2008-05-07 23:35:14
+  ibu_l: "35"
+  minutes: "60"
+  recipe_id: 1
+  id: 7
+  hop_type_id: 2
+  created_at: 2008-05-07 23:34:56
+hop_13: 
+  aa: "11"
+  updated_at: 2008-08-10 14:08:37
+  ibu_l: "45"
+  minutes: "60"
+  recipe_id: 43
+  id: 13
+  hop_type_id: 11
+  created_at: 2008-08-10 14:08:02
+hop_8: 
+  aa: "10"
+  updated_at: 2008-05-14 21:24:16
+  ibu_l: "37.4718"
+  minutes: "60"
+  recipe_id: 16
+  id: 8
+  hop_type_id: 9
+  created_at: 2008-05-14 21:20:39
+hop_9: 
+  aa: "11"
+  updated_at: 2008-05-14 21:24:04
+  ibu_l: "10"
+  minutes: "15"
+  recipe_id: 16
+  id: 9
+  hop_type_id: 11
+  created_at: 2008-05-14 21:23:36
+hop_1: 
+  aa: "6"
+  updated_at: 2008-08-05 22:58:20
+  ibu_l: "6.42761"
+  minutes: "5"
+  recipe_id: 10
+  id: 1
+  hop_type_id: 1
+  created_at: 2008-05-07 21:06:33
