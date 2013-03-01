@@ -1,0 +1,154 @@
+--- 
+cascade: 
+  aa: "6"
+  name: Cascade
+  updated_at: 2008-05-07 20:53:22
+  id: 1
+  description: |-
+    Name:         CASCADE
+    Grown:        US
+    Profile:      strong spicy, floral, citrus (especially grapefruit) aroma
+    Typical use:  bittering, finishing, dry hopping for American style ales
+    Example:      Sierra Nevada Pale Ale, Anchor Liberty Ale & Old Foghorn
+    AA Range:     4.5 - 8%
+    Substitute:   Centennial
+  created_at: 2008-05-07 20:53:22
+hop_type_10: 
+  aa: "8"
+  name: Perle
+  updated_at: 2008-05-07 20:58:51
+  id: 10
+  description: |-
+    Name:         PERLE
+    Grown:        Germany, US
+    Profile:      pleasant aroma;
+                  slightly spicy, almost minty bittering hop
+    Typical use:  general purpose bittering for all lagers except pilsener
+    Example:      Sierra Nevada Pale Ale, Summerfest, and Pale Bock
+    AA Range:     7 - 9.5%
+    Substitute:   Hallertauer Mittelfrueh, NZ Hallertau Aroma
+  created_at: 2008-05-07 20:58:51
+hop_type_2: 
+  aa: "5"
+  name: East Kent Goldings
+  updated_at: 2008-05-07 20:54:03
+  id: 2
+  description: |-
+    Name:         EAST KENT GOLDINGS
+    Grown:        UK
+    Profile:      spicy/floral, earthy, rounded, very mild aroma;
+                  spicy (candy-like?) flavor
+    Typical use:  bittering, finishing, dry hopping for British ales
+    Example:      Samuel Smith's Pale Ale, Fuller's ESB
+    AA Range:     4.5 - 7%
+    Substitute:   BC Goldings, Target
+  created_at: 2008-05-07 20:54:03
+hop_type_11: 
+  aa: "11"
+  name: Amarillo
+  updated_at: 2008-05-07 21:00:08
+  id: 11
+  description: ""
+  created_at: 2008-05-07 21:00:08
+fuggles: 
+  aa: "4"
+  name: Fuggles
+  updated_at: 2008-05-07 20:54:41
+  id: 3
+  description: |-
+    Name:         FUGGLES
+    Grown:        UK, US, and other areas
+    Profile:      mild, soft, grassy, floral aroma
+    Typical use:  finishing / dry hopping for all ales, dark lagers
+    Example:      Samuel Smith's Pale Ale, Old Peculier, Thomas Hardy's Ale
+    AA Range:     3.5 - 5.5%
+    Substitute:   East Kent Goldings, Willamette
+  created_at: 2008-05-07 20:54:41
+hop_type_4: 
+  aa: "3"
+  name: Hallertauer Hersbrucker
+  updated_at: 2008-05-07 20:55:39
+  id: 4
+  description: |-
+    Name:         HALLERTAUER HERSBRUCKER
+    Grown:        Germany
+    Profile:      pleasant, spicy/mild, noble, earthy aroma
+    Typical use:  finishing for German style lagers
+    Example:      Wheathook Wheaten Ale
+    AA Range:     2.5 - 5%
+    Substitute:   Hallertauer Mittelfrueh, Mt. Hood, Liberty, Crystal,
+                  NZ Hallertau Aroma
+  created_at: 2008-05-07 20:55:39
+hop_type_5: 
+  aa: "3"
+  name: Saaz
+  updated_at: 2008-05-07 20:56:15
+  id: 5
+  description: |-
+    Name:         SAAZ
+    Grown:        Czechoslovakia
+    Profile:      delicate, mild, floral aroma
+    Typical use:  finishing for Bohemian style lagers
+    Example:      Pilsener Urquell
+    AA Range:     2 - 5%
+    Substitute:   Tettnang (many would claim there is NO substitute)
+  created_at: 2008-05-07 20:56:15
+hop_type_6: 
+  aa: "5"
+  name: Styrian Goldings
+  updated_at: 2008-05-07 20:56:53
+  id: 6
+  description: |-
+    Name:         STYRIAN GOLDINGS
+    Grown:        Yugoslavia (seedless Fuggles grown in Yugoslavia),
+                  also grown in US
+    Profile:      similar to Fuggles
+    Typical use:  bittering/finishing/dry hopping for a wide variety of beers,
+                  popular in Europe, especially UK
+    Example:      Ind Coope's Burton Ale, Timothy Taylor's Landlord
+    AA Range:     4.5 - 7
+    Substitute:   Fuggles, Willamette
+  created_at: 2008-05-07 20:56:53
+hop_type_7: 
+  aa: "4"
+  name: Tettnang
+  updated_at: 2008-05-07 20:57:23
+  id: 7
+  description: |-
+    Name:         TETTNANG
+    Grown:        Germany, US
+    Profile:      fine, spicy aroma
+    Typical use:  finishing for German style beers
+    Example:      Gulpener Pilsener, Sam Adams Octoberfest, Anderson Valley ESB
+    AA Range:     3 - 6%
+    Substitute:   Saaz, Spalt
+  created_at: 2008-05-07 20:57:23
+hop_type_8: 
+  aa: "5"
+  name: Willamette
+  updated_at: 2008-05-07 20:57:51
+  id: 8
+  description: |-
+    Name:         WILLAMETTE
+    Grown:        US
+    Profile:      mild, spicy, grassy, floral aroma
+    Typical use:  finishing and dry hopping for American / British ales
+    Example:      Sierra Nevada Porter, Ballard Bitter, Anderson Valley Boont Amber
+    AA Range:     4 - 7%
+    Substitute:   Fuggles
+  created_at: 2008-05-07 20:57:51
+hop_type_9: 
+  aa: "10"
+  name: Pride of Ringwood
+  updated_at: 2008-05-07 20:58:25
+  id: 9
+  description: |-
+    Name:         PRIDE OF RINGWOOD
+    Grown:        Australia
+    Profile:      citric aroma;
+                  clean bittering hop
+    Typical use:  general purpose bittering
+    Example:      Foster's Lager, Victoria Bitter, Coopers Sparkling Ale
+    AA Range:     9 - 11%
+    Substitute:   ???
+  created_at: 2008-05-07 20:58:25
