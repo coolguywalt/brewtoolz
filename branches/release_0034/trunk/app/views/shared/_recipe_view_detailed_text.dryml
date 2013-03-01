@@ -1,0 +1,121 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+Style: <%= if( recipe_view_detailed_text.style ) then recipe_view_detailed_text.style.name_with_designator end %><br/><br/>
+Description:<br/><br/>
+<p><%= simple_format(h(strwrap(recipe_view_detailed_text.description))) %></p>
+<br/>
+
+<p>--------------------------------------------------------------------------------</p>
+<%= ( ("Target Volume [" + volume_units() + "]:").ljust(50) + volume_values(recipe_view_detailed_text.volume).rjust(30)  ).gsub(/ /,'&nbsp;') %><br/>
+<%= ( "Alcohol By Volume:".ljust(50) + (decimal(recipe_view_detailed_text.abv) + "%").rjust(30)).gsub(/ /,'&nbsp;') %><br/>
+<br/>
+<%=  ( ("Estimated Original Gravity [" + gravity_units() + "]:").ljust(50) + gravity_values( recipe_view_detailed_text.og ).rjust(30)  ).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Estimated Final Gravity [" + gravity_units() + "]:" ).ljust(50) + gravity_values( recipe_view_detailed_text.fg ).rjust(30) ).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Estimated Attenuation:").ljust(50) + percentage(recipe_view_detailed_text.attenuation*100).rjust(30)).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Estimated Mash Efficiency:").ljust(50) + percentage(recipe_view_detailed_text.efficency).rjust(30)).gsub(/ /,'&nbsp;') %><br/>
+<br/>
+<%=  ( ("Bitterness [IBU]:").ljust(50) + decimal( recipe_view_detailed_text.ibu).rjust(30) ).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Color  [SRM(EBC)]:").ljust(50) + "#{decimal( recipe_view_detailed_text.srm)} (#{decimal( recipe_view_detailed_text.ebc)})".rjust(30)).gsub(/ /,'&nbsp;') %><br/>
+<br/>
+<%=  ( ("BU:GU ratio:").ljust(50) + decimal( recipe_view_detailed_text.bugu, 3 ).rjust(30)).gsub(/ /,'&nbsp;') %><br/>
+<%=  ( ("Balance:").ljust(50) + decimal( recipe_view_detailed_text.balance, 3 ).rjust(30)).gsub(/ /,'&nbsp;') %><br/>
+<br/>
+Balance &lt;1 sweeter malty beer, &gt;1 more bitter beer, =1  balanced beer.<br/>
+<br/>
+
+<!-- Ingredients -->
+<!-- Fermentables -->
+<if test="&recipe_view_detailed_text.fermentables.count > 0" >
+  <p>--------------------------------------------------------------------------------</p>
+  Fermentables:<br/><br/>
+  <%= ( ('Weight [' + ferm_weight_units().gsub(/ /,'') +']   ').rjust(12) + 'Type'.ljust(34)  + ('Gravity [' + gravity_units.gsub(/ /,'') + ']').rjust(21)  + 'Weight %'.rjust(10) ).gsub(/ /,'&nbsp;') %><br/>
+  <repeat with="&recipe_fermentable_list(recipe_view_detailed_text)" >
+    <%= ( ferm_weight_values(this.weight).rjust(10) + '     ' + fermentable_type( this ).to_s.ljust(34)  + gravity_values(this.points).rjust(21)  + percentage(this.percentage_weight * 100).rjust(10) ).gsub(/ /,'&nbsp;') %><br/>
+  </repeat>
+  <br/>
+</if>
+
+
+<!-- Hops -->
+<if test="&recipe_view_detailed_text.hops.count > 0" >
+  <p>--------------------------------------------------------------------------------</p>
+  Hops:<br/><br/>
+  Hop Utilisation Method: <%= recipe_view_detailed_text.hop_utilisation_method.capitalize %>  <if test="&recipe_view_detailed_text.is_cubed?">- No chill cooling method</if><br/>
+  <br/>
+  <%= ( ('Weight [' + ferm_weight_units().gsub(/ /,'') +']   ').rjust(12) + 'Type'.ljust(29)  + ('AA%').rjust(8)   + 'IBU'.center(8) + 'IBU%'.center(10)  + 'Time[Mins]'.rjust(10) ).gsub(/ /,'&nbsp;') %><br/>
+  <repeat with="&recipe_hops_list(recipe_view_detailed_text)" >
+    <%= ( hop_weight_values(this.weight).rjust(10) + '     ' + hop_type( this ).to_s.ljust(29)  +  percentage(this.aa).rjust(8)   + decimal(this.ibu_l).rjust(8) + percentage(this.percentage_ibu * 100).rjust(10)  + hop_minutes_format( this ).rjust(10) ).gsub(/ /,'&nbsp;') %><br/>
+  </repeat>
+  <br/>
+</if>
+
+<!-- Kits -->
+<if test="&recipe_view_detailed_text.kits.count > 0" >
+  <p>--------------------------------------------------------------------------------</p>
+  Kits:<br/><br/>
+  <%= ( 'Type'.ljust(44)  + 'Quant.'.center(7) +   'IBU'.center(8) + ('Gravity [' + gravity_units.gsub(/ /,'') + ']').rjust(21) ).gsub(/ /,'&nbsp;') %><br/>
+
+  <repeat with="&recipe_kits_list(recipe_view_detailed_text)" >
+    <%= ( kit_type( this ).to_s.ljust(44)  + decimal(this.quantity).rjust(7) + decimal(this.ibus).rjust(8) + gravity_values(this.points).rjust(21)).gsub(/ /,'&nbsp;') %><br/>
+  </repeat>
+  <br/>
+</if>
+
+<!-- Yeast -->
+<if test="&recipe_view_detailed_text.yeasts.count > 0" >
+  <p>--------------------------------------------------------------------------------</p>
+  Yeast:<br/><br/>
+  <%= ( 'Type'.ljust(31)  + 'Atten %'.center(12) + ('Min temp [' + temp_units().gsub(/ /,'') +']' ).rjust(19)   + ('Max temp [' + temp_units().gsub(/ /,'') +']' ).rjust(18) ).gsub(/ /,'&nbsp;') %><br/>
+  <repeat with="&recipe_yeast_list(recipe_view_detailed_text)" >
+    <%= ( yeast_type( this ).to_s.ljust(31)  + percentage(this.yeast_type.attenuation).rjust(12) + temp_values( this.yeast_type.min_temp ).rjust(19)   + temp_values( this.yeast_type.max_temp ).rjust(18) ).gsub(/ /,'&nbsp;') %><br/>
+  </repeat>
+  <br/>
+</if>
+
+<if test="&recipe_view_detailed_text.misc_ingredients.count > 0" >
+  <p>--------------------------------------------------------------------------------</p>
+  Miscellaneous:<br/><br/>
+  <%= ( 'Name'.ljust(32) + 'Type'.ljust(13)  + 'Use'.ljust(12)   + 'Amount'.center(12) + 'Time[Mins]'.rjust(11) ).gsub(/ /,'&nbsp;') %><br/>
+  <repeat with="&recipe_misc_list(recipe_view_detailed_text)">
+
+    <%= ( this.name.ljust(32) +
+        this.misc_type.capitalize.ljust(13)  +
+        this.misc_use.capitalize.ljust(12) +
+        (this.is_solid ? (hop_weight_values(this.amount) + ' [' + hop_weight_units() + ']') : (volume_values(this.amount) + ' [' + volume_units() + ']') ).rjust(12)  +
+        this.time.to_s.rjust(11) ).gsub(/ /,'&nbsp;') %>
+    <br/>
+ </repeat>
+  <br/>
+</if>
+
+
+<if test="&recipe_view_detailed_text.mash_steps.count > 0" >
+  <p>--------------------------------------------------------------------------------</p>
+  Mash schedule:<br/><br/>
+  <%= ('Name'.ljust(30) + 'Type'.ljust(15) + ('Temperature [' + temp_units.gsub(/ /,'') + ']').center(20) + 'Time [Mins]'.rjust(15)).gsub(/ /,'&nbsp;') %><br/>
+  <repeat with="&recipe_mashprofile_list(recipe_view_detailed_text)">
+    <%= (this.name.ljust(30) +
+        this.steptype.capitalize.ljust(15) +
+        temperature_displays( this.temperature ).rjust(20) +
+        this.time.to_s.rjust(15)).gsub(/ /,'&nbsp;') %>
+    <br/>
+  </repeat>
+  <br/>
+</if>
