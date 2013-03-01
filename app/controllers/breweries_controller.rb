@@ -46,7 +46,10 @@ class BreweriesController < ApplicationController
                     current_user.units.liquor_to_grist,
                     @brewery.liquor_to_grist ) if
                         brewery_params[:liquor_to_grist]
-                @brewery.save
+
+			
+		logger.debug "Saving brewery"
+                @brewery.save!
 
 		if @brewery.isDefault
 			# Set all other breweries to non default
@@ -60,7 +63,7 @@ class BreweriesController < ApplicationController
 
 		@brewery = Brewery.new(params[:brewery])
 
-		if @brewery.save
+		if @brewery.save!
 			flash[:notice] = "Successfully created recipe."
 			redirect_to( url_for( :controller => 'breweries', :action => 'edit', :id => @brewery.id ))
 		else

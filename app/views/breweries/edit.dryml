@@ -9,6 +9,22 @@
   <content-body:>
 
     <form>
+	
+	<div id="editbreweriesmenu" >
+
+	<script type="text/javascript">
+		jQuery(function() {
+			jQuery("#editbrewerytabsdiv").tabs( { cache: true } );
+		});
+	</script>
+
+	<div id="editbrewerytabsdiv" class="recipetabs" >
+		<ul>
+			<li><a href="#details_div"><span>Details</span></a></li>
+			<li><a href="#water_div"><span>Water</span></a></li>
+		</ul>
+
+      <div id="details_div">
       <div class="block" >
         <b>Name: </b><input:name/>
 
@@ -69,8 +85,8 @@
 
         </table>
       </div>
-      <br/>
-    <div class="block" >
+	</div>
+	<div id="water_div">
 
       <table class="field-list">
         <tr>
@@ -150,6 +166,9 @@
         </tr>
       </table>
     </div>
+    </div>
+    </div>
+
       <submit value="Ok"/><a class="button">Cancel</a>
       <%= link_to( "Delete", { :action => 'remove_brewery', :id => this.id }, :class => 'button') %>
 
