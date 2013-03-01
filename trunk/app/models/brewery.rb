@@ -93,11 +93,86 @@ class Brewery < ActiveRecord::Base
 		user_is? acting_user || acting_user.administrator?
 	end
 
+	DEFAULT_BREWERY = {
+		:capacity => 23.0,
+		:efficency => 75.0,
+		
+		:liquor_to_grist => 3.0,
+		:boil_time => 60,
+		:mash_tun_capacity => 44.0,
+		:mash_tun_deadspace => 2.0,
+
+		:evapouration_rate => 4.0,
+
+                :bicarbonate => 292.0,
+              	:calcium => 80.0,
+               	:carbonate => 0.0,
+               	:chloride => 118.0,
+               	:fluoride => 0.0,
+               	:iron => 0.0,
+               	:magnesium => 31.0,
+               	:nitrate => 16.4,
+               	:nitrite => 0.0,
+               	:pH => 7.0,
+               	:potassium => 6.0,
+               	:sodium => 86.0,
+               	:sulfate => 96.0,
+               	:total_alkalinity => 239.0
+	}
+
+	RO_BREWERY = {
+		:capacity => 23.0,
+		:efficency => 75.0,
+		:liquor_to_grist => 3.0,
+		:boil_time => 60,
+		:mash_tun_capacity => 44.0,
+		:mash_tun_deadspace => 2.0,
+
+		:evapouration_rate => 4.0,
+		:boiler_loses => 2.0,
+
+        	:bicarbonate => 16.0,
+        	:calcium => 1.0,
+        	:carbonate => 0.0,
+        	:chloride => 4.0,
+        	:fluoride => 0.0,
+        	:iron => 0.0,
+        	:magnesium => 0.0,
+        	:nitrate => 0.0,
+        	:nitrite => 0.0,
+        	:pH => 7.0,
+        	:potassium => 0.0,
+        	:sodium => 8.0,
+        	:sulfate => 1.0,
+        	:total_alkalinity => 13.1
+	}
 
 	def initialize(params = nil)
 		super
-		self.capacity = 23.0
-		self.efficency = 75.0
+		self.capacity = DEFAULT_BREWERY[:capacity] 
+		self.efficency = DEFAULT_BREWERY[:efficency] 
+		
+		self.liquor_to_grist = DEFAULT_BREWERY[:liquor_to_grist] 
+		self.boil_time = DEFAULT_BREWERY[:boil_time] 
+		self.mash_tun_capacity = DEFAULT_BREWERY[:mash_tun_capacity] 
+		self.mash_tun_deadspace = DEFAULT_BREWERY[:mash_tun_deadspace] 
+
+		self.evapouration_rate = DEFAULT_BREWERY[:evapouration_rate] 
+
+                self.bicarbonate = DEFAULT_BREWERY[:bicarbonate] 
+              	self.calcium = DEFAULT_BREWERY[:calcium]
+               	self.carbonate = DEFAULT_BREWERY[:carbonate]
+               	self.chloride = DEFAULT_BREWERY[:chloride]
+               	self.fluoride = DEFAULT_BREWERY[:fluoride]
+               	self.iron = DEFAULT_BREWERY[:iron]
+               	self.magnesium = DEFAULT_BREWERY[:magnesium]
+               	self.nitrate = DEFAULT_BREWERY[:nitrate]
+               	self.nitrite = DEFAULT_BREWERY[:nitrite]
+               	self.pH = DEFAULT_BREWERY[:pH]
+               	self.potassium = DEFAULT_BREWERY[:potassium]
+               	self.sodium = DEFAULT_BREWERY[:sodium]
+               	self.sulfate = DEFAULT_BREWERY[:sulfate]
+               	self.total_alkalinity = DEFAULT_BREWERY[:total_alkalinity]
 	end
 
     def self.default_brewery(user)
@@ -109,62 +184,12 @@ class Brewery < ActiveRecord::Base
 
 		logger.debug "Creating default session brewery."
 
-		def_brewery = Brewery.new(
-			:capacity => 23.0,
-			:efficency => 75.0,
-			:liquor_to_grist => 3.0,
-			:boil_time => 60,
-			:mash_tun_capacity => 44.0,
-			:mash_tun_deadspace => 2.0,
-
-			:evapouration_rate => 4.0,
-
-                        :bicarbonate => 292.0,
-                	:calcium => 80.0,
-                	:carbonate => 0.0,
-                	:chloride => 118.0,
-                	:fluoride => 0.0,
-                	:iron => 0.0,
-                	:magnesium => 31.0,
-                	:nitrate => 16.4,
-                	:nitrite => 0.0,
-                	:pH => 7.1,
-                	:potassium => 6.0,
-                	:sodium => 86.0,
-                	:sulfate => 96.0,
-                	:total_alkalinity => 239.0
-		)
+		def_brewery = Brewery.new(  DEFAULT_BREWERY )
 
 		return def_brewery
 	end
 
     def self.ro_brewery()
-		return Brewery.new(
-			:capacity => 23.0,
-			:efficency => 75.0,
-			:liquor_to_grist => 3.0,
-			:boil_time => 60,
-			:mash_tun_capacity => 44.0,
-			:mash_tun_deadspace => 2.0,
-
-			:evapouration_rate => 4.0,
-			:boiler_loses => 2.0,
-
-                	:bicarbonate => 16.0,
-                	:calcium => 1.0,
-                	:carbonate => 0.0,
-                	:chloride => 4.0,
-                	:fluoride => 0.0,
-                	:iron => 0.0,
-                	:magnesium => 0.0,
-                	:nitrate => 0.0,
-                	:nitrite => 0.0,
-                	:pH => 7.0,
-                	:potassium => 0.0,
-                	:sodium => 8.0,
-                	:sulfate => 1.0,
-                	:total_alkalinity => 13.1
-
-		)
+		return Brewery.new( RO_BREWERY )
     end
 end
