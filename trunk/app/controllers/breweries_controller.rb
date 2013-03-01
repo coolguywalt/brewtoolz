@@ -49,7 +49,7 @@ class BreweriesController < ApplicationController
 
 			
 		logger.debug "Saving brewery"
-                @brewery.save!
+                @brewery.save
 
 		if @brewery.isDefault
 			# Set all other breweries to non default
