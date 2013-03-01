@@ -1,0 +1,71 @@
+--- 
+yeast_10: 
+  yeast_type_id: 9
+  updated_at: 2008-05-15 21:05:47
+  recipe_id: 1
+  id: 10
+  amount_to_pitch: "1"
+  created_at: 2008-05-15 21:05:47
+yeast_1: 
+  yeast_type_id: 1
+  updated_at: 2008-05-12 00:06:57
+  recipe_id: 3
+  id: 1
+  amount_to_pitch: "1"
+  created_at: 2008-05-12 00:06:57
+yeast_11: 
+  yeast_type_id: 25
+  updated_at: 2008-05-20 11:47:02
+  recipe_id: 10
+  id: 11
+  amount_to_pitch: "1"
+  created_at: 2008-05-20 11:47:02
+yeast_2: 
+  yeast_type_id: 1
+  updated_at: 2008-05-12 00:14:55
+  recipe_id: 3
+  id: 2
+  amount_to_pitch: "1"
+  created_at: 2008-05-12 00:14:55
+yeast_12: 
+  yeast_type_id: 9
+  updated_at: 2008-07-10 00:42:34
+  recipe_id: 19
+  id: 12
+  amount_to_pitch: "1"
+  created_at: 2008-07-10 00:42:34
+yeast_13: 
+  yeast_type_id: 14
+  updated_at: 2008-08-10 14:08:49
+  recipe_id: 43
+  id: 13
+  amount_to_pitch: "1"
+  created_at: 2008-08-10 14:08:49
+yeast_6: 
+  yeast_type_id: 7
+  updated_at: 2008-05-12 21:05:00
+  recipe_id: 15
+  id: 6
+  amount_to_pitch: "1"
+  created_at: 2008-05-12 21:05:00
+yeast_7: 
+  yeast_type_id: 2
+  updated_at: 2008-05-14 21:21:15
+  recipe_id: 16
+  id: 7
+  amount_to_pitch: "1"
+  created_at: 2008-05-14 21:21:15
+yeast_8: 
+  yeast_type_id: 1
+  updated_at: 2008-05-14 21:30:25
+  recipe_id: 17
+  id: 8
+  amount_to_pitch: "1"
+  created_at: 2008-05-14 21:30:25
+yeast_9: 
+  yeast_type_id: 42
+  updated_at: 2008-05-15 19:47:49
+  recipe_id: 18
+  id: 9
+  amount_to_pitch: "1"
+  created_at: 2008-05-15 19:47:49

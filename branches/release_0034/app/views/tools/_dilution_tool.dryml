@@ -1,0 +1,98 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<h2>Dilution Tool</h2>
+
+
+<div class="block">
+  <p>This tool caclulates changes in gravity based on dilution of the wort.</p>
+</div>
+<br/>
+
+
+<span id="dil_required_button" style="display:none;" onclick="Element.show('dil_required_div');Element.hide('dil_required_button');Element.show('dil_calc_button');Element.hide('dil_calc_div');">
+  <p class="toggle"><span class="button toggle">Change to calculate required volume</span></p>
+</span>
+<span id="dil_calc_button"  onclick="Element.show('dil_calc_div');Element.hide('dil_calc_button');Element.hide('dil_required_div');Element.show('dil_required_button');">
+  <p class="toggle"><span class="button toggle">Change to calculate diluted gravity</span></p>
+</span>
+
+<br/>
+
+
+<div id="dil_required_div">
+  <div class="block">
+
+    <% form_remote_tag( :loading => "Hobo.showSpinner('Processing');",
+      :complete => "Hobo.hideSpinner();",
+      :url => "/tools/dilution_required_update"  ) do |f|%>
+      <table>
+        <tr><td><label>Wort gravity [<%= gravity_unit(current_user) %>]: </label></td><td><input type="text" name="wort_sg" size="4" /></td></tr>
+        <tr><td><label>Wort volume [<%= volume_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="wort_volume" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+
+        <tr><td>&nbsp;</td></tr>
+        <tr><td><label>Dilution liquid gravity [<%= gravity_unit(current_user) %>] (leave blank for water): </label></td><td><input type="text" name="dil_sg" size="4" /></td></tr>
+        <tr><td><label>Target gravity [<%= gravity_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="req_gravity" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><%=  submit_tag "Ok", :class => "button small-button"%></td></tr>
+      </table>
+    <%  end %>
+  </div>
+
+  <div class="block">
+    <h2>Results:</h2>
+    <table>
+      <tr><td><label class="right">Required volume addition [<%= volume_units(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+        <td><span ><b><label id="diluted_volume_addition_value" class="big"/></b></span></td></tr>
+      <tr><td><label class="right">Diluted volume [<%= volume_units(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+        <td><span ><b><label id="diluted_volume_total_value" class="big"/></b></span></td></tr>
+    </table>
+    <br/><p>Negative results indicate amount required to evapourate off to acheive desired gravity.</p>
+  </div>
+</div>
+<div id="dil_calc_div"  style="display:none;">
+  <div class="block">
+    <% form_remote_tag( :loading => "Hobo.showSpinner('Processing');",
+      :complete => "Hobo.hideSpinner();",
+      :url => "/tools/dilution_update"  ) do |f|%>
+
+      <table>
+        <tr><td><label>Wort gravity [<%= gravity_unit(current_user) %>]: </label></td><td><input type="text" name="wort_sg" size="4" /></td></tr>
+        <tr><td><label>Wort volume [<%= volume_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="wort_volume" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+
+        <tr><td>&nbsp;</td></tr>
+        <tr><td><label>Dilution liquid gravity [<%= gravity_unit(current_user) %>] (blank for water): </label></td><td><input type="text" name="dil_sg" size="4" /></td></tr>
+        <tr><td><label>Amount of additional liquid [<%= volume_unit(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td><input type="text" name="dil_volume" size="4"/>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><%= submit_tag "Ok", :class => "button small-button" %></td></tr>
+      </table>
+    <% end %>
+  </div>
+  <div class="block">
+    <h2>Results:</h2>
+    <table>
+      <tr><td><label class="right">Diluted gravity [<%= gravity_units(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+        <td><span ><b><label id="diluted_sg_value" class="big"/></b></span></td></tr>
+      <tr><td><label class="right">Diluted volume [<%= volume_units(current_user) %>]:&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+        <td><span ><b><label id="diluted_volume_value" class="big"/></b></span></td></tr>
+    </table>
+  </div>
+</div>
+
+
