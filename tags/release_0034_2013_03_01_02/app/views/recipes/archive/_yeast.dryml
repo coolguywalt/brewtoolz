@@ -1,0 +1,10 @@
+<tr class="<%= cycle('odd','even') -%>">
+  <td><%= yeast.yeast_type.name %></td>  
+  <td><%= yeast.yeast_type.flocculation %></td>
+  <td><%= yeast.yeast_type.attenuation %></td>
+  <td><%= temp_values( yeast.yeast_type.min_temp ) %></td>
+  <td><%= temp_values( yeast.yeast_type.max_temp ) %></td>
+  <td><%= yeast.yeast_type.alcohol_tollerance %></td> 
+  <td><%= del_yeast_link(yeast) %></td>
+  
+</tr>
