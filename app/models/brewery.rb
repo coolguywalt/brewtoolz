@@ -67,7 +67,7 @@ class Brewery < ActiveRecord::Base
         validates_numericality_of :nitrate, :greater_than_or_equal_to => 0.0
         validates_numericality_of :nitrite, :greater_than_or_equal_to => 0.0
         validates_numericality_of :pH, :greater_than_or_equal_to => 0.0,
-                                  :less_than_or_equal_to => 7.0
+                                  :less_than_or_equal_to => 14.0
         validates_numericality_of :potassium, :greater_than_or_equal_to => 0.0
         validates_numericality_of :sodium, :greater_than_or_equal_to => 0.0
         validates_numericality_of :sulfate, :greater_than_or_equal_to => 0.0
