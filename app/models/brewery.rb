@@ -147,32 +147,32 @@ class Brewery < ActiveRecord::Base
         	:total_alkalinity => 13.1
 	}
 
-	def initialize(params = nil)
+	def initialize(params = DEFAULT_BREWERY)
 		super
-		self.capacity = DEFAULT_BREWERY[:capacity] 
-		self.efficency = DEFAULT_BREWERY[:efficency] 
+		self.capacity = params[:capacity] 
+		self.efficency = params[:efficency] 
 		
-		self.liquor_to_grist = DEFAULT_BREWERY[:liquor_to_grist] 
-		self.boil_time = DEFAULT_BREWERY[:boil_time] 
-		self.mash_tun_capacity = DEFAULT_BREWERY[:mash_tun_capacity] 
-		self.mash_tun_deadspace = DEFAULT_BREWERY[:mash_tun_deadspace] 
+		self.liquor_to_grist = params[:liquor_to_grist] 
+		self.boil_time = params[:boil_time] 
+		self.mash_tun_capacity = params[:mash_tun_capacity] 
+		self.mash_tun_deadspace = params[:mash_tun_deadspace] 
 
-		self.evapouration_rate = DEFAULT_BREWERY[:evapouration_rate] 
+		self.evapouration_rate = params[:evapouration_rate] 
 
-                self.bicarbonate = DEFAULT_BREWERY[:bicarbonate] 
-              	self.calcium = DEFAULT_BREWERY[:calcium]
-               	self.carbonate = DEFAULT_BREWERY[:carbonate]
-               	self.chloride = DEFAULT_BREWERY[:chloride]
-               	self.fluoride = DEFAULT_BREWERY[:fluoride]
-               	self.iron = DEFAULT_BREWERY[:iron]
-               	self.magnesium = DEFAULT_BREWERY[:magnesium]
-               	self.nitrate = DEFAULT_BREWERY[:nitrate]
-               	self.nitrite = DEFAULT_BREWERY[:nitrite]
-               	self.pH = DEFAULT_BREWERY[:pH]
-               	self.potassium = DEFAULT_BREWERY[:potassium]
-               	self.sodium = DEFAULT_BREWERY[:sodium]
-               	self.sulfate = DEFAULT_BREWERY[:sulfate]
-               	self.total_alkalinity = DEFAULT_BREWERY[:total_alkalinity]
+                self.bicarbonate = params[:bicarbonate] 
+              	self.calcium = params[:calcium]
+               	self.carbonate = params[:carbonate]
+               	self.chloride = params[:chloride]
+               	self.fluoride = params[:fluoride]
+               	self.iron = params[:iron]
+               	self.magnesium = params[:magnesium]
+               	self.nitrate = params[:nitrate]
+               	self.nitrite = params[:nitrite]
+               	self.pH = params[:pH]
+               	self.potassium = params[:potassium]
+               	self.sodium = params[:sodium]
+               	self.sulfate = params[:sulfate]
+               	self.total_alkalinity = params[:total_alkalinity]
 	end
 
     def self.default_brewery(user)
@@ -184,7 +184,7 @@ class Brewery < ActiveRecord::Base
 
 		logger.debug "Creating default session brewery."
 
-		def_brewery = Brewery.new(  DEFAULT_BREWERY )
+		def_brewery = Brewery.new()
 
 		return def_brewery
 	end
