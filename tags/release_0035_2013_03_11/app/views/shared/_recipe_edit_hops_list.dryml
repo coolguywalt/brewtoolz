@@ -1,0 +1,74 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<!-- Hop selection list. -->
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('#hopsListTable').dataTable( {
+			"sPaginationType": "full_numbers",
+			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
+		} );
+		jQuery('#hopsInventoryTable').dataTable( {
+			"sPaginationType": "full_numbers",
+			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
+		} );
+		jQuery("#hopsaccordiandiv").accordion( );
+	} );
+</script>
+<div id="hopsaccordiandiv">
+	<h3><a href="#">Main</a></h3>
+	<div>
+		<table id="hopsListTable" class="item-list" >
+			<thead><tr><th><p>Type</p></th><th><p>AA%</p></th><th><p> </p></th></tr></thead>
+			<tbody class="scroll-list">
+			<repeat with="&HopType.find(:all, :order => 'name')" >
+				<tr class="<%= cycle('odd','even') -%>">
+					<td><view:name/></td>
+				<td><view:aa/></td>
+				<td><div class="buttons"><%= link_to_remote "Add",
+					  :loading => "Hobo.showSpinner('Adding Hop');",
+					  :complete => "Hobo.hideSpinner();",
+					  :url => { :controller => "recipes", :action => "add_hop", :id => recipe_edit_hops_list.id, :hop_type_id => this.id  },
+					  :html => { :id => "hop_#{this.id}" } %></div></td>
+				</tr>
+			</repeat>
+			</tbody>
+		</table>
+	</div>
+
+	<h3><a href="#">Inventory</a></h3>
+	<div>
+		<table id="hopsInventoryTable" class="item-list" >
+			<thead><tr><th><p>Type</p></th><th><p>AA%</p></th><th><p> </p></th></tr></thead>
+			<tbody class="scroll-list">
+			<repeat with="&current_user.hops_inventories.find(:all, :conditions => 'amount > 0')" >
+				<tr class="<%= cycle('odd','even') -%>">
+					<td><view:name/></td>
+				<td><view:aa/></td>
+				<td><div class="buttons"><%= link_to_remote "Add",
+					  :loading => "Hobo.showSpinner('Adding Hop');",
+					  :complete => "Hobo.hideSpinner();",
+					  :url => { :controller => "recipes", :action => "add_hop", :id => recipe_edit_hops_list.id, :hop_type_id => this.hop_type.id, :aa => this.aa  },
+					  :html => { :id => "hop_#{this.id}" } %></div></td>
+				</tr>
+			</repeat>
+			</tbody>
+		</table>
+	</div>
+</div>

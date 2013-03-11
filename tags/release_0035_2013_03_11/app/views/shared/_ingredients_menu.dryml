@@ -1,0 +1,4 @@
+<a with="&FermentableType" class="side-navigation">Fermentables</a><br/>
+<a with="&KitType" class="side-navigation">Kits</a><br/>
+<a with="&HopType" class="side-navigation">Hops</a><br/>
+<a with="&YeastType" class="side-navigation">Yeast</a><br/>
