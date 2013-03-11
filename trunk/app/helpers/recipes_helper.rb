@@ -439,6 +439,15 @@ module RecipesHelper
 		end
 	end
 
+	def recipe_hops_shopping_list ( recipe )
+		return recipe.hops.all( :group => "hop_type_id", :include => :hop_type,
+				        :order => "hop_types.name" )
+#		hop_list = Hops.find_by_sql( "SELECT hops.id, hop_types.name FROM hops, hop_types" +
+#                               "where recipe_id=253 and (hop_type_id = hop_types.id)" +
+#                               "group by hop_types.id" +
+#                               "order by hop_types.name ASC") 
+	end
+
 	def recipe_kits_list ( recipe )
 		recipe.kits.sort do |a,b|
 			a.kit_type.name <=> b.kit_type.name
@@ -925,5 +934,6 @@ module RecipesHelper
 
 		return (!recipe.is_brewday? and recipe.is_owner?)
 	end
+
 
 end

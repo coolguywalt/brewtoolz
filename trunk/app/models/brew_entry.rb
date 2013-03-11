@@ -468,11 +468,17 @@ class BrewEntry < ActiveRecord::Base
   end
 
   def preboilvolume
-
     # roughly equal to volume to ferementer + mashing loss + system loss + evaporation loss
     preboil = the_volume_to_ferementer + system_loss + evapouration_loss
 
     return preboil
+  end
+
+  def postboilvolume
+    # roughly equal to volume to ferementer +  system loss
+    postboil = the_volume_to_ferementer + system_loss
+
+    return postboil
   end
 
   def volume_to_fermenter_and_system_loses

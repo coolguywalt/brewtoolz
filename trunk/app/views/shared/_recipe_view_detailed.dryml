@@ -19,7 +19,7 @@
 
 
 <div class="block">
-  <b>Style: </b><span class="big"><%= if( recipe_view_detailed.style ) then recipe_view_detailed.style.name_with_designator end %></span>
+  <b>Style: </b><span class="big"><%= style_link( recipe_view_detailed.style ) %></span>
 </div>
 
 <div class="block">    <b>Description:</b><br/>

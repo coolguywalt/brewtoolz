@@ -34,7 +34,7 @@
 					:success => "Element.hide('recipe_misc_edit');Element.show('recipe_misc_show');") do |f| %>
 					<b><label>Name:</label></b><%= f.text_field :name, :class =>"wide" %><br/>
 					<b><label>Style:</label></b>
-					<%= collection_select(:recipe, :style_id, Style.find(:all), :id, :name_with_designator, {:prompt => true} ) %>
+					<%= collection_select(:recipe, :style_id, Style.find(:all), :id, :name_with_designator, {:prompt => true} ) %>&nbsp<%= style_link( this.style, "BJCP Link") %>
 					<br/>
 					<p><b>Description:</b></p>
 					<%= f.text_area :description, :class => "recipe-description-edit" %><br/>

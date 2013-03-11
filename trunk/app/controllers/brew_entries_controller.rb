@@ -693,6 +693,11 @@ class BrewEntriesController < ApplicationController
 		render :partial => 'sparge', :object => @brew_entry
 	end
 
+	def loadshoppinglist
+		@brew_entry = BrewEntry.find(params[:id])
+		render :partial => 'shopping_list', :object => @brew_entry
+	end
+
 	private
 
 	def updated_values_and_recipe_div

@@ -45,6 +45,7 @@
 			<li><%= link_to "<span>Water</span>", :controller => :brew_entries, :action => :loadwatertab, :id => @brew_entry.id %></li>
 			<li><%= link_to "<span>Mash</span>", :controller => :brew_entries, :action => :loadmashtab, :id => @brew_entry.id %></li>
 			<li><%= link_to "<span>Sparge</span>", :controller => :brew_entries, :action => :loadspargetab, :id => @brew_entry.id %></li>
+			<li><%= link_to "<span>Shopping List</span>", :controller => :brew_entries, :action => :loadshoppinglist, :id => @brew_entry.id %></li>
 		</ul>
 
 
