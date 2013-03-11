@@ -1,0 +1,134 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+
+
+<!-- Ingredients -->
+<!-- Fermentables -->
+<if test="&recipe_shopping_list.fermentables.count > 0" >
+<div class="block">
+  <h2>Fermentables</h2>
+  <table id="fermentables_list" class="item-list">
+    <tr>
+      <th><b>Type</b></th>
+      <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+    </tr>
+    <repeat with="&recipe_fermentable_list(recipe_shopping_list)" >
+      <tr class="<%= cycle('odd','even') -%>">
+
+        <td ><%=  fermentable_type( this ) %></td>
+        <td><%= ferm_weight_values(roundup(this.weight))%> </td>
+      </tr>
+    </repeat>
+  </table>
+</div>
+</if>
+
+<!-- Hops -->
+<if test="&recipe_shopping_list.hops.count > 0" >
+  <div class="block">
+    <h2>Hops</h2>
+
+    <table id="hops_list" class="item-list">
+      <tr>
+        <th><b>Type</b></th>
+        <th><b>AA(%)</b></th>
+        <th><b>Weight [<%= hop_weight_units %>]</b></th>
+      </tr>
+
+      <repeat with="&recipe_shopping_list.hops.unique_type" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td ><%= hop_type( this ) %></td>
+          <td><%= percentage(this.aa) %></td>
+          <td><%= hop_weight_values(roundup(this.total_recipe_hops_weight)) %></td>
+        </tr>
+      </repeat>
+    </table>
+  </div>
+</if>
+
+<!-- Kits -->
+<if test="&recipe_shopping_list.kits.count > 0" >
+  <div class="block">
+        <h2>Kits</h2>
+    <table id="kits_list" class="item-list">
+      <tr>
+        <th><b>Type</b></th>
+        <th><b>Quantity</b></th>
+        <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+        <th><b>Volume [<%= volume_units %>]</b></th>
+
+      </tr>
+
+      <repeat with="&recipe_kits_list(recipe_shopping_list)" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td ><%= kit_type( this ) %></td>
+          <td><%= decimal(this.quantity) %></td>
+          <td><%= kit_weight(this.kit_type) %></td>
+          <td><%= kit_volume( this.kit_type ) %></td>
+        </tr>
+      </repeat>
+    </table>
+  </div>
+</if>
+<!-- Yeast -->
+<if test="&recipe_shopping_list.yeasts.count > 0" >
+<div class="block">
+  <h2>Yeast</h2>
+  <table id="yeast_list" class="item-list">
+    <tr>
+      <th><b>Type</b></th>
+    </tr>
+
+    <repeat with="&recipe_yeast_list(recipe_shopping_list)" >
+      <tr class="<%= cycle('odd','even') -%>">
+        <td ><%= yeast_type( this ) %></td>
+      </tr>
+    </repeat>
+  </table>
+</div>
+</if>
+
+<if test="&recipe_shopping_list.misc_ingredients.count > 0" >
+  <div class="block" >
+    <h2>Miscellaneous</h2>
+    <table class="item-list">
+      <tr>
+        <th><b>Name</b></th>
+        <th><b>Type</b></th>
+        <th><b>Use</b></th>
+        <th><b>Amount</b></th>
+        <th><b>Description</b></th>
+      </tr>
+      <repeat with="&recipe_misc_list(recipe_shopping_list)">
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><view:name/></td>
+        <td><view:misc_type/></td>
+        <td><view:misc_use/></td>
+        <td><if test="&this.is_solid"><%= hop_weight_values(roundup(this.amount)) %></if><else><%= volume_values(roundup(this.amount)) %></else>
+        &nbsp;[<if test="&this.is_solid"><%= hop_weight_units%></if><else><%= volume_units%></else>]</td>
+        <td><view:use_for/></td>
+        </tr>
+      </repeat>
+    </table>
+
+  </div>
+</if>
+
+

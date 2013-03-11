@@ -1,0 +1,21 @@
+Thread ID: -609251108
+Total: 0.240000
+
+ %self     total     self     wait    child    calls  name
+ 29.17      0.07     0.07     0.00     0.00      133  Kernel#proc
+ 12.50      0.23     0.03     0.00     0.23      383  ActionView::Helpers::CaptureHelper#with_output_buffer
+  8.33      0.11     0.02     0.00     0.09      961  Array#each
+  4.17      0.01     0.01     0.00     0.00        4  ActionView::Renderable#handler
+  4.17      0.02     0.01     0.00     0.01      369  Array#include?
+  4.17      0.01     0.01     0.00     0.00      657  <Module::ActiveSupport::Multibyte>#valid_character
+  4.17      0.01     0.01     0.00     0.00       46  CallIfAvailable#method_missing
+  4.17      0.01     0.01     0.00     0.00       39  ActiveRecord::Associations::AssociationProxy#conditions
+  4.17      0.01     0.01     0.00     0.00     1885  Kernel#is_a?
+  4.17      0.01     0.01     0.00     0.00     6577  String#==
+  4.17      0.01     0.01     0.00     0.00        8  Kernel#raise
+  4.17      0.03     0.01     0.00     0.02       40  <Class::ActiveRecord::Base>#find_every
+  4.17      0.01     0.01     0.00     0.00      695  ActiveRecord::ConnectionAdapters::ConnectionHandler#retrieve_connection_pool
+  4.17      0.01     0.01     0.00     0.00       40  <Class::ActiveRecord::Base>#finder_needs_type_condition?
+  4.17      0.01     0.01     0.00     0.00      347  Hash#each
+
+
