@@ -1,15 +1,3 @@
-<show-page>
-
-  	<content-body:>
-		<%= style_link( this, "BJCP Link" ) %>
-		<div id="recipe_collecion_div">
-                  <%= will_paginate style_recipes( this ) %>
-		   <collection with="&style_recipes( this )" />
-		</div>
-
-	</content-body:>
-
-</show-page>
 
 <!--
     This file is part of Brewtools.
@@ -30,4 +18,4 @@
     Copyright Chris Taylor, 2008, 2009, 2010
 -->
 
-
+          <%= render :partial => 'shared/recipe_shopping_list', :object => @brew_entry.therecipe %>

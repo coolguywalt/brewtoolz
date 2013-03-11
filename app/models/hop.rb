@@ -75,6 +75,9 @@ class Hop < ActiveRecord::Base
 	validates_numericality_of :minutes
 	validates_numericality_of :ibu_l, :greater_than_or_equal_to => 0
 
+	named_scope :unique_type, :group => "hop_type_id", :include => :hop_type,
+				        :order => "hop_types.name" 
+
   $CUBED_MINS_OFFSET = 20  # Additional minutes to add when doing calculations for a cubed recipe.
 
 	# --- Permissions --- #
@@ -293,6 +296,17 @@ class Hop < ActiveRecord::Base
     end
 
   end
+
+	def total_recipe_hops_weight
+		total_weight = 0.0
+		recipe.hops.each do |hop|
+			next unless hop
+			next unless hop.hop_type == hop_type
+
+			total_weight = total_weight + hop.weight 
+		end
+		return total_weight
+	end
 
   def lock_weight
     return is_weight_locked?

@@ -232,8 +232,29 @@ module ApplicationHelper
 		number_to_percentage(value, :precision => 2)
 	end
 
+	def roundup( value )
+		#Round values up depending on their magnitude so that the make more sense for
+		#weights in shopping lists.
+		roundfactor = 5.0
+		roundfactor = 10.0 if (value > 500)
+		roundfactor = 50.0 if (value > 2000)
+		roundfactor = 100.0 if (value > 5000)
+
+                newvalue = (value/roundfactor).ceil * roundfactor
+
+		return newvalue
+	end
+
 	def strwrap(s, width=80)
 		s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
 	end
 
+	def style_link( style, link_txt=nil )
+		return unless style
+		if style.bjcp_url then
+		  return link_to( link_txt ? link_txt : style.name, style.bjcp_url, :target => '_blank')
+		else
+                  return style.name
+		end
+	end
 end
