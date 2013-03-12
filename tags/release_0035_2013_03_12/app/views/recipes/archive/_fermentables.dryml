@@ -1,0 +1,26 @@
+  <h3><b>Fermentables:</b></h3>
+  <div class="item-list" id="fermentable_items"> 
+     <%= render :partial => 'fermentable_items' %>
+  </div>
+  <!-- Fermentable selection list. -->
+      
+  <h3><b>Select fermentable:</b></h3>
+  <div class="item-list" >
+    <table id="fermentable_list" class="item-list" >
+      <th>Type</th><th>Supplier</th><th>Yeild</th><th>Color</th><th>Converted?</th><th> </th>
+      <repeat with="&FermentableType.find(:all, :order => 'name')" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><view:name/></td>
+          <td><%= this.ingredient_supplier ? this.ingredient_supplier.name : "Generic" %></td>
+          <td><view:yeild/></td>
+          <td><view:colour/></td>
+          <td><view:converted/></td>
+          <td><%= link_to_remote "Add", 
+              :loading => "Element.show('spinner');",
+              :complete => "Element.hide('spinner');", 
+              :url => { :action => "add_fermentable", :id => @recipe.id, :ferementable_type_id => this.id  }, 
+              :html => { :class => 'button' } %></td>
+        </tr>
+      </repeat>
+    </table>
+  </div>
