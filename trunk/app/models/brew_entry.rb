@@ -984,10 +984,12 @@ class BrewEntry < ActiveRecord::Base
   end
 
   def ro_water( volume, phase )
+    return 0 unless volume # protects against nil volume being passed in.
     return volume * send("dilution_rate_#{phase}") / 100.0
   end
 
   def tap_water( volume, phase )
+    return 0 unless volume # protects against nil volume being passed in.
     return volume * (1.0 - send("dilution_rate_#{phase}") / 100.0)
   end
 
