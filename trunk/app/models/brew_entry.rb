@@ -640,7 +640,7 @@ class BrewEntry < ActiveRecord::Base
   end
 
   def sparge4_water_addition
-    # logger.debug "sparge4_water_addition"
+    logger.debug "sparge4_water_addition"
 
     return 0.0 if the_no_batches < 4
     return per_sparge_volume * 4 - sparge1_volume - sparge2_volume - sparge3_volume
@@ -696,7 +696,7 @@ class BrewEntry < ActiveRecord::Base
     nb = read_attribute(:no_batches)
     nb= 2 unless nb #Check for null value.
 
-    # logger.debug "No batches: #{nb}"
+    logger.debug "No batches: #{nb}"
 
     return nb
   end
