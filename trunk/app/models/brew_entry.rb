@@ -983,18 +983,26 @@ class BrewEntry < ActiveRecord::Base
 
   end
 
+  def dilution_factor(phase)
+    @_factor ||= {}
+    if !@_factor.has_key?(phase)
+      @_factor[phase] = send("dilution_rate_#{phase}") / 100.0
+    end
+    return @_factor[phase]
+  end
+
   def ro_water( volume, phase )
     return 0 unless volume # protects against nil volume being passed in.
-    return volume * send("dilution_rate_#{phase}") / 100.0
+    return volume * dilution_factor(phase)
   end
 
   def tap_water( volume, phase )
     return 0 unless volume # protects against nil volume being passed in.
-    return volume * (1.0 - send("dilution_rate_#{phase}") / 100.0)
+    return volume * ( 1.0 - dilution_factor(phase) )
   end
 
   def diluted(ion, phase)
-    factor = send("dilution_rate_#{phase}") / 100.0
+    factor = dilution_factor(phase)
     ro_brewery = Brewery.ro_brewery
     return factor * ro_brewery.send(ion) +
       ( 1.0 - factor ) * ( thebrewery.send(ion) || ro_brewery.send(ion) )
@@ -1034,11 +1042,25 @@ class BrewEntry < ActiveRecord::Base
            @@acids[acid][:molar_mass] # mEq
   end
 
+  def _mash_volume
+    if !defined?(@_mash_volume)
+      @_mash_volume = mash_water
+    end
+    return @_mash_volume
+  end
+
+  def _sparge_volume
+    if !defined?(@_sparge_volume)
+      @_sparge_volume = total_spargewater
+    end
+    return @_sparge_volume
+  end
+
   def alkalinity_change_from_acids(phase)
     return @@acids.keys.inject(0) do |total_alkalinity_change, acid|
       total_alkalinity_change +
         acid_power( acid, send( "#{acid}_volume_#{phase}" ) *
-                          ( phase == :mash ? mash_water : total_spargewater ),
+                          ( phase == :mash ? _mash_volume : _sparge_volume ),
                     send( "#{acid}_strength_#{phase}" ) )
     end
   end
@@ -1074,7 +1096,7 @@ class BrewEntry < ActiveRecord::Base
     return 0.0 unless @@concentrations[ion]
     return @@concentrations[ion].keys.inject(0) do |total_mass, salt|
       total_mass + send("#{salt}_#{phase}") /
-                   ( phase == :mash ? mash_water : total_spargewater ) *
+                   ( phase == :mash ? _mash_volume : _sparge_volume ) *
                    @@concentrations[ion][salt] * 3.785
     end
   end

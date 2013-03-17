@@ -747,8 +747,9 @@ class Recipe < ActiveRecord::Base
   ROAST_SLOPE = 0.06
 
   def total_grist_pH(og)
-    return ZERO_SRM_PH - srm * ( CRYSTAL_SLOPE * ( 1 - percent_roast ) +
-                                 ROAST_SLOPE   *       percent_roast ) / og
+    _percent_roast = percent_roast
+    return ZERO_SRM_PH - srm * ( CRYSTAL_SLOPE * ( 1 - _percent_roast ) +
+                                 ROAST_SLOPE   *       _percent_roast ) / og
   end
 
 end
