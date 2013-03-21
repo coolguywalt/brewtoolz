@@ -125,31 +125,36 @@
     <h3>Resulting <%= phase.to_s.capitalize %> Water Profile</h3>
     <table class="list">
       <tr>
-        <th>Calcium (Ca&#178;&#8314;) [mg/L]:</th>
+        <th>Calcium&nbsp;(Ca&#178;&#8314;)&nbsp;[mg/L]:</th>
         <td class="big numeric">
           <%= decimal( this.adjusted( :calcium, phase ) ) %>
         </td>
-        <th>Magnesium (Mg&#178;&#8314;) [mg/L]:</th>
+        <td class="level"><%= this.ion_level( :calcium, phase ) %></td>
+        <th>Magnesium&nbsp;(Mg&#178;&#8314;)&nbsp;[mg/L]:</th>
         <td class="big numeric">
           <%= decimal( this.adjusted( :magnesium, phase ) ) %>
         </td>
+        <td class="level"><%= this.ion_level( :magnesium, phase ) %></td>
       </tr>
       <tr>
-        <th>Chloride (Cl&#8315;) [mg/L]:</th>
+        <th>Chloride&nbsp;(Cl&#8315;)&nbsp;[mg/L]:</th>
         <td class="big numeric">
           <%= decimal( this.adjusted( :chloride, phase ) ) %>
         </td>
-        <th>Sulfate (SO&#8324;&#178;&#8315;) [mg/L]:</th>
+        <td class="level"><%= this.ion_level( :chloride, phase ) %></td>
+        <th>Sulfate&nbsp;(SO&#8324;&#178;&#8315;)&nbsp;[mg/L]:</th>
         <td class="big numeric">
           <%= decimal( this.adjusted( :sulfate, phase ) ) %>
         </td>
+        <td class="level"><%= this.ion_level( :sulfate, phase ) %></td>
       </tr>
       <tr>
-        <th>Sodium (Na&#8314;) [mg/L]:</th>
+        <th>Sodium&nbsp;(Na&#8314;)&nbsp;[mg/L]:</th>
         <td class="big numeric">
           <%= decimal( this.adjusted( :sodium, phase ) ) %>
         </td>
-        <th>Bicarbonate (HCO&#8323;&#8315;) [mg/L]:</th>
+        <td class="level"><%= this.ion_level( :sodium, phase ) %></td>
+        <th>Bicarbonate&nbsp;(HCO&#8323;&#8315;)&nbsp;[mg/L]:</th>
         <td class="big numeric">
           <%= decimal( this.adjusted( :bicarbonate, phase ) ) %>
         </td>
@@ -158,7 +163,9 @@
         <th>SO&#8324;&#178;&#8315;:Cl&#8315;:</th>
         <td class="big numeric">
           <%= decimal( this.sulfate_chloride_ratio(phase) ) %></td>
-        <td class="big"><%= this.sulfate_chloride_effect(phase) %></td>
+        <td class="level" colspan="4">
+          <%= this.sulfate_chloride_effect(phase) %>
+        </td>
       </tr>
     </table>
     <h3><%= phase.to_s.capitalize %> Water Acidity</h3>
@@ -191,6 +198,7 @@
       <tr>
         <th>Estimated Room-Temperature Mash pH:&nbsp;</th>
         <td class="big numeric"><%= decimal(this.estimated_mash_pH) %></td>
+        <td class="level"><%= this.pH_level %></td>
       </tr>
       <% else %>
       <tr>
