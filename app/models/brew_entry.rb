@@ -1092,6 +1092,37 @@ class BrewEntry < ActiveRecord::Base
     :total_alkalinity => { :baking_soda => 156.6 }
   }
 
+  @@water_ranges = {
+    :bicarbonate => {
+      :lo => 0.0,
+      :hi => 250.0
+    },
+    :calcium => {
+      :lo => 50.0,
+      :hi => 150.0
+    },
+    :chloride => {
+      :lo => 0.0,
+      :hi => 250.0
+    },
+    :magnesium => {
+      :lo => 10.0,
+      :hi => 30.0
+    },
+    :sodium => {
+      :lo => 0.0,
+      :hi => 150.0
+    },
+    :sulfate => {
+      :lo => 0.0,
+      :hi => 350.0
+    },
+    :pH => {
+      :lo => 5.2,
+      :hi => 5.6
+    }
+  }
+
   def salt_contributions(ion, phase)
     return 0.0 unless @@concentrations[ion]
     return @@concentrations[ion].keys.inject(0) do |total_mass, salt|
@@ -1120,26 +1151,45 @@ class BrewEntry < ActiveRecord::Base
 
   def sulfate_chloride_effect(phase)
     case sulfate_chloride_ratio(phase)
-    when 0 .. 0.4
-      return 'Too Malty'
-    when 0.4 .. 0.6
-      return 'Very Malty'
-    when 0.6 .. 0.8
-      return 'Malty'
-    when 0.8 .. 1.5
-      return 'Balanced'
-    when 1.5 .. 2.01
-      return 'Slightly Bitter'
-    when 2.01 .. 4.01
-      return 'Bitter'
-    when 4.01 .. 6.01
-      return 'Very Bitter'
-    when 6.01 .. 8.01
-      return 'Very Very Bitter'
-    when 8.01 .. 9.01
-      return 'Very Very Very Bitter'
+    when 0 ... 0.4
+      return 'too malty'
+    when 0.4 ... 0.6
+      return 'very malty'
+    when 0.6 ... 0.8
+      return 'malty'
+    when 0.8 ... 1.5
+      return 'balanced'
+    when 1.5 ... 2.0
+      return 'slightly bitter'
+    when 2.0 ... 4.0
+      return 'bitter'
+    when 4.0 ... 6.0
+      return 'very bitter'
+    when 6.0 ... 8.0
+      return 'very very bitter'
+    when 8.0 ... 9.0
+      return 'very very very bitter'
     end
-    return 'Too Bitter'
+    return 'too bitter'
+  end
+
+  def level( quantity, value )
+    if @@water_ranges.has_key?(quantity)
+      if value < @@water_ranges[quantity][:lo]
+        return "low"
+      elsif value > @@water_ranges[quantity][:hi]
+        return "high"
+      end
+    end
+    return "ok"
+  end
+
+  def ion_level( ion, phase )
+    return level( ion, adjusted( ion, phase ) )
+  end
+
+  def pH_level
+    return level( :pH, estimated_mash_pH )
   end
 
 #  protected

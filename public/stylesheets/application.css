@@ -373,3 +373,12 @@ table.scroll-table thead tr th p {
     min-height: 80px
 }
 
+.numeric
+{
+    text-align: right
+}
+
+.level
+{
+    font-style: italic
+}
