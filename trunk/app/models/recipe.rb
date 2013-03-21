@@ -519,10 +519,10 @@ class Recipe < ActiveRecord::Base
 		logger.debug "volume brew_entry: #{brew_entry}"
 
 		return read_attribute(:volume) unless brew_entry  # If this is a brewentry we need to get the
-		# volume to fermenter
+		# volume to fermenter + losses.
 
-		logger.debug "volume from brew_entry: #{brew_entry.volume_to_ferementer}"
-		return brew_entry.volume_to_ferementer
+		logger.debug "volume from brew_entry: #{brew_entry}"
+		return brew_entry.volume_to_fermenter_and_system_loses
 	end
 
 	def self.search_condition
