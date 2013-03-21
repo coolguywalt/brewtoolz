@@ -1020,7 +1020,7 @@ class BrewEntry < ActiveRecord::Base
   end
 
   def buffer_capacity
-    return 50.0                 # mEq / ( pH * kg )
+    return 35.0                 # mEq / ( pH * kg )
   end
 
   def acid_density(acid, strength)
