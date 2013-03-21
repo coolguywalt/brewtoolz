@@ -1109,6 +1109,39 @@ class BrewEntry < ActiveRecord::Base
     return wateradditions_weight_units(user) + "/" + volume_units(user)
   end
 
+  def sulfate_chloride_ratio(phase)
+    @_ratio ||= {}
+    if !@_ratio.has_key?(phase)
+      @_ratio[phase] = adjusted( :sulfate, phase ) /
+                       adjusted( :chloride, phase )
+    end
+    return @_ratio[phase]
+  end
+
+  def sulfate_chloride_effect(phase)
+    case sulfate_chloride_ratio(phase)
+    when 0 .. 0.4
+      return 'Too Malty'
+    when 0.4 .. 0.6
+      return 'Very Malty'
+    when 0.6 .. 0.8
+      return 'Malty'
+    when 0.8 .. 1.5
+      return 'Balanced'
+    when 1.5 .. 2.01
+      return 'Slightly Bitter'
+    when 2.01 .. 4.01
+      return 'Bitter'
+    when 4.01 .. 6.01
+      return 'Very Bitter'
+    when 6.01 .. 8.01
+      return 'Very Very Bitter'
+    when 8.01 .. 9.01
+      return 'Very Very Very Bitter'
+    end
+    return 'Too Bitter'
+  end
+
 #  protected
 #
 #  def pre_destroy

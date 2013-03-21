@@ -143,10 +143,6 @@
         <td class="big numeric">
           <%= decimal( this.adjusted( :sulfate, phase ) ) %>
         </td>
-        <th>SO&#8324;&#178;&#8315;:Cl&#8315;:</th>
-        <td class="big numeric">
-          <%= decimal( this.adjusted( :sulfate, phase ) /
-                       this.adjusted( :chloride, phase ) ) %></td>
       </tr>
       <tr>
         <th>Sodium (Na&#8314;) [mg/L]:</th>
@@ -157,6 +153,12 @@
         <td class="big numeric">
           <%= decimal( this.adjusted( :bicarbonate, phase ) ) %>
         </td>
+      </tr>
+      <tr>
+        <th>SO&#8324;&#178;&#8315;:Cl&#8315;:</th>
+        <td class="big numeric">
+          <%= decimal( this.sulfate_chloride_ratio(phase) ) %></td>
+        <td class="big"><%= this.sulfate_chloride_effect(phase) %></td>
       </tr>
     </table>
     <h3><%= phase.to_s.capitalize %> Water Acidity</h3>
