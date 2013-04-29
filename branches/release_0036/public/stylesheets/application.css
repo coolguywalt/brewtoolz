@@ -1,0 +1,384 @@
+/*
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+*/
+
+/* Fix for ie6 png image rendering error. */
+img {
+    behavior: url(/iepngfix.htc)
+}
+
+html {
+    background:#666666 none repeat scroll 0 0;
+}
+
+div h1.app-name {
+    height:85px;
+    margin:0;
+    padding:0;
+    position:relative;
+    font-size:43pt;
+}
+
+.banner-image {
+    position: relative;
+    width: 90px;
+
+}
+
+div h1.app-name a {
+    padding-left:63px;
+    position:relative;
+    top:-52px;
+}
+
+.title-heading {
+    /* position:absolute; */
+
+    /* top:-52px; */
+    /* left:100px; */
+    padding-top:18px;
+    line-height: 50px;
+	text-align: center;
+}
+
+div.banner_img {
+    margin: 0; padding: 0;
+    height: 84px;
+}
+
+.main-nav {
+    padding: 0 0 0 250px;
+}
+
+.page-header {
+    background: url(../images/head_back.png) repeat-x scroll 0 0;
+    color:white;
+}
+
+.page-footer {
+    background: url(../images/foot_back.png) repeat-x scroll 0 0;
+    color:white;
+    padding:2px;
+}
+
+.error_list {
+    color: red;
+    padding-left:63px;
+}
+
+img {
+    behavior: url(/iepngfix.htc)
+}
+
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+    font-family:inherit;
+}
+
+.block {
+    background:#FFFEDD none repeat scroll 0 0;
+    padding-left: 4px;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+    border: 1px solid rgb(156, 148, 124);
+    border-radius: 4px 4px 4px; 
+}
+
+.card {
+    margin-bottom: 5px;
+    border: 1px solid rgb(156, 148, 124);
+    border-radius: 4px 4px 4px; 
+}
+
+.pagination {
+    background:#FFFEDD;
+    border: 1px solid rgb(156, 148, 124);
+    border-radius: 4px 4px 4px; 
+    font-weight: bold;
+}
+table.item-list {
+    width: 99%;
+    border-spacing: 1px;
+    /* overflow: auto; */
+}
+
+
+table.item-list th { text-align: left; font-size:10pt; font-weight: bold; border-bottom-style: double; border-bottom-color: black;
+                     border-bottom-width: 1px;}
+/*Removed 'width: 28px' item below that was causing ie6 rendering problems*/
+table.item-list td { padding: 4px; text-align: left; vertical-align: top; }
+table.item-list tr.odd { background: #eaeaea; }
+table.item-list tr.even { background: #e0e0e0; }
+
+
+/*div.item-list { border: black solid 1px; }*/
+.ie div.item-list {height: 170px; overflow: auto; border: black solid 1px; }
+
+/*div.item-list-unlimited { border: black solid 1px; }*/
+
+
+table.item-list th { text-align: left; font-size:10pt; font-weight: bold }
+
+textarea.recipe-description { width:100%; height: 40px; }
+textarea.recipe-description-edit { width:100%; height: 120px; }
+textarea.recipe-description-show {
+    width:100%;
+    height: auto;
+}
+
+table.list th {
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+table.list td {
+    padding-right: 20px;
+}
+
+h1 {
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: bold;	
+}
+
+body {
+    width: auto;
+    min-width: 1190px;
+    background: gray;
+    /* Align with jQuery items */ 
+    font-family: Segoe UI,Helvetica,Arial,sans-serif;
+}
+
+.section.content {
+    min-width: 700px;
+    padding: 8px;
+    /*background:#fdf96c none repeat scroll 0 0;*/
+
+    background-color: #FFFFBA;
+}
+
+.print-page {
+    width: 730px;
+    min-width: 700px;
+}
+
+
+.print-page .section.content {
+
+    background-color: white;
+}
+
+.image-pos {
+    left: 120px;
+    position:relative;
+}
+
+.googleads_160_x_600 {
+    width: 165px;
+    height: 605px;
+    /* border:1px solid #000; */
+    margin: 0px auto -1px auto;
+
+}
+
+.big {
+    font-size: 11pt;
+}
+
+.scroll-list {
+    /*overflow: auto;
+    height: 180px;*/
+}
+
+.image-pos {
+    left: 120px;
+    position:relative;
+}
+
+.ie .scroll-list {
+    overflow: auto;
+    height: auto;
+}
+
+.scroll-list-div {
+}
+
+.ie .scroll-list-div {
+    height: 180px;
+    width: auto;
+    overflow: auto;
+}
+
+.scroll-table {}
+.ie .scroll-table {
+    width: 97%
+}
+
+.page-header .navigation.main-nav a {background-color: #322626;}
+.page-header .navigation.main-nav li.current a {background-color: #FFFEDD; color: #222;}
+.page-header .navigation.main-nav a:hover {background-color: #606060;}
+
+.navigation-div {
+    background: url(../images/foot_back.png) repeat-x scroll 0 0;
+    padding:0px 15px 7px;
+}
+.navigation a {
+    background-color: #322626;
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    color:white;
+    padding:5px 15px 2px;
+}
+
+.side-navigation {
+    background-color: #322626;
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    color:white;
+    padding:5px 15px 2px;
+}
+
+.navigation li.current a {background-color: #FFFEDD; color: #222;}
+.navigation a:hover {background-color: #606060;}
+.navigation li {
+    float:left;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin-left:0;
+    margin-right: 1px;
+
+}
+
+.header-buttons {
+    text-align: right;
+}
+
+.input-hl {background: #ffe5a6;}
+
+.small-button {
+    top-margin: 0px;
+    padding: 1px;
+}
+
+.recipe_none {
+    color:silver;
+}
+
+.recipe_selected {
+    color:teal;
+}
+
+.floatright {
+    float:right;
+}
+
+.floatleft {
+    float:left;
+}
+
+.centerimage   {
+    text-align:center;
+
+}
+
+.largerfont {
+    font-size: 120%
+}
+
+.shadow {
+    -moz-box-shadow: 0 4px 10px #8B8B8B;
+}
+
+.green-bold {
+    font-weight: bold;
+    color: green;
+}
+
+.updated {
+    font-weight: bold;
+    color: green;
+}
+
+.draft {
+    font-weight: bold;
+    color: blue;
+}
+
+.scroll-table-wrap-div {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    /* float: left; */
+    height: 200px;
+    overflow: hidden;
+    padding: 18px 0px 0px;
+    position: relative;
+    width: 100%;
+}
+
+.scroll-table-inner-div {
+    height:200px;
+    overflow:auto;
+    width:100%;
+}
+
+.scroll-table-last {
+    padding-right:15px;
+}
+
+table.scroll-table thead tr th p {
+    position:absolute;
+    top:0;
+
+}
+
+.plain {
+    font-family: monospace;
+}
+
+.aside-left-menu {
+    padding: 20px 0px 20px 0px;
+}
+
+.recipetabs .ui-tabs-panel
+{
+    min-height: 520px
+}
+
+.comments 
+{
+    min-height: 80px
+}
+
+.numeric
+{
+    text-align: right
+}
+
+.level
+{
+    font-style: italic
+}
