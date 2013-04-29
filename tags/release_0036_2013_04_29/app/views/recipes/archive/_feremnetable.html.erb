@@ -1,0 +1,11 @@
+<div class="ferementable">
+<% new_or_existing = ferementable.new_record? ? 'new' : 'existing' %>
+<% prefix = "recipe[#{new_or_existing}_fermentable_attributes][]" %>
+<% fields_for prefix, fermentable do |redipe_form| -%>
+  <p>
+    Fermentable points: <%= ferementable_form.text_field :points %>
+    <%= link_to_function "remove" , "$(this).up('.ferementable').remove()" %>
+  </p>
+<% end -%>
+</div>
+
