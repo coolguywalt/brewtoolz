@@ -71,6 +71,12 @@ class HopType < ActiveRecord::Base
   validates_numericality_of :aa, :greater_than => 0.0
 
   belongs_to :user, :creator => true
+  has_many :hops_inventories
+  has_many :hops
+
+  def inventories
+      return hops_inventories
+  end
 
   default_scope :order => 'name'
 
@@ -110,6 +116,10 @@ class HopType < ActiveRecord::Base
   def reset_validation_to_false_if_not_admin
     return if acting_user.administrator?
     return reset_validation_to_false
+  end
+    #Hacky alis method ... it does the job
+  def hop_inventories
+      return hops_inventories
   end
 
 end

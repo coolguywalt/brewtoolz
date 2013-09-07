@@ -39,6 +39,10 @@ class KitType < ActiveRecord::Base
   end
 
   belongs_to :user, :creator => true
+  has_many :kit_inventories
+  def inventories
+      return kit_inventories
+  end
 
   default_scope :order => 'name'
 

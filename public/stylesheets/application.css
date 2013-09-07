@@ -277,13 +277,20 @@ body {
     text-align: right;
 }
 
-.input-hl {background: #ffe5a6;}
+.input-hl {
+   background: #ffe5a6;
+   border: 0px;
+}
 
 .small-button {
     top-margin: 0px;
     padding: 1px;
 }
 
+.jsmall-button {
+   font-size: 1.1em !important;
+   width: 20px !important;
+}
 .recipe_none {
     color:silver;
 }
@@ -373,6 +380,40 @@ table.scroll-table thead tr th p {
     min-height: 80px
 }
 
+.dataTables_wrapper {
+    min-height: 50px !important;
+}
+
+.row_selected {
+    background: none repeat scroll 0 0 #e0e0a0 !important;
+}
+
+.input-edit {
+    border-width: 1px;
+    padding: 0px;
+}
+
+.input-button {
+    border-width: 0px;
+    padding: 0px;
+    font-size: 0.8em !important;
+}
+
+.zero-padding {
+    padding: 0px !important;
+}
+
+.input-form {
+    display: inline;
+}
+
+.input-table {
+    display: inline;
+}
+
+.substitute {
+    min-height: 140px !important;
+}
 .numeric
 {
     text-align: right

@@ -21,10 +21,11 @@
       <% form_remote_tag( :loading => "Hobo.showSpinner('Add Mesage');",
         :complete => "Hobo.hideSpinner();",
         :url => {  :controller => "recipes", :action => :add_shared_log_message, :id => log.id }  ) do |f|%>
-        <h2>Message:</h2>
-        <%= text_area_tag( :message, nil, :class => "recipe-description-edit" ) %><br/>
-        <%=  submit_tag "Add Shared Log Message", :class => "button small-button"%>
-      <%  end %>
+            <h2 class="input-form">Message:</h2>&nbsp
+            <%=  submit_tag "Add Shared Log Message", :class => "button small-button"%>
+
+            <%= text_area_tag( :message, nil, :class => "recipe-description" ) %><br/>
+        <%  end %>
     </div>
 
 

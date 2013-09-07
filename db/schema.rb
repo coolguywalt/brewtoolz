@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301020127) do
+ActiveRecord::Schema.define(:version => 20130730082629) do
 
   create_table "audits", :force => true do |t|
     t.string   "url"
@@ -179,6 +179,7 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.datetime "updated_at"
     t.integer  "fermentable_type_id"
     t.integer  "user_id"
+    t.float    "balance"
   end
 
   add_index "fermentable_inventories", ["fermentable_type_id"], :name => "index_fermentable_inventories_on_fermentable_type_id"
@@ -192,10 +193,10 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.datetime "updated_at"
     t.integer  "fermentable_inventory_id"
     t.integer  "user_id"
-    t.integer  "brew_entry_id"
+    t.integer  "recipe_id"
+    t.integer  "fermentable_type_id"
+    t.integer  "fermentable_id"
   end
-
-  add_index "fermentable_inventory_log_entries", ["brew_entry_id"], :name => "index_fermentable_inventory_log_entries_on_brew_entry_id"
 
   create_table "fermentable_types", :force => true do |t|
     t.string   "name"
@@ -278,6 +279,7 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.integer  "user_id"
     t.float    "aa"
     t.string   "hop_form"
+    t.float    "balance"
   end
 
   add_index "hops_inventories", ["hop_type_id"], :name => "index_hops_inventories_on_hop_type_id"
@@ -291,10 +293,11 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.datetime "updated_at"
     t.integer  "hops_inventory_id"
     t.integer  "user_id"
-    t.integer  "brew_entry_id"
+    t.integer  "recipe_id"
+    t.integer  "hop_type_id"
+    t.integer  "hop_id"
   end
 
-  add_index "hops_inventory_log_entries", ["brew_entry_id"], :name => "index_hops_inventory_log_entries_on_brew_entry_id"
   add_index "hops_inventory_log_entries", ["hops_inventory_id"], :name => "index_hops_inventory_log_entries_on_hops_inventory_id"
   add_index "hops_inventory_log_entries", ["user_id"], :name => "index_hops_inventory_log_entries_on_user_id"
 
@@ -324,6 +327,7 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.datetime "updated_at"
     t.integer  "kit_type_id"
     t.integer  "user_id"
+    t.float    "balance"
   end
 
   create_table "kit_inventory_log_entries", :force => true do |t|
@@ -334,10 +338,11 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.datetime "updated_at"
     t.integer  "kit_inventory_id"
     t.integer  "user_id"
-    t.integer  "brew_entry_id"
+    t.integer  "recipe_id"
+    t.integer  "kit_type_id"
+    t.integer  "kit_id"
   end
 
-  add_index "kit_inventory_log_entries", ["brew_entry_id"], :name => "index_kit_inventory_log_entries_on_brew_entry_id"
   add_index "kit_inventory_log_entries", ["kit_inventory_id"], :name => "index_kit_inventory_log_entries_on_kit_inventory_id"
   add_index "kit_inventory_log_entries", ["user_id"], :name => "index_kit_inventory_log_entries_on_user_id"
 
@@ -502,6 +507,7 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.datetime "updated_at"
     t.integer  "yeast_type_id"
     t.integer  "user_id"
+    t.float    "balance"
   end
 
   add_index "yeast_inventories", ["user_id"], :name => "index_yeast_inventories_on_user_id"
@@ -515,7 +521,9 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.datetime "updated_at"
     t.integer  "yeast_inventory_id"
     t.integer  "user_id"
-    t.integer  "brew_entry_id"
+    t.integer  "recipe_id"
+    t.integer  "yeast_type_id"
+    t.integer  "yeast_id"
   end
 
   create_table "yeast_types", :force => true do |t|
@@ -530,6 +538,8 @@ ActiveRecord::Schema.define(:version => 20130301020127) do
     t.string   "alcohol_tollerance"
     t.boolean  "validated"
     t.integer  "user_id"
+    t.float    "cells_in_package"
+    t.boolean  "isliquid"
   end
 
   create_table "yeasts", :force => true do |t|

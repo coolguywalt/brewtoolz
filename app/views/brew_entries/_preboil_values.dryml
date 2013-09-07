@@ -1,16 +1,16 @@
 
   <table class="list">
     <tr>
-      <th>Mash water volume [<%= volume_units %>]:</th><td class="big"><%= volume_values( this.mash_water) %></td>
-      <th>Mash tun volume [<%= volume_units %>]:</th><td class="big"><%= volume_values( this.mash_tun_volume ) %></td>
-      <th>Mash tun loses [<%= volume_units %>]:</th><td class="big">
+        <th>Mash water[<%= volume_units %>]:</th><td class="big"><%= volume_values( this.mash_water) %></td>
+        <th>Mash tun[<%= volume_units %>]:</th><td class="big"><%= volume_values( this.mash_tun_volume ) %></td>
+        <th>Mash tun loses[<%= volume_units %>]:</th><td class="big">
     <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_mash_lose_editor(@brew_entry)%></if>
     <else><%= volume_values( this.mash_dead_space ) %></else></td>
     </tr>
     <tr>
-      <th>Preboil wort volume [<%= volume_units %>]:</th><td class="big"><%= volume_values( this.preboilvolume ) %></td>
-      <th>@ mash out temp.</th><td class="big"><%= volume_values( adjust_for_temp(this.preboilvolume,75) ) %></td>
-      <th>Preboil gravity [<%= gravity_units %>]:</th><td class="big"><%= gravity_values( this.preboilrequiredgravity ) %></td>
+        <th>Preboil wort[<%= volume_units %>]:</th><td class="big"><%= volume_values( this.preboilvolume ) %></td>
+        <th>@ mash out temp:</th><td class="big"><%= volume_values( adjust_for_temp(this.preboilvolume,75) ) %></td>
+        <th>Preboil gravity[<%= gravity_units %>]:</th><td class="big"><%= gravity_values( this.preboilrequiredgravity ) %></td>
 
     </tr>
   </table>

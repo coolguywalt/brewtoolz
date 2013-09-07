@@ -45,5 +45,46 @@ var Brewtoolz = {
         if( $(sig) )  { // signature exists, load the partial
             new Hobo.ajaxRequest(url, Hobo.updatesForElement(content_div), {method:'put', message:false} );
         }
+    },
+
+    buttonHandler: function(button_el, handler_url) {
+
+         var buttonData='';
+         j.each( button_el.data(), function( key, value ) {
+             if(!(key.match(/^ui/))) {
+                 if(buttonData.length > 0) buttonData += "&";
+                    buttonData += key + "=" + value;
+             }
+         } );
+
+         console.log("buttonData: " + buttonData);
+
+         Hobo.showSpinner("Allocate all from inventory");
+
+         var request = j.ajax({
+              url: handler_url,
+              type: "post",
+              data: buttonData
+          });
+
+           // callback handler that will be called on success
+           request.done(function (response, textStatus, jqXHR){
+              // log a message to the console
+              console.log("Hooray, it worked!");
+           });
+
+            // callback handler that will be called on failure
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                // log the error to the console
+                console.error("The following error occured: "+
+                        textStatus, errorThrown);
+            });
+
+            request.always(function () {
+                Hobo.hideSpinner();
+            }); 
+
     }
 }
+
+

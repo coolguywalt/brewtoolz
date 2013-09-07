@@ -28,19 +28,19 @@
 </span>
 
 <span id="<%=id_prefix%>_edit" style="display:none;" >
-    <table>
+    <table class="input-table">
 		<tr>
-			<td>
-				<% form_remote_for( object,
+			<td class="zero-padding">
+				<% form_remote_for( object, :html => { :style => 'display:inline;' },
 					:loading => "Hobo.showSpinner('#{message}');",
 					:complete => "Hobo.hideSpinner();Element.hide('#{id_prefix}_edit');Element.show('#{id_prefix}_show');",
 					:url => url_for_edit ) do |f|%>
 
-					<%= f.text_field field_name, :value => value_str, :size => 3, :id =>"#{id_prefix}_e" %>
+					<%= f.text_field field_name, :value => value_str, :size => 3, :id =>"#{id_prefix}_e", :class => "input-edit"%>
 
 
-					<%= submit_tag "Ok", :class => "ui-state-default ui-corner-all small-button", :id => "ok_#{id_prefix}" %>
-					<button class="ui-state-default ui-corner-all small-button" onclick="Element.hide('<%=id_prefix%>_edit');Element.show('<%=id_prefix%>_show');return false">X</button>
+					<%= submit_tag "Ok", :class => "ui-state-default ui-corner-all small-button input-button", :id => "ok_#{id_prefix}" %>
+					<button class="ui-state-default ui-corner-all small-button input-button" onclick="Element.hide('<%=id_prefix%>_edit');Element.show('<%=id_prefix%>_show');return false">X</button>
 
 
 			    <% end %>

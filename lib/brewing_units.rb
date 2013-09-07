@@ -289,7 +289,7 @@ module BrewingUnits
   end
   
   def self.values_array_for_display( unitstr, value, precision=2 ) 
-    units = unitstr.split(' ')
+    units = unitstr.gsub(/[()]/,'').split(' ')
     
     str_array = Array.new()
     str= String.new()
@@ -309,12 +309,18 @@ module BrewingUnits
     #rescue
     #  [:invalid]
   end
-  
+
+  def self.values_for_display( unitstr, value, precision=2 ) 
+      va = values_array_for_display(unitstr,value,precision)
+	  display_value_str = "#{va[0]}" + (va.length > 1 ? "(#{va[1]})" : "")
+      return display_value_str
+  end
+
   def self.units_for_display( unitstr ) 
     units = unitstr.split(' ')
     str = ""
     
-    logger.debug("for_display unitstr:#{unitstr}" )
+    #logger.debug("for_display unitstr:#{unitstr}" )
     
     for a in 0..units.length-1 do 
       str += " (" if a==1
@@ -323,7 +329,7 @@ module BrewingUnits
       str += ")" if a==units.length-1 and (a > 0)
     end
     
-    logger.debug("for_display result: #{str}")
+    #logger.debug("for_display result: #{str}")
     
     return str
   

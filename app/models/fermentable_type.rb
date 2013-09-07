@@ -37,6 +37,12 @@ class FermentableType < ActiveRecord::Base
   validates_numericality_of :yeild, :greater_than_equal_to => 0.0
 
   belongs_to :user, :creator => true
+  has_many :fermentable_inventories
+  has_many :fermentable
+
+  def inventories
+      return fermentable_inventories
+  end
 
   default_scope :order => 'name'
 

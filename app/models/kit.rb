@@ -29,6 +29,21 @@ class Kit < ActiveRecord::Base
 
 	belongs_to :recipe
 	belongs_to :kit_type
+    def ingr_type
+        return self.kit_type
+    end
+
+    def ingr_type=(new_kit_type)
+       self.kit_type = new_kit_type 
+    end
+
+    has_many :kit_inventory_log_entries
+    def log_entries
+        return self.kit_inventory_log_entries
+    end
+
+    named_scope :list, :include => :kit_type, :order => "kit_types.name"
+
 	# --- Permissions --- #
 
 	def create_permitted?

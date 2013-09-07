@@ -10,10 +10,23 @@ class HopsInventoryLogEntry < ActiveRecord::Base
     timestamps
   end
 
-
-  belongs_to :brew_entry
   belongs_to :hops_inventory
+  def inventory
+      return self.hops_inventory
+  end
+
+  belongs_to :hop_type
+  def ingr_type=( newhoptype )
+    self.hop_type = newhoptype 
+  end
+  def ingr_type
+    self.hop_type
+  end
+
+  belongs_to :hop  
+
   belongs_to :user, :creator => true
+  belongs_to :recipe
 
   validate :inventory_capacity?
 
@@ -40,12 +53,30 @@ class HopsInventoryLogEntry < ActiveRecord::Base
   end
 
   def inventory_capacity?
-    if hops_inventory.amount.to_f < amount.to_f
+    
+      return if amount_was.nil?
 
-      #fermentable_inventory.errors.add(:amount, "must not be greater than stored amount." )
-      errors.add(:amount, "must not be greater than the inventory amount stored." )
-    end
+      unless hops_inventory.balance.to_f >= (amount.to_f - amount_was)
+         errors.add(:amount, "must not be greater than the inventory amount stored." )
+      end
 
   end
+
+    # should have used STI but this will do to give semblance of polymorphism for now.
+    def ingr= ( newIngr )
+        logger.debug "hops_inventory.ingr= #{newIngr}" 
+        self.hop = newIngr
+    end
+    def ingr 
+        return hop 
+    end
+
+    def inventory= ( newInventory )
+        logger.debug "hops_inventory.inventory= #{newInventory}" 
+        self.hops_inventory = newInventory
+    end
+    def inventory 
+        return self.hops_inventory 
+    end
 
 end

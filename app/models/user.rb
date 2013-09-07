@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
 	has_many :recipes
 	has_many :breweries  # a user can have more that one brewery setup.
+    has_many :brew_entries
 	has_one :ingredient_unit_preference
 
 	has_many :fermentable_inventories

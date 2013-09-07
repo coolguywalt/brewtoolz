@@ -1053,6 +1053,8 @@ class RecipesController < ApplicationController
 	end
 
 	#Refresh the recipe if it has been edited
+    #Note this has been deprecated and is no longer called from the edit recipe page.
+    #Users will have to refresh to see updates.
 	def check_shared_updates
 		@recipe = Recipe.find(params[:id])
 		@last_refreshed = Time.at( params[:last_refreshed].to_i )
@@ -1079,8 +1081,6 @@ class RecipesController < ApplicationController
 			else
 				render( :nothing => true )
 			end
-      
-      
 		end
 
 		@recipe = nil #Ensures that last_viewed callback does not updated the last viewed date.

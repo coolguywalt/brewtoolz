@@ -77,5 +77,4 @@ belongs_to :recipe
 	  return 0.0 unless amount_l
 	  return amount_l * recipe.volume
   end
-
 end

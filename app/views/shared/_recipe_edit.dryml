@@ -76,11 +76,9 @@
 		</div>
 
 		<div id="sharededit_div">
-			<if test="&(recipe_edit.is_owner?(current_user) and !recipe_edit.is_brewday?)">
 				<div class="tab">
 					<%= render :partial => 'shared/recipe_edit_multiuser', :object => recipe_edit %>
 				</div>
-			</if>
 		</div>
 
 	</div>
