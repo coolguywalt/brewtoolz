@@ -11,10 +11,10 @@
 	<old-page merge >
 		<before-scripts:>
 			<link type="text/css" href="/stylesheets/custom-theme/jquery-ui-1.8.5.custom.css" rel="Stylesheet" />
-			<javascript name="jquery-1.4.2.js"/>
-			<javascript name="jquery-ui-1.8.5.custom.min.js"/>
+			<javascript name="jquery-1.9.1.js"/>
+			<javascript name="jquery-ui-1.10.2.js"/>
 			<script>
-				jQuery.noConflict()
+				var j=jQuery.noConflict();
 			</script>
 			<link type="text/css" href="/stylesheets/demo_table.css" rel="Stylesheet" />
 			<javascript name="jquery.dataTables.js"/>
@@ -68,7 +68,7 @@
 		<if test="&logged_in?">
 			<!-- nav-item with="&BrewEntry">Brew Log</nav-item -->
 			<nav-item with="&Brewery">Breweries</nav-item>
-			<nav-item with="&FermentableInventory">Inventory</nav-item>
+		    <nav-item href="/inventories">Inventory</nav-item>
 			<li><%= link_away "Preferences", :controller => 'users', :action => 'preferences', :id => current_user.id  %></li>
 		</if>
 

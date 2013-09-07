@@ -6,6 +6,8 @@
 
   <content-header: >
 
+	<%= render :partial => 'errors' %>
+
     <h2>Brewday: <%= link_to h(@brew_entry.recipe.name), { :controller => 'recipes', :action => 'show', :id => @brew_entry.recipe.id}, :class => 'edit' %>
 		- <%= link_to h(@brew_entry.brew_date.to_s(:long)), @brew_entry, :class => 'edit' %>
     </h2>
@@ -45,6 +47,7 @@
 			<li><%= link_to "<span>Water</span>", :controller => :brew_entries, :action => :loadwatertab, :id => @brew_entry.id %></li>
 			<li><%= link_to "<span>Mash</span>", :controller => :brew_entries, :action => :loadmashtab, :id => @brew_entry.id %></li>
 			<li><%= link_to "<span>Sparge</span>", :controller => :brew_entries, :action => :loadspargetab, :id => @brew_entry.id %></li>
+			<li><%= link_to "<span>Inventory Use</span>", :controller => :brew_entries, :action => :loadinventoryuse, :id => @brew_entry.id %></li>
 			<li><%= link_to "<span>Shopping List</span>", :controller => :brew_entries, :action => :loadshoppinglist, :id => @brew_entry.id %></li>
 		</ul>
 

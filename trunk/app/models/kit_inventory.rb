@@ -5,6 +5,7 @@ class KitInventory < ActiveRecord::Base
 	fields do
 
 		amount :float
+		balance :float
 		comment :text
 
 		location :string
@@ -21,10 +22,12 @@ class KitInventory < ActiveRecord::Base
 	has_many :kit_inventory_log_entries, :dependent => :destroy
 
 	named_scope :viewable, lambda {|acting_user| {:conditions => {:user_id => "#{acting_user.id}" } } }
-
+    named_scope :not_spent, :conditions => 'balance > 0.0'
+    named_scope :owned_by, lambda { |auser| {:conditions => ['user_id = ?', auser] } } 
 
 	validates_presence_of :kit_type
 	validates_numericality_of :amount, :greater_than_or_equal_to => 0.0
+	validates_numericality_of :balance, :greater_than_or_equal_to => 0.0
 
 	# --- Permissions --- #
 
@@ -89,4 +92,13 @@ class KitInventory < ActiveRecord::Base
 	def designed_volume
 		kit_type.designed_volume
 	end
+
+    def self.amount_units( user )
+        return ""
+    end
+
+    def balance=( new_balance )
+        # Initialise original amount for the first time balance is updated.
+        amount = new_balance if amount == 0.0
+    end
 end

@@ -60,10 +60,13 @@ module BrewEntriesHelper
     eff = 75.0
     eff = entry.therecipe.efficency if entry.therecipe.efficency
 
-    ajax_edit_field( "efficency",
-      [decimal(eff)],
-			"efficency",
-			url_for(  :controller => "brew_entries", :action => :update_efficency, :id => entry.id, :render => "update_all_brewday" ), "Update Efficency" )
+    ajax_edit_field2( entry.therecipe, :efficency, url_for(  :controller => "brew_entries", :action => :update_efficency, :id => entry.id, :render => "update_all_brewday" ), [decimal(eff)], "Update Efficency",
+        "eff", :efficiency )
+
+    #ajax_edit_field( "efficency",
+    #  [decimal(eff)],
+	#		"efficency",
+	#		url_for(  :controller => "brew_entries", :action => :update_efficency, :id => entry.id, :render => "update_all_brewday" ), "Update Efficency" )
 	end
 
   def ajax_brewday_mash_lose_editor( entry )
@@ -236,8 +239,6 @@ module BrewEntriesHelper
 		link_to( "Del", { :action => 'remove_brewentry_item', :id => log_entry.id }, :class => 'button small_button')
 	end
 
-
-
 	def users_breweries(user)
 		Brewery.find_all_by_user_id(user.id, :order =>'name ASC')
 	end
@@ -297,5 +298,15 @@ module BrewEntriesHelper
 
 	end
 
+    def substite_link( item )
+       
+        link_to_remote( "Sub",
+                       :loading => "Hobo.showSpinner('Substitute Item');",
+                       :complete => "Hobo.hideSpinner();",
+                       :url => {  :controller => "brew_entries", :action => :substitute, 
+                           :id => item.id  },
+                       :html => { :class => 'small-button' },
+                       :with => "'ingrid=' + selectedRow.data('ingrid') + '&invtype=' + selectedRow.data('invtype')" )
+    end
 
 end

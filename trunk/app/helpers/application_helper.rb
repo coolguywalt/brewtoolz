@@ -19,6 +19,7 @@
 module ApplicationHelper
 
 	include UnitsHelper
+    include Utils
 
 	$PRIMARY_RECIPE_FILTER = "(brew_entry_id IS NULL) AND (name IS NOT NULL) AND (name <> \"\")"
 
@@ -232,18 +233,6 @@ module ApplicationHelper
 		number_to_percentage(value, :precision => 2)
 	end
 
-	def roundup( value )
-		#Round values up depending on their magnitude so that the make more sense for
-		#weights in shopping lists.
-		roundfactor = 5.0
-		roundfactor = 10.0 if (value > 500)
-		roundfactor = 50.0 if (value > 2000)
-		roundfactor = 100.0 if (value > 5000)
-
-                newvalue = (value/roundfactor).ceil * roundfactor
-
-		return newvalue
-	end
 
 	def strwrap(s, width=80)
 		s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
@@ -257,4 +246,6 @@ module ApplicationHelper
                   return style.name
 		end
 	end
+
+
 end

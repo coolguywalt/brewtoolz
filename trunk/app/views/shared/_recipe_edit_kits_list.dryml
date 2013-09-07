@@ -20,11 +20,11 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		jQuery('#kitListTable').dataTable( {
-			"sPaginationType": "full_numbers",
+            "bJQueryUI": true,
 			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
 		} );
 		jQuery('#kitInventoryTable').dataTable( {
-			"sPaginationType": "full_numbers",
+            "bJQueryUI": true,
 			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
 		} );
 		jQuery("#kitaccordiandiv").accordion( );

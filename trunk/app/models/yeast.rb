@@ -30,6 +30,21 @@ class Yeast < ActiveRecord::Base
 
   belongs_to :recipe
   belongs_to :yeast_type
+    def ingr_type
+        return self.yeast_type
+    end
+
+    def ingr_type=(new_yeast_type)
+       self.yeast_type = new_yeast_type 
+    end
+
+    has_many :yeast_inventory_log_entries
+    def log_entries
+        return self.yeast_inventory_log_entries
+    end
+
+
+    named_scope :list, :include => :yeast_type, :order => "yeast_types.name"
 
   # --- Permissions --- #
 

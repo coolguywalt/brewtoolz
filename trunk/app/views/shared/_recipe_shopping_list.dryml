@@ -27,13 +27,18 @@
   <table id="fermentables_list" class="item-list">
     <tr>
       <th><b>Type</b></th>
-      <th><b>Weight [<%= ferm_weight_units %>]</b></th>
+      <th><b>Weight[<%= ferm_weight_units %>]</b></th>
+      <th><b>To Purchase[<%= ferm_weight_units %>]</b></th>
+      <th><b>From Inv[<%= ferm_weight_units %>]</b></th>
     </tr>
     <repeat with="&recipe_fermentable_list(recipe_shopping_list)" >
       <tr class="<%= cycle('odd','even') -%>">
-
         <td ><%=  fermentable_type( this ) %></td>
-        <td><%= ferm_weight_values(roundup(this.weight))%> </td>
+        <td><%= ferm_weight_values(Utils.roundup(this.weight))%> </td>
+        <td><% to_purchase = this.weight - this.log_entries.sum(:amount)
+               to_purchase = 0 if to_purchase < 0 %>
+            <%= ferm_weight_values(Utils.roundup(to_purchase))%> </td>
+        <td><%= ferm_weight_values(Utils.roundup(this.log_entries.sum(:amount)))%> </td>
       </tr>
     </repeat>
   </table>
@@ -49,14 +54,18 @@
       <tr>
         <th><b>Type</b></th>
         <th><b>AA(%)</b></th>
-        <th><b>Weight [<%= hop_weight_units %>]</b></th>
+        <th><b>Weight[<%= hop_weight_units %>]</b></th>
+        <th><b>To Purchase[<%= hop_weight_units %>]</b></th>
+        <th><b>From Inv[<%= hop_weight_units %>]</b></th>
       </tr>
 
       <repeat with="&recipe_shopping_list.hops.unique_type" >
         <tr class="<%= cycle('odd','even') -%>">
           <td ><%= hop_type( this ) %></td>
           <td><%= percentage(this.aa) %></td>
-          <td><%= hop_weight_values(roundup(this.total_recipe_hops_weight)) %></td>
+          <td><%= hop_weight_values(Utils.roundup(this.total_recipe_hops_weight)) %></td>
+          <td><%= hop_weight_values(Utils.roundup(this.total_recipe_hops_weight - this.log_entries.sum(:amount)))%> </td>
+          <td><%= hop_weight_values(Utils.roundup(this.log_entries.sum(:amount)))%> </td>
         </tr>
       </repeat>
     </table>
@@ -71,9 +80,9 @@
       <tr>
         <th><b>Type</b></th>
         <th><b>Quantity</b></th>
-        <th><b>Weight [<%= ferm_weight_units %>]</b></th>
-        <th><b>Volume [<%= volume_units %>]</b></th>
-
+        <th><b>Weight[<%= ferm_weight_units %>]</b></th>
+        <th><b>Volume[<%= volume_units %>]</b></th>
+        <th><b>From Inv</b></th>
       </tr>
 
       <repeat with="&recipe_kits_list(recipe_shopping_list)" >
@@ -82,6 +91,7 @@
           <td><%= decimal(this.quantity) %></td>
           <td><%= kit_weight(this.kit_type) %></td>
           <td><%= kit_volume( this.kit_type ) %></td>
+          <td><%= this.log_entries.sum(:amount)%></td>
         </tr>
       </repeat>
     </table>
@@ -121,7 +131,7 @@
           <td><view:name/></td>
         <td><view:misc_type/></td>
         <td><view:misc_use/></td>
-        <td><if test="&this.is_solid"><%= hop_weight_values(roundup(this.amount)) %></if><else><%= volume_values(roundup(this.amount)) %></else>
+        <td><if test="&this.is_solid"><%= hop_weight_values(Utils.roundup(this.amount)) %></if><else><%= volume_values(Utils.roundup(this.amount)) %></else>
         &nbsp;[<if test="&this.is_solid"><%= hop_weight_units%></if><else><%= volume_units%></else>]</td>
         <td><view:use_for/></td>
         </tr>

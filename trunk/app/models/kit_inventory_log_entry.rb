@@ -11,9 +11,12 @@ class KitInventoryLogEntry < ActiveRecord::Base
   end
 
 
-  belongs_to :brew_entry
   belongs_to :kit_inventory
+  belongs_to :kit_type
+  belongs_to :kit
+
   belongs_to :user, :creator => true
+  belongs_to :recipe
 
   validate :inventory_capacity?
 
@@ -40,7 +43,7 @@ class KitInventoryLogEntry < ActiveRecord::Base
   end
 
   def inventory_capacity?
-    if kit_inventory.amount.to_f < amount.to_f
+    unless kit_inventory.balance.to_f >= (amount.to_f - amount_was)
       errors.add(:amount, "must not be greater than the inventory amount stored." )
     end
 

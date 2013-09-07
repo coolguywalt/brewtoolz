@@ -21,11 +21,11 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		jQuery('#hopsListTable').dataTable( {
-			"sPaginationType": "full_numbers",
+            "bJQueryUI": true,
 			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
 		} );
 		jQuery('#hopsInventoryTable').dataTable( {
-			"sPaginationType": "full_numbers",
+            "bJQueryUI": true,
 			"aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
 		} );
 		jQuery("#hopsaccordiandiv").accordion( );

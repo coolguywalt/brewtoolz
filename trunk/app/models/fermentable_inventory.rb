@@ -1,92 +1,88 @@
 class FermentableInventory < ActiveRecord::Base
 
-  hobo_model # Don't put anything above this
+    hobo_model # Don't put anything above this
 
-  fields do
+    include BrewingUnits 
+    
+    fields do
 
-    amount :float
-    comment :text
+        amount :float
+        balance :float
+        comment :text
 
-    location :string
-    label :string
+        location :string
+        label :string
 
-    source_date :datetime
+        source_date :datetime
 
-    timestamps
-  end
+        timestamps
+    end
 
-  belongs_to :fermentable_type
-  belongs_to :user, :creator => true
+    belongs_to :fermentable_type
+    belongs_to :user, :creator => true
 
-  has_many :fermentable_inventory_log_entries, :dependent => :destroy
+    has_many :fermentable_inventory_log_entries, :dependent => :destroy
 
-  named_scope :viewable, lambda {|acting_user| {:include => :fermentable_type, :conditions => {:user_id => "#{acting_user.id}"} } }
+    named_scope :viewable, lambda {|acting_user| {:include => :fermentable_type, :conditions => {:user_id => "#{acting_user.id}"} } }
 
-  # The following scope is required to support search on the associated fermentable_type.name attribute and the limitations of the
-  # hobonet table-plus search capabilities.
-   named_scope :viewable_search, lambda {|acting_user, search| {:include => :fermentable_type,
-      :conditions => "(fermentable_inventories.user_id = #{acting_user.id}) AND ((fermentable_types.name LIKE \'%#{search}%\') OR (comment LIKE \'%#{search}%\'))" } }
-  validates_presence_of :fermentable_type
-  validates_numericality_of :amount, :greater_than_or_equal_to => 0.0
-  
-  # --- Permissions --- #
+    # The following scope is required to support search on the associated fermentable_type.name attribute and the limitations of the
+    # hobonet table-plus search capabilities.
+    named_scope :viewable_search, lambda {|acting_user, search| {:include => :fermentable_type,
+        :conditions => "(fermentable_inventories.user_id = #{acting_user.id}) AND ((fermentable_types.name LIKE \'%#{search}%\') OR (comment LIKE \'%#{search}%\'))" } }
 
-  def name
-    return fermentable_type.name
-  end
+    named_scope :not_spent, :conditions => 'balance > 0.0'
+    named_scope :owned_by, lambda { |auser| {:conditions => ['user_id = ?', auser] } } 
+    named_scope :oldestfirst, :order =>  "source_date ASC"
 
-  def create_permitted?
-    acting_user.signed_up?
-  end
+    validates_presence_of :fermentable_type
+    validates_numericality_of :amount, :greater_than_or_equal_to => 0.0
+    validates_numericality_of :balance, :greater_than_or_equal_to => 0.0
 
-  def update_permitted?
-    return true if acting_user.administrator?
-    return true if user_is? acting_user
-    return false
-  end
+    # --- Permissions --- #
 
-  def destroy_permitted?
-    return true if acting_user.administrator?
-    return true if user_is? acting_user
-    return false
-  end
+    def name
+        return fermentable_type.name
+    end
 
-  def view_permitted?(field)
-    return true if acting_user.administrator?
-    return true if user_is? acting_user
-    return false
-  end
+    def create_permitted?
+        acting_user.signed_up?
+    end
 
-  def age
-    #return 0 unless source_date
-    return source_date
-    #return Time.zone.now.to_date - source_date.to_date
-  end
+    def update_permitted?
+        return true if acting_user.administrator?
+        return true if user_is? acting_user
+        return false
+    end
 
- # def amount
- #   db_amount = read_attribute(:amount)
-    #    logger.debug "FermentableInventory.amount: acting_user #{acting_user}"
-    #
-    #    return db_amount if acting_user.guest?
+    def destroy_permitted?
+        return true if acting_user.administrator?
+        return true if user_is? acting_user
+        return false
+    end
 
-    #Adjust according to users unit preferences.
-  #  return UnitsHelper::ferm_weight_value( db_amount, user )
-  #end
+    def view_permitted?(field)
+        return true if acting_user.administrator?
+        return true if user_is? acting_user
+        return false
+    end
 
-  #def amount=(new_amount)
-  #  logger.debug "FermentableInventory.amount=: user #{user}"
-  #  logger.debug "FermentableInventory.amount=: acting_user #{acting_user}"
-  #  adjusted_amount = new_amount
-  #  adjusted_amount = UnitsHelper::input_fermentable_weight( new_amount, user )
-  #  write_attribute( :amount, adjusted_amount )
+    def age
+        #return 0 unless source_date
+        return source_date
+        #return Time.zone.now.to_date - source_date.to_date
+    end
 
-  #end
+    def weight
+        return amount
+    end
 
-  def fermentable_selections( user )
+    def fermentable_selections( user )
 
+    end
 
-
-  end
+    def self.amount_units( user )
+        return "[" + BrewingUnits::units_for_display( user.units.fermentable ) + "]"
+    end
 
 
 end

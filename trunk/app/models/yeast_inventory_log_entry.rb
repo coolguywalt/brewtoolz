@@ -11,9 +11,15 @@ class YeastInventoryLogEntry < ActiveRecord::Base
   end
 
 
-  belongs_to :brew_entry
   belongs_to :yeast_inventory
+  belongs_to :yeast_type
+    def invent_type
+       return self.yeast_type 
+    end
+  belongs_to :yeast
+  
   belongs_to :user, :creator => true
+  belongs_to :recipe
 
   validate :inventory_capacity?
 
@@ -40,9 +46,7 @@ class YeastInventoryLogEntry < ActiveRecord::Base
   end
 
   def inventory_capacity?
-    if yeast_inventory.amount.to_f < amount.to_f 
-
-      #fermentable_inventory.errors.add(:amount, "must not be greater than stored amount." )
+    unless yeast_inventory.balance.to_f >= (amount.to_f-amount_was) 
       errors.add(:amount, "must not be greater than the inventory amount stored." )
     end
 

@@ -39,7 +39,6 @@ class Recipe < ActiveRecord::Base
 
 		hop_cubed :boolean
 
-
 		locked :boolean  #Signifies all ingredients should be considered locked.
 
 		draft :boolean #Mark the recipe as in a draft editing state
@@ -59,7 +58,7 @@ class Recipe < ActiveRecord::Base
 		#    simple_recipe_content_type :string
 		#    simple_recipe_filedata :binary,  :limit => 2.megabyte
 
-		last_viewed :datetime   #Time list viewed by the recipe owner.
+		last_viewed :datetime   #Time last viewed by the recipe owner.
 
 		timestamps
 	end
@@ -70,21 +69,26 @@ class Recipe < ActiveRecord::Base
 	# at a latter point in time.
 						 
 	has_many :fermentables, :dependent => :destroy, :uniq => true
-	has_many :hops, :dependent => :destroy
+    has_many :fermentable_inventory_log_entries   #required to determine if inventory is used
+    
+
+    has_many :hops, :dependent => :destroy
+    has_many :hops_inventory_log_entries   #required to determine if inventory is used
+
 	has_many :yeasts, :dependent => :destroy
-	has_many :misc_ingredients, :dependent => :destroy
-	has_many :kits, :dependent => :destroy
-	has_many :brew_entries, :dependent => :destroy
+    has_many :yeast_inventory_log_entries   #required to determine if inventory is used
+	
+    has_many :misc_ingredients, :dependent => :destroy
+	
+    has_many :kits, :dependent => :destroy
+    has_many :kit_inventory_log_entries   #required to determine if inventory is used
+	
+    has_many :brew_entries, :dependent => :destroy
 	has_many :mash_steps, :dependent => :destroy
 
 	has_one :recipe_shared, :dependent => :destroy
 
-	#before_destroy :pre_destroy
-
-	#has_one :recipe_shared, :dependent => :destroy
-
 	has_many :log_message, :dependent => :destroy
-
 
 	validates_numericality_of :volume , :greater_than => 0.0 #, :message => "Volume must be a number > 0"
 	validates_numericality_of :efficency , :greater_than => 0.0 #, :message => "Efficency must be a number > 0"
@@ -516,12 +520,12 @@ class Recipe < ActiveRecord::Base
 	end
 
 	def volume
-		logger.debug "volume brew_entry: #{brew_entry}"
+		#logger.debug "volume brew_entry: #{brew_entry}"
 
 		return read_attribute(:volume) unless brew_entry  # If this is a brewentry we need to get the
 		# volume to fermenter + losses.
 
-		logger.debug "volume from brew_entry: #{brew_entry}"
+		# logger.debug "volume from brew_entry: #{brew_entry}"
 		return brew_entry.volume_to_fermenter_and_system_loses
 	end
 
@@ -581,11 +585,10 @@ class Recipe < ActiveRecord::Base
 		end
 
 		write_attribute( :efficency, new_efficency)
+        return unless valid?  #If cant validate then exit.
+
 		# Change locked elements so that they are no effected by the new volume.
 		adjust_weights( change_factor, true ) unless change_factor == 1.0
-
-		# Save the new volume.
-
 	end
 
 	def adjust_weights( factor, hops_og_only = false )

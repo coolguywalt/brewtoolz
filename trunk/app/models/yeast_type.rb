@@ -28,6 +28,9 @@ class YeastType < ActiveRecord::Base
     attenuation :float
     alcohol_tollerance :string
 
+    cells_in_package :float
+    isliquid :boolean
+
     validated :boolean
 
     timestamps
@@ -37,6 +40,11 @@ class YeastType < ActiveRecord::Base
   validates_numericality_of :attenuation, :less_than => 100.0, :greater_than => 0.0
 
   belongs_to :user, :creator => true
+  has_many :yeast_inventories
+  def inventories
+      return yeast_inventories
+  end
+  has_many :yeasts
 
   default_scope :order => 'name'
 

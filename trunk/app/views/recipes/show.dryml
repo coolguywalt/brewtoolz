@@ -46,17 +46,24 @@
 	<div id="recipeshowtabsdiv" class="recipetabs" >
 		<ul>
 			<li><a href="#recipe_div"><span>Details</span></a></li>
-			<li><a href="#shopping_div"><span>Shopping List</span></a></li>
+            <li><a href="#shopping_div"><span>Shopping List</span></a></li>
+            <% if @recipe.is_contributor?(current_user) && @recipe.is_shared? then %>
+                <li><a href="#sharedlog_div"><span>Shared Updates Log</span></a></li>
+            <% end %>
 		</ul>
-
-
-                <div id="recipe_div">
-		        <%= render :partial => 'shared/recipe_view_detailed', :object => @recipe %>
+        <div id="recipe_div">
+		    <%= render :partial => 'shared/recipe_view_detailed', :object => @recipe %>
 		</div>
 
-                <div id="shopping_div">
-                	<%= render :partial => 'shared/recipe_shopping_list', :object => @recipe %>
-		</div>
+        <div id="shopping_div">
+            <%= render :partial => 'shared/recipe_shopping_list', :object => @recipe %>
+        </div>
+
+        <div id="sharedlog_div">
+			<div id="log_list_div" >
+				<%= render :partial => 'log', :object => @recipe %>
+			</div>
+        </div>
 	</div>
 	</div>
 	<br/>
@@ -93,17 +100,6 @@
 					</repeat>
 				</table>
 			</div>
-		</if>
-
-		<if test="&@recipe.is_contributor?(current_user)">
-		<if test="&@recipe.is_shared?">
-			<div class="block">
-			<h2>Shared Updates Log</h2>
-			<div id="log_list_div" >
-				<%= render :partial => 'log', :object => @recipe %>
-			</div>
-			</div>
-		</if>
 		</if>
 		<!--[if IE]>
 		  </div>

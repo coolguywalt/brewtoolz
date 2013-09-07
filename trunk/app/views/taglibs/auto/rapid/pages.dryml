@@ -701,7 +701,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, comment, location, label, source_date, fermentable_type" param/>
+            <field-list fields="amount, balance, comment, location, label, source_date, fermentable_type" param/>
           </section>
     </content:>
 
@@ -826,7 +826,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, note, usagetime, brew_entry, fermentable_inventory" param/>
+            <field-list fields="amount, note, usagetime, fermentable, fermentable_inventory, fermentable_type, recipe" param/>
           </section>
     </content:>
 
@@ -1434,7 +1434,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, comment, location, label, source_date, aa, hop_form, hop_type" param/>
+            <field-list fields="amount, balance, comment, location, label, source_date, aa, hop_form, hop_type" param/>
           </section>
     </content:>
 
@@ -1556,7 +1556,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, note, usagetime, brew_entry, hops_inventory" param/>
+            <field-list fields="amount, note, usagetime, hop, hop_type, hops_inventory, recipe" param/>
           </section>
     </content:>
 
@@ -1800,7 +1800,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, comment, location, label, source_date, kit_type" param/>
+            <field-list fields="amount, balance, comment, location, label, source_date, kit_type" param/>
           </section>
     </content:>
 
@@ -1922,7 +1922,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, note, usagetime, brew_entry, kit_inventory" param/>
+            <field-list fields="amount, note, usagetime, kit, kit_inventory, kit_type, recipe" param/>
           </section>
     </content:>
 
@@ -3172,7 +3172,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, comment, location, label, source_date, storage_type, yeast_type" param/>
+            <field-list fields="amount, balance, comment, location, label, source_date, storage_type, yeast_type" param/>
           </section>
     </content:>
 
@@ -3294,7 +3294,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="amount, note, usagetime, brew_entry, yeast_inventory" param/>
+            <field-list fields="amount, note, usagetime, recipe, yeast, yeast_inventory, yeast_type" param/>
           </section>
     </content:>
 
@@ -3404,7 +3404,7 @@
               </ht>
             </h2>
 
-            <record-flags fields="validated" param/>
+            <record-flags fields="validated, isliquid" param/>
 
             <a:user param="creator-link"/>
 
@@ -3417,7 +3417,7 @@
 
           <section param="content-body">
             <view:description param="description"/>
-            <field-list fields="min_temp, max_temp, flocculation, attenuation, alcohol_tollerance" param/>
+            <field-list fields="min_temp, max_temp, flocculation, attenuation, alcohol_tollerance, cells_in_package" param/>
           </section>
     </content:>
 

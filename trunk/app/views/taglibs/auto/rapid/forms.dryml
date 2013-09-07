@@ -63,7 +63,7 @@
 <def tag="form" for="FermentableInventory">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, comment, location, label, source_date, fermentable_type, user" param/>
+    <field-list fields="amount, balance, comment, location, label, source_date, fermentable_type, user" param/>
     <div param="actions">
       <submit label="#{ht 'fermentable_inventories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -75,7 +75,7 @@
 <def tag="form" for="FermentableInventoryLogEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, note, usagetime, brew_entry, fermentable_inventory, user" param/>
+    <field-list fields="amount, note, usagetime, fermentable, fermentable_inventory, fermentable_type, recipe, user" param/>
     <div param="actions">
       <submit label="#{ht 'fermentable_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -135,7 +135,7 @@
 <def tag="form" for="HopsInventory">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, comment, location, label, source_date, aa, hop_form, hop_type, user" param/>
+    <field-list fields="amount, balance, comment, location, label, source_date, aa, hop_form, hop_type, user" param/>
     <div param="actions">
       <submit label="#{ht 'hops_inventories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -147,7 +147,7 @@
 <def tag="form" for="HopsInventoryLogEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, note, usagetime, brew_entry, hops_inventory, user" param/>
+    <field-list fields="amount, note, usagetime, hop, hop_type, hops_inventory, recipe, user" param/>
     <div param="actions">
       <submit label="#{ht 'hops_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -171,7 +171,7 @@
 <def tag="form" for="KitInventory">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, comment, location, label, source_date, kit_type, user" param/>
+    <field-list fields="amount, balance, comment, location, label, source_date, kit_type, user" param/>
     <div param="actions">
       <submit label="#{ht 'kit_inventories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -183,7 +183,7 @@
 <def tag="form" for="KitInventoryLogEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, note, usagetime, brew_entry, kit_inventory, user" param/>
+    <field-list fields="amount, note, usagetime, kit, kit_inventory, kit_type, recipe, user" param/>
     <div param="actions">
       <submit label="#{ht 'kit_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -324,7 +324,7 @@
 <def tag="form" for="YeastInventory">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, comment, location, label, source_date, storage_type, user, yeast_type" param/>
+    <field-list fields="amount, balance, comment, location, label, source_date, storage_type, user, yeast_type" param/>
     <div param="actions">
       <submit label="#{ht 'yeast_inventories.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -336,7 +336,7 @@
 <def tag="form" for="YeastInventoryLogEntry">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="amount, note, usagetime, brew_entry, user, yeast_inventory" param/>
+    <field-list fields="amount, note, usagetime, recipe, user, yeast, yeast_inventory, yeast_type" param/>
     <div param="actions">
       <submit label="#{ht 'yeast_inventory_log_entries.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -348,7 +348,7 @@
 <def tag="form" for="YeastType">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, min_temp, max_temp, flocculation, attenuation, alcohol_tollerance, validated, user" param/>
+    <field-list fields="name, description, min_temp, max_temp, flocculation, attenuation, alcohol_tollerance, cells_in_package, isliquid, validated, user" param/>
     <div param="actions">
       <submit label="#{ht 'yeast_types.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
