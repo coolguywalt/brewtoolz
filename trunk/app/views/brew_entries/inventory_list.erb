@@ -1,0 +1,55 @@
+<%  units = ""
+    units = ferm_weight_units if @inv_type == "hop" || @inv_type == "fermentable" 
+%>
+   
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('<%= "##{@inv_type}ListTable" %>').dataTable( {
+            "iDisplayLength": 3,
+            "bJQueryUI": true,
+            "bLengthChange": false
+        } );
+	} );
+</script>
+
+<div class=block>
+<table id= <%= "#{@inv_type}ListTable" %> class="item-list" >
+    <thead><tr>
+        <th><b>Type</b></th>
+        <th><b>In storage <%= "[#{units}]" unless units.empty? %></b></th>
+        <% if @inv_type == "hop" %>
+            <th><b>AA%</b></th>
+        <% end %>
+        <th><b>Age</b></th>
+        <th></th>
+</tr></thead>
+        <tbody>
+
+    <% @inventory_list.each do |invs_item| %>
+    <%
+        invs_type = invs_item.send("#{@inv_type}_type") 
+        if @inv_type == "fermentable" then 
+            av=invs_item.balance 
+            invs_amount = ferm_weight_values(av)
+        elsif @inv_type == "hop" then 
+            av=invs_item.balance
+            invs_amount = ferm_weight_values(av)
+        elsif @inv_type == "kit" 
+            invs_amount = av = invs_item.balance 
+        elsif @inv_type == "yeast"       
+            invs_amount = av = invs_item.balance 
+        end %>
+
+        <tr class="<%=cur_class=cycle('odd','even')-%>">
+            <td><%=invs_type.name%></td>
+            <td><%=invs_amount%></td>
+        <% if @inv_type == "hop" %>
+            <td><%= invs_item.aa %></td>
+        <% end %>
+        <td><%= distance_of_time_in_words(invs_item.source_date, Time.zone.now)%></td>  
+        <td><%= substite_link(invs_item) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+</div>

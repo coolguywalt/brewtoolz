@@ -1,0 +1,115 @@
+<!--
+This file is part of Brewtools.
+
+Brewtools is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Brewtools is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+Copyright Chris Taylor, 2008, 2009, 2010
+-->
+<table id= <%= "#{inv_type}_list" %> class="item-list">
+    <tr>
+        <th></th>
+        <th><b>Type</b></th>
+        <th><b>Weight<br/>(amount needed)<%= "[#{units}]" unless units.empty? %></b></th>
+        <% if inv_type == "hop" %>
+            <th><b>AA%</b></th>
+        <% end %>
+        <th><b>Inventory<br/>use<%= "[#{units}]" unless units.empty? %></b></th>
+        <% if inv_type == "hop" %>
+            <th><b>Target with<br/>inv hop<br/><%= "[#{units}]" unless units.empty? %></b></th>
+        <% end %>
+        <th><b>&nbsp</b></th>
+        <th><b>In storage<br/><%= "[#{units}]" unless units.empty? %></b></th>
+        <% if inv_type == "hop" %>
+            <th><b>AA%</b></th>
+        <% end %>
+        <th><b>Age</b></th>
+    </tr>
+
+    <% ingr_list.each do |ingr| 
+        invs = ingr.send("#{inv_type}_type").send("#{inv_type}_inventories").owned_by( current_user )
+
+        ingr_type = ingr.send("#{inv_type}_type") 
+
+        if inv_type == "fermentable" then 
+            av=Utils.roundup(ingr.weight) 
+            ingr_amount = ferm_weight_values(av)
+        elsif inv_type == "hop" then 
+            av=Utils.roundup( ingr.total_recipe_hops_weight )
+            ingr_amount = ferm_weight_values(av)
+        elsif inv_type == "kit" 
+            if ingr.weight > 0 then
+                av = Utils.roundup(ingr.weight) 
+                ingr_amount = ferm_weight_values(av)
+            else
+                av = ingr_amount = ingr.quantity
+            end
+
+        elsif inv_type == "yeast"       
+            ingr_amount=av=1.0
+        end %>
+
+    <tr class="<%=cur_class=cycle('odd','even')%>" data-invtype="<%=inv_type%>" data-ingrid="<%=ingr.id%>" >
+        <td>ajax button</td>
+        <td><%= ingr_type %></td>
+        <td><%= ingr_amount %> </td>
+        <% if inv_type == "hop" %>
+            <td><%= ingr.aa %></td>
+        <% end %>
+
+        <% first_row = true  %>
+        <% invs.each do |invs_item| %>
+            <% next if ((invs_item.balance < 0.0) and 
+                        (invs_item.send("#{inv_type.gsub("hop","hops")}_inventory_log_entries").count=0) ) %>    
+            <% if !first_row %>
+                <tr class=<%= cur_class%>>
+                    <td></td>
+                    <td></td>
+                    <% if inv_type == "hop" %>
+                        <td></td>
+                    <% end %>
+            <% end %>
+            <% first_row = false
+               item_holder = [] %>
+            <td><%= edit_inv_usage(invs_item, recipe, ingr, item_holder) %></td>
+            <% if inv_type == "hop" %>
+                <td><% av=Utils.roundup( ingr.total_recipe_hops_weight_new_aa(invs_item.aa) )%>
+                    <%= ferm_weight_values( av ) %></td>
+            <% end %>
+            <td><%= link_to_remote "<", :update => "brew_entries",
+                                :url => { :action => "all_from_inv", :id => item_holder[0].id, 
+                                    :inv_type => inv_type, :amount_needed => av },
+                                    :html => { :class  => "ui-state-default ui-corner-all small-button" }, 
+                                    :loading => "Hobo.showSpinner('Update from inventory');",
+                                    :complete => "Hobo.hideSpinner();"
+                                    %></td>
+            <td><%= invs_item.balance %></td>
+            <% if inv_type == "hop" %>
+                <td><%= invs_item.aa %></td>
+            <% end %>
+            <td><%= distance_of_time_in_words(invs_item.source_date, Time.zone.now)%></td>  
+        </tr>
+        <% end %>
+            <% if first_row %>
+                <% if inv_type == "hop" %>
+                    <td></td>
+                    <td></td>
+                <% end %>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>  
+            </tr>
+            <% end %>
+    <% end %>
+</table>
