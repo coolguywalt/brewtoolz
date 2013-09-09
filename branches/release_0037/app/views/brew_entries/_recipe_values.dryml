@@ -1,0 +1,29 @@
+
+    <table class="list">
+      <tr>
+        <th>Volume to fermenter[<%= volume_units %>]:</th>
+        <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_ferment_volume_editor(@brew_entry) %></if>
+      <else><%= decimal(@brew_entry.volume_to_ferementer) %></else>
+      </td>
+      <th>Total volume[<%= volume_units %>]:</th>
+      <td class="big">
+        <%= decimal(@brew_entry.total_effective_volume) %>
+      </td>
+      <th>Losses [<%= volume_units %>]:</th>
+      <td class="big">
+        <%= decimal(@brew_entry.system_loss + @brew_entry.mash_loss) %>
+      </td>
+      </tr>
+      <tr><th>Original Gravity[<%= gravity_units %>]:</th><td class="big"><%= gravity_values( @brew_entry.og ) %></td>
+        <th>Colour [SRM(EBC)]:</th><td class="big"><%= decimal( @brew_entry.therecipe.srm ) %>(<%= decimal( @brew_entry.therecipe.srm*1.97 ) %>)</td>
+      </tr>
+      <tr>
+        <th>Mash Efficiency [%]:</th>
+        <td class="big">
+      <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_mash_efficency_editor(@brew_entry)%></if>
+      <else><%= percentage(@brew_entry.therecipe.efficency) %></else>
+      </td>
+      <th>Bitterness[IBU]:</th><td class="big"><%= decimal(@brew_entry.therecipe.ibu) %></td>
+      </tr>
+    </table>

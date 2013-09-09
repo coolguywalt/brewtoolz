@@ -1,0 +1,23 @@
+
+  <h3><b>Yeast:</b></h3>
+  <div id="yeast_items" class="item-list"> 
+     <%= render :partial => 'yeast_items' %>
+  </div>
+  
+  <!-- Yeast selection list. -->
+  <h3><b>Select yeast:</b></h3>
+  <div class="item-list" >
+    <table id="yeast_list" class="item-list" >
+      <th>Type</th><th> </th>
+      <repeat with="&YeastType.find(:all, :order => 'name')" >
+        <tr class="<%= cycle('odd','even') -%>">
+          <td><view:name/></td>
+          <td><%= link_to_remote "Add", 
+              :loading => "Element.show('spinner');",
+              :complete => "Element.hide('spinner');", 
+              :url => { :action => "add_yeast", :id => @recipe.id, :yeast_type_id => this.id},
+              :html => { :class => 'button' }  %></td>
+        </tr>
+      </repeat>
+    </table>
+  </div>
