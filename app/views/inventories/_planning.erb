@@ -1,0 +1,77 @@
+
+<script type="text/javascript">
+    j(document).ready(function() {
+            j('#daterangeradio').buttonset();
+            j('#daterangeradio input[type=radio]').click( function(event) {
+                var monthrange = 'monthrange=' + j('#daterangeradio :radio:checked').val();
+                var handler_url = 'inventories/changeplanningdaterange';
+                console.log("Month range:" + monthrange);
+
+                // Change of date range and refresh report.
+                Hobo.showSpinner("Change the date range");
+
+                var request = j.ajax({
+url: handler_url,
+type: "post",
+data: monthrange
+});
+
+                // callback handler that will be called on success
+                request.done(function (response, textStatus, jqXHR){
+                    });
+
+                // callback handler that will be called on failure
+                request.fail(function (jqXHR, textStatus, errorThrown){
+                    // log the error to the console
+                    console.error("The following error occured: "+
+                        textStatus, errorThrown);
+                    });
+
+request.always(function () {
+        Hobo.hideSpinner();
+        }); 
+event.stopPropagation();
+} );
+} );
+</script>
+
+<div id="FermentablePlanning_div">
+    <div id="daterangeradio">
+        <h2 class="input-table">Planned inventory - months ahead: </h2>
+        <div class="input-table">
+        <input type="radio" id="onemonth" name="radio" value="1" /><label for="onemonth">1</label>
+        <input type="radio" id="twomonths" name="radio" value="2" /><label for="twomonths">2</label>
+        <input type="radio" id="threemonths" name="radio" checked="checked" value="3"/><label for="threemonths">3</label>
+        <input type="radio" id="sixmonths" name="radio" value="6"/><label for="sixmonths">6</label>
+        <input type="radio" id="twelvemonths" name="radio" value="12"/><label for="twelvemonths">12</label>
+    </div>
+    </div>
+
+    <div id="inventplanningdetails" >
+        <% @monthrange="3" %>
+        <%= render :partial => 'inventory_planning_details' %>
+    </div>
+
+</div>
+            <!--
+            This file is part of Brewtools.
+
+            Brewtools is free software: you can redistribute it and/or modify
+            it under the terms of the GNU Lesser General Public License as published by
+            the Free Software Foundation, either version 3 of the License, or
+            (at your option) any later version.
+
+            Brewtools is distributed in the hope that it will be useful,
+            but WITHOUT ANY WARRANTY; without even the implied warranty of
+            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+            GNU Lesser General Public License for more details.
+
+            You should have received a copy of the GNU Lesser General Public License
+            along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+            Copyright Chris Taylor, 2008, 2009, 2010, 2013
+            -->
+
+
+
+
