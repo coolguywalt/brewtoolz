@@ -1,0 +1,25 @@
+
+  <table class="list">
+    <tr>
+      <th>Evapouration [<%= volume_units %>]:</th><td class="big"><%= volume_values( this.evapouration_loss) %></td>
+      <th>Evapouration Rate [<%= volume_units %>/hr]:</th><td class="big">
+    <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_evapouration_rate_editor(@brew_entry)%></if>
+    <else><%= volume_values( this.evaporation_rate) %></else></td>
+    <th>Boil time [Minutes]:</th><td class="big">
+    <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_boil_time_editor(@brew_entry)%></if>
+    <else><%= decimal(this.boil_time) %></else>
+    </td>
+    </tr>
+    <tr>
+      <th>Postboil wort volume [<%= volume_units %>]:</th><td class="big"><%= volume_values(this.postboilvolume) %></td>
+      <th>@ boiling temp.</th><td class="big"><%= volume_values( adjust_for_temp(this.postboilvolume,100) ) %></td>
+      <th>Boiler lose [<%= volume_units %>]:</th>
+      <td class="big">
+    <if test="&@brew_entry.updatable_by?(current_user)"><%= ajax_brewday_boiler_lose_editor(@brew_entry)%></if>
+    <else><%= volume_values( this.boiler_loses) %></else>
+    </td>
+    </tr>
+    <tr>
+      <th>Postboil target gravity [<%= gravity_units %>]:</th><td class="big"><%= gravity_values( this.therecipe.og ) %></td><th>mash items only</th><td class="big"><%= gravity_values( this.therecipe.total_mash_points ) %></td>
+    </tr>
+  </table>

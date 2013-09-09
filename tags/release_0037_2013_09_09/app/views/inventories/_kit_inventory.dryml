@@ -1,0 +1,33 @@
+<div id="kit_div">
+
+<div id="KitInventory_div" class="block">
+    <%= render :partial => 'inventory_sub_page', :locals => { :item_type => "kit"} %>
+</div>
+
+<br/>
+<div class="block">
+<script type="text/javascript">
+jQuery(document).ready(function() {
+        jQuery('#kitListTable').dataTable( {
+            "sPaginationType": "full_numbers",
+            "aLengthMenu": [[5, 10, -1], [5, 10, "All"]]
+            } );
+        } );
+</script>
+<table  id="kitListTable" class="item-list" >
+			<thead><tr>
+					<th><p>Type</p></th><th><p></p> </th>
+				</tr></thead>
+			<tbody class="scroll-list">
+			<repeat with="&KitType.find(:all, :order => 'name')" >
+				<tr class="<%= cycle('odd','even') -%>">
+					<td><view:name/></td>
+				<td><div class="buttons"><%= add_inventory_link(this, KitInventory ) %></div></td>
+				</tr>
+			</repeat>
+			</tbody>
+</table>
+<br/>
+</div>
+
+</div>
