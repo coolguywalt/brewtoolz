@@ -1,0 +1,109 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+
+
+<div id="preferences" >
+  <h2>Unit Preferences:</h2>
+    <% form_for preferences do |f| %>
+    <table class="item-list">
+      <tr><th> </th>
+<th><%= link_to_remote "Metric", :url => { :controller => :ingredient_unit_preferences, 
+  :action => 'update_unit_type', :id => preferences.id, :unit_type => 'metric'}, :update => 'preferences' %></th>
+
+<th><%= link_to_remote "Imperial", :url => { :controller => :ingredient_unit_preferences, 
+    :action => 'update_unit_type', :id => preferences.id, :unit_type => 'imperial'}, :update => 'preferences' %>
+</th>
+<th><%= link_to_remote "Metric (Imperial)", :url => { :controller => :ingredient_unit_preferences, 
+    :action => 'update_unit_type', :id => preferences.id, :unit_type => 'metric imperial'}, :update => 'preferences' %>
+</th>
+<th><%= link_to_remote "Imperial (Metric)", :url => { :controller => :ingredient_unit_preferences, 
+    :action => 'update_unit_type', :id => preferences.id, :unit_type => 'imperial metric'}, :update => 'preferences' %>
+</th></tr>
+
+
+   <tr><td>    
+    <b>Fermentable weight unit:</b></td>
+        <td><%= f.radio_button(:fermentable, $GRAMS) %><%= f.label("fermentable_#{$GRAMS}","gm") %></td>
+        <td><%= f.radio_button(:fermentable, $POUND) %><%= f.label("fermentable_#{$POUND}","lb") %></td>
+        <td><%= f.radio_button(:fermentable, "#{$GRAMS} #{$POUND}") %><%= f.label("fermentable_#{$GRAMS}_#{$POUND}","gm(lb)") %></td>
+        <td><%= f.radio_button(:fermentable, "#{$POUND} #{$GRAMS}") %><%= f.label("fermentable_#{$POUND}_#{$GRAMS}","lb(gm)") %></td>       
+      </tr>
+    <tr>  
+    <td><b>Hops weight unit:</b></td>
+    <td><%= f.radio_button(:hops, $GRAMS) %><%= f.label("hops_#{$GRAMS}","gm") %></td>
+    <td><%= f.radio_button(:hops, $OUNCE) %><%= f.label("hops_#{$OUNCE}","oz") %></td>
+    <td><%= f.radio_button(:hops, "#{$GRAMS} #{$OUNCE}") %><%= f.label("hops_#{$GRAMS}_#{$OUNCE}","gm(oz)") %></td>
+    <td><%= f.radio_button(:hops, "#{$OUNCE} #{$GRAMS}") %><%= f.label("hops_#{$OUNCE}_#{$GRAMS}","oz(gm)") %></td>
+    
+  </tr>
+  <tr> 
+     <td><b>Volume unit:</b></td>
+    <td><%= f.radio_button(:volume, $LITRE) %><%= f.label("volume_#{$LITRE}","ltr") %></td>
+    <td><%= f.radio_button(:volume, $GALLON) %><%= f.label("volume_#{$GALLON}","gal") %></td>
+    <td><%= f.radio_button(:volume, "#{$LITRE} #{$GALLON}") %><%= f.label("volume_#{$LITRE}_#{$GALLON}","ltr(gal)") %></td>
+    <td><%= f.radio_button(:volume, "#{$GALLON} #{$LITRE}") %><%= f.label("volume_#{$GALLON}_#{$LITRE}","gal(ltr)") %></td>
+    </tr>   
+    <tr> 
+    <td><b>Water addition weight unit:</b></td>
+    <td><%= f.radio_button(:wateradditions, $GRAMS) %><%= f.label("wateradditions_#{$GRAMS}","gm") %></td>
+    <td><%= f.radio_button(:wateradditions, $OUNCE) %><%= f.label("wateradditions_#{$OUNCE}","oz") %></td>
+    <td><%= f.radio_button(:wateradditions, "#{$GRAMS} #{$OUNCE}") %><%= f.label("wateradditions_#{$GRAMS}_#{$OUNCE}","gm(oz)") %></td>
+    <td><%= f.radio_button(:wateradditions, "#{$OUNCE} #{$GRAMS}") %><%= f.label("wateradditions_#{$OUNCE}_#{$GRAMS}","oz(gm)") %></td>
+    </tr>    
+    <tr> 
+    <td><b>Temperature unit:</b></td>
+    <td><%= f.radio_button(:temperature, $CELCIUS) %><%= f.label("temperature_#{$CELCIUS.downcase}", "C") %></td>
+    <td><%= f.radio_button(:temperature, $FARENHEIT) %><%= f.label("temperature_#{$FARENHEIT.downcase}","F") %></td>
+    <td><%= f.radio_button(:temperature, "#{$CELCIUS} #{$FARENHEIT}") %><%= f.label("temperature_#{$CELCIUS.downcase}_#{$FARENHEIT.downcase}","C(F)") %></td>
+    <td><%= f.radio_button(:temperature, "#{$FARENHEIT} #{$CELCIUS}") %><%= f.label("temperature_#{$FARENHEIT.downcase}_#{$CELCIUS.downcase}","F(C)") %></td>
+    </tr>
+
+    <tr>
+    <td><b>Liquor to grist ratio:</b></td>
+    <td><%= f.radio_button(:liquor_to_grist, $LTR_PER_KG) %><%= f.label("liquor_to_grist_ltrkg","ltr/kg") %></td>
+    <td><%= f.radio_button(:liquor_to_grist, $QUARTS_PER_LB) %><%= f.label("liquor_to_grist_qtlb","qt/lb") %></td>
+   </tr>
+
+    </table>
+    
+    <table class="item-list"><tr> 
+    <td><b>Gravity unit:</b></td>
+    <td><%= f.radio_button(:gravity, $SGRAVITY) %><%= f.label("gravity_#{$SGRAVITY.downcase}","SG") %></td>
+    <td><%= f.radio_button(:gravity, $POINTS) %><%= f.label("gravity_#{$POINTS.downcase}","points") %></td>
+    <td><%= f.radio_button(:gravity, $PLATO) %><%= f.label("gravity_#{$PLATO.downcase}","P") %></td>
+    <td><%= f.radio_button(:gravity, "#{$SGRAVITY} #{$PLATO}") %><%= f.label("gravity_#{$SGRAVITY.downcase}_#{$PLATO.downcase}","SG(P)") %></td>
+    <td><%= f.radio_button(:gravity, "#{$POINTS} #{$PLATO}") %><%= f.label("gravity_#{$POINTS.downcase}_#{$PLATO.downcase}","points(P)") %></td>
+    <td><%= f.radio_button(:gravity, "#{$PLATO} #{$SGRAVITY}") %><%= f.label("gravity_#{$PLATO.downcase}_#{$SGRAVITY.downcase}","P(SG)") %></td>
+    <td><%= f.radio_button(:gravity, "#{$PLATO} #{$POINTS}") %><%= f.label("gravity_#{$PLATO.downcase}_#{$POINTS.downcase}","P(points)") %></td>
+        </tr> 
+    </table>
+
+    <table class="item-list"><tr>
+    <td><b>Hop utilisation method:</b></td>
+    <td><%= f.radio_button(:hop_utilisation_method, :tinseth) %><%= f.label("hop_utilisation_method_tinseth","Tinseth") %></td>
+    <td><%= f.radio_button(:hop_utilisation_method, :rager) %><%= f.label("hop_utilisation_method_rager","Rager") %></td>
+   </tr>
+    </table>
+
+    <input type="submit" value="OK" class="button">   <%=  link_to "Cancel", stored_location(), :class=>"button"%>
+  <% end %>
+  
+  
+</div>

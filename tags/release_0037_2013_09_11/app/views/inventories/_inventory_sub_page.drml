@@ -1,0 +1,56 @@
+<table id=<%= "#{type}_list" %> class="item-list">
+  <tr>
+    <th><b>Type</b></th>
+    <th><b>Weight [<%= units%>]</b></th>
+    <th><b>Location</b></th>
+    <th><b>Label</b></th>
+    <th><b>Source Date</b></th>
+    <th><b>Age</b></th>
+  </tr>
+  
+  <repeat with="&current_user.send(type + "_inventories") >
+    <tr class="<%= cycle('odd','even') -%>">
+      <td><%= this.send( type + "_type" ) || type.capitalize + " undefined" %></td>  
+      <td><%= ajax_weight_editor(this, :update, :inventories, current_user, "amount" )%></td>
+      <td><%= ajax_editor(this, :update, :inventories, "", "location" )%></td>
+      <td><%= ajax_editor(this, :update, :inventories, "", "label" )%></td>
+      <td class="big"><view:source_date/>
+            <if test="&this.updatable_by?(current_user)">
+            <% f1 = ajax_updater(
+              url_for(  :controller => :inventories, :action => :update),
+              "Update source date",
+              :method => "post",
+              :params => { :id => id, type =>
+                     { :source_date => Hobo.raw_js('this.value')  }
+              } ) %>
+
+            <%= calendar_date_select :dates, :source_date, :hidden => true,
+              :onchange => "#{f1}" %>
+            </if>
+      </td> 
+      <td><%= distance_of_time_in_words(this.source_date, Time.zone.now) if this.source_date%></td>  
+      <td><div class="buttons"><%= del_inventory_link(this) %></div></td>
+    </tr>
+  </repeat>
+  
+</table>
+
+
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010, 2013
+-->
