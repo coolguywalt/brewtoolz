@@ -1,0 +1,56 @@
+<!--
+    This file is part of Brewtools.
+
+    Brewtools is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Brewtools is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+<page title="Recipe Help">
+
+  <body: class="front-page"/>
+
+  <aside-left:>
+    <%= render :partial => 'menu' %>
+  </aside-left:>
+
+  <content:>
+
+    <h2>Frequently asked questions</h2>
+
+    <br/>
+    <ul>
+      <li><a href="#weights">Why do the ingredient weights keep changing when I ...</a></li>
+    </ul>
+
+    <br/>
+
+    <h2 id="weights">Why do the ingredient weights keep changing when I ... </h2>
+    Brewtoolz recipe calculator is designed to work on the gravity  or IBU/volume contributions of ingredients, and
+    if the volume or OG or efficiency of the recipe is changed, the weights are automatically adjusted to compensate.<br/><br/>
+    This is great if you are creating a recipe from scratch and have an IBU figure or OG that you want to try and target
+    but can be really annoying if you are trying to enter specific weights.<br/><br/>
+    Locking an ingredient allows you to make sure the weight will not vary based on changes in volume or efficency, and gets
+    around the problem of weights changing when you dont want them to.<br/><br/>
+
+    A whole recipe can be locked so that you don't have to click on every single ingredient.  If you take this option
+    it will behave much more like the traditional recipe calculators.  If you select this option, you will be asked if you want weights
+    modified when updating the recipe volume.<br/><br/>
+
+    You can even set up your preferences to automatically lock recipes, so that there weights dont change all the time. <br/>
+
+  </content:>
+
+
+</page>

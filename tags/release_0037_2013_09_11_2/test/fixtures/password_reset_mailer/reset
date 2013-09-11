@@ -1,0 +1,3 @@
+PasswordResetMailer#reset
+
+Find me in app/views/password_reset_mailer/reset.erb
