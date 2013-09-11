@@ -29,7 +29,10 @@
 
 
                 <div id="fermentables_div">
-                    <%= render :partial => 'inventory_sub_page', :locals => { :item_type => "fermentable" } %>
+
+                    <div id="FermentableInventory_div" class="block">
+                        <%= render :partial => 'inventory_sub_page', :locals => { :item_type => "fermentable" } %>
+                    </div>    
                     <br/>
                     <div class="block">
                         <script type="text/javascript">

@@ -38,7 +38,7 @@
 		<tbody >
 		<repeat with="&brewentry_list_scrollable">
 			<tr>
-				<td><%= link_to this.brew_date.to_formatted_s(:long), { :controller => 'brew_entries', :action => 'show', :id => this.id} %></td>
+				<td><%= link_to this.brew_date.to_formatted_s, { :controller => 'brew_entries', :action => 'show', :id => this.id} %></td>
 				<td><%= link_to h(this.recipe.name), { :controller => 'recipes', :action => 'show', :id => this.recipe.id} if this.recipe  %></td>
 				<td><%= this.recipe.style.name if this.recipe.style if this.recipe %></td>
 				<td><%= this.status %></td>

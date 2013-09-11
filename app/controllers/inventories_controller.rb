@@ -67,7 +67,7 @@ class InventoriesController < ApplicationController
         else
             @inventory_item = user_items.create( :source_date => Time.now, :amount => 1, :balance => 1, "#{invent_prefix.singularize.downcase}_type" => item )
         end
-
+        
         @inventory_item.save
 
         unless @inventory_item.nil? then

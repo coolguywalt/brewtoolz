@@ -76,5 +76,6 @@ class YeastInventory < ActiveRecord::Base
     def balance=( new_balance )
         # Initialise original amount for the first time balance is updated.
         amount = new_balance if amount == 0.0
+        write_attribute( :balance, new_balance )
     end
 end
