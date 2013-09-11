@@ -263,6 +263,7 @@ class BrewEntriesController < ApplicationController
 
 
         @this = @brew_entry
+        @recipe = @brew_entry.actual_recipe
 
     end
 
