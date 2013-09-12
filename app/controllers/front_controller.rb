@@ -65,4 +65,8 @@ class FrontController < ApplicationController
 		end
 	end
 
+    def loadplanningtab
+        render  :partial => 'inventories/planning'
+    end
+
 end
