@@ -45,6 +45,9 @@
 <% end %>
 </div>
 <div id="shoppinglisttab">
+    <% if @brew_entries.length > 0 %>
+
+
     <%
         #Process ingredients.
         @ferm_items = Hash.new
@@ -55,7 +58,7 @@
     %>
 
     <div class="block">
-    <h2>Ingedients for:</h2>
+    <h2>Ingredients for:</h2>
     <% @brew_entries.each do |be| %> 
         <h3><%= link_to h(be.recipe.name), 
             { :controller => 'recipes', :action => 'show', :id => be.recipe.id}, :class => 'edit' %>
@@ -272,7 +275,13 @@
 </div>
 <% end %>
 
+<% else %>
 
+    You have no brewing planned.
+    <br>
+    To plan for brewing in the future, create brew logs with the brewing date set for a future date.  Brewtools can then work out all the ingredients need to be purchased in the next 1, 3, 6 or 12 month period and allow you to plan for purchasing in larger quantities.
+
+<% end %>    
 
 
 </div>    

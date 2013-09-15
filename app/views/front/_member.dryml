@@ -42,9 +42,9 @@
 
 		<div id="memberstabsdiv">
 			<ul>
+				<li><a href="#brewing_logs_div"><span>Brewing Logs</span></a></li>
 				<li><a href="#members_recipes_div"><span>My Recipes</span></a></li>
 				<li><a href="#shared_recipes_div"><span>Shared Recipes</span></a></li>
-				<li><a href="#brewing_logs_div"><span>Brewing Logs</span></a></li>
                 <li><%= link_to "<span>Planning</span>", :controller => :inventories, :action => :loadplanningtab %></li>
 			</ul>
 
