@@ -1,0 +1,139 @@
+<!--
+This file is part of Brewtools.
+
+Brewtools is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Brewtools is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+
+<script type="text/javascript">
+    var <%=@inv_type%>_selectedRow;
+    
+    j(document).ready(function() {
+            var oTable;
+
+            // Handle row selection.
+            j('#<%= "#{@inv_type}IngrTable" %> tbody tr').click( function( e ) {
+
+                <%=@inv_type%>_selectedRow = j(this);
+
+                if ( j(this).hasClass('row_selected') ) {
+                    j(this).removeClass('row_selected');
+                }
+                else {
+                    oTable.$('tr.row_selected').removeClass('row_selected');
+                    j(this).addClass('row_selected');
+                    
+                    var invtype=j(this).data('invtype');
+                    var ingrid=j(this).data('ingrid');
+
+                    // Load the ingredient page
+                    Hobo.showSpinner('Loading ...' );
+                    j("#" + invtype + "_inv_usage_edit").load("inventory_edit?ingr_id=" + ingrid + "&inv_type=" + invtype,
+                        function() { Hobo.hideSpinner(); } );
+                    }
+                });
+
+
+            oTable = j('<%= "##{@inv_type}IngrTable" %>').dataTable( {
+                    "iDisplayLength": 5,
+                    "bJQueryUI": true,
+                    "bLengthChange": false,
+                    "bSort" : false,
+                    "bFilter" : false } );
+
+
+
+        // var update_all_button_url = 'update_all_for_type';
+
+        // Update all from inventory button handler.    
+        var update_all_button_class = '<%=@inv_type%>_update_all_from_inv';
+        console.log("button class: " + update_all_button_class );
+        var thebutton=j("." + update_all_button_class).button();
+        thebutton.click( function() { Brewtoolz.buttonHandler( thebutton, 'update_all_for_type'); } );
+    });
+</script>
+
+<div>
+    <button class="<%=@inv_type%>_update_all_from_inv" data-inv_type="<%=@inv_type%>">Allocate <%=@inv_type.pluralize%> from inventory</button>
+</div>
+<br/>
+
+<table id= <%= "#{@inv_type}IngrTable" %> class="item-list">
+    <thead>
+    <tr>
+        <!--th></th -->
+        <th><b>Type</b></th>
+        <th><b>Amount<br/><%= "[#{@units}]" unless @units.empty? %></b></th>
+        <th><b>Inventory<br/>use<%= "[#{@units}]" unless @units.empty? %></b></th>
+        <% if @inv_type == "hop" then %>
+            <th><b>AA%</b></th>
+            <th><b>Minutes</b></th>
+        <% end %> 
+    </tr>
+    </thead>
+    <tbody>
+    <% @ingr_list.each do |ingr| 
+        #invs = ingr.send("#{inv_type}_type").send("#{inv_type}_inventories").owned_by( current_user )
+        
+        ingr_type = ingr.send("#{@inv_type}_type") 
+        #inv_log_item = ingr.recipe.send().send( "find_by_
+        #inv_log_item 
+            
+            #Object.const_get("#{inv_type.gsub('hop','hops')}_inventory_log_entries".classify).
+            #send( "find_by_#{inv_type}_id",ingr.id)
+        inv_log_amount = Utils.roundup( ingr.send("#{@inv_type.gsub('hop','hops')}_inventory_log_entries").sum(:amount) )
+        #inv_log_amount = inv_log_item.amount unless inv_log_item.nil?
+
+        if @inv_type == "fermentable" then 
+            av=Utils.roundup(ingr.weight) 
+            ingr_amount = ferm_weight_values(av)
+        elsif @inv_type == "hop" then 
+            av=Utils.roundup( ingr.weight )
+            ingr_amount = hop_weight_values(av)
+        elsif @inv_type == "kit" 
+            if ingr.weight > 0 then
+                av = Utils.roundup(ingr.weight) 
+                ingr_amount = ferm_weight_values(av)
+            else
+                av = ingr_amount = ingr.quantity
+            end
+
+        elsif @inv_type == "yeast"       
+            ingr_amount=av=1.0
+        end %>
+
+
+        <tr class="<%=cycle('odd','even')-%>" data-invtype="<%=@inv_type%>" data-ingrid="<%=ingr.id%>">
+            <!-- td>
+                <button id="btn_<%=ingr.id%>" class="jsmall-button ingrbutton" 
+                    data-ingrid="<%=ingr.id%>" data-invtype="<%=@inv_type%>"/>
+            </td -->
+            <td><%= ingr_type %></td>
+            <td><%= ingr_amount %></td>
+            <td><%= inv_log_amount %></td>
+            <% if @inv_type == "hop" then %>
+                <td><%=ingr.aa%></td>
+                <td><%=hop_minutes_format(ingr)%></td>
+            <% end %> 
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<br/>
+<div id="<%=@inv_type%>_inv_usage_edit">
+    <% @ingr = @ingr_list.first unless @ingr %> 
+    <%= render :partial => 'inventory_edit' %>
+</div>

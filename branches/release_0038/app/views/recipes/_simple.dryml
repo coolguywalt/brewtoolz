@@ -1,0 +1,36 @@
+
+    <table class="item-list">  
+      <tr>
+        <td><b>OG[<%= gravity_units %>]:</b> <%= ajax_simple_og_editor(@recipe) %></td>
+        <td><b>FG[<%= gravity_units %>]:</b> <%= ajax_simple_fg_editor(@recipe) %></td>
+        <td><b>RTE:</b> <%= number_with_precision( @recipe.rte, 2 ) %></td>
+        <td><b>Attenuation:</b> <%= percentage(@recipe.attenuation*100) %></td>
+      </tr>
+      <tr>   
+       <td><b>IBU:</b> <%= ajax_simple_ibu_editor(@recipe) %></td>  
+       <td><b>SRM:</b> <%= ajax_simple_srm_editor(@recipe) %></td> 
+       <td><b>BU:GU ratio:</b> <%= number_with_precision( @recipe.bugu, 3 ) %></td>
+       <td><b>Balance:</b> <%= number_with_precision( @recipe.balance, 3 ) %></td>
+      </tr>
+    </table>
+    
+    <!-- View uploaded data -->
+    
+    <if test="&@recipe.recipe_file_type_istext?">
+      <br/>   
+      <%= simple_format(h(@recipe.recipe_file_text)) %>
+      <br/>
+    </if>
+    
+    
+    <!-- upload recipe file -->
+    
+    
+    <% form_for(:recipe_file,
+      :url => {:action => 'upload_recipe_file', :id => @recipe.id },
+      :html => { :multipart => true }) do |form| %>
+        Comment:            <%= form.text_field("comment" ) %><br/>
+        Upload your recipe: <%= form.file_field("uploaded_recipe_file" ) %><br/>
+      <%= submit_tag("Upload file" ) %>
+    <% end %>
+
