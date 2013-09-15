@@ -1,0 +1,165 @@
+<!--
+This file is part of Brewtools.
+
+Brewtools is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Brewtools is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+Copyright Chris Taylor, 2008, 2009, 2010, 2013
+-->
+
+<%
+    # Need to find a better way to do this.
+    @inv_type = @inv_type.gsub('hops','hop');
+
+    @ingr_type = @ingr.ingr_type
+    @inv_matches = @ingr.ingr_type.inventories.owned_by( current_user )
+
+    @units = ""
+    if @inv_type == "fermentable" then 
+        @av=Utils.roundup(@ingr.weight) 
+        @ingr_amount = ferm_weight_values(@av)
+        @units = ferm_weight_units
+    elsif @inv_type == "hop" then 
+        @av=Utils.roundup( @ingr.weight )
+        @ingr_amount = hop_weight_values(@av)
+        @units = hop_weight_units
+    elsif @inv_type == "kit" 
+        if @ingr.weight > 0 then
+            @av = Utils.roundup(@ingr.weight) 
+            @ingr_amount = ferm_weight_values(@av)
+            @units = ferm_weight_units
+        else
+            @av = @ingr_amount = @ingr.quantity
+        end
+    elsif @inv_type == "yeast"       
+        @ingr_amount=@av=1.0
+    end 
+    
+    update_all_button_url = url_for( { :action => "all_from_inv" } )
+%>
+
+<script type="text/javascript">
+    j(document).ready(function() {
+
+        var thebutton=j("#<%=@inv_type%>_inv_list_edit_div .update_from_inv").button().click( function(event) {
+
+         var buttonData='';
+         //var buttonData=j.param(thebutton.data());
+         j.each( thebutton.data(), function( key, value ) {
+             if(!(key.match(/^ui/))) {
+                 if(buttonData.length > 0) buttonData += "&";
+                    buttonData += key + "=" + value;
+             }
+         } );
+
+         console.log("buttonData: " + buttonData);
+
+         Hobo.showSpinner("Update from inventory");
+
+         var request = j.ajax({
+              url: "<%=update_all_button_url%>",
+              type: "post",
+              data: buttonData
+          });
+
+           // callback handler that will be called on success
+           request.done(function (response, textStatus, jqXHR){
+              // log a message to the console
+              console.log("Hooray, it worked!");
+           });
+
+            // callback handler that will be called on failure
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                // log the error to the console
+                console.error("The following error occured: "+
+                        textStatus, errorThrown);
+            });
+
+            request.always(function () {
+                Hobo.hideSpinner();
+            }); 
+        });
+    });
+</script>
+
+<div class="block">
+    <p><b>Recipe Entry Details:</b></p>
+<table class="item-list">
+    <tr>
+        <td><b>Type:</b>&nbsp<%=@ingr_type.name%></td>
+        <td><b>Weight<%= " [#{@units}]" unless @units.empty? %>:</b>&nbsp<%=@ingr_amount%></td>
+        <% if @inv_type == "hop" %>
+            <td><b>AA%:</b>&nbsp<%=@ingr.aa%></td>
+            <td><b>Minutes:</b>&nbsp<%=hop_minutes_format(@ingr)%></td>
+        <% end %>
+    </tr>
+</table>
+</div>
+
+<%  has_inv_item = false
+    inv_count = @inv_matches.count
+    if inv_count > 0 %>
+    <div class="block" >
+    <p><b>Inventory Details:</b></p>
+    <table class="item-list">
+    <thead>
+        <th><b>Inventory use<%=" [#{@units}]" unless @units.empty?%></b></th>
+        <th>&nbsp</th> 
+        <% if @inv_type == "hop" %>
+            <th><b>Target weight with<br/>inv hops<%=" [#{@units}]"%></b></th>
+            <th><b>AA%</b></th>
+        <% end %>
+        <th><b>Inventory<br/>balance<%=" [#{@units}]" unless @units.empty?%></b></th>
+        <th><b>Age</b></th>
+    </thead>
+
+    <tbody>
+    <% @inv_matches.each do |invs_item| %>
+        
+    <% if @ingr_type == "hop"
+            next if invs_item.has_allocation_to_another?( @ingr ) 
+       end
+    %>
+
+    <tr>
+        <td>
+            <% item_holder = [] %>
+            <%= edit_inv_usage(invs_item, @brew_entry.actual_recipe, @ingr, item_holder) %>
+        </td>
+        <td><button class="update_from_inv" data-inv_item_id="<%=item_holder[0].id%>" 
+                data-ingr_item_id="<%=@ingr.id%>" data-amount_needed="<%=@av%>"
+                data-inv_type="<%=@inv_type%>">&lt&lt</button></td>
+        <% if @inv_type == "hop" %>
+            <%  #Only adjust hop weights for additions > 15 minutes.
+                adj_hop_weight = @ingr.weight( @ingr.minutes >= 15.0 ? invs_item.aa : nil )
+                av = Utils.roundup( adj_hop_weight )
+            %>
+            <td><%=av%></td>
+            <td><%=invs_item.aa%></td>
+        <% end %>
+        <td><%=invs_item.balance%></td>
+        <td><%= distance_of_time_in_words(invs_item.source_date, Time.zone.now)%></td>  
+    </tr>
+<% end %>
+</tbody>
+</table>
+
+<% if (@inv_type == "hop") and (inv_count > 1) and (@ingr.minutes >= 15) %>
+    <p>Note if hops are taken from more than one inventory, they may be split into two recipe entries to take into account different AA% values for hop addtions after 15 minutes.</p>
+<% end %>
+
+
+</div>
+<% else %>
+    No matching inventory items found ...
+<% end %>

@@ -1,0 +1,32 @@
+<div id="hops_div">
+
+<div id="HopsInventory_div" class="block">
+    <%= render :partial => 'inventory_sub_page', :locals => { :item_type => "hops"} %>
+</div>
+
+<br/>
+<div class="block">
+<script type="text/javascript">
+jQuery(document).ready(function() {
+        jQuery('#hopsListTable').dataTable( {
+            "aLengthMenu": [[5, 10, -1], [5, 10, "All"]],
+            "bJQueryUI": true
+            } );
+        } );
+</script>
+<table  id="hopsListTable" class="item-list" >
+			<thead><tr><th><p>Type</p></th><th><p>AA%</p></th><th><p> </p></th></tr></thead>
+			<tbody class="scroll-list">
+			<repeat with="&HopType.find(:all, :order => 'name')" >
+				<tr class="<%= cycle('odd','even') -%>">
+					<td><view:name/></td>
+				<td><view:aa/></td>
+				<td><div class="buttons"><%= add_inventory_link(this, HopsInventory ) %></div></td>
+				</tr>
+			</repeat>
+			</tbody>
+</table>
+<br/>
+</div>
+
+</div>
