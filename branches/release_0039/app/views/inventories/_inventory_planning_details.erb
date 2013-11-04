@@ -1,0 +1,311 @@
+
+<script type="text/javascript">
+    j(document).ready(function() {
+            j('#upcomingbrews').accordion({
+                heightStyle: "content",
+                header: "h3",
+                collapsible: true,
+                active: false
+                });
+
+
+			j("#planningtabsdiv").tabs( { cache: true } );
+            j('.shoppingListTable').dataTable( { 
+                "iDisplayLength": 5,
+                "bJQueryUI": true,
+                "bLengthChange": false,
+                "bFilter" : false,
+                "bInfo": false,
+                "bPaginate": false
+            } );
+
+    });
+</script>
+
+<% #List of upcoming brews. 
+  @brew_entries = current_user.brew_entries.find( :all, 
+        :conditions => [ "(DATE(brew_date) > ?) and (DATE(brew_date) < ?)", 
+            Time.now, (@monthrange.to_i).months.from_now ], :order => "brew_date ASC" )
+%>
+
+<div id="planningtabsdiv">
+    
+    <ul>
+			<li><a href="#shoppinglisttab"><span>Shopping List</span></a></li>
+            <li><a href="#upcomingbrews"><span>Upcoming Brews</span></a></li>
+    </ul>
+
+<div id="upcomingbrews">
+
+<% @brew_entries.each do |be| %>
+    <h3><%= h(be.recipe.name) + " - " + h(be.brew_date.to_formatted_s(:long)) %></h3>
+    <div>
+      <%= render :partial => 'shared/recipe_shopping_list', :object => be.therecipe %>
+   </div>
+<% end %>
+</div>
+<div id="shoppinglisttab">
+    <% if @brew_entries.length > 0 %>
+
+
+    <%
+        #Process ingredients.
+        @ferm_items = Hash.new
+        @hop_items = Hash.new
+        @kit_items = Hash.new
+        @yeast_items = Hash.new
+        @misc_items = Hash.new
+    %>
+
+    <div class="block">
+    <h2>Ingredients for:</h2>
+    <% @brew_entries.each do |be| %> 
+        <h3><%= link_to h(be.recipe.name), 
+            { :controller => 'recipes', :action => 'show', :id => be.recipe.id}, :class => 'edit' %>
+		         - <%= link_to h(be.brew_date.to_s(:long)), be, :class => 'edit' %>
+        </h3>
+        <%
+        # Process each brew to determine required ingredients.     
+        # -- Fermentables    
+        be.actual_recipe.fermentables.each do |ferm|
+            to_purchase = Utils.roundup( ferm.weight - ferm.log_entries.sum(:amount) )    
+            if to_purchase > 0 then
+                amount = Utils.roundup(ferm.weight)
+                ferm_type = ferm.fermentable_type.name
+                #Check for existing entry.
+                unless @ferm_items[ferm_type] then 
+                    @ferm_items[ferm_type] = { :date => be.brew_date, :ferm => ferm, :to_purchase => 0 }
+                end
+                ferm_item = @ferm_items[ferm_type]
+                ferm_item[:to_purchase] = ferm_item[:to_purchase] + to_purchase 
+            end
+        end
+
+        # -- Hops
+        be.actual_recipe.hops.each do |hop|
+            to_purchase = Utils.roundup(hop.total_recipe_hops_weight - hop.log_entries.sum(:amount))
+            if to_purchase > 0 then
+                amount = Utils.roundup(hop.total_recipe_hops_weight)
+                hop_type = hop.hop_type.name + hop.aa.to_s
+                #Check for existing entry.
+                unless @hop_items[hop_type] then 
+                    @hop_items[hop_type] = { :date => be.brew_date, :hop => hop, :to_purchase => 0, :typename => hop.hop_type.name, :aa => hop.aa }
+                end
+                hop_item = @hop_items[hop_type]
+                hop_item[:to_purchase] = hop_item[:to_purchase] + to_purchase 
+            end
+        end
+
+        # -- Yeast    
+        be.actual_recipe.yeasts.each do |yeast|
+            #Note this line assumes only one yeasts is to be used.
+            number_of_packets = be.yeast_pitching_rate/(yeast.ingr_type.cells_in_package*1.0e9) 
+            logger.debug( "Pitching_rate: #{be.yeast_pitching_rate} Cells: #{yeast.ingr_type.cells_in_package}" )
+            to_purchase = number_of_packets - yeast.log_entries.sum(:amount)    
+            logger.debug( "To Purchase: #{to_purchase}" )
+            if to_purchase > 0 then
+                amount = 1.0
+                yeast_type = yeast.yeast_type.name
+                #Check for existing entry.
+                unless @yeast_items[yeast_type] then 
+                    @yeast_items[yeast_type] = { :date => be.brew_date, :yeast => yeast, :to_purchase => 0, :num_brews => 0 }
+                end
+                yeast_item = @yeast_items[yeast_type]
+                yeast_item[:to_purchase] = yeast_item[:to_purchase] + to_purchase 
+                yeast_item[:num_brews] = yeast_item[:num_brews] + 1 
+            end
+        end
+
+        # -- Kits    
+        be.actual_recipe.kits.each do |kit|
+            to_purchase = kit.quantity - kit.log_entries.sum(:amount)    
+            if to_purchase > 0 then
+                amount = 1.0
+                kit_type = kit.kit_type.name
+                #Check for existing entry.
+                unless @kit_items[kit_type] then 
+                    @kit_items[kit_type] = { :date => be.brew_date, :kit => kit, :to_purchase => 0 }
+                end
+                kit_item = @kit_items[kit_type]
+                kit_item[:to_purchase] = kit_item[:to_purchase] + to_purchase 
+            end
+        end
+
+
+        # -- Misc    
+        be.actual_recipe.misc_ingredients.each do |misc|
+            to_purchase = misc.amount
+            if to_purchase > 0 then
+                misc_type = misc.name
+                misc_units = misc.is_solid ? current_user.units.hops : current_user.units.volume
+                #Check for existing entry.
+                unless @misc_items[misc_type] then 
+                    @misc_items[misc_type] = { :date => be.brew_date, :misc => misc, :to_purchase => 0, :units => misc_units  }
+                end
+                misc_item = @misc_items[misc_type]
+                misc_item[:to_purchase] = misc_item[:to_purchase] + to_purchase 
+            end
+        end
+
+      %>
+  <% end %>
+  </div>
+    
+<!-- Fermentables -->
+<% if @ferm_items.length > 0 then %>
+<div class="block">
+  <h2>Fermentables</h2>
+  <table id="fermentablesShoppingListTable" class="shoppingListTable item-list">
+    <thead> <tr>
+      <th><b>Type</b></th>
+      <th><b>To Purchase [<%= ferm_weight_units %>]</b></th>
+      <th><b>Date needed</b></th>
+     </tr> </thead>
+     <tbody>
+    <% @ferm_items.sort.map  do |ferm_type, ferm_item| %>
+      <tr class="<%= cycle('odd','even') -%>">
+        <td ><%= ferm_type %></td>
+        <td><%= BrewingUnits::values_for_display(ferm_weight_units, 
+                Utils.roundup(ferm_item[:to_purchase]))%> </td>
+        <td><%= ferm_item[:date] %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div>
+<% end %>
+
+<!-- Hops -->
+<% if @hop_items.length > 0 then %>
+<div class="block">
+  <h2>Hops</h2>
+  <table id="hopsShoppingListTable" class="shoppingListTable item-list">
+    <thead> <tr>
+      <th><b>Type</b></th>
+      <th><b>AA%</b></th>
+      <th><b>To Purchase [<%= hop_weight_units %>]</b></th>
+      <th><b>Date needed</b></th>
+     </tr> </thead>
+     <tbody>
+    <% @hop_items.sort.map  do |hop_type, hop_item| %>
+      <tr class="<%= cycle('odd','even') -%>">
+        <td ><%= hop_item[:typename] %></td>
+        <td ><%= hop_item[:aa] %></td>
+        <td><%= BrewingUnits::values_for_display(hop_weight_units, 
+                Utils.roundup(hop_item[:to_purchase]))%> </td>
+        <td><%= hop_item[:date] %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div>
+<% end %>
+
+
+<!-- Kits -->
+<% if @kit_items.length > 0 then %>
+<div class="block">
+  <h2>Kits</h2>
+  <table id="kitsShoppingListTable" class="shoppingListTable item-list">
+    <thead> <tr>
+      <th><b>Type</b></th>
+      <th><b>To Purchase</b></th>
+      <th><b>Date needed</b></th>
+     </tr> </thead>
+     <tbody>
+    <% @kit_items.sort.map  do |kit_type, kit_item| %>
+      <tr class="<%= cycle('odd','even') -%>">
+        <td ><%= kit_type %></td>
+        <td><%= kit_item[:to_purchase].round(2) %> </td>
+        <td><%= kit_item[:date] %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div>
+<% end %>
+
+
+
+<!-- Yeasts -->
+<% if @yeast_items.length > 0 then %>
+<div class="block">
+  <h2>Yeasts</h2>
+  <table id="yeastsShoppingListTable" class="shoppingListTable item-list">
+    <thead> <tr>
+      <th><b>Type</b></th>
+      <th><b>To Purchase[packets] (brews)</b></th>
+      <th><b>Date needed</b></th>
+     </tr> </thead>
+     <tbody>
+    <% @yeast_items.sort.map  do |yeast_type, yeast_item| %>
+      <tr class="<%= cycle('odd','even') -%>">
+        <td ><%= yeast_type %></td>
+        <td><%= yeast_item[:to_purchase].round(2) %> (<%= yeast_item[:num_brews] %>)</td>
+        <td><%= yeast_item[:date] %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div>
+<% end %>
+
+
+<!-- Misc -->
+<% if @misc_items.length > 0 then %>
+<div class="block">
+  <h2>Miscellaneous</h2>
+  <table id="miscShoppingListTable" class="shoppingListTable item-list">
+    <thead> <tr>
+      <th><b>Type</b></th>
+      <th><b>To Purchase</b></th>
+      <th><b>Date needed</b></th>
+     </tr> </thead>
+     <tbody>
+    <% @misc_items.sort.map  do |misc_type, misc_item| %>
+      <tr class="<%= cycle('odd','even') -%>">
+        <td ><%= misc_type %></td>
+        <td><%= BrewingUnits::values_for_display(misc_item[:units], 
+            misc_item[:to_purchase])%> [<%= misc_item[:units]%>]</td>
+        <td><%= misc_item[:date] %> </td>
+      </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div>
+<% end %>
+
+<% else %>
+
+    You have no brewing planned.
+    <br>
+    To plan for brewing in the future, create brew logs with the brewing date set for a future date.  Brewtools can then work out all the ingredients need to be purchased in the next 1, 3, 6 or 12 month period and allow you to plan for purchasing in larger quantities.
+
+<% end %>    
+
+
+</div>    
+</div>
+
+<!--
+This file is part of Brewtools.
+
+Brewtools is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Brewtools is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+Copyright Chris Taylor, 2008, 2009, 2010, 2013
+-->
+
+
+
+

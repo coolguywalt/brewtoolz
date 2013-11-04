@@ -1,0 +1,126 @@
+<!--
+This file is part of Brewtools.
+
+Brewtools is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Brewtools is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Brewtools.  If not, see <http://www.gnu.org/licenses/>.
+
+Copyright Chris Taylor, 2008, 2009, 2010
+-->
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+            j("#inventoryusetabs_div").tabs( { cache: true } );
+
+        var update_all_button_class = 'update_all_from_inv';
+        var thebutton=j("." + update_all_button_class).button();
+
+        thebutton.click( function() { Brewtoolz.buttonHandler( thebutton, 'update_all_from_inventory'); } );
+
+    } );
+</script>
+
+<div id="inventoryusetabs_div" class="recipetabs" >
+
+<div>
+    <button class="update_all_from_inv" >Allocate all from inventory</button>
+</div>
+
+<br>
+
+    <ul>
+        <% if @brew_entry.actual_recipe.fermentables.count > 0 %>
+            <li><a href="#fermentableinvuse_div"><span>Fermentables</span></a></li>
+        <% end %>
+
+        <% if @brew_entry.actual_recipe.hops.count > 0 %>
+            <li><a href="#hopsinvuse_div"><span>Hops</span></a></li>
+        <% end %>
+
+        <% if @brew_entry.actual_recipe.kits.count > 0 %>
+            <li><a href="#kitinvuse_div"><span>Kits</span></a></li>
+        <% end %>
+
+        <% if @brew_entry.actual_recipe.yeasts.count > 0 %>
+            <li><a href="#yeastinvuse_div"><span>Yeast</span></a></li>
+        <% end %>
+
+    </ul>
+
+
+    <!-- Ingredients -->
+    <!-- Fermentables -->
+    <% if @brew_entry.actual_recipe.fermentables.count > 0 %>
+    <%
+        @units = ferm_weight_units
+        @ingr_list = @brew_entry.actual_recipe.fermentables.list
+        @ingr = @ingr_list.first 
+        @inv_type = "fermentable"
+    %>
+        <div id="fermentableinvuse_div">
+            <%= render :partial => 'inventory_usage_subpage' %>
+            <% #render :partial => 'inventory_usage_list',
+               # :locals => { :inv_type => "fermentable", :units => ferm_weight_units, 
+               #     :ingr_list => recipe_fermentable_list(@brew_entry.actual_recipe),
+               #     :recipe => @brew_entry.actual_recipe } 
+            %>
+        </div>
+    <% end %>
+
+    <% if @brew_entry.actual_recipe.hops.count > 0 %>
+    <%
+        @units = hop_weight_units
+        @ingr_list = @brew_entry.actual_recipe.hops.type_minutes
+        @ingr = @ingr_list.first 
+        @inv_type = "hop"
+    %>
+        <div id="hopsinvuse_div">
+            <%= render :partial => 'inventory_usage_subpage' %>
+        </div>
+    <% end %>
+
+    <% if @brew_entry.actual_recipe.kits.count > 0 %>
+    <%
+        @units = ""
+        @ingr_list = @brew_entry.actual_recipe.kits.list
+        @ingr = @ingr_list.first 
+        @inv_type = "kit"
+    %>
+        <div id="kitinvuse_div">
+            <%= render :partial => 'inventory_usage_subpage' %>
+        </div>
+            <% #render :partial => 'inventory_usage_list',
+               # :locals => { :inv_type => "kit", :units => "", 
+               #     :ingr_list => recipe_kits_list(@brew_entry.actual_recipe),
+               #     :recipe => @brew_entry.actual_recipe } 
+            %>
+    <% end %>
+
+    <% if @brew_entry.actual_recipe.yeasts.count > 0 %>
+    <%
+        @units = ""
+        @ingr_list = @brew_entry.actual_recipe.yeasts.list
+        @ingr = @ingr_list.first 
+        @inv_type = "yeast"
+    %>
+        <div id="yeastinvuse_div">
+            <%= render :partial => 'inventory_usage_subpage' %>
+        </div>
+            <%= #render :partial => 'inventory_usage_list',
+                #:locals => { :inv_type => "yeast", :units => "", 
+                #    :ingr_list => recipe_yeast_list(@brew_entry.actual_recipe),
+                #    :recipe => @brew_entry.actual_recipe }
+                %>
+    <% end %>
+
+</div>
