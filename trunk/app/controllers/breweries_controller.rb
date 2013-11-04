@@ -61,7 +61,12 @@ class BreweriesController < ApplicationController
 
 	def create
 
+        #Merge default options with user passed data.
+        params[:brewery] = Brewery.default.merge( params[:brewery] )
+
 		@brewery = Brewery.new(params[:brewery])
+
+		#@brewery = Brewery.new
 
 		if @brewery.save!
 			flash[:notice] = "Successfully created recipe."
