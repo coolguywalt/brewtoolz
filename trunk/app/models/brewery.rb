@@ -119,6 +119,9 @@ class Brewery < ActiveRecord::Base
                	:sulfate => 96.0,
                	:total_alkalinity => 239.0
 	}
+    def self.default
+        return DEFAULT_BREWERY
+    end
 
 	RO_BREWERY = {
 		:capacity => 23.0,
