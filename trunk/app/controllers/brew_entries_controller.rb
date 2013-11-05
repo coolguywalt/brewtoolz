@@ -440,7 +440,7 @@ class BrewEntriesController < ApplicationController
             return
         end
 
-        new_efficiency = params[:efficency]
+        new_efficiency = params[:recipe][:efficency]
 
         @brew_entry.actual_recipe.efficency = new_efficiency
         unless @brew_entry.actual_recipe.save then
